@@ -1,0 +1,62 @@
+[
+  {
+    "catalog_id": "active-pop-001",
+    "rating": "RRE-BBB",
+    "score": 61.12,
+    "confidence": 0.5,
+    "regime": "active_pop",
+    "decay_model": "exponential",
+    "hhi_platform": 0.3799,
+    "hhi_territory": 0.2822,
+    "ltv": 0.5,
+    "cvar_95_60mo_usd": 49343.79
+  },
+  {
+    "catalog_id": "balanced-001",
+    "rating": "RRE-BBB",
+    "score": 68.79,
+    "confidence": 0.75,
+    "regime": "catalog",
+    "decay_model": "power_law",
+    "hhi_platform": 0.2616,
+    "hhi_territory": 0.2274,
+    "ltv": 0.5,
+    "cvar_95_60mo_usd": 38488.67
+  },
+  {
+    "catalog_id": "evergreen-001",
+    "rating": "RRE-AA",
+    "score": 85.32,
+    "confidence": 0.9,
+    "regime": "evergreen",
+    "decay_model": "power_law",
+    "hhi_platform": 0.2098,
+    "hhi_territory": 0.1855,
+    "ltv": 0.7,
+    "cvar_95_60mo_usd": 126560.95
+  },
+  {
+    "catalog_id": "high-hhi-001",
+    "rating": "RRE-BB",
+    "score": 55.14,
+    "confidence": 0.6,
+    "regime": "active_pop",
+    "decay_model": "exponential",
+    "hhi_platform": 0.9037,
+    "hhi_territory": 0.8498,
+    "ltv": 0.3,
+    "cvar_95_60mo_usd": 78139.57
+  },
+  {
+    "catalog_id": "new-release-001",
+    "rating": "RRE-B",
+    "score": 40.63,
+    "confidence": 0.5,
+    "regime": "new_release",
+    "decay_model": "exponential",
+    "hhi_platform": 0.4466,
+    "hhi_territory": 0.3386,
+    "ltv": 0.0,
+    "cvar_95_60mo_usd": 99754.73
+  }
+]

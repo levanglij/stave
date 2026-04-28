@@ -1,0 +1,1740 @@
+{
+  "catalog_id": "new-release-001",
+  "metadata": {
+    "title": "Reverie",
+    "artist": "Nico Wren",
+    "genre": "pop",
+    "catalog_age_months": 18,
+    "artist_age_years": 2
+  },
+  "history": [
+    {
+      "month": "2024-10",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 400.04
+    },
+    {
+      "month": "2024-10",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 169.9
+    },
+    {
+      "month": "2024-10",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 97.04
+    },
+    {
+      "month": "2024-10",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 127.84
+    },
+    {
+      "month": "2024-10",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 139.24
+    },
+    {
+      "month": "2024-10",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 61.58
+    },
+    {
+      "month": "2024-10",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 33.79
+    },
+    {
+      "month": "2024-10",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 45.61
+    },
+    {
+      "month": "2024-10",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 64.26
+    },
+    {
+      "month": "2024-10",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 28.56
+    },
+    {
+      "month": "2024-10",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 16.13
+    },
+    {
+      "month": "2024-10",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 20.41
+    },
+    {
+      "month": "2024-10",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 38.26
+    },
+    {
+      "month": "2024-10",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 17.02
+    },
+    {
+      "month": "2024-10",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 9.54
+    },
+    {
+      "month": "2024-10",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 12.27
+    },
+    {
+      "month": "2024-11",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 1007.46
+    },
+    {
+      "month": "2024-11",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 419.65
+    },
+    {
+      "month": "2024-11",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 230.2
+    },
+    {
+      "month": "2024-11",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 313.06
+    },
+    {
+      "month": "2024-11",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 341.52
+    },
+    {
+      "month": "2024-11",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 151.02
+    },
+    {
+      "month": "2024-11",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 84.16
+    },
+    {
+      "month": "2024-11",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 112.82
+    },
+    {
+      "month": "2024-11",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 158.32
+    },
+    {
+      "month": "2024-11",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 69.12
+    },
+    {
+      "month": "2024-11",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 38.93
+    },
+    {
+      "month": "2024-11",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 50.96
+    },
+    {
+      "month": "2024-11",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 94.33
+    },
+    {
+      "month": "2024-11",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 42.71
+    },
+    {
+      "month": "2024-11",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 22.34
+    },
+    {
+      "month": "2024-11",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 30.43
+    },
+    {
+      "month": "2024-12",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 1218.09
+    },
+    {
+      "month": "2024-12",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 528.86
+    },
+    {
+      "month": "2024-12",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 285.22
+    },
+    {
+      "month": "2024-12",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 387.41
+    },
+    {
+      "month": "2024-12",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 421.98
+    },
+    {
+      "month": "2024-12",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 185.47
+    },
+    {
+      "month": "2024-12",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 100.29
+    },
+    {
+      "month": "2024-12",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 140.07
+    },
+    {
+      "month": "2024-12",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 191.78
+    },
+    {
+      "month": "2024-12",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 87.29
+    },
+    {
+      "month": "2024-12",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 46.89
+    },
+    {
+      "month": "2024-12",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 61.73
+    },
+    {
+      "month": "2024-12",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 117.9
+    },
+    {
+      "month": "2024-12",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 51.47
+    },
+    {
+      "month": "2024-12",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 28.0
+    },
+    {
+      "month": "2024-12",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 36.21
+    },
+    {
+      "month": "2025-01",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 1606.59
+    },
+    {
+      "month": "2025-01",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 718.52
+    },
+    {
+      "month": "2025-01",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 388.79
+    },
+    {
+      "month": "2025-01",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 523.6
+    },
+    {
+      "month": "2025-01",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 586.24
+    },
+    {
+      "month": "2025-01",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 252.54
+    },
+    {
+      "month": "2025-01",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 142.02
+    },
+    {
+      "month": "2025-01",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 176.65
+    },
+    {
+      "month": "2025-01",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 257.52
+    },
+    {
+      "month": "2025-01",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 108.11
+    },
+    {
+      "month": "2025-01",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 63.12
+    },
+    {
+      "month": "2025-01",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 82.96
+    },
+    {
+      "month": "2025-01",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 160.5
+    },
+    {
+      "month": "2025-01",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 67.81
+    },
+    {
+      "month": "2025-01",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 35.75
+    },
+    {
+      "month": "2025-01",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 50.95
+    },
+    {
+      "month": "2025-02",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 2298.63
+    },
+    {
+      "month": "2025-02",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 1012.93
+    },
+    {
+      "month": "2025-02",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 564.89
+    },
+    {
+      "month": "2025-02",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 765.33
+    },
+    {
+      "month": "2025-02",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 829.6
+    },
+    {
+      "month": "2025-02",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 370.15
+    },
+    {
+      "month": "2025-02",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 193.58
+    },
+    {
+      "month": "2025-02",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 277.48
+    },
+    {
+      "month": "2025-02",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 380.46
+    },
+    {
+      "month": "2025-02",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 168.03
+    },
+    {
+      "month": "2025-02",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 92.5
+    },
+    {
+      "month": "2025-02",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 122.32
+    },
+    {
+      "month": "2025-02",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 229.49
+    },
+    {
+      "month": "2025-02",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 98.71
+    },
+    {
+      "month": "2025-02",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 54.74
+    },
+    {
+      "month": "2025-02",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 73.79
+    },
+    {
+      "month": "2025-03",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 2642.16
+    },
+    {
+      "month": "2025-03",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 1136.05
+    },
+    {
+      "month": "2025-03",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 622.29
+    },
+    {
+      "month": "2025-03",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 833.8
+    },
+    {
+      "month": "2025-03",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 928.87
+    },
+    {
+      "month": "2025-03",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 405.76
+    },
+    {
+      "month": "2025-03",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 219.3
+    },
+    {
+      "month": "2025-03",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 290.88
+    },
+    {
+      "month": "2025-03",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 426.82
+    },
+    {
+      "month": "2025-03",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 184.76
+    },
+    {
+      "month": "2025-03",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 100.23
+    },
+    {
+      "month": "2025-03",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 142.87
+    },
+    {
+      "month": "2025-03",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 254.89
+    },
+    {
+      "month": "2025-03",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 112.09
+    },
+    {
+      "month": "2025-03",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 60.3
+    },
+    {
+      "month": "2025-03",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 78.52
+    },
+    {
+      "month": "2025-04",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 3744.86
+    },
+    {
+      "month": "2025-04",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 1608.27
+    },
+    {
+      "month": "2025-04",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 879.72
+    },
+    {
+      "month": "2025-04",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 1195.79
+    },
+    {
+      "month": "2025-04",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 1325.74
+    },
+    {
+      "month": "2025-04",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 574.43
+    },
+    {
+      "month": "2025-04",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 311.95
+    },
+    {
+      "month": "2025-04",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 433.22
+    },
+    {
+      "month": "2025-04",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 597.35
+    },
+    {
+      "month": "2025-04",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 254.53
+    },
+    {
+      "month": "2025-04",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 143.87
+    },
+    {
+      "month": "2025-04",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 189.56
+    },
+    {
+      "month": "2025-04",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 354.58
+    },
+    {
+      "month": "2025-04",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 158.04
+    },
+    {
+      "month": "2025-04",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 85.44
+    },
+    {
+      "month": "2025-04",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 117.94
+    },
+    {
+      "month": "2025-05",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 2237.36
+    },
+    {
+      "month": "2025-05",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 985.38
+    },
+    {
+      "month": "2025-05",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 547.2
+    },
+    {
+      "month": "2025-05",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 705.0
+    },
+    {
+      "month": "2025-05",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 806.71
+    },
+    {
+      "month": "2025-05",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 347.48
+    },
+    {
+      "month": "2025-05",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 194.25
+    },
+    {
+      "month": "2025-05",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 248.72
+    },
+    {
+      "month": "2025-05",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 362.41
+    },
+    {
+      "month": "2025-05",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 153.08
+    },
+    {
+      "month": "2025-05",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 85.49
+    },
+    {
+      "month": "2025-05",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 115.04
+    },
+    {
+      "month": "2025-05",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 217.77
+    },
+    {
+      "month": "2025-05",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 98.63
+    },
+    {
+      "month": "2025-05",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 53.66
+    },
+    {
+      "month": "2025-05",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 67.16
+    },
+    {
+      "month": "2025-06",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 2622.61
+    },
+    {
+      "month": "2025-06",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 1201.02
+    },
+    {
+      "month": "2025-06",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 644.72
+    },
+    {
+      "month": "2025-06",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 828.87
+    },
+    {
+      "month": "2025-06",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 954.09
+    },
+    {
+      "month": "2025-06",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 406.41
+    },
+    {
+      "month": "2025-06",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 222.89
+    },
+    {
+      "month": "2025-06",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 294.77
+    },
+    {
+      "month": "2025-06",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 427.28
+    },
+    {
+      "month": "2025-06",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 197.48
+    },
+    {
+      "month": "2025-06",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 103.86
+    },
+    {
+      "month": "2025-06",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 137.15
+    },
+    {
+      "month": "2025-06",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 270.66
+    },
+    {
+      "month": "2025-06",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 112.34
+    },
+    {
+      "month": "2025-06",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 61.67
+    },
+    {
+      "month": "2025-06",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 82.03
+    },
+    {
+      "month": "2025-07",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 2208.66
+    },
+    {
+      "month": "2025-07",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 957.73
+    },
+    {
+      "month": "2025-07",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 540.95
+    },
+    {
+      "month": "2025-07",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 696.79
+    },
+    {
+      "month": "2025-07",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 785.91
+    },
+    {
+      "month": "2025-07",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 343.49
+    },
+    {
+      "month": "2025-07",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 183.33
+    },
+    {
+      "month": "2025-07",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 243.85
+    },
+    {
+      "month": "2025-07",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 352.91
+    },
+    {
+      "month": "2025-07",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 148.32
+    },
+    {
+      "month": "2025-07",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 84.81
+    },
+    {
+      "month": "2025-07",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 113.22
+    },
+    {
+      "month": "2025-07",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 212.57
+    },
+    {
+      "month": "2025-07",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 93.12
+    },
+    {
+      "month": "2025-07",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 51.23
+    },
+    {
+      "month": "2025-07",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 67.35
+    },
+    {
+      "month": "2025-08",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 2113.51
+    },
+    {
+      "month": "2025-08",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 888.3
+    },
+    {
+      "month": "2025-08",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 509.93
+    },
+    {
+      "month": "2025-08",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 656.02
+    },
+    {
+      "month": "2025-08",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 747.64
+    },
+    {
+      "month": "2025-08",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 322.78
+    },
+    {
+      "month": "2025-08",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 176.2
+    },
+    {
+      "month": "2025-08",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 233.2
+    },
+    {
+      "month": "2025-08",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 345.59
+    },
+    {
+      "month": "2025-08",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 144.88
+    },
+    {
+      "month": "2025-08",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 78.83
+    },
+    {
+      "month": "2025-08",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 108.17
+    },
+    {
+      "month": "2025-08",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 202.99
+    },
+    {
+      "month": "2025-08",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 88.93
+    },
+    {
+      "month": "2025-08",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 47.53
+    },
+    {
+      "month": "2025-08",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 63.78
+    },
+    {
+      "month": "2025-09",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 2354.87
+    },
+    {
+      "month": "2025-09",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 996.82
+    },
+    {
+      "month": "2025-09",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 561.92
+    },
+    {
+      "month": "2025-09",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 750.94
+    },
+    {
+      "month": "2025-09",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 822.97
+    },
+    {
+      "month": "2025-09",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 352.4
+    },
+    {
+      "month": "2025-09",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 204.48
+    },
+    {
+      "month": "2025-09",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 263.31
+    },
+    {
+      "month": "2025-09",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 374.55
+    },
+    {
+      "month": "2025-09",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 162.93
+    },
+    {
+      "month": "2025-09",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 87.85
+    },
+    {
+      "month": "2025-09",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 118.75
+    },
+    {
+      "month": "2025-09",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 224.75
+    },
+    {
+      "month": "2025-09",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 96.84
+    },
+    {
+      "month": "2025-09",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 53.85
+    },
+    {
+      "month": "2025-09",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 73.28
+    },
+    {
+      "month": "2025-10",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 2454.81
+    },
+    {
+      "month": "2025-10",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 1068.74
+    },
+    {
+      "month": "2025-10",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 596.29
+    },
+    {
+      "month": "2025-10",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 793.02
+    },
+    {
+      "month": "2025-10",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 879.07
+    },
+    {
+      "month": "2025-10",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 373.94
+    },
+    {
+      "month": "2025-10",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 199.75
+    },
+    {
+      "month": "2025-10",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 280.73
+    },
+    {
+      "month": "2025-10",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 392.99
+    },
+    {
+      "month": "2025-10",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 171.44
+    },
+    {
+      "month": "2025-10",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 95.12
+    },
+    {
+      "month": "2025-10",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 124.48
+    },
+    {
+      "month": "2025-10",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 232.61
+    },
+    {
+      "month": "2025-10",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 107.35
+    },
+    {
+      "month": "2025-10",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 54.73
+    },
+    {
+      "month": "2025-10",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 76.62
+    },
+    {
+      "month": "2025-11",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 2774.84
+    },
+    {
+      "month": "2025-11",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 1239.07
+    },
+    {
+      "month": "2025-11",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 656.09
+    },
+    {
+      "month": "2025-11",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 879.22
+    },
+    {
+      "month": "2025-11",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 947.58
+    },
+    {
+      "month": "2025-11",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 424.93
+    },
+    {
+      "month": "2025-11",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 221.94
+    },
+    {
+      "month": "2025-11",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 305.36
+    },
+    {
+      "month": "2025-11",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 438.46
+    },
+    {
+      "month": "2025-11",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 192.63
+    },
+    {
+      "month": "2025-11",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 104.28
+    },
+    {
+      "month": "2025-11",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 143.64
+    },
+    {
+      "month": "2025-11",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 254.9
+    },
+    {
+      "month": "2025-11",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 116.13
+    },
+    {
+      "month": "2025-11",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 62.67
+    },
+    {
+      "month": "2025-11",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 84.29
+    },
+    {
+      "month": "2025-12",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 2774.1
+    },
+    {
+      "month": "2025-12",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 1266.53
+    },
+    {
+      "month": "2025-12",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 650.94
+    },
+    {
+      "month": "2025-12",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 910.42
+    },
+    {
+      "month": "2025-12",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 1010.76
+    },
+    {
+      "month": "2025-12",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 431.56
+    },
+    {
+      "month": "2025-12",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 233.11
+    },
+    {
+      "month": "2025-12",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 306.91
+    },
+    {
+      "month": "2025-12",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 439.29
+    },
+    {
+      "month": "2025-12",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 204.66
+    },
+    {
+      "month": "2025-12",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 102.64
+    },
+    {
+      "month": "2025-12",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 144.32
+    },
+    {
+      "month": "2025-12",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 264.47
+    },
+    {
+      "month": "2025-12",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 122.45
+    },
+    {
+      "month": "2025-12",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 64.77
+    },
+    {
+      "month": "2025-12",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 83.51
+    },
+    {
+      "month": "2026-01",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 2866.63
+    },
+    {
+      "month": "2026-01",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 1279.43
+    },
+    {
+      "month": "2026-01",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 696.88
+    },
+    {
+      "month": "2026-01",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 909.43
+    },
+    {
+      "month": "2026-01",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 1022.0
+    },
+    {
+      "month": "2026-01",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 448.1
+    },
+    {
+      "month": "2026-01",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 249.05
+    },
+    {
+      "month": "2026-01",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 330.7
+    },
+    {
+      "month": "2026-01",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 469.28
+    },
+    {
+      "month": "2026-01",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 203.16
+    },
+    {
+      "month": "2026-01",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 113.89
+    },
+    {
+      "month": "2026-01",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 147.83
+    },
+    {
+      "month": "2026-01",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 275.67
+    },
+    {
+      "month": "2026-01",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 122.28
+    },
+    {
+      "month": "2026-01",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 66.84
+    },
+    {
+      "month": "2026-01",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 89.15
+    },
+    {
+      "month": "2026-02",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 2330.4
+    },
+    {
+      "month": "2026-02",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 1095.07
+    },
+    {
+      "month": "2026-02",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 588.88
+    },
+    {
+      "month": "2026-02",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 795.94
+    },
+    {
+      "month": "2026-02",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 853.19
+    },
+    {
+      "month": "2026-02",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 384.04
+    },
+    {
+      "month": "2026-02",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 207.21
+    },
+    {
+      "month": "2026-02",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 275.34
+    },
+    {
+      "month": "2026-02",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 404.85
+    },
+    {
+      "month": "2026-02",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 169.96
+    },
+    {
+      "month": "2026-02",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 94.89
+    },
+    {
+      "month": "2026-02",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 120.77
+    },
+    {
+      "month": "2026-02",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 237.16
+    },
+    {
+      "month": "2026-02",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 102.84
+    },
+    {
+      "month": "2026-02",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 55.15
+    },
+    {
+      "month": "2026-02",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 74.16
+    },
+    {
+      "month": "2026-03",
+      "platform": "spotify",
+      "territory": "US",
+      "revenue_usd": 1308.53
+    },
+    {
+      "month": "2026-03",
+      "platform": "spotify",
+      "territory": "UK",
+      "revenue_usd": 588.41
+    },
+    {
+      "month": "2026-03",
+      "platform": "spotify",
+      "territory": "DE",
+      "revenue_usd": 328.98
+    },
+    {
+      "month": "2026-03",
+      "platform": "spotify",
+      "territory": "OTHER",
+      "revenue_usd": 414.22
+    },
+    {
+      "month": "2026-03",
+      "platform": "apple_music",
+      "territory": "US",
+      "revenue_usd": 495.21
+    },
+    {
+      "month": "2026-03",
+      "platform": "apple_music",
+      "territory": "UK",
+      "revenue_usd": 217.44
+    },
+    {
+      "month": "2026-03",
+      "platform": "apple_music",
+      "territory": "DE",
+      "revenue_usd": 114.6
+    },
+    {
+      "month": "2026-03",
+      "platform": "apple_music",
+      "territory": "OTHER",
+      "revenue_usd": 150.55
+    },
+    {
+      "month": "2026-03",
+      "platform": "youtube",
+      "territory": "US",
+      "revenue_usd": 214.21
+    },
+    {
+      "month": "2026-03",
+      "platform": "youtube",
+      "territory": "UK",
+      "revenue_usd": 94.48
+    },
+    {
+      "month": "2026-03",
+      "platform": "youtube",
+      "territory": "DE",
+      "revenue_usd": 52.09
+    },
+    {
+      "month": "2026-03",
+      "platform": "youtube",
+      "territory": "OTHER",
+      "revenue_usd": 73.57
+    },
+    {
+      "month": "2026-03",
+      "platform": "tidal",
+      "territory": "US",
+      "revenue_usd": 129.24
+    },
+    {
+      "month": "2026-03",
+      "platform": "tidal",
+      "territory": "UK",
+      "revenue_usd": 59.05
+    },
+    {
+      "month": "2026-03",
+      "platform": "tidal",
+      "territory": "DE",
+      "revenue_usd": 32.52
+    },
+    {
+      "month": "2026-03",
+      "platform": "tidal",
+      "territory": "OTHER",
+      "revenue_usd": 41.51
+    }
+  ]
+}
