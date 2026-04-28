@@ -1,0 +1,18 @@
+# Anchor / Rust build artifacts
+target/
+.anchor/
+test-ledger/
+**/*.rs.bk
+
+# Node
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Generated IDL / types
+target/idl/
+target/types/
+
+# Local keypairs (never commit)
+target/deploy/*-keypair.json
