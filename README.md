@@ -1,4 +1,4 @@
-# IPOA — IP Ownership & Royalty Shares on Solana
+# Stave — IP Ownership Marketplace & Royalty Shares on Solana
 
 Fractionalize IP (music, art, any creative work) into tradable royalty shares. Artists mint works, sell a portion of the royalty stream, and shareholders collect pro-rata payouts as revenue is deposited.
 
