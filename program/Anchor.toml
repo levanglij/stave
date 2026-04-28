@@ -6,7 +6,7 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-ipoa = "IPoA1111111111111111111111111111111111111111"
+stave = "Stave1111111111111111111111111111111111111111"
 
 [registry]
 url = "https://api.apr.dev"

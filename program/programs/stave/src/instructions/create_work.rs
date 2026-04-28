@@ -5,7 +5,7 @@ use anchor_spl::{
 };
 
 use crate::constants::{IP_WORK_SEED, MAX_METADATA_URI_LEN};
-use crate::errors::IpoaError;
+use crate::errors::StaveError;
 use crate::state::IpWork;
 
 /// Create a new IP work:
@@ -62,9 +62,9 @@ pub fn handler(
 ) -> Result<()> {
     require!(
         metadata_uri.len() <= MAX_METADATA_URI_LEN,
-        IpoaError::MetadataUriTooLong
+        StaveError::MetadataUriTooLong
     );
-    require!(total_shares > 0, IpoaError::InvalidTotalShares);
+    require!(total_shares > 0, StaveError::InvalidTotalShares);
 
     let bump = ctx.bumps.ip_work;
     let creator_key = ctx.accounts.creator.key();

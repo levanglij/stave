@@ -2,7 +2,7 @@
 
 ## `demo.html` — local platform demo
 
-Self-contained, zero-install HTML walkthrough of the IPOA product experience. Useful for internal presentations, design reviews, and demo-day dry runs.
+Self-contained, zero-install HTML walkthrough of the Stave product experience. Useful for internal presentations, design reviews, and demo-day dry runs.
 
 **How to open:**
 

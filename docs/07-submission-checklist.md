@@ -76,7 +76,7 @@ Final pass before submitting to **Solana Frontier Hackathon 2026** (deadline **M
 
 ## Traction evidence
 
-- [ ] IPOA Twitter/X account with public build-in-public posts (Colosseum weights this heavily)
+- [ ] Stave Twitter/X account with public build-in-public posts (Colosseum weights this heavily)
 - [ ] Telegram or Discord channel with any initial user conversations screenshot-able
 - [ ] Waitlist signups or artist DMs captured as proof of interest
 - [ ] At least one tweet linked to the live app + pitch video after submission

@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 
 #[error_code]
-pub enum IpoaError {
+pub enum StaveError {
     #[msg("Metadata URI exceeds 200 characters")]
     MetadataUriTooLong,
 

@@ -2,7 +2,7 @@
 
 Fractionalize IP (music, art, any creative work) into tradable royalty shares. Artists mint works, sell a portion of the royalty stream, and shareholders collect pro-rata payouts as revenue is deposited.
 
-The long-term platform vision — the Royalty Risk Engine (RRE) and Structured Royalty Financing Platform (SRFP) bringing institutional-grade pricing infrastructure to music royalty markets — is documented in [`docs/02-architecture.md`](./docs/02-architecture.md). The hackathon submission is a focused on-chain MVP that demonstrates the fractionalization and royalty-distribution layer end-to-end. Together, they frame IPOA's narrative: a shipping product today, a pricing infrastructure roadmap tomorrow.
+The long-term platform vision — the Royalty Risk Engine (RRE) and Structured Royalty Financing Platform (SRFP) bringing institutional-grade pricing infrastructure to music royalty markets — is documented in [`docs/02-architecture.md`](./docs/02-architecture.md). The hackathon submission is a focused on-chain MVP that demonstrates the fractionalization and royalty-distribution layer end-to-end. Together, they frame Stave's narrative: a shipping product today, a pricing infrastructure roadmap tomorrow.
 
 ## Target
 
@@ -31,7 +31,7 @@ Critical path: deploy `create_work` to localnet/devnet, then build the next four
 ## Repo layout
 
 ```
-IPOA/
+Stave/
 ├── README.md                  — you are here
 ├── CLAUDE.md                  — master prompt for Claude Code
 ├── .gitignore
@@ -53,8 +53,8 @@ IPOA/
 │   └── tests/                 — 31 passing tests
 ├── program/                   — Anchor/Rust workspace
 │   ├── Anchor.toml, Cargo.toml, package.json, tsconfig.json
-│   ├── programs/ipoa/         — IpWork PDA + Token-2022 share mint + create_work
-│   ├── tests/ipoa.ts          — 3 tests (happy path + 2 validation errors)
+│   ├── programs/stave/         — IpWork PDA + Token-2022 share mint + create_work
+│   ├── tests/stave.ts          — 3 tests (happy path + 2 validation errors)
 │   └── migrations/
 ├── app/                       — Next.js frontend (empty; build target)
 ├── assets/                    — logos, mockups, screenshots (empty)

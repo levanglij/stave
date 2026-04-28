@@ -1,9 +1,9 @@
 # 03 — Pitch Deck Outline
 
-> Slide-by-slide structure for the IPOA pitch deck. Target length: 12 slides. Delivery: PDF in `submission/`. Frames both the shipped Solana MVP and the RRE/SRFP platform direction, because judges at Colosseum evaluate both product and business thesis.
+> Slide-by-slide structure for the Stave pitch deck. Target length: 12 slides. Delivery: PDF in `submission/`. Frames both the shipped Solana MVP and the RRE/SRFP platform direction, because judges at Colosseum evaluate both product and business thesis.
 
 ## Slide 1 — Title
-- IPOA logo
+- Stave logo
 - Tagline: "Pricing infrastructure for music royalty finance."
 - Presenter name + "Solana Frontier Hackathon 2026"
 
@@ -18,7 +18,7 @@
 - Credit markets solved this 60 years ago with standardized ratings + structured tranches.
 - Music just needs the same infrastructure — built for the streaming era.
 
-## Slide 4 — What IPOA is
+## Slide 4 — What Stave is
 - Two layers:
   - **On-chain fractionalization layer** — artists mint royalty shares on Solana, fans and institutions buy them, everyone gets pro-rata payouts.
   - **Royalty Risk Engine (RRE)** — a standardized rating methodology that makes every catalog directly comparable.

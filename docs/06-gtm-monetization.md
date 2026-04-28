@@ -46,7 +46,7 @@ To reach $100k ARR at these assumptions: ~13,000 primary sales. That's demanding
 ## Moat and defensibility
 
 - **Liquidity network effects** — more listings attract more buyers, and vice versa.
-- **Integrations** — being the default share primitive for royalty participation (Token-2022 with known extensions) makes IPOA shares easy to plug into DEXs, lending, prediction markets.
+- **Integrations** — being the default share primitive for royalty participation (Token-2022 with known extensions) makes Stave shares easy to plug into DEXs, lending, prediction markets.
 - **Brand trust** — being early with a clean, transparent model while competitors are mired in legal theater.
 
 ## Regulatory stance

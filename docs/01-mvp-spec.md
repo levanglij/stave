@@ -1,4 +1,4 @@
-# 01 — IPOA MVP Spec
+# 01 — Stave MVP Spec
 
 ## User Stories (MVP only)
 
@@ -48,7 +48,7 @@ After claim: update `claim_record.last_claim_total_deposited = current total_dep
 Edge case to handle: if holder transfers shares after a deposit but before claiming, they forfeit the unclaimed portion on those transferred shares. Document this in the README as acceptable MVP behavior.
 
 ## Frontend Pages
-1. `/` — landing page, IPOA pitch, "Connect Wallet" CTA
+1. `/` — landing page, Stave pitch, "Connect Wallet" CTA
 2. `/create` — artist flow: upload assets, set shares/price, mint + list
 3. `/marketplace` — grid of all listed works
 4. `/work/[id]` — detail page: metadata, audio preview, buy shares, deposit royalty (for demo), claim button

@@ -1,8 +1,8 @@
 {
-  "name": "ipoa-program",
+  "name": "stave-program",
   "version": "0.1.0",
   "private": true,
-  "description": "Solana program for IPOA — on-chain IP fractionalization and royalty distribution",
+  "description": "Solana program for Stave — on-chain IP fractionalization and royalty distribution",
   "scripts": {
     "test": "anchor test"
   },

@@ -1,4 +1,4 @@
-# IPOA Anchor program
+# Stave Anchor program
 
 Solana on-chain layer: IP fractionalization + royalty distribution.
 
@@ -21,7 +21,7 @@ program/
 ├── Cargo.toml
 ├── package.json
 ├── tsconfig.json
-├── programs/ipoa/
+├── programs/stave/
 │   ├── Cargo.toml
 │   └── src/
 │       ├── lib.rs
@@ -29,7 +29,7 @@ program/
 │       ├── errors.rs
 │       ├── state/ip_work.rs
 │       └── instructions/create_work.rs
-├── tests/ipoa.ts
+├── tests/stave.ts
 └── migrations/deploy.ts
 ```
 
@@ -53,9 +53,9 @@ anchor build
 anchor test
 
 # After `anchor build`, note the newly-minted program ID from
-#   target/deploy/ipoa-keypair.json
+#   target/deploy/stave-keypair.json
 # and paste it into Anchor.toml [programs.localnet] and
-# programs/ipoa/src/lib.rs's declare_id! — then rebuild.
+# programs/stave/src/lib.rs's declare_id! — then rebuild.
 
 # Deploy to devnet (Day 7)
 anchor deploy --provider.cluster devnet
@@ -63,7 +63,7 @@ anchor deploy --provider.cluster devnet
 
 ## Conventions
 
-- Program name: `ipoa`
+- Program name: `stave`
 - PDA seeds: `b"work"`, `b"listing"`, `b"royalty"`, `b"claim"` (see `src/constants.rs`)
 - Share mint: SPL Token-2022, 0 decimals
 - Payment mint (planned): USDC devnet

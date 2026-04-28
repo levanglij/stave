@@ -1,6 +1,6 @@
-# Claude Code master prompt — IPOA
+# Claude Code master prompt — Stave
 
-You are helping build IPOA for the **Solana Frontier Hackathon 2026** (submission deadline **May 11, 2026**). Read `docs/01-mvp-spec.md` for the scoped hackathon deliverable before writing any code. Read `docs/02-architecture.md` for the long-term platform vision (RRE/SRFP) — the MVP is a focused slice of that vision, not a replacement for it.
+You are helping build Stave for the **Solana Frontier Hackathon 2026** (submission deadline **May 11, 2026**). Read `docs/01-mvp-spec.md` for the scoped hackathon deliverable before writing any code. Read `docs/02-architecture.md` for the long-term platform vision (RRE/SRFP) — the MVP is a focused slice of that vision, not a replacement for it.
 
 ## Project summary
 
@@ -57,7 +57,7 @@ See `docs/07-submission-checklist.md` for the full pre-submit punch list.
 
 ## Conventions
 
-- Anchor program name: `ipoa`
+- Anchor program name: `stave`
 - PDAs use byte-string seeds declared in spec: `b"work"`, `b"listing"`, `b"royalty"`, `b"claim"`
 - Share mint: Token-2022, 0 decimals (shares are whole integers)
 - Payment mint: USDC devnet (primary); wSOL is stretch

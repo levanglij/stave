@@ -1,12 +1,12 @@
 [package]
-name = "ipoa"
+name = "stave"
 version = "0.1.0"
-description = "IPOA on-chain program"
+description = "Stave on-chain program"
 edition = "2021"
 
 [lib]
 crate-type = ["cdylib", "lib"]
-name = "ipoa"
+name = "stave"
 
 [features]
 default = []

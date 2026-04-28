@@ -1,4 +1,4 @@
-//! IPOA — on-chain IP fractionalization and royalty distribution.
+//! Stave — on-chain IP fractionalization and royalty distribution.
 //!
 //! Day 1-2 scope (this file): `create_work` — mint the Token-2022 share mint
 //! and initialize the IpWork PDA. Remaining instructions (`list_shares`,
@@ -14,10 +14,10 @@ pub mod state;
 
 pub use instructions::*;
 
-declare_id!("IPoA1111111111111111111111111111111111111111");
+declare_id!("Stave1111111111111111111111111111111111111111");
 
 #[program]
-pub mod ipoa {
+pub mod stave {
     use super::*;
 
     /// Create a new IP work: Token-2022 share mint + IpWork PDA + initial supply.

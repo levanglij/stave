@@ -1,6 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program, BN } from "@coral-xyz/anchor";
-import { Ipoa } from "../target/types/ipoa";
+import { Stave } from "../target/types/stave";
 import { PublicKey, Keypair, SystemProgram } from "@solana/web3.js";
 import {
   TOKEN_2022_PROGRAM_ID,
@@ -11,10 +11,10 @@ import {
 } from "@solana/spl-token";
 import { expect } from "chai";
 
-describe("ipoa — create_work", () => {
+describe("stave — create_work", () => {
   const provider = anchor.AnchorProvider.env();
   anchor.setProvider(provider);
-  const program = anchor.workspace.Ipoa as Program<Ipoa>;
+  const program = anchor.workspace.Stave as Program<Stave>;
   const creator = provider.wallet.publicKey;
 
   it("creates an IpWork, share mint, and mints full supply to creator", async () => {
