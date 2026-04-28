@@ -1,0 +1,52 @@
+# Anchor / Rust
+target/
+.anchor/
+test-ledger/
+**/*.rs.bk
+
+# Node / Next
+node_modules/
+.next/
+out/
+dist/
+.pnpm-store/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+pytest-cache-files-*/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Env and secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*-keypair.json
+id.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Claude Code session
+.claude/
+
+# Build artifacts
+*.tsbuildinfo
+coverage/
+
+# Submission working files (keep finals only)
+submission/drafts/
