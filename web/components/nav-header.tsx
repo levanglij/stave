@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ConnectButton } from "./connect-button";
 
 const NAV_ITEMS = [
   { label: "Issuances", href: "/", active: true },
@@ -54,13 +55,7 @@ export function NavHeader() {
           <span className="text-[10px] tracking-widest uppercase border border-border rounded-full px-2 py-0.5 text-muted">
             devnet · mock
           </span>
-          <button
-            disabled
-            className="rounded-lg bg-accent text-accent-ink font-semibold text-xs px-3 py-1.5 disabled:opacity-50 disabled:cursor-not-allowed"
-            title="Wallet connect ships in D1.8"
-          >
-            Connect
-          </button>
+          <ConnectButton />
         </div>
       </div>
     </header>
