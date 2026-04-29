@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ConnectButton } from "./connect-button";
 
 const NAV_ITEMS = [
-  { label: "Issuances", href: "/", active: true },
+  { label: "Marketplace", href: "/", active: true },
   { label: "Indices", href: "#", active: false, soon: true },
   { label: "Methodology", href: "#", active: false, soon: true },
   { label: "Portfolio", href: "#", active: false, soon: true },

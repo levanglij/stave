@@ -38,7 +38,7 @@ export default function IssuanceDetail({ params }: PageProps) {
           href="/"
           className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-fg mb-6 transition-colors"
         >
-          ← All issuances
+          ← Marketplace
         </Link>
 
         <div className="grid md:grid-cols-3 gap-6">
