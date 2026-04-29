@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { NavHeader } from "@/components/nav-header";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,12 +18,12 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Stave — Rating infrastructure for music royalty assets",
   description:
-    'Stave is the rating-and-financing infrastructure for music royalty assets — a "Moody\u2019s of music" — built on Solana, with the founding team\u2019s PRO ownership as the structural data moat.',
+    "Stave is the rating-and-financing infrastructure for music royalty assets, built on Solana, with the founding team\u2019s PRO ownership as the structural data moat.",
   metadataBase: new URL("https://stave.app"),
   openGraph: {
     title: "Stave — Rating infrastructure for music royalty assets",
     description:
-      'A "Moody\u2019s of music" built on Solana. Standardized RRE ratings, fractional shares, sub-cent royalty distribution.',
+      "Standardized RRE ratings, fractional shares, sub-cent royalty distribution. Built on Solana.",
     type: "website",
     siteName: "Stave",
   },
@@ -35,7 +36,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${mono.variable}`}>
-      <body className="antialiased font-sans">{children}</body>
+      <body className="antialiased min-h-screen">
+        <NavHeader />
+        {children}
+      </body>
     </html>
   );
 }

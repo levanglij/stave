@@ -23,15 +23,15 @@ export function FactorBreakdown({ factors }: { factors: Factors }) {
         return (
           <div key={row.key}>
             <div className="flex justify-between text-xs mb-1.5">
-              <div className="text-neutral-300">
+              <div className="text-fg/80">
                 {row.label}{" "}
-                <span className="text-neutral-500">· weight {row.weight}%</span>
+                <span className="text-muted">· weight {row.weight}%</span>
               </div>
-              <div className="font-semibold tabular-nums text-neutral-100">
+              <div className="font-semibold tabular text-fg">
                 {value.toFixed(0)}
               </div>
             </div>
-            <div className="h-1.5 rounded-full bg-neutral-900 overflow-hidden">
+            <div className="h-1.5 rounded-full bg-panel-2 overflow-hidden">
               <div
                 className="h-full rounded-full transition-all"
                 style={{ width: `${value}%`, background: row.color }}

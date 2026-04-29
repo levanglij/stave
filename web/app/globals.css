@@ -2,22 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Stave palette — dark institutional + emerald accent.
+   Locked in CLAUDE.md and assets/logos/preview.html. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg: #050816;
+  --color-panel: #0e1424;
+  --color-panel-2: #141b2e;
+  --color-border: #1e2638;
+  --color-border-strong: #2a3450;
+  --color-fg: #f8fafc;
+  --color-muted: #94a3b8;
+  --color-accent: #10b981;
+  --color-accent-bright: #34d399;
+  --color-accent-ink: #020617;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), -apple-system, system-ui, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.005em;
+}
+
+/* Subtle ambient gradient — pulls the eye to where content lives. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(60rem 40rem at 20% -10%, rgba(16, 185, 129, 0.06), transparent 70%),
+    radial-gradient(50rem 35rem at 100% 110%, rgba(99, 102, 241, 0.05), transparent 70%);
+}
+
+main, header, footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Tabular numerics for prices, ratings, scores. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* CTA button glow — subtle bloom on the emerald primary action. */
+.btn-glow {
+  box-shadow:
+    0 0 0 1px rgba(16, 185, 129, 0.4),
+    0 8px 24px -8px rgba(16, 185, 129, 0.5);
+  transition: box-shadow 200ms ease, transform 100ms ease;
+}
+.btn-glow:hover:not(:disabled) {
+  box-shadow:
+    0 0 0 1px rgba(16, 185, 129, 0.6),
+    0 12px 32px -8px rgba(16, 185, 129, 0.6);
+}
+.btn-glow:active:not(:disabled) {
+  transform: translateY(1px);
 }
 
 @layer utilities {
