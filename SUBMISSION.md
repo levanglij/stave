@@ -42,7 +42,7 @@ _To be filled before submission. Founder names, roles, one-line credentials each
 
 ## Links
 
-- **Live demo:** _set after first Vercel deploy_ — see [docs/09-deployment.md](./docs/09-deployment.md)
+- **Live demo:** https://stave-five.vercel.app
 - **Pitch video** (≤3 min): _link inserted on submission day_
 - **Tech demo video** (~2:30): _link inserted on submission day_
 - **Pitch deck (PDF):** [submission/Stave-pitch-deck.pdf](./submission/) — exported from `Stave-pitch-deck.pptx`

@@ -40,7 +40,7 @@ Judges respect honesty. Here's the line:
 
 ## Quick links
 
-- 🔗 **Live demo:** _will be set after first Vercel deploy_ → see [docs/09-deployment.md](./docs/09-deployment.md)
+- 🔗 **Live demo:** [stave-five.vercel.app](https://stave-five.vercel.app) — Vercel-hosted, auto-deploys on every push to `main`
 - 🎬 **Pitch video** (≤3 min): _to be recorded_
 - 🛠 **Tech demo video** (~2:30): _to be recorded_
 - 📑 **Pitch deck:** [submission/Stave-pitch-deck.pptx](./submission/Stave-pitch-deck.pptx) (PDF export drops post-finalization)
