@@ -22,7 +22,7 @@ T-shirt estimates assume one experienced engineer working full-time. Concurrency
 
 | Architecture section | % built | Notes |
 |---|---|---|
-| § 3 PRO ownership | 0% | Asserted in doc; no PRO API integration; structural/business item |
+| § 3 GERA partnership | 0% | Partnership formalizing post-hackathon; no GERA API integration yet; structural/business item |
 | § 4.1 PRO direct data feed | 0% | No adapter, no schedule, no schema mapping |
 | § 4.2 Distributor API partnerships | 0% | No commercial deals; no integrations |
 | § 4.3 Minting model (OAuth + statements + analytics) | 0% | All three sub-channels missing |
@@ -137,7 +137,7 @@ To avoid overclaim risk in pitch and deck:
 - **Demo-grade RRE prototype** is honest. We have something real.
 - **"Risk engine prototype"** is honest framing. **"RRE production engine"** is not.
 - The five-layer architecture is described in `docs/02-architecture.md`. The pitch deck references it as the platform direction.
-- The PRO ownership is the moat narrative. It is correctly framed as the moat — the data integration itself is Phase 1 work, not built.
+- The GERA partnership is the moat narrative. It is correctly framed as the moat — the data integration itself is Phase 1 work, not built.
 - The Solana MVP demonstrates the on-chain fractionalization and royalty distribution layer that the SRFP marketplace will sit on top of.
 
 ## Critical-path summary

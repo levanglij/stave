@@ -2,7 +2,7 @@
 
 ## What this is
 
-**Stave is the rating-and-financing infrastructure for music royalty assets — a "Moody's of music" — built on Solana, with the founding team's PRO ownership as the structural data moat.**
+**Stave is the rating-and-financing infrastructure for music royalty assets built on Solana, partnered with the Georgian Rightsholders' Association (GERA) for verified ground-truth royalty data.**
 
 ## The problem
 
@@ -24,7 +24,7 @@ Settlement economics. A royalty distribution to a fractional cap table of 1,000 
 
 ## The moat
 
-The founding team owns Performing Rights Organizations. That gives Stave direct, institutional-grade access to verified royalty income data at the source — not aggregated from third-party APIs, not self-reported by artists, not modeled from streaming counts. Every rating Stave issues can be cross-validated against ground-truth PRO data before it goes live. No competitor starting from a pure technology position can replicate this. Each additional PRO affiliation widens the gap.
+Stave's data moat is being secured through a partnership with the Georgian Rightsholders' Association (GERA) — Georgia's primary rights collection society. The partnership, formalizing in the post-hackathon roadmap, gives Stave direct, institutional-grade access to verified royalty income data at the source — not aggregated from third-party APIs, not self-reported by artists, not modeled from streaming counts. Once integrated, every rating Stave issues on a Georgian catalog can be cross-validated against GERA's primary ledger before it goes live. No competitor starting from a pure technology position can replicate this access, and the architecture extends naturally to additional rights societies as Stave scales beyond Georgia.
 
 ## What's next (90 days post-submission)
 

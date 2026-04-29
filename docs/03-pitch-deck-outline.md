@@ -43,10 +43,10 @@
 - Token-2022 shares are standard fungibles — DEX, lending, and fund composability from day one.
 - Mature wallet UX for the non-crypto artist.
 
-## Slide 9 — The moat: PRO ownership
-- Ground-truth royalty data at the source, not aggregated from APIs.
-- Cross-validates every submission during minting.
-- Deepens with every additional PRO affiliation — can't be matched by pure tech competitors.
+## Slide 9 — The moat: GERA partnership
+- Partnership with the Georgian Rightsholders' Association (GERA) — Georgia's primary rights collection society — formalizing in the post-hackathon roadmap.
+- GERA's ground-truth royalty ledger cross-validates every catalog submission during minting.
+- Architecture extends to additional rights societies as Stave scales beyond Georgia — can't be matched by pure tech competitors.
 
 ## Slide 10 — Market & GTM
 - Phase 1: independent artists via Solana-native communities.

@@ -18,7 +18,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Stave — Rating infrastructure for music royalty assets",
   description:
-    "Stave is the rating-and-financing infrastructure for music royalty assets, built on Solana, with the founding team\u2019s PRO ownership as the structural data moat.",
+    "Stave is the rating-and-financing infrastructure for music royalty assets, built on Solana, partnered with the Georgian Rightsholders\u2019 Association (GERA) for verified ground-truth royalty data.",
   metadataBase: new URL("https://stave.app"),
   openGraph: {
     title: "Stave — Rating infrastructure for music royalty assets",

@@ -25,7 +25,7 @@ Every work listed on Stave ships with an RRE rating — AAA through B — comput
 Visual: live rating appearing on the work's detail page. Cut to `engine/outputs/summary.json` with 5 catalogs spanning RRE-AAA to RRE-B. Cut to the composite score formula from `FORMULAS.md`.
 
 ### 1:30–2:00 — The moat
-The founding team owns Performing Rights Organizations. That means every rating on Stave is backed by verified income data at the source — not aggregated from third-party APIs. No pure-tech competitor can match this. Every PRO affiliation deepens the moat.
+Stave is partnering with the Georgian Rightsholders' Association — GERA, Georgia's primary rights collection society. That means every rating on Stave will be backed by verified income data at the source — not aggregated from third-party APIs. No pure-tech competitor can match this access, and the architecture extends to additional rights societies as we scale beyond Georgia.
 
 Visual: diagram showing the PRO direct feed flowing into the cross-validation layer, reconciled against distributor and streaming data.
 
