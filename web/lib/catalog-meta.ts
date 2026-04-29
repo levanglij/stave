@@ -11,6 +11,8 @@ export const CATALOG_META: Record<string, CatalogMeta> = {
     initials: "SU",
     grad: ["#7f1d1d", "#b45309"],
     price: 0.85,
+    description:
+      "A 1949 Georgian art song widely recorded since the early 1900s. Steady evergreen catalog with 21 years of streaming history across six platforms; revenue distribution well-diversified geographically. Long, predictable tail with low single-platform exposure.",
     catalog_age_months: 252,
     artist_age_years: 35,
     history_months: 240,
@@ -25,6 +27,8 @@ export const CATALOG_META: Record<string, CatalogMeta> = {
     initials: "TB",
     grad: ["#1e3a8a", "#c2410c"],
     price: 0.55,
+    description:
+      "Mid-1960s jazz-orchestra standard, the de facto musical signature of Tbilisi. Stable catalog spanning 8 years of digital revenue history with moderate platform diversification. Modest historical volatility; predictable distribution-cycle income.",
     catalog_age_months: 96,
     artist_age_years: 14,
     history_months: 96,
@@ -39,6 +43,8 @@ export const CATALOG_META: Record<string, CatalogMeta> = {
     initials: "9M",
     grad: ["#831843", "#db2777"],
     price: 0.35,
+    description:
+      "International pop hit by Katie Melua, released 2005. Active-catalog phase with four years of recent streaming history; revenue trending downward as the song ages out of editorial rotation. Strong mid-decay; sync-licensing potential.",
     catalog_age_months: 48,
     artist_age_years: 6,
     history_months: 48,
@@ -53,6 +59,8 @@ export const CATALOG_META: Record<string, CatalogMeta> = {
     initials: "CG",
     grad: ["#3f3f46", "#a16207"],
     price: 0.22,
+    description:
+      "Folk-pop classic by Vakhtang Kikabidze. 5 years of streaming history with revenue concentrated heavily on one platform — significant single-DSP exposure if Spotify changes its recommendation algorithms or licensing terms. High HHI flag.",
     catalog_age_months: 60,
     artist_age_years: 8,
     history_months: 60,
@@ -67,6 +75,8 @@ export const CATALOG_META: Record<string, CatalogMeta> = {
     initials: "AR",
     grad: ["#0f766e", "#475569"],
     price: 0.18,
+    description:
+      "Recent alt-rock release from Mgzavrebi. Less than two years of streaming data; revenue trajectory unproven, viral-event dependent. Wide forecast confidence intervals reflect early-catalog uncertainty. Speculative tier, growth-tranche only.",
     catalog_age_months: 18,
     artist_age_years: 2,
     history_months: 18,

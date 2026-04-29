@@ -15,6 +15,18 @@ export function int(n: number): string {
   return Math.floor(n).toLocaleString();
 }
 
+// Compact dollar formatting: $1.4M, $24.8K, $850.
+export function compactUsd(n: number): string {
+  const abs = Math.abs(n);
+  if (abs >= 1e6) {
+    return "$" + (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M";
+  }
+  if (abs >= 1e3) {
+    return "$" + (n / 1e3).toFixed(1).replace(/\.0$/, "") + "K";
+  }
+  return "$" + n.toFixed(0);
+}
+
 export function pct(x: number, fractionDigits = 1): string {
   return (x * 100).toFixed(fractionDigits) + "%";
 }

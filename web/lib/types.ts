@@ -59,6 +59,7 @@ export interface CatalogMeta {
   initials: string;
   grad: [string, string];
   price: number; // USDC per share
+  description: string; // shown in "About this catalog"
   catalog_age_months: number;
   artist_age_years: number;
   history_months: number;
