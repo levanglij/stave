@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getListing, RATINGS } from "@/lib/ratings";
@@ -12,6 +13,15 @@ export function generateStaticParams() {
 
 interface PageProps {
   params: { id: string };
+}
+
+export function generateMetadata({ params }: PageProps): Metadata {
+  const listing = getListing(params.id);
+  if (!listing) return { title: "Issuance not found · Stave" };
+  return {
+    title: `${listing.title} · ${listing.rating} · Stave`,
+    description: `${listing.artist} — ${listing.genre} catalog rated ${listing.rating}. Composite ${listing.composite_score.toFixed(1)}/100, max LTV ${Math.round(listing.ltv_recommended * 100)}%.`,
+  };
 }
 
 export default function IssuanceDetail({ params }: PageProps) {

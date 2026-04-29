@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { NavHeader } from "@/components/nav-header";
+import { Footer } from "@/components/footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -36,9 +37,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${mono.variable}`}>
-      <body className="antialiased min-h-screen">
+      <body className="antialiased min-h-screen flex flex-col">
         <NavHeader />
-        {children}
+        <div className="flex-1">{children}</div>
+        <Footer />
       </body>
     </html>
   );
