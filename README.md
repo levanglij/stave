@@ -17,9 +17,9 @@
 
 ## The wedge
 
-Music royalties are a **$30B/yr asset class**. They're recurring, contractually defined, and growing at >9% CAGR. They look exactly like the kind of cash flow institutional capital wants — except there's no Moody's, no Bloomberg, no MSCI. Catalogs trade at arbitrary 10x–30x multiples. Pension funds and family offices either overpay, underpay, or stay out. Capital is misallocated by billions.
+Music royalties are a **$30B/yr asset class**. They're recurring, contractually defined, and growing at >9% CAGR. They look exactly like the kind of cash flow institutional capital wants except there's no Moody's, no Bloomberg, no MSCI. Catalogs trade at arbitrary 10x–30x multiples. Pension funds and family offices either overpay, underpay, or stay out. Capital is misallocated by billions.
 
-**Stave fills the gap.** A standardized rating engine (RRE — five-layer quantitative pipeline) produces transparent, comparable ratings. A fractional-share marketplace on Solana lets institutional and retail capital take exposure with sub-cent settlement on quarterly distributions. The platform doesn't compete with marketplaces — it's the infrastructure they sit on top of.
+**Stave fills the gap.** A standardized rating engine (RRE five-layer quantitative pipeline) produces transparent, comparable ratings. A fractional-share marketplace on Solana lets institutional and retail capital take exposure with sub-cent settlement on quarterly distributions. The platform doesn't compete with marketplaces and it's the infrastructure they sit on top of.
 
 **The moat is data, not algorithms.** The founding team owns Performing Rights Organizations. That gives Stave verified, ground-truth royalty income data at the source. No competitor starting from a pure technology position can replicate this. Every additional PRO affiliation deepens the moat.
 
