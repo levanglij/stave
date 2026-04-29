@@ -41,8 +41,9 @@ Thumbs.db
 *.swp
 *.swo
 
-# Claude Code session
+# Claude Code (kept local only)
 .claude/
+CLAUDE.md
 
 # Build artifacts
 *.tsbuildinfo

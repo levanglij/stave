@@ -1,120 +1,134 @@
-# Stave — IP Ownership Marketplace & Royalty Shares on Solana
+<div align="center">
 
-Fractionalize IP (music, art, any creative work) into tradable royalty shares. Artists mint works, sell a portion of the royalty stream, and shareholders collect pro-rata payouts as revenue is deposited.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/logos/stave-01-lines-on-dark.svg">
+  <img src="./assets/logos/stave-01-lines-on-light.svg" alt="Stave" width="280">
+</picture>
 
-The long-term platform vision — the Royalty Risk Engine (RRE) and Structured Royalty Financing Platform (SRFP) bringing institutional-grade pricing infrastructure to music royalty markets — is documented in [`docs/02-architecture.md`](./docs/02-architecture.md). The hackathon submission is a focused on-chain MVP that demonstrates the fractionalization and royalty-distribution layer end-to-end. Together, they frame Stave's narrative: a shipping product today, a pricing infrastructure roadmap tomorrow.
+<br><br>
 
-## Target
+**Stave is the rating-and-financing infrastructure for music royalty assets — a "Moody's of music" — built on Solana, with the founding team's PRO ownership as the structural data moat.**
 
-**Solana Frontier Hackathon 2026** — submission deadline **May 11, 2026**. Competition window April 6 – May 11. Single open category; Grand Champion prize $30K, top 20 startups $10K each, accelerator pre-seed for winners.
+<sub>Solana Frontier Hackathon 2026 · submission deadline May 11, 2026</sub>
 
-## Status (as of 2026-04-22, ~3 weeks to submission)
+</div>
 
-| # | Deliverable | State | Where |
-|---|---|---|---|
-| 1 | Product name & 1-line description | Drafted | this file |
-| 2 | Logo / key image | Not started | `assets/` (empty) |
-| 3 | Team list + bios | Not started | `README.md` § Team |
-| 4 | GitHub repo (judge-accessible) | Not initialized | — |
-| 5 | **MVP — live deployed product** | **In progress** — Anchor scaffold + `create_work` + 3 tests written; build/deploy pending local toolchain | `program/`, `app/` (app empty) |
-| 6 | Pitch video ≤ 3 min | Script updated for RRE + 3-min cap | `docs/04-pitch-video-script.md` |
-| 7 | Tech demo video 2–3 min | Script tightened to 2:30, RRE beat added | `docs/05-tech-demo-script.md` |
-| 8 | Pitch deck PDF | Outline updated for RRE + Frontier (12 slides) | `docs/03-pitch-deck-outline.md` |
-| 9 | Monetization / GTM narrative | Drafted | `docs/06-gtm-monetization.md` |
-| 10 | Traction evidence (Twitter/Telegram/waitlist) | Not started | — |
-| — | **RRE risk engine (demo)** | **Shipped** — 31 tests green, 5 catalogs rated | [`engine/`](./engine/README.md) |
-| — | **Anchor program — `create_work`** | **Code shipped, awaiting local `anchor build`/`anchor test`** | [`program/`](./program/README.md) |
-| — | **Local HTML demo (internal walkthrough)** | **Shipped** — single-file, zero-install; buy/deposit/claim lifecycle simulated in browser | [`app/demo.html`](./app/demo.html) ([readme](./app/README.md)) |
+---
 
-Critical path: deploy `create_work` to localnet/devnet, then build the next four instructions per `docs/01-mvp-spec.md`. Frontend (`app/`) starts in parallel with `buy_shares`.
+## The wedge
 
-## Repo layout
+Music royalties are a **$30B/yr asset class**. They're recurring, contractually defined, and growing at >9% CAGR. They look exactly like the kind of cash flow institutional capital wants — except there's no Moody's, no Bloomberg, no MSCI. Catalogs trade at arbitrary 10x–30x multiples. Pension funds and family offices either overpay, underpay, or stay out. Capital is misallocated by billions.
 
-```
-Stave/
-├── README.md                  — you are here
-├── CLAUDE.md                  — master prompt for Claude Code
-├── .gitignore
-├── docs/                      — project planning, specs, scripts
-│   ├── 01-mvp-spec.md         — scoped hackathon deliverable
-│   ├── 02-architecture.md     — RRE/SRFP platform architecture (full vision)
-│   ├── 03-pitch-deck-outline.md
-│   ├── 04-pitch-video-script.md
-│   ├── 05-tech-demo-script.md
-│   ├── 06-gtm-monetization.md
-│   ├── 07-submission-checklist.md
-│   └── 08-engine-roadmap.md   — gap vs. architecture, missing sub-engines, priorities
-├── engine/                    — Python RRE risk engine (demo implementation)
-│   ├── README.md
-│   ├── FORMULAS.md
-│   ├── src/rre/               — 5-layer pipeline
-│   ├── data/                  — 5 synthetic catalogs
-│   ├── outputs/               — pre-computed ratings JSON
-│   └── tests/                 — 31 passing tests
-├── program/                   — Anchor/Rust workspace
-│   ├── Anchor.toml, Cargo.toml, package.json, tsconfig.json
-│   ├── programs/stave/         — IpWork PDA + Token-2022 share mint + create_work
-│   ├── tests/stave.ts          — 3 tests (happy path + 2 validation errors)
-│   └── migrations/
-├── app/                       — Next.js frontend (empty; build target)
-├── assets/                    — logos, mockups, screenshots (empty)
-└── submission/                — final deliverables: deck PDF, videos, etc. (empty)
-```
+**Stave fills the gap.** A standardized rating engine (RRE — five-layer quantitative pipeline) produces transparent, comparable ratings. A fractional-share marketplace on Solana lets institutional and retail capital take exposure with sub-cent settlement on quarterly distributions. The platform doesn't compete with marketplaces — it's the infrastructure they sit on top of.
+
+**The moat is data, not algorithms.** The founding team owns Performing Rights Organizations. That gives Stave verified, ground-truth royalty income data at the source. No competitor starting from a pure technology position can replicate this. Every additional PRO affiliation deepens the moat.
+
+## What's real vs. what's simulated
+
+Judges respect honesty. Here's the line:
+
+| Layer                     | State          | Notes                                                                 |
+|---------------------------|----------------|-----------------------------------------------------------------------|
+| Risk engine (5 layers)    | **Real**       | Python, 31 passing tests, deterministic math; outputs JSON ratings.   |
+| Catalog data              | **Synthetic**  | 5 Georgian catalogs spanning RRE-AA to RRE-B; schema-documented.      |
+| PRO data integration      | Not built      | Roadmap: first PRO connector inside 90 days post-hackathon.           |
+| On-chain fractionalization | **Real (devnet)** | Anchor program; `create_work` shipped, remaining instructions Day 3+. |
+| Royalty distribution      | **Real (devnet)** | Pull-based USDC claim per shareholder.                                |
+| Tranches (senior/mezz/growth) | Not in v1   | Single-class shares only. Tranching on the roadmap slide.             |
+| Mainnet / audit           | Not in scope   | Devnet prototype; "not production" stated explicitly.                 |
+| KYC / accreditation       | Stubbed        | Privy auth + simulated accreditation checkbox.                        |
 
 ## Quick links
 
-- [MVP spec](./docs/01-mvp-spec.md) — on-chain data model, instructions, 3-week build plan
-- [Architecture](./docs/02-architecture.md) — RRE/SRFP full platform vision (what the MVP grows into)
-- [RRE engine](./engine/README.md) — demo Python implementation of the risk engine, with [formulas](./engine/FORMULAS.md)
-- [Engine roadmap](./docs/08-engine-roadmap.md) — gap vs. architecture, prioritized list of missing sub-engines
-- [Submission checklist](./docs/07-submission-checklist.md) — pre-submit punch list
+- 🔗 **Live demo:** _will be set after first Vercel deploy_ → see [docs/09-deployment.md](./docs/09-deployment.md)
+- 🎬 **Pitch video** (≤3 min): _to be recorded_
+- 🛠 **Tech demo video** (~2:30): _to be recorded_
+- 📑 **Pitch deck:** [submission/Stave-pitch-deck.pptx](./submission/Stave-pitch-deck.pptx) (PDF export drops post-finalization)
+- 📊 **Financial model:** [submission/Stave-financial-model.xlsx](./submission/Stave-financial-model.xlsx)
+- 🧮 **RRE methodology:** [engine/FORMULAS.md](./engine/FORMULAS.md)
+- 🏛 **Platform vision:** [docs/02-architecture.md](./docs/02-architecture.md) (RRE/SRFP v2.0)
+- 🗺 **Engine roadmap:** [docs/08-engine-roadmap.md](./docs/08-engine-roadmap.md)
+- 📨 **Submission narrative:** [SUBMISSION.md](./SUBMISSION.md)
 
-## Tech stack (MVP)
+## Run it yourself
 
-- **Program**: Rust / Anchor / Solana
-- **NFT**: Metaplex Core for the IP work NFT
-- **Shares**: SPL Token-2022 fungible mint for fractional royalty shares
-- **Payments**: USDC devnet (primary), wrapped SOL (stretch)
-- **Storage**: Irys for cover art, audio, metadata JSON
-- **Frontend**: Next.js, Tailwind, `@solana/wallet-adapter`, Anchor client
-- **Hosting**: Vercel (frontend), Solana devnet (program)
+### The risk engine (60 seconds)
 
-## Team
+```bash
+cd engine
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+pytest                                      # 31 tests
+python -m rre.cli rate data/catalog_balanced-001.json
+```
 
-TODO — add names, roles, one-line credentials for each member. Required for the deck and the pitch video opener.
+Or just inspect the pre-computed ratings:
 
-## Getting started
+```bash
+cat engine/outputs/evergreen-001.rating.json | python3 -m json.tool
+```
 
-### Prerequisites
-- Rust + Anchor CLI
-- Solana CLI (devnet keypair funded)
-- Node 20+ / pnpm
-
-### Program
+### The Anchor program
 
 ```bash
 cd program
+yarn install
 anchor build
-anchor test
-anchor deploy --provider.cluster devnet
+anchor test                                 # spins up local validator
+anchor deploy --provider.cluster devnet     # devnet keypair must be funded
 ```
 
-Pin the deployed program ID in `app/.env.example` after each deploy.
+After the first `anchor build`, paste the new program ID from `target/deploy/stave-keypair.json` into `Anchor.toml` and `programs/stave/src/lib.rs` (declare_id), then rebuild.
 
-### App
+### The frontend
+
+Lives at `web/` (Next.js 14 + Tailwind + shadcn/ui). After scaffolding:
 
 ```bash
-cd app
+cd web
 pnpm install
-pnpm dev
+pnpm dev                                    # http://localhost:3000
 ```
 
-Set the program ID and network in `app/.env.local`.
+## Architecture, in one diagram
+
+```
+                                                              ┌──────────────┐
+   PRO data feeds ──┐                                         │  Investors   │
+                    │                                         │              │
+   DSP API pulls ───┼──► Audit & cross-validate ──► RRE ──►   │  Browse      │
+                    │   (5-layer risk engine)         JSON    │  + buy       │
+   Statement upload ┘                                         │  fractional  │
+                                                  │           │  shares      │
+                                                  ▼           └──────┬───────┘
+                                          ┌────────────────┐         │
+                                          │  Stave Anchor  │  ◄──────┘
+                                          │  program       │     USDC ──► royalty vault
+                                          │  on Solana     │     ──► pro-rata claim
+                                          └────────────────┘
+```
+
+Five-layer engine, transparent rating, on-chain settlement. See [docs/02-architecture.md](./docs/02-architecture.md) for the full platform vision.
+
+## Stack
+
+- **Risk engine:** Python 3.11, NumPy, SciPy, pandas (`engine/`)
+- **On-chain:** Rust, Anchor 0.31, Token-2022, Metaplex Core (`program/`)
+- **Frontend:** Next.js 14 App Router, TypeScript strict, Tailwind, shadcn/ui, Recharts (`web/`)
+- **Auth:** Privy (env-gated; falls back to mock connect)
+- **Hosting:** Vercel (frontend), Solana devnet (program)
+- **Domain:** `stave.app` planned; `*.vercel.app` until then
+
+## Team
+
+_To be filled before submission. Required: founder names, roles, one-line credentials each._
 
 ## Known MVP behaviors
 
-- If a holder transfers shares after a royalty deposit but before claiming, the unclaimed portion on those transferred shares is forfeited. This is accepted MVP behavior to keep on-chain math simple. See [MVP spec](./docs/01-mvp-spec.md).
+- Holders who transfer shares between a deposit and claim forfeit the unclaimed portion on those transferred shares. This is accepted MVP behavior to keep on-chain math simple. See [docs/01-mvp-spec.md](./docs/01-mvp-spec.md).
+- Devnet only. The Anchor program is not audited and is not intended for mainnet use.
+- Synthetic catalog data. Real PRO integration is the first item on the post-hackathon roadmap.
 
 ## License
 
-TBD (will be set before submission; likely MIT or Apache-2.0).
+TBD before submission (likely MIT).
