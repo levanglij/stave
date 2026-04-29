@@ -9,7 +9,7 @@
 
 **Stave is the rating-and-financing infrastructure for music royalty assets built on Solana, with the founding team's PRO ownership as the structural data moat.**
 
-<sub>Solana Frontier Hackathon 2026 · submission deadline May 11, 2026</sub>
+<sub>Solana Frontier Hackathon 2026
 
 </div>
 
