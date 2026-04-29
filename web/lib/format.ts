@@ -1,0 +1,42 @@
+// Display helpers — keep numeric formatting consistent across cards,
+// detail view, and any future surfaces.
+
+export function usd(n: number, fractionDigits = 2): string {
+  return (
+    "$" +
+    n.toLocaleString(undefined, {
+      minimumFractionDigits: fractionDigits,
+      maximumFractionDigits: fractionDigits,
+    })
+  );
+}
+
+export function int(n: number): string {
+  return Math.floor(n).toLocaleString();
+}
+
+export function pct(x: number, fractionDigits = 1): string {
+  return (x * 100).toFixed(fractionDigits) + "%";
+}
+
+export function regimeLabel(regime: string): string {
+  return regime.replace(/_/g, " ");
+}
+
+// HHI -> human-readable concentration tag.
+export function hhiTag(h: number): "high" | "moderate" | "diversified" {
+  if (h > 0.5) return "high";
+  if (h >= 0.25) return "moderate";
+  return "diversified";
+}
+
+// Tier color tokens — bright variants chosen for dark backgrounds.
+// Reference: CLAUDE.md "Tier colors (rebalanced for dark bg)".
+export const TIER_COLOR: Record<string, string> = {
+  "RRE-AAA": "#34D399", // emerald-400
+  "RRE-AA": "#22C55E", // green-500
+  "RRE-A": "#38BDF8", // sky-400
+  "RRE-BBB": "#FBBF24", // amber-400
+  "RRE-BB": "#FB923C", // orange-400
+  "RRE-B": "#F87171", // red-400
+};
