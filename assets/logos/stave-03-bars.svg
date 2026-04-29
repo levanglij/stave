@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" role="img" aria-label="Stave">
+  <title>Stave — Rating Bars</title>
+  <!-- Mark: 5 ascending bars (rating progression), top one in emerald -->
+  <g transform="translate(12, 16)">
+    <g fill="currentColor">
+      <rect x="0" y="40" width="6" height="8" rx="1"/>
+      <rect x="10" y="32" width="6" height="16" rx="1"/>
+      <rect x="20" y="22" width="6" height="26" rx="1"/>
+      <rect x="30" y="12" width="6" height="36" rx="1"/>
+    </g>
+    <rect x="40" y="2" width="6" height="46" rx="1" fill="#10B981"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="80" y="52" font-family="Inter, -apple-system, system-ui, 'Segoe UI', sans-serif" font-size="36" font-weight="700" fill="currentColor" letter-spacing="-1.2">Stave</text>
+</svg>
