@@ -29,7 +29,12 @@ body {
   letter-spacing: -0.005em;
 }
 
-/* Subtle ambient gradient — pulls the eye to where content lives. */
+/* Ambient emerald wash — lifts the dark backdrop without flattening
+   the brand. Three layers:
+   1. Top-left glow: the main "key light" of the page.
+   2. Right-edge vertical wash: a subtle brand accent running down
+      the side ("small intro on the side" per the brand brief).
+   3. Bottom-right hint: a tiny depth cue. */
 body::before {
   content: "";
   position: fixed;
@@ -37,8 +42,9 @@ body::before {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(60rem 40rem at 20% -10%, rgba(16, 185, 129, 0.06), transparent 70%),
-    radial-gradient(50rem 35rem at 100% 110%, rgba(99, 102, 241, 0.05), transparent 70%);
+    radial-gradient(75rem 55rem at 8% -10%, rgba(16, 185, 129, 0.13), transparent 60%),
+    radial-gradient(28rem 90rem at 108% 35%, rgba(52, 211, 153, 0.10), transparent 65%),
+    radial-gradient(40rem 28rem at 100% 110%, rgba(16, 185, 129, 0.05), transparent 70%);
 }
 
 main, header, footer {
