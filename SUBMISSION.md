@@ -12,11 +12,11 @@ The global music royalty market generates ~$30B/yr in recurring, contractually-d
 
 Stave ships two layers:
 
-**The Royalty Risk Engine (RRE)** — a five-layer quantitative pipeline (data normalization → decay modeling → anomaly detection → concentration & VaR → standardized rating) that turns verified royalty data into a transparent RRE-AAA through RRE-B rating. 31 passing tests, formulas published in [`engine/FORMULAS.md`](./engine/FORMULAS.md). Five synthetic Georgian catalogs are rated end-to-end and consumed by the live frontend.
+**The Royalty Risk Engine (RRE)** — a five-layer quantitative pipeline (data normalization → decay modeling → anomaly detection → concentration & VaR → standardized rating) that turns verified royalty data into a transparent RRE-AAA through RRE-B rating. 31 passing tests, formulas published in [`engine/FORMULAS.md`](./engine/FORMULAS.md). Eight synthetic Georgian catalogs are rated end-to-end and consumed by the live frontend.
 
-**The on-chain fractionalization & distribution layer** — an Anchor program (`stave`) on Solana devnet. Artists mint a Token-2022 share supply against an `IpWork` PDA. Buyers acquire fractional shares with USDC. Royalties deposited to the work's vault are distributed pull-based, pro-rata, with sub-cent settlement.
+**The on-chain fractionalization & distribution layer** — an Anchor program (`stave`) targeting Solana devnet. All five MVP instructions are implemented and locally tested: `create_work` mints a Token-2022 share supply against an IpWork PDA, `list_shares` locks supply in a Listing-PDA-authority vault, `buy_shares` atomically swaps payment for shares, `deposit_royalty` funds a RoyaltyVault PDA, and `claim_royalty` pays holders pro-rata via pull-based math with checkpoint accounting. 15 / 15 tests passing on a local validator; devnet deploy queued behind faucet funding.
 
-The frontend (Next.js 14 + Tailwind + shadcn/ui) shows every Stave issuance with its full RRE rating breakdown — composite score, factor weights, P10/P50/P90 forecast, HHI concentration scores, Monte Carlo VaR/CVaR, recommended LTV. Every number is traceable back to the open-source engine.
+The frontend (Next.js 14 + Tailwind + shadcn/ui + Recharts + `@solana/wallet-adapter`) ships at [stave-five.vercel.app](https://stave-five.vercel.app) with eight catalogs across the rating ladder, four thematic indices, an interactive returns calculator per catalog, a music-player-styled waveform hero, and a tokenization flow that already submits real devnet transactions via Phantom or Solflare. Every number on every page is traceable back to the open-source engine.
 
 ## Why Solana
 

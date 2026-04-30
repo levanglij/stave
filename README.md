@@ -30,10 +30,13 @@ Judges respect honesty. Here's the line:
 | Layer                     | State          | Notes                                                                 |
 |---------------------------|----------------|-----------------------------------------------------------------------|
 | Risk engine (5 layers)    | **Real**       | Python, 31 passing tests, deterministic math; outputs JSON ratings.   |
-| Catalog data              | **Synthetic**  | 5 Georgian catalogs spanning RRE-AA to RRE-B; schema-documented.      |
+| Catalog data              | **Synthetic**  | 8 Georgian catalogs spanning RRE-AA to RRE-B; schema-documented.      |
 | PRO data integration      | Not built      | Roadmap: first PRO connector inside 90 days post-hackathon.           |
-| On-chain fractionalization | **Real (devnet)** | Anchor program; `create_work` shipped, remaining instructions Day 3+. |
-| Royalty distribution      | **Real (devnet)** | Pull-based USDC claim per shareholder.                                |
+| On-chain Anchor program   | **Real (locally tested, devnet deploy queued)** | All 5 MVP instructions: `create_work`, `list_shares`, `buy_shares`, `deposit_royalty`, `claim_royalty`. 15/15 tests passing on a local validator; awaiting funded keypair for `anchor deploy`. |
+| Royalty distribution math | **Real**       | Pull-based USDC claim per shareholder; checkpoint math verified across multi-deposit / multi-claim sequences. |
+| Wallet integration        | **Real (live)** | Phantom + Solflare via `@solana/wallet-adapter` on stave-five.vercel.app. |
+| On-chain TX from frontend | **Real (devnet)** | Tokenize and Buy buttons fire real devnet transactions today (SPL Memo); swap to program calls once deployed. |
+| Marketplace UI            | **Real (live)** | 8 catalogs, 4 thematic indices, per-catalog detail with hero waveform + interactive returns calculator. |
 | Tranches (senior/mezz/growth) | Not in v1   | Single-class shares only. Tranching on the roadmap slide.             |
 | Mainnet / audit           | Not in scope   | Devnet prototype; "not production" stated explicitly.                 |
 | KYC / accreditation       | Stubbed        | Privy auth + simulated accreditation checkbox.                        |
@@ -72,23 +75,25 @@ cat engine/outputs/evergreen-001.rating.json | python3 -m json.tool
 
 ```bash
 cd program
-yarn install
-anchor build
-anchor test                                 # spins up local validator
+pnpm install                                # installs TS test deps
+anchor build                                # ~40 sec; 254 KB BPF + IDL + TS types
+anchor test                                 # spins up local validator; 15/15 passing
 anchor deploy --provider.cluster devnet     # devnet keypair must be funded
 ```
 
-After the first `anchor build`, paste the new program ID from `target/deploy/stave-keypair.json` into `Anchor.toml` and `programs/stave/src/lib.rs` (declare_id), then rebuild.
+The program ID is already wired (`EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q`) in both `Anchor.toml` and `programs/stave/src/lib.rs:declare_id!`. After deploy, the IDL at `target/idl/stave.json` is mirrored into `web/lib/idl/` for the frontend client.
 
 ### The frontend
 
-Lives at `web/` (Next.js 14 + Tailwind + shadcn/ui). After scaffolding:
+Lives at `web/` (Next.js 14 + Tailwind + shadcn/ui + Recharts + `@solana/wallet-adapter`):
 
 ```bash
 cd web
 pnpm install
 pnpm dev                                    # http://localhost:3000
 ```
+
+Live deploy auto-runs on every push to `main`: https://stave-five.vercel.app
 
 ## Architecture, in one diagram
 
