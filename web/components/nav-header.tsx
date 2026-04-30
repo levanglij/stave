@@ -19,8 +19,8 @@ export function NavHeader() {
           <Image
             src="/logo.svg"
             alt="Stave"
-            width={140}
-            height={40}
+            width={180}
+            height={52}
             priority
           />
         </Link>
