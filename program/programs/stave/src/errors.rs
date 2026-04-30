@@ -25,4 +25,13 @@ pub enum StaveError {
 
     #[msg("Provided share mint does not match the IpWork's share mint")]
     ShareMintMismatch,
+
+    #[msg("Listing does not have enough shares available for this purchase")]
+    InsufficientListing,
+
+    #[msg("Provided payment mint does not match the listing's payment mint")]
+    PaymentMintMismatch,
+
+    #[msg("Provided vault does not match the listing's vault")]
+    VaultMismatch,
 }

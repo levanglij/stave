@@ -1,7 +1,7 @@
 //! Stave — on-chain IP fractionalization and royalty distribution.
 //!
-//! Implemented: `create_work`, `list_shares`. Remaining (`buy_shares`,
-//! `deposit_royalty`, `claim_royalty`) are scheduled per
+//! Implemented: `create_work`, `list_shares`, `buy_shares`. Remaining
+//! (`deposit_royalty`, `claim_royalty`) are scheduled per
 //! `docs/01-mvp-spec.md` ordered build plan.
 
 use anchor_lang::prelude::*;
@@ -37,5 +37,12 @@ pub mod stave {
         shares_to_list: u64,
     ) -> Result<()> {
         instructions::list_shares::handler(ctx, price_per_share, shares_to_list)
+    }
+
+    /// Buy `amount` shares from a listing. Buyer pays creator in
+    /// `payment_mint`; vault releases shares to buyer; listing's
+    /// `shares_available` decremented.
+    pub fn buy_shares(ctx: Context<BuyShares>, amount: u64) -> Result<()> {
+        instructions::buy_shares::handler(ctx, amount)
     }
 }

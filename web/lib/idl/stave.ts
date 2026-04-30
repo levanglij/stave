@@ -14,6 +14,352 @@ export type Stave = {
   },
   "instructions": [
     {
+      "name": "buyShares",
+      "docs": [
+        "Buy `amount` shares from a listing. Buyer pays creator in",
+        "`payment_mint`; vault releases shares to buyer; listing's",
+        "`shares_available` decremented."
+      ],
+      "discriminator": [
+        40,
+        239,
+        138,
+        154,
+        8,
+        37,
+        106,
+        108
+      ],
+      "accounts": [
+        {
+          "name": "buyer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "creator",
+          "docs": [
+            "The work's creator — payment recipient. Verified by IpWork's",
+            "has_one constraint below.",
+            "validated by `has_one = creator` on ip_work."
+          ],
+          "relations": [
+            "ipWork"
+          ]
+        },
+        {
+          "name": "ipWork"
+        },
+        {
+          "name": "listing",
+          "docs": [
+            "Listing PDA — verified via [b\"listing\", ip_work] seeds.",
+            "has_one ensures the passed payment_mint and vault match."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  105,
+                  115,
+                  116,
+                  105,
+                  110,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "ipWork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "shareMint",
+          "relations": [
+            "ipWork"
+          ]
+        },
+        {
+          "name": "vault",
+          "docs": [
+            "Listing vault holding shares for sale; authority = listing PDA."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "listing"
+              },
+              {
+                "kind": "account",
+                "path": "shareTokenProgram"
+              },
+              {
+                "kind": "account",
+                "path": "shareMint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          },
+          "relations": [
+            "listing"
+          ]
+        },
+        {
+          "name": "buyerShareAta",
+          "docs": [
+            "Buyer's share ATA. Created on first buy."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "buyer"
+              },
+              {
+                "kind": "account",
+                "path": "shareTokenProgram"
+              },
+              {
+                "kind": "account",
+                "path": "shareMint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "paymentMint",
+          "relations": [
+            "listing"
+          ]
+        },
+        {
+          "name": "buyerPaymentAta",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "buyer"
+              },
+              {
+                "kind": "account",
+                "path": "paymentTokenProgram"
+              },
+              {
+                "kind": "account",
+                "path": "paymentMint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "creatorPaymentAta",
+          "docs": [
+            "Creator's payment ATA. Created on first buy if absent; buyer",
+            "pays the rent (cost of business for taking the listing)."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "creator"
+              },
+              {
+                "kind": "account",
+                "path": "paymentTokenProgram"
+              },
+              {
+                "kind": "account",
+                "path": "paymentMint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "shareTokenProgram",
+          "docs": [
+            "Share token program (Token-2022 for fractional shares)."
+          ]
+        },
+        {
+          "name": "paymentTokenProgram",
+          "docs": [
+            "Payment token program (classic SPL Token for devnet USDC)."
+          ]
+        },
+        {
+          "name": "associatedTokenProgram",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
       "name": "createWork",
       "docs": [
         "Create a new IP work: Token-2022 share mint + IpWork PDA + initial supply."
@@ -431,6 +777,21 @@ export type Stave = {
       "code": 6007,
       "name": "shareMintMismatch",
       "msg": "Provided share mint does not match the IpWork's share mint"
+    },
+    {
+      "code": 6008,
+      "name": "insufficientListing",
+      "msg": "Listing does not have enough shares available for this purchase"
+    },
+    {
+      "code": 6009,
+      "name": "paymentMintMismatch",
+      "msg": "Provided payment mint does not match the listing's payment mint"
+    },
+    {
+      "code": 6010,
+      "name": "vaultMismatch",
+      "msg": "Provided vault does not match the listing's vault"
     }
   ],
   "types": [

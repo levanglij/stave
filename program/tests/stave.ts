@@ -1,7 +1,13 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program, BN } from "@coral-xyz/anchor";
 import { Stave } from "../target/types/stave";
-import { PublicKey, Keypair, SystemProgram } from "@solana/web3.js";
+import {
+  PublicKey,
+  Keypair,
+  SystemProgram,
+  LAMPORTS_PER_SOL,
+  Transaction,
+} from "@solana/web3.js";
 import {
   TOKEN_2022_PROGRAM_ID,
   TOKEN_PROGRAM_ID,
@@ -10,6 +16,8 @@ import {
   getAccount,
   getMint,
   createMint,
+  mintTo,
+  getOrCreateAssociatedTokenAccount,
 } from "@solana/spl-token";
 import { expect } from "chai";
 
@@ -366,6 +374,281 @@ describe("stave — list_shares", () => {
       expect.fail("expected InsufficientShares");
     } catch (e: any) {
       expect(String(e)).to.match(/InsufficientShares/);
+    }
+  });
+});
+
+describe("stave — buy_shares", () => {
+  const provider = anchor.AnchorProvider.env();
+  anchor.setProvider(provider);
+  const program = anchor.workspace.Stave as Program<Stave>;
+  const creator = provider.wallet.publicKey;
+  const payer = (provider.wallet as anchor.Wallet).payer;
+
+  let paymentMint: PublicKey;
+
+  before(async () => {
+    paymentMint = await createMint(
+      provider.connection,
+      payer,
+      creator,
+      null,
+      6,
+      undefined,
+      undefined,
+      TOKEN_PROGRAM_ID,
+    );
+  });
+
+  // Set up a fresh work + listing + funded buyer for each test.
+  async function setupListingAndBuyer(opts?: {
+    pricePerShare?: number;
+    sharesToList?: number;
+    buyerPaymentBalance?: number;
+  }) {
+    const pricePerShare = opts?.pricePerShare ?? 500_000; // 0.5 USDC
+    const sharesToList = opts?.sharesToList ?? 500;
+    const buyerPaymentBalance =
+      opts?.buyerPaymentBalance ?? 100_000_000; // 100 USDC
+
+    // 1. Create work
+    const workId = new BN(Math.floor(Math.random() * 1_000_000) + 10_000);
+    const [ipWorkPda] = PublicKey.findProgramAddressSync(
+      [
+        Buffer.from("work"),
+        creator.toBuffer(),
+        workId.toArrayLike(Buffer, "le", 8),
+      ],
+      program.programId,
+    );
+    const shareMint = Keypair.generate();
+    const creatorShareAta = getAssociatedTokenAddressSync(
+      shareMint.publicKey,
+      creator,
+      false,
+      TOKEN_2022_PROGRAM_ID,
+    );
+
+    await program.methods
+      .createWork(workId, "ar://test", new BN(1000))
+      .accounts({
+        creator,
+        ipWork: ipWorkPda,
+        shareMint: shareMint.publicKey,
+        creatorShareAta,
+        tokenProgram: TOKEN_2022_PROGRAM_ID,
+        associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+        systemProgram: SystemProgram.programId,
+      })
+      .signers([shareMint])
+      .rpc();
+
+    // 2. List shares
+    const [listingPda] = PublicKey.findProgramAddressSync(
+      [Buffer.from("listing"), ipWorkPda.toBuffer()],
+      program.programId,
+    );
+    const listingVault = getAssociatedTokenAddressSync(
+      shareMint.publicKey,
+      listingPda,
+      true,
+      TOKEN_2022_PROGRAM_ID,
+    );
+
+    await program.methods
+      .listShares(new BN(pricePerShare), new BN(sharesToList))
+      .accounts({
+        creator,
+        ipWork: ipWorkPda,
+        shareMint: shareMint.publicKey,
+        creatorShareAta,
+        listing: listingPda,
+        listingVault,
+        paymentMint,
+        tokenProgram: TOKEN_2022_PROGRAM_ID,
+        associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+        systemProgram: SystemProgram.programId,
+      })
+      .rpc();
+
+    // 3. Create buyer keypair, fund via direct SOL transfer from
+    //    provider wallet (local validator's airdrop RPC is flaky on
+    //    Solana 3.x — transfer is reliable).
+    const buyer = Keypair.generate();
+    const fundTx = new Transaction().add(
+      SystemProgram.transfer({
+        fromPubkey: payer.publicKey,
+        toPubkey: buyer.publicKey,
+        lamports: 2 * LAMPORTS_PER_SOL,
+      }),
+    );
+    await provider.sendAndConfirm(fundTx, [payer]);
+
+    // 4. Mint payment tokens to buyer.
+    const buyerPaymentAcct = await getOrCreateAssociatedTokenAccount(
+      provider.connection,
+      payer,
+      paymentMint,
+      buyer.publicKey,
+    );
+    if (buyerPaymentBalance > 0) {
+      await mintTo(
+        provider.connection,
+        payer,
+        paymentMint,
+        buyerPaymentAcct.address,
+        creator,
+        buyerPaymentBalance,
+      );
+    }
+
+    // 5. Derive remaining ATAs for the buy_shares call.
+    const buyerShareAta = getAssociatedTokenAddressSync(
+      shareMint.publicKey,
+      buyer.publicKey,
+      false,
+      TOKEN_2022_PROGRAM_ID,
+    );
+    const creatorPaymentAta = getAssociatedTokenAddressSync(
+      paymentMint,
+      creator,
+      false,
+      TOKEN_PROGRAM_ID,
+    );
+
+    return {
+      buyer,
+      ipWorkPda,
+      shareMint: shareMint.publicKey,
+      listingPda,
+      listingVault,
+      buyerShareAta,
+      buyerPaymentAta: buyerPaymentAcct.address,
+      creatorPaymentAta,
+      pricePerShare,
+      sharesToList,
+    };
+  }
+
+  it("transfers payment to creator and shares to buyer; decrements available", async () => {
+    const ctx = await setupListingAndBuyer();
+    const buyAmount = 50;
+
+    await program.methods
+      .buyShares(new BN(buyAmount))
+      .accounts({
+        buyer: ctx.buyer.publicKey,
+        creator,
+        ipWork: ctx.ipWorkPda,
+        listing: ctx.listingPda,
+        shareMint: ctx.shareMint,
+        vault: ctx.listingVault,
+        buyerShareAta: ctx.buyerShareAta,
+        paymentMint,
+        buyerPaymentAta: ctx.buyerPaymentAta,
+        creatorPaymentAta: ctx.creatorPaymentAta,
+        shareTokenProgram: TOKEN_2022_PROGRAM_ID,
+        paymentTokenProgram: TOKEN_PROGRAM_ID,
+        associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+        systemProgram: SystemProgram.programId,
+      })
+      .signers([ctx.buyer])
+      .rpc();
+
+    // --- Listing decremented ---
+    const listing = await program.account.listing.fetch(ctx.listingPda);
+    expect(listing.sharesAvailable.toNumber()).to.equal(
+      ctx.sharesToList - buyAmount,
+    );
+
+    // --- Buyer holds the shares ---
+    const buyerShareBal = await getAccount(
+      provider.connection,
+      ctx.buyerShareAta,
+      undefined,
+      TOKEN_2022_PROGRAM_ID,
+    );
+    expect(buyerShareBal.amount.toString()).to.equal(buyAmount.toString());
+
+    // --- Creator received payment ---
+    const expectedPayment = BigInt(buyAmount * ctx.pricePerShare);
+    const creatorPaymentBal = await getAccount(
+      provider.connection,
+      ctx.creatorPaymentAta,
+      undefined,
+      TOKEN_PROGRAM_ID,
+    );
+    expect(creatorPaymentBal.amount.toString()).to.equal(
+      expectedPayment.toString(),
+    );
+
+    // --- Vault decremented ---
+    const vaultBal = await getAccount(
+      provider.connection,
+      ctx.listingVault,
+      undefined,
+      TOKEN_2022_PROGRAM_ID,
+    );
+    expect(vaultBal.amount.toString()).to.equal(
+      (ctx.sharesToList - buyAmount).toString(),
+    );
+  });
+
+  it("rejects buying zero shares", async () => {
+    const ctx = await setupListingAndBuyer();
+    try {
+      await program.methods
+        .buyShares(new BN(0))
+        .accounts({
+          buyer: ctx.buyer.publicKey,
+          creator,
+          ipWork: ctx.ipWorkPda,
+          listing: ctx.listingPda,
+          shareMint: ctx.shareMint,
+          vault: ctx.listingVault,
+          buyerShareAta: ctx.buyerShareAta,
+          paymentMint,
+          buyerPaymentAta: ctx.buyerPaymentAta,
+          creatorPaymentAta: ctx.creatorPaymentAta,
+          shareTokenProgram: TOKEN_2022_PROGRAM_ID,
+          paymentTokenProgram: TOKEN_PROGRAM_ID,
+          associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+          systemProgram: SystemProgram.programId,
+        })
+        .signers([ctx.buyer])
+        .rpc();
+      expect.fail("expected InvalidShareCount");
+    } catch (e: any) {
+      expect(String(e)).to.match(/InvalidShareCount/);
+    }
+  });
+
+  it("rejects buying more shares than the listing has available", async () => {
+    const ctx = await setupListingAndBuyer({ sharesToList: 100 });
+    try {
+      await program.methods
+        .buyShares(new BN(500)) // listing only has 100
+        .accounts({
+          buyer: ctx.buyer.publicKey,
+          creator,
+          ipWork: ctx.ipWorkPda,
+          listing: ctx.listingPda,
+          shareMint: ctx.shareMint,
+          vault: ctx.listingVault,
+          buyerShareAta: ctx.buyerShareAta,
+          paymentMint,
+          buyerPaymentAta: ctx.buyerPaymentAta,
+          creatorPaymentAta: ctx.creatorPaymentAta,
+          shareTokenProgram: TOKEN_2022_PROGRAM_ID,
+          paymentTokenProgram: TOKEN_PROGRAM_ID,
+          associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+          systemProgram: SystemProgram.programId,
+        })
+        .signers([ctx.buyer])
+        .rpc();
+      expect.fail("expected InsufficientListing");
+    } catch (e: any) {
+      expect(String(e)).to.match(/InsufficientListing/);
     }
   });
 });
