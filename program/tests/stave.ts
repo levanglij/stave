@@ -652,3 +652,438 @@ describe("stave — buy_shares", () => {
     }
   });
 });
+
+describe("stave — deposit_royalty + claim_royalty", () => {
+  const provider = anchor.AnchorProvider.env();
+  anchor.setProvider(provider);
+  const program = anchor.workspace.Stave as Program<Stave>;
+  const creator = provider.wallet.publicKey;
+  const payer = (provider.wallet as anchor.Wallet).payer;
+
+  let paymentMint: PublicKey;
+
+  before(async () => {
+    paymentMint = await createMint(
+      provider.connection,
+      payer,
+      creator,
+      null,
+      6,
+      undefined,
+      undefined,
+      TOKEN_PROGRAM_ID,
+    );
+  });
+
+  // Create a work, list it, fund a buyer, have them buy `holderShares`.
+  // Returns everything needed to test deposit + claim.
+  async function setupShareHolder(holderShares = 100) {
+    const TOTAL_SHARES = 1000;
+    const PRICE = 500_000;
+    const workId = new BN(Math.floor(Math.random() * 1_000_000) + 100_000);
+
+    const [ipWorkPda] = PublicKey.findProgramAddressSync(
+      [
+        Buffer.from("work"),
+        creator.toBuffer(),
+        workId.toArrayLike(Buffer, "le", 8),
+      ],
+      program.programId,
+    );
+    const shareMint = Keypair.generate();
+    const creatorShareAta = getAssociatedTokenAddressSync(
+      shareMint.publicKey,
+      creator,
+      false,
+      TOKEN_2022_PROGRAM_ID,
+    );
+
+    await program.methods
+      .createWork(workId, "ar://test", new BN(TOTAL_SHARES))
+      .accounts({
+        creator,
+        ipWork: ipWorkPda,
+        shareMint: shareMint.publicKey,
+        creatorShareAta,
+        tokenProgram: TOKEN_2022_PROGRAM_ID,
+        associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+        systemProgram: SystemProgram.programId,
+      })
+      .signers([shareMint])
+      .rpc();
+
+    const [listingPda] = PublicKey.findProgramAddressSync(
+      [Buffer.from("listing"), ipWorkPda.toBuffer()],
+      program.programId,
+    );
+    const listingVault = getAssociatedTokenAddressSync(
+      shareMint.publicKey,
+      listingPda,
+      true,
+      TOKEN_2022_PROGRAM_ID,
+    );
+
+    await program.methods
+      .listShares(new BN(PRICE), new BN(500))
+      .accounts({
+        creator,
+        ipWork: ipWorkPda,
+        shareMint: shareMint.publicKey,
+        creatorShareAta,
+        listing: listingPda,
+        listingVault,
+        paymentMint,
+        tokenProgram: TOKEN_2022_PROGRAM_ID,
+        associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+        systemProgram: SystemProgram.programId,
+      })
+      .rpc();
+
+    // Fund holder via SystemProgram.transfer + mint payment for buys.
+    const holder = Keypair.generate();
+    const fundTx = new Transaction().add(
+      SystemProgram.transfer({
+        fromPubkey: payer.publicKey,
+        toPubkey: holder.publicKey,
+        lamports: 2 * LAMPORTS_PER_SOL,
+      }),
+    );
+    await provider.sendAndConfirm(fundTx, [payer]);
+
+    const holderPaymentAcct = await getOrCreateAssociatedTokenAccount(
+      provider.connection,
+      payer,
+      paymentMint,
+      holder.publicKey,
+    );
+    await mintTo(
+      provider.connection,
+      payer,
+      paymentMint,
+      holderPaymentAcct.address,
+      creator,
+      100_000_000,
+    );
+
+    const holderShareAta = getAssociatedTokenAddressSync(
+      shareMint.publicKey,
+      holder.publicKey,
+      false,
+      TOKEN_2022_PROGRAM_ID,
+    );
+    const creatorPaymentAta = getAssociatedTokenAddressSync(
+      paymentMint,
+      creator,
+      false,
+      TOKEN_PROGRAM_ID,
+    );
+
+    await program.methods
+      .buyShares(new BN(holderShares))
+      .accounts({
+        buyer: holder.publicKey,
+        creator,
+        ipWork: ipWorkPda,
+        listing: listingPda,
+        shareMint: shareMint.publicKey,
+        vault: listingVault,
+        buyerShareAta: holderShareAta,
+        paymentMint,
+        buyerPaymentAta: holderPaymentAcct.address,
+        creatorPaymentAta,
+        shareTokenProgram: TOKEN_2022_PROGRAM_ID,
+        paymentTokenProgram: TOKEN_PROGRAM_ID,
+        associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+        systemProgram: SystemProgram.programId,
+      })
+      .signers([holder])
+      .rpc();
+
+    // Royalty vault PDAs.
+    const [royaltyVaultPda] = PublicKey.findProgramAddressSync(
+      [Buffer.from("royalty"), ipWorkPda.toBuffer()],
+      program.programId,
+    );
+    const royaltyTokenVault = getAssociatedTokenAddressSync(
+      paymentMint,
+      royaltyVaultPda,
+      true,
+      TOKEN_PROGRAM_ID,
+    );
+    const [claimRecordPda] = PublicKey.findProgramAddressSync(
+      [Buffer.from("claim"), ipWorkPda.toBuffer(), holder.publicKey.toBuffer()],
+      program.programId,
+    );
+
+    return {
+      TOTAL_SHARES,
+      ipWorkPda,
+      shareMint: shareMint.publicKey,
+      holder,
+      holderShareAta,
+      holderPaymentAta: holderPaymentAcct.address,
+      holderShares,
+      royaltyVaultPda,
+      royaltyTokenVault,
+      claimRecordPda,
+    };
+  }
+
+  // Helper: depositor (the creator wallet) deposits `amount` royalties.
+  async function deposit(
+    ctx: Awaited<ReturnType<typeof setupShareHolder>>,
+    amount: number,
+  ) {
+    const depositorPaymentAta = getAssociatedTokenAddressSync(
+      paymentMint,
+      creator,
+      false,
+      TOKEN_PROGRAM_ID,
+    );
+    // Make sure depositor has tokens.
+    await mintTo(
+      provider.connection,
+      payer,
+      paymentMint,
+      depositorPaymentAta,
+      creator,
+      amount,
+    );
+
+    await program.methods
+      .depositRoyalty(new BN(amount))
+      .accounts({
+        depositor: creator,
+        ipWork: ctx.ipWorkPda,
+        royaltyVault: ctx.royaltyVaultPda,
+        paymentMint,
+        royaltyTokenVault: ctx.royaltyTokenVault,
+        depositorPaymentAta,
+        tokenProgram: TOKEN_PROGRAM_ID,
+        associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+        systemProgram: SystemProgram.programId,
+      })
+      .rpc();
+  }
+
+  it("deposits update the royalty vault total_deposited", async () => {
+    const ctx = await setupShareHolder();
+    await deposit(ctx, 1_000_000); // 1 USDC
+
+    const vault = await program.account.royaltyVault.fetch(ctx.royaltyVaultPda);
+    expect(vault.work.toBase58()).to.equal(ctx.ipWorkPda.toBase58());
+    expect(vault.totalDeposited.toNumber()).to.equal(1_000_000);
+    expect(vault.totalClaimed.toNumber()).to.equal(0);
+    expect(vault.paymentMint.toBase58()).to.equal(paymentMint.toBase58());
+
+    const tokenVaultBal = await getAccount(
+      provider.connection,
+      ctx.royaltyTokenVault,
+      undefined,
+      TOKEN_PROGRAM_ID,
+    );
+    expect(tokenVaultBal.amount.toString()).to.equal("1000000");
+  });
+
+  it("rejects zero-amount deposits", async () => {
+    const ctx = await setupShareHolder();
+    try {
+      await deposit(ctx, 0);
+      expect.fail("expected InvalidAmount");
+    } catch (e: any) {
+      expect(String(e)).to.match(/InvalidAmount/);
+    }
+  });
+
+  it("holder claims pro-rata of the deposited amount", async () => {
+    const ctx = await setupShareHolder(100); // 100 of 1000 = 10%
+    await deposit(ctx, 1_000_000); // 1 USDC
+
+    // Pre-claim balance.
+    const preBal = await getAccount(
+      provider.connection,
+      ctx.holderPaymentAta,
+      undefined,
+      TOKEN_PROGRAM_ID,
+    );
+
+    await program.methods
+      .claimRoyalty()
+      .accounts({
+        holder: ctx.holder.publicKey,
+        ipWork: ctx.ipWorkPda,
+        shareMint: ctx.shareMint,
+        holderShareAta: ctx.holderShareAta,
+        royaltyVault: ctx.royaltyVaultPda,
+        paymentMint,
+        royaltyTokenVault: ctx.royaltyTokenVault,
+        holderPaymentAta: ctx.holderPaymentAta,
+        claimRecord: ctx.claimRecordPda,
+        shareTokenProgram: TOKEN_2022_PROGRAM_ID,
+        paymentTokenProgram: TOKEN_PROGRAM_ID,
+        associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+        systemProgram: SystemProgram.programId,
+      })
+      .signers([ctx.holder])
+      .rpc();
+
+    // Expected: 100/1000 × 1_000_000 = 100_000 lamports = 0.1 USDC
+    const postBal = await getAccount(
+      provider.connection,
+      ctx.holderPaymentAta,
+      undefined,
+      TOKEN_PROGRAM_ID,
+    );
+    const claimed = Number(postBal.amount) - Number(preBal.amount);
+    expect(claimed).to.equal(100_000);
+
+    // ClaimRecord state.
+    const cr = await program.account.claimRecord.fetch(ctx.claimRecordPda);
+    expect(cr.holder.toBase58()).to.equal(ctx.holder.publicKey.toBase58());
+    expect(cr.work.toBase58()).to.equal(ctx.ipWorkPda.toBase58());
+    expect(cr.claimedAmount.toNumber()).to.equal(100_000);
+    expect(cr.lastClaimTotalDeposited.toNumber()).to.equal(1_000_000);
+
+    // Vault total_claimed updated.
+    const vault = await program.account.royaltyVault.fetch(ctx.royaltyVaultPda);
+    expect(vault.totalClaimed.toNumber()).to.equal(100_000);
+  });
+
+  it("checkpoint math: second claim picks up only NEW deposits", async () => {
+    const ctx = await setupShareHolder(200); // 200 of 1000 = 20%
+
+    // First deposit + first claim.
+    await deposit(ctx, 1_000_000);
+    await program.methods
+      .claimRoyalty()
+      .accounts({
+        holder: ctx.holder.publicKey,
+        ipWork: ctx.ipWorkPda,
+        shareMint: ctx.shareMint,
+        holderShareAta: ctx.holderShareAta,
+        royaltyVault: ctx.royaltyVaultPda,
+        paymentMint,
+        royaltyTokenVault: ctx.royaltyTokenVault,
+        holderPaymentAta: ctx.holderPaymentAta,
+        claimRecord: ctx.claimRecordPda,
+        shareTokenProgram: TOKEN_2022_PROGRAM_ID,
+        paymentTokenProgram: TOKEN_PROGRAM_ID,
+        associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+        systemProgram: SystemProgram.programId,
+      })
+      .signers([ctx.holder])
+      .rpc();
+
+    // Second deposit, then second claim.
+    await deposit(ctx, 500_000); // another 0.5 USDC
+
+    const preBal = await getAccount(
+      provider.connection,
+      ctx.holderPaymentAta,
+      undefined,
+      TOKEN_PROGRAM_ID,
+    );
+
+    await program.methods
+      .claimRoyalty()
+      .accounts({
+        holder: ctx.holder.publicKey,
+        ipWork: ctx.ipWorkPda,
+        shareMint: ctx.shareMint,
+        holderShareAta: ctx.holderShareAta,
+        royaltyVault: ctx.royaltyVaultPda,
+        paymentMint,
+        royaltyTokenVault: ctx.royaltyTokenVault,
+        holderPaymentAta: ctx.holderPaymentAta,
+        claimRecord: ctx.claimRecordPda,
+        shareTokenProgram: TOKEN_2022_PROGRAM_ID,
+        paymentTokenProgram: TOKEN_PROGRAM_ID,
+        associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+        systemProgram: SystemProgram.programId,
+      })
+      .signers([ctx.holder])
+      .rpc();
+
+    // Expected on 2nd claim: 200/1000 × 500_000 = 100_000 lamports
+    const postBal = await getAccount(
+      provider.connection,
+      ctx.holderPaymentAta,
+      undefined,
+      TOKEN_PROGRAM_ID,
+    );
+    const secondClaim = Number(postBal.amount) - Number(preBal.amount);
+    expect(secondClaim).to.equal(100_000);
+
+    // Cumulative claimed = 200/1000 × 1_500_000 = 300_000
+    const cr = await program.account.claimRecord.fetch(ctx.claimRecordPda);
+    expect(cr.claimedAmount.toNumber()).to.equal(300_000);
+    expect(cr.lastClaimTotalDeposited.toNumber()).to.equal(1_500_000);
+  });
+
+  it("rejects claim from a wallet with no shares", async () => {
+    const ctx = await setupShareHolder(100);
+    await deposit(ctx, 1_000_000);
+
+    // Generate a wallet that owns 0 shares.
+    const stranger = Keypair.generate();
+    const fundTx = new Transaction().add(
+      SystemProgram.transfer({
+        fromPubkey: payer.publicKey,
+        toPubkey: stranger.publicKey,
+        lamports: 1 * LAMPORTS_PER_SOL,
+      }),
+    );
+    await provider.sendAndConfirm(fundTx, [payer]);
+
+    // Stranger's share ATA exists but has 0 balance — create it explicitly.
+    const strangerShareAcct = await getOrCreateAssociatedTokenAccount(
+      provider.connection,
+      payer,
+      ctx.shareMint,
+      stranger.publicKey,
+      false,
+      undefined,
+      undefined,
+      TOKEN_2022_PROGRAM_ID,
+    );
+    const strangerPaymentAta = getAssociatedTokenAddressSync(
+      paymentMint,
+      stranger.publicKey,
+      false,
+      TOKEN_PROGRAM_ID,
+    );
+    const [strangerClaimPda] = PublicKey.findProgramAddressSync(
+      [
+        Buffer.from("claim"),
+        ctx.ipWorkPda.toBuffer(),
+        stranger.publicKey.toBuffer(),
+      ],
+      program.programId,
+    );
+
+    try {
+      await program.methods
+        .claimRoyalty()
+        .accounts({
+          holder: stranger.publicKey,
+          ipWork: ctx.ipWorkPda,
+          shareMint: ctx.shareMint,
+          holderShareAta: strangerShareAcct.address,
+          royaltyVault: ctx.royaltyVaultPda,
+          paymentMint,
+          royaltyTokenVault: ctx.royaltyTokenVault,
+          holderPaymentAta: strangerPaymentAta,
+          claimRecord: strangerClaimPda,
+          shareTokenProgram: TOKEN_2022_PROGRAM_ID,
+          paymentTokenProgram: TOKEN_PROGRAM_ID,
+          associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+          systemProgram: SystemProgram.programId,
+        })
+        .signers([stranger])
+        .rpc();
+      expect.fail("expected NoSharesHeld");
+    } catch (e: any) {
+      expect(String(e)).to.match(/NoSharesHeld/);
+    }
+  });
+});

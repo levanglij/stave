@@ -34,4 +34,13 @@ pub enum StaveError {
 
     #[msg("Provided vault does not match the listing's vault")]
     VaultMismatch,
+
+    #[msg("Amount must be greater than zero")]
+    InvalidAmount,
+
+    #[msg("Holder does not own any shares of this work")]
+    NoSharesHeld,
+
+    #[msg("No royalties available to claim at this time")]
+    NothingToClaim,
 }

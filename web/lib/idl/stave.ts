@@ -360,6 +360,293 @@ export type Stave = {
       ]
     },
     {
+      "name": "claimRoyalty",
+      "docs": [
+        "Claim accumulated royalties pro-rata based on the holder's",
+        "current share balance and new deposits since the holder's",
+        "previous claim."
+      ],
+      "discriminator": [
+        10,
+        75,
+        29,
+        207,
+        114,
+        170,
+        28,
+        108
+      ],
+      "accounts": [
+        {
+          "name": "holder",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "ipWork"
+        },
+        {
+          "name": "shareMint",
+          "docs": [
+            "Used to validate `holder_share_ata`'s mint."
+          ]
+        },
+        {
+          "name": "holderShareAta",
+          "docs": [
+            "Holder's share ATA. Balance at claim time determines the share."
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "holder"
+              },
+              {
+                "kind": "account",
+                "path": "shareTokenProgram"
+              },
+              {
+                "kind": "account",
+                "path": "shareMint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "royaltyVault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  114,
+                  111,
+                  121,
+                  97,
+                  108,
+                  116,
+                  121
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "ipWork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "paymentMint",
+          "relations": [
+            "royaltyVault"
+          ]
+        },
+        {
+          "name": "royaltyTokenVault",
+          "docs": [
+            "Token vault holding the deposited royalties. Authority = vault PDA."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "royaltyVault"
+              },
+              {
+                "kind": "account",
+                "path": "paymentTokenProgram"
+              },
+              {
+                "kind": "account",
+                "path": "paymentMint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "holderPaymentAta",
+          "docs": [
+            "Holder's payment ATA — credited. Created on first claim."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "holder"
+              },
+              {
+                "kind": "account",
+                "path": "paymentTokenProgram"
+              },
+              {
+                "kind": "account",
+                "path": "paymentMint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "claimRecord",
+          "docs": [
+            "Per-holder claim ledger. Init on first claim."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  108,
+                  97,
+                  105,
+                  109
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "ipWork"
+              },
+              {
+                "kind": "account",
+                "path": "holder"
+              }
+            ]
+          }
+        },
+        {
+          "name": "shareTokenProgram"
+        },
+        {
+          "name": "paymentTokenProgram"
+        },
+        {
+          "name": "associatedTokenProgram",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
       "name": "createWork",
       "docs": [
         "Create a new IP work: Token-2022 share mint + IpWork PDA + initial supply."
@@ -490,6 +777,204 @@ export type Stave = {
         },
         {
           "name": "totalShares",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "depositRoyalty",
+      "docs": [
+        "Deposit `amount` of `payment_mint` into the work's royalty vault.",
+        "Anyone can deposit. Vault initialized lazily on first call."
+      ],
+      "discriminator": [
+        234,
+        6,
+        85,
+        217,
+        36,
+        30,
+        33,
+        127
+      ],
+      "accounts": [
+        {
+          "name": "depositor",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "ipWork",
+          "docs": [
+            "The work receiving the royalty. Read-only."
+          ]
+        },
+        {
+          "name": "royaltyVault",
+          "docs": [
+            "Royalty vault PDA. Initialized on first deposit."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  114,
+                  111,
+                  121,
+                  97,
+                  108,
+                  116,
+                  121
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "ipWork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "paymentMint"
+        },
+        {
+          "name": "royaltyTokenVault",
+          "docs": [
+            "Token account holding the deposited royalties. Authority is",
+            "the royalty_vault PDA. Created on first deposit."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "royaltyVault"
+              },
+              {
+                "kind": "account",
+                "path": "tokenProgram"
+              },
+              {
+                "kind": "account",
+                "path": "paymentMint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "depositorPaymentAta",
+          "docs": [
+            "Depositor's payment ATA — debited."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "depositor"
+              },
+              {
+                "kind": "account",
+                "path": "tokenProgram"
+              },
+              {
+                "kind": "account",
+                "path": "paymentMint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "tokenProgram"
+        },
+        {
+          "name": "associatedTokenProgram",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
           "type": "u64"
         }
       ]
@@ -711,6 +1196,19 @@ export type Stave = {
   ],
   "accounts": [
     {
+      "name": "claimRecord",
+      "discriminator": [
+        57,
+        229,
+        0,
+        9,
+        65,
+        62,
+        96,
+        7
+      ]
+    },
+    {
       "name": "ipWork",
       "discriminator": [
         220,
@@ -734,6 +1232,19 @@ export type Stave = {
         134,
         26,
         58
+      ]
+    },
+    {
+      "name": "royaltyVault",
+      "discriminator": [
+        199,
+        161,
+        41,
+        234,
+        112,
+        113,
+        58,
+        98
       ]
     }
   ],
@@ -792,9 +1303,84 @@ export type Stave = {
       "code": 6010,
       "name": "vaultMismatch",
       "msg": "Provided vault does not match the listing's vault"
+    },
+    {
+      "code": 6011,
+      "name": "invalidAmount",
+      "msg": "Amount must be greater than zero"
+    },
+    {
+      "code": 6012,
+      "name": "noSharesHeld",
+      "msg": "Holder does not own any shares of this work"
+    },
+    {
+      "code": 6013,
+      "name": "nothingToClaim",
+      "msg": "No royalties available to claim at this time"
     }
   ],
   "types": [
+    {
+      "name": "claimRecord",
+      "docs": [
+        "Per-holder claim ledger for one work's royalties.",
+        "",
+        "Records the holder, their cumulative claimed amount, and a",
+        "\"checkpoint\" of the vault's `total_deposited` at their last",
+        "claim. New claimable amount on the next claim is computed against",
+        "new deposits since the checkpoint.",
+        "",
+        "MVP behavior (per docs/01-mvp-spec.md): if the holder transfers",
+        "shares between a deposit and a claim, the unclaimed portion on",
+        "the transferred shares is forfeited — the calculation reads",
+        "`holder_share_ata.amount` at claim time, not at deposit time.",
+        "",
+        "PDA seeds: `[b\"claim\", ip_work, holder]`"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "holder",
+            "docs": [
+              "The shareholder this record belongs to."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "work",
+            "docs": [
+              "The work whose royalties this record tracks."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "claimedAmount",
+            "docs": [
+              "Cumulative amount claimed by this holder (monotonic)."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "lastClaimTotalDeposited",
+            "docs": [
+              "Snapshot of `RoyaltyVault.total_deposited` at the holder's",
+              "last successful claim. Initialized to zero on first claim;",
+              "any deposits before that point are claimable on first claim."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "docs": [
+              "PDA bump."
+            ],
+            "type": "u8"
+          }
+        ]
+      }
+    },
     {
       "name": "ipWork",
       "docs": [
@@ -917,6 +1503,58 @@ export type Stave = {
             "docs": [
               "Vault token account holding the listed shares. Authority is",
               "this Listing PDA."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "bump",
+            "docs": [
+              "PDA bump."
+            ],
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "royaltyVault",
+      "docs": [
+        "On-chain ledger of a work's royalty inflows and outflows.",
+        "",
+        "Anyone (artist, distributor, manager, fan) can call",
+        "`deposit_royalty` to fund this vault in `payment_mint`.",
+        "Shareholders draw against it pro-rata via `claim_royalty`.",
+        "",
+        "PDA seeds: `[b\"royalty\", ip_work]`"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "work",
+            "docs": [
+              "The IpWork PDA this vault belongs to."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "totalDeposited",
+            "docs": [
+              "Total amount ever deposited (monotonically increasing)."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "totalClaimed",
+            "docs": [
+              "Total amount ever claimed across all holders."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "paymentMint",
+            "docs": [
+              "Mint of the deposited token. Set on first deposit; immutable."
             ],
             "type": "pubkey"
           },
