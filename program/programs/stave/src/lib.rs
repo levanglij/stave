@@ -1,8 +1,7 @@
 //! Stave — on-chain IP fractionalization and royalty distribution.
 //!
-//! Day 1-2 scope (this file): `create_work` — mint the Token-2022 share mint
-//! and initialize the IpWork PDA. Remaining instructions (`list_shares`,
-//! `buy_shares`, `deposit_royalty`, `claim_royalty`) are scheduled per
+//! Implemented: `create_work`, `list_shares`. Remaining (`buy_shares`,
+//! `deposit_royalty`, `claim_royalty`) are scheduled per
 //! `docs/01-mvp-spec.md` ordered build plan.
 
 use anchor_lang::prelude::*;
@@ -28,5 +27,15 @@ pub mod stave {
         total_shares: u64,
     ) -> Result<()> {
         instructions::create_work::handler(ctx, work_id, metadata_uri, total_shares)
+    }
+
+    /// List a portion of the creator's shares for sale at a fixed price.
+    /// Locks the listed shares into a Listing-PDA-authority vault.
+    pub fn list_shares(
+        ctx: Context<ListShares>,
+        price_per_share: u64,
+        shares_to_list: u64,
+    ) -> Result<()> {
+        instructions::list_shares::handler(ctx, price_per_share, shares_to_list)
     }
 }

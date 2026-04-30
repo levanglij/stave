@@ -147,6 +147,220 @@ export type Stave = {
           "type": "u64"
         }
       ]
+    },
+    {
+      "name": "listShares",
+      "docs": [
+        "List a portion of the creator's shares for sale at a fixed price.",
+        "Locks the listed shares into a Listing-PDA-authority vault."
+      ],
+      "discriminator": [
+        156,
+        51,
+        24,
+        84,
+        242,
+        112,
+        152,
+        53
+      ],
+      "accounts": [
+        {
+          "name": "creator",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "ipWork"
+          ]
+        },
+        {
+          "name": "ipWork",
+          "docs": [
+            "The IpWork being listed. Verifies `creator` matches the recorded",
+            "creator and `share_mint` matches the recorded share mint."
+          ]
+        },
+        {
+          "name": "shareMint",
+          "relations": [
+            "ipWork"
+          ]
+        },
+        {
+          "name": "creatorShareAta",
+          "docs": [
+            "Creator's existing share ATA — debited by `shares_to_list`."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "creator"
+              },
+              {
+                "kind": "account",
+                "path": "tokenProgram"
+              },
+              {
+                "kind": "account",
+                "path": "shareMint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "listing",
+          "docs": [
+            "New Listing PDA. One listing per work."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  105,
+                  115,
+                  116,
+                  105,
+                  110,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "ipWork"
+              }
+            ]
+          }
+        },
+        {
+          "name": "listingVault",
+          "docs": [
+            "Vault token account holding the listed shares. Authority = listing PDA."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "listing"
+              },
+              {
+                "kind": "account",
+                "path": "tokenProgram"
+              },
+              {
+                "kind": "account",
+                "path": "shareMint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "paymentMint",
+          "docs": [
+            "Mint of the token buyers will pay with (USDC devnet at launch)."
+          ]
+        },
+        {
+          "name": "tokenProgram"
+        },
+        {
+          "name": "associatedTokenProgram",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "pricePerShare",
+          "type": "u64"
+        },
+        {
+          "name": "sharesToList",
+          "type": "u64"
+        }
+      ]
     }
   ],
   "accounts": [
@@ -161,6 +375,19 @@ export type Stave = {
         155,
         42,
         190
+      ]
+    },
+    {
+      "name": "listing",
+      "discriminator": [
+        218,
+        32,
+        50,
+        73,
+        43,
+        134,
+        26,
+        58
       ]
     }
   ],
@@ -179,6 +406,31 @@ export type Stave = {
       "code": 6002,
       "name": "mathOverflow",
       "msg": "Math overflow"
+    },
+    {
+      "code": 6003,
+      "name": "invalidPrice",
+      "msg": "Price per share must be greater than zero"
+    },
+    {
+      "code": 6004,
+      "name": "invalidShareCount",
+      "msg": "Number of shares to list must be greater than zero"
+    },
+    {
+      "code": 6005,
+      "name": "insufficientShares",
+      "msg": "Creator does not have enough shares to list"
+    },
+    {
+      "code": 6006,
+      "name": "notWorkCreator",
+      "msg": "Caller is not the creator of this IpWork"
+    },
+    {
+      "code": 6007,
+      "name": "shareMintMismatch",
+      "msg": "Provided share mint does not match the IpWork's share mint"
     }
   ],
   "types": [
@@ -243,6 +495,69 @@ export type Stave = {
               "Unix timestamp (seconds) of creation, for display and audit."
             ],
             "type": "i64"
+          },
+          {
+            "name": "bump",
+            "docs": [
+              "PDA bump."
+            ],
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "listing",
+      "docs": [
+        "On-chain record of a fractional-share listing.",
+        "",
+        "Created by the work's creator after `create_work`. Locks",
+        "`shares_available` shares into a vault token account whose authority",
+        "is this Listing PDA, so the creator cannot pull them back without",
+        "going through `buy_shares`.",
+        "",
+        "PDA seeds: `[b\"listing\", ip_work]`"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "work",
+            "docs": [
+              "The IpWork PDA this listing belongs to."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "pricePerShare",
+            "docs": [
+              "Price per share, denominated in `payment_mint`'s smallest unit",
+              "(e.g., 6 decimals for USDC: 1_000_000 == 1 USDC)."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "sharesAvailable",
+            "docs": [
+              "Number of shares currently for sale (decreases on each buy)."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "paymentMint",
+            "docs": [
+              "Mint of the payment token accepted. USDC devnet at launch;",
+              "wSOL is a stretch."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "vault",
+            "docs": [
+              "Vault token account holding the listed shares. Authority is",
+              "this Listing PDA."
+            ],
+            "type": "pubkey"
           },
           {
             "name": "bump",

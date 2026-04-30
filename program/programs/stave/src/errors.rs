@@ -10,4 +10,19 @@ pub enum StaveError {
 
     #[msg("Math overflow")]
     MathOverflow,
+
+    #[msg("Price per share must be greater than zero")]
+    InvalidPrice,
+
+    #[msg("Number of shares to list must be greater than zero")]
+    InvalidShareCount,
+
+    #[msg("Creator does not have enough shares to list")]
+    InsufficientShares,
+
+    #[msg("Caller is not the creator of this IpWork")]
+    NotWorkCreator,
+
+    #[msg("Provided share mint does not match the IpWork's share mint")]
+    ShareMintMismatch,
 }
