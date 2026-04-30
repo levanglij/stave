@@ -12,26 +12,26 @@ Final pass before submitting to **Solana Frontier Hackathon 2026** (deadline **M
 
 ## Code
 
-- [ ] `program/` builds cleanly with `anchor build`
-- [ ] `anchor test` passes all tests, no warnings
+- [x] `program/` builds cleanly with `anchor build`
+- [x] `anchor test` passes all tests, no warnings — **15/15 across 4 suites**
 - [ ] Program deployed to devnet, program ID recorded in:
-  - [ ] `app/.env.example`
+  - [ ] `web/.env.example` (`NEXT_PUBLIC_PROGRAM_ID`)
   - [ ] `docs/02-architecture.md`
   - [ ] `README.md`
-- [ ] Frontend builds cleanly with `pnpm build`
-- [ ] Frontend deployed to Vercel, URL recorded in `README.md`
-- [ ] `engine/` tests pass (`pytest` green)
-- [ ] `engine/outputs/*.rating.json` regenerated against current data
-- [ ] Frontend reads at least one RRE rating from `engine/outputs/` and displays it on the work detail page
+- [x] Frontend builds cleanly with `pnpm build`
+- [x] Frontend deployed to Vercel, URL recorded in `README.md` — **https://stave-five.vercel.app**
+- [x] `engine/` tests pass (`pytest` green) — 31 tests
+- [x] `engine/outputs/*.rating.json` regenerated against current data — 8 catalogs
+- [x] Frontend reads at least one RRE rating from `engine/outputs/` and displays it on the work detail page — full RRE breakdown on every detail page
 - [ ] No unused deps, no commented-out code blocks
 - [ ] Secrets are out of the repo — verify with `git log -p | grep -i -E 'secret|keypair|private'`
 
 ## Demo content
 
-- [ ] 3+ demo works listed on the live devnet deployment
-- [ ] Each has: cover art, audio preview, sensible title + artist name, RRE rating badge
-- [ ] At least one work has a non-zero royalty deposit and at least one successful claim recorded
-- [ ] Demo works span a range of RRE ratings (at least one AA or AAA, at least one BBB or below)
+- [x] 3+ demo works visible on the live frontend — **8 catalogs**; on-chain copies materialize on devnet deploy
+- [x] Each has: cover art, audio preview, sensible title + artist name, RRE rating badge — gradient cover, waveform-styled music player, Georgian title + artist, tier-colored badge
+- [ ] At least one work has a non-zero royalty deposit and at least one successful claim recorded — pending devnet deploy
+- [x] Demo works span a range of RRE ratings (at least one AA or AAA, at least one BBB or below) — RRE-AA (Suliko, Khasanbegura), RRE-A (Iavnana), RRE-BBB (Tbiliso, Bedi, Nine Million Bicycles), RRE-BB (Chito Gvrito), RRE-B (Argasvene)
 
 ## Videos
 
@@ -52,20 +52,20 @@ Final pass before submitting to **Solana Frontier Hackathon 2026** (deadline **M
 
 ## README and docs
 
-- [ ] `README.md` has: elevator pitch, demo link, program ID, setup instructions, architecture link
-- [ ] `docs/02-architecture.md` accurate vs. shipped code
-- [ ] `docs/08-engine-roadmap.md` reflects actual RRE build state
-- [ ] Known limitations documented (transfer-before-claim forfeiture, demo-grade engine)
+- [x] `README.md` has: elevator pitch, demo link, setup instructions, architecture link — program ID added on deploy
+- [x] `docs/02-architecture.md` accurate vs. shipped code — GERA partnership reframed; on-chain claim still reads as forward-looking (matches reality)
+- [x] `docs/08-engine-roadmap.md` reflects actual RRE build state
+- [x] Known limitations documented (transfer-before-claim forfeiture, demo-grade engine) — see README "Known MVP behaviors" + program/README "Architectural notes"
 - [ ] Team section in `README.md` filled in
 
 ## GitHub hygiene
 
-- [ ] Repo is public (or judge accounts invited)
-- [ ] `.gitignore` excludes `target/`, `node_modules/`, `.env.local`, keypairs, `.DS_Store`, `__pycache__/`, `.pytest_cache/`
+- [x] Repo is public — github.com/levanglij/stave
+- [x] `.gitignore` excludes `target/`, `node_modules/`, `.env.local`, keypairs, `.DS_Store`, `__pycache__/`, `.pytest_cache/`, `.claude/`, `CLAUDE.md` (kept local-only)
 - [ ] License chosen and added
-- [ ] `CLAUDE.md` up to date
+- [x] `CLAUDE.md` up to date — local-only by design (gitignored)
 - [ ] Main branch reflects the submitted build; tag it: `v0.1.0-submission`
-- [ ] `README.md` links are all live (no `[URL]` or `TODO` placeholders)
+- [ ] `README.md` links are all live (no `[URL]` or `TODO` placeholders) — pitch / tech demo video URLs still pending recording
 
 ## Judge access dry-run (CRITICAL)
 
