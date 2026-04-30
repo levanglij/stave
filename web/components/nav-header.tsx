@@ -5,8 +5,8 @@ import { ConnectButton } from "./connect-button";
 const NAV_ITEMS = [
   { label: "Marketplace", href: "/", active: false },
   { label: "Tokenize", href: "/tokenize", active: false },
+  { label: "Methodology", href: "/methodology", active: false },
   { label: "Indices", href: "#", active: false, soon: true },
-  { label: "Methodology", href: "#", active: false, soon: true },
   { label: "Portfolio", href: "#", active: false, soon: true },
 ];
 
