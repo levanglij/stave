@@ -1,8 +1,14 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 // Stylized "audio waveform" hero for the catalog detail page.
 // Deterministic per catalog (same shape on every render); 140 bars
 // rendered as SVG rects with a horizontal purple -> blue gradient.
+// When the play button is toggled, bars pulse with staggered phase.
 
 const N_BARS = 140;
+const TOTAL_SECONDS = 222; // 3:42 mock track length
 
 function hashString(s: string): number {
   let h = 2166136261;
@@ -24,12 +30,36 @@ function mulberry32(seed: number): () => number {
 }
 
 function colorAt(t: number): string {
-  // t in [0, 1]: 0 = purple, 1 = blue
-  const hue = 280 - t * 60;
+  const hue = 280 - t * 60; // 280 = purple, 220 = blue
   return `hsl(${hue}, 75%, 60%)`;
 }
 
-export function WaveformHero({ catalogId }: { catalogId: string }) {
+function fmtTime(s: number): string {
+  const m = Math.floor(s / 60);
+  const sec = String(Math.floor(s) % 60).padStart(2, "0");
+  return `${m}:${sec}`;
+}
+
+interface Props {
+  catalogId: string;
+  title: string;
+  artist: string;
+}
+
+export function WaveformHero({ catalogId, title, artist }: Props) {
+  const [playing, setPlaying] = useState(false);
+  const [seconds, setSeconds] = useState(22);
+
+  // Tick the playhead while playing. Mock — no real audio.
+  useEffect(() => {
+    if (!playing) return;
+    const id = setInterval(() => {
+      setSeconds((s) => (s + 1) % TOTAL_SECONDS);
+    }, 1000);
+    return () => clearInterval(id);
+  }, [playing]);
+
+  // Build deterministic bar heights for this catalog.
   const rng = mulberry32(hashString(catalogId));
   const bars: number[] = [];
   for (let i = 0; i < N_BARS; i++) {
@@ -39,38 +69,91 @@ export function WaveformHero({ catalogId }: { catalogId: string }) {
     bars.push(h);
   }
 
+  const progressPct = (seconds / TOTAL_SECONDS) * 100;
+
   return (
     <div
-      className="rounded-xl overflow-hidden h-[280px] md:h-[320px] flex items-center justify-center relative"
+      className="rounded-xl overflow-hidden h-[300px] md:h-[340px] flex flex-col relative"
       style={{
         background:
           "linear-gradient(135deg, rgba(48,15,80,0.45) 0%, rgba(15,30,80,0.45) 60%, rgba(8,15,40,0.45) 100%)",
         border: "1px solid var(--color-border)",
       }}
     >
-      <svg
-        viewBox={`0 0 ${N_BARS * 4} 200`}
-        className="w-full h-full px-6"
-        preserveAspectRatio="none"
-        aria-hidden
+      {/* Waveform bars fill remaining space */}
+      <div className="flex-1 flex items-center px-6 py-4 min-h-0">
+        <svg
+          viewBox={`0 0 ${N_BARS * 4} 200`}
+          className="w-full h-full"
+          preserveAspectRatio="none"
+          aria-hidden
+        >
+          {bars.map((h, i) => {
+            const x = i * 4 + 1;
+            const barHeight = h * 180;
+            const y = 100 - barHeight / 2;
+            return (
+              <rect
+                key={i}
+                className="wave-bar"
+                x={x}
+                y={y}
+                width={2.5}
+                height={barHeight}
+                rx={1}
+                fill={colorAt(i / N_BARS)}
+                style={{
+                  animationPlayState: playing ? "running" : "paused",
+                  animationDelay: `${(i % 13) * 0.07}s`,
+                }}
+              />
+            );
+          })}
+        </svg>
+      </div>
+
+      {/* Player controls */}
+      <div
+        className="px-5 py-3 flex items-center gap-4 border-t border-border/60"
+        style={{ background: "rgba(5, 8, 22, 0.65)", backdropFilter: "blur(12px)" }}
       >
-        {bars.map((h, i) => {
-          const x = i * 4 + 1;
-          const barHeight = h * 180;
-          const y = 100 - barHeight / 2;
-          return (
-            <rect
-              key={i}
-              x={x}
-              y={y}
-              width={2.5}
-              height={barHeight}
-              rx={1}
-              fill={colorAt(i / N_BARS)}
+        <button
+          type="button"
+          onClick={() => setPlaying((p) => !p)}
+          className="w-10 h-10 rounded-full flex items-center justify-center bg-fg text-bg hover:scale-105 active:scale-95 transition-transform shrink-0 shadow-lg"
+          aria-label={playing ? "Pause preview" : "Play preview"}
+        >
+          {playing ? (
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+              <rect x="2" y="1" width="3" height="12" rx="1" />
+              <rect x="9" y="1" width="3" height="12" rx="1" />
+            </svg>
+          ) : (
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+              <path d="M3 1.5L12 7L3 12.5Z" />
+            </svg>
+          )}
+        </button>
+        <div className="flex-1 min-w-0">
+          <div className="text-[10px] tracking-[1.5px] uppercase text-muted">
+            Now playing
+          </div>
+          <div className="text-sm text-fg font-medium truncate mt-0.5">
+            {title}
+            <span className="text-muted font-normal"> · {artist}</span>
+          </div>
+        </div>
+        <div className="flex items-center gap-2 text-[11px] font-mono tabular text-muted shrink-0">
+          <span className="w-8 text-right">{fmtTime(seconds)}</span>
+          <div className="w-20 md:w-28 h-1 rounded-full bg-panel-2 relative overflow-hidden">
+            <div
+              className="h-full bg-accent-bright transition-[width] duration-1000 ease-linear"
+              style={{ width: `${progressPct}%` }}
             />
-          );
-        })}
-      </svg>
+          </div>
+          <span className="w-8">{fmtTime(TOTAL_SECONDS)}</span>
+        </div>
+      </div>
     </div>
   );
 }

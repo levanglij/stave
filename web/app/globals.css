@@ -74,6 +74,24 @@ main, header, footer {
   transform: translateY(1px);
 }
 
+/* Waveform hero bar pulse — animated when the play button is on.
+   Each bar gets a staggered animation-delay inline so they ripple. */
+.wave-bar {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: wavePulse 0.7s ease-in-out infinite;
+  animation-play-state: paused;
+}
+@keyframes wavePulse {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  45% {
+    transform: scaleY(0.55);
+  }
+}
+
 /* Returns Calculator slider — emerald-themed range input. */
 .stave-slider {
   appearance: none;

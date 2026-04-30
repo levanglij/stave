@@ -114,7 +114,11 @@ export default function CatalogDetail({ params }: PageProps) {
         {/* HERO: waveform (left, 2/3) + purchase panel (right, 1/3) */}
         <div className="grid md:grid-cols-3 gap-6 mb-2">
           <div className="md:col-span-2">
-            <WaveformHero catalogId={listing.catalog_id} />
+            <WaveformHero
+              catalogId={listing.catalog_id}
+              title={listing.title}
+              artist={listing.artist}
+            />
           </div>
           <div>
             <PurchasePanel listing={listing} />
