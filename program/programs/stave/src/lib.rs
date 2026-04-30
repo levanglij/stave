@@ -14,7 +14,7 @@ pub mod state;
 
 pub use instructions::*;
 
-declare_id!("Stave1111111111111111111111111111111111111111");
+declare_id!("EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q");
 
 #[program]
 pub mod stave {
