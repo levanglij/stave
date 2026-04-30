@@ -1,21 +1,31 @@
+"use client";
+
+import { useState } from "react";
 import type { Listing } from "@/lib/types";
 import { compactUsd } from "@/lib/format";
 import { projectReturns, type ScenarioReturns } from "@/lib/headline-stats";
 
-const INVESTMENT = 10_000;
 const SLIDER_MIN = 1_000;
 const SLIDER_MAX = 500_000;
+const LN_MIN = Math.log(SLIDER_MIN);
+const LN_RANGE = Math.log(SLIDER_MAX) - LN_MIN;
+const DEFAULT_POS = (Math.log(10_000) - LN_MIN) / LN_RANGE; // $10K starting point
 
-function sliderPosition(value: number): number {
-  // Log-ish position so the $10K default sits ~25% across the bar.
-  const t =
-    (Math.log10(value) - Math.log10(SLIDER_MIN)) /
-    (Math.log10(SLIDER_MAX) - Math.log10(SLIDER_MIN));
-  return Math.max(0, Math.min(1, t));
+// Log-scale slider: map slider position [0..1] to investment in
+// [SLIDER_MIN..SLIDER_MAX], then snap to a "nice" value at each tier.
+function posToInvestment(pos: number): number {
+  const raw = Math.exp(LN_MIN + pos * LN_RANGE);
+  if (raw < 5_000) return Math.round(raw / 100) * 100;
+  if (raw < 50_000) return Math.round(raw / 500) * 500;
+  if (raw < 100_000) return Math.round(raw / 1_000) * 1_000;
+  return Math.round(raw / 5_000) * 5_000;
 }
 
 export function ReturnsCalculator({ listing }: { listing: Listing }) {
-  const r = projectReturns(listing, INVESTMENT);
+  const [pos, setPos] = useState(DEFAULT_POS);
+  const investment = posToInvestment(pos);
+  const r = projectReturns(listing, investment);
+  const fillPct = pos * 100;
 
   return (
     <div className="rounded-xl border border-border bg-panel p-5">
@@ -24,26 +34,33 @@ export function ReturnsCalculator({ listing }: { listing: Listing }) {
       </div>
       <div className="font-semibold text-fg mb-5">Project your income</div>
 
-      {/* Investment static for now; slider visual only */}
+      {/* Slider */}
       <div className="text-xs flex justify-between mb-2">
         <span className="text-muted">Investment</span>
         <span className="font-mono tabular text-fg font-semibold">
-          ${INVESTMENT.toLocaleString()}
+          ${investment.toLocaleString()}
         </span>
       </div>
-      <div className="relative h-1.5 rounded-full bg-panel-2 overflow-hidden mb-1.5">
-        <div
-          className="h-full rounded-full bg-accent-bright"
-          style={{ width: `${sliderPosition(INVESTMENT) * 100}%` }}
-        />
-      </div>
-      <div className="flex justify-between text-[10px] text-muted mb-5 font-mono tabular">
+      <input
+        type="range"
+        min="0"
+        max="100"
+        step="0.5"
+        value={pos * 100}
+        onChange={(e) => setPos(parseFloat(e.target.value) / 100)}
+        className="stave-slider"
+        style={{
+          background: `linear-gradient(to right, var(--color-accent-bright) 0%, var(--color-accent) ${fillPct}%, var(--color-panel-2) ${fillPct}%, var(--color-panel-2) 100%)`,
+        }}
+        aria-label="Investment amount"
+      />
+      <div className="flex justify-between text-[10px] text-muted mb-5 mt-2 font-mono tabular">
         <span>${SLIDER_MIN / 1000}K</span>
         <span>${SLIDER_MAX / 1000}K</span>
       </div>
 
       <div className="border-t border-border pt-4">
-        <div className="grid grid-cols-[1fr_56px_56px_56px] gap-3 text-[9px] tracking-[1.2px] uppercase text-muted mb-2">
+        <div className="grid grid-cols-[1fr_60px_60px_60px] gap-3 text-[9px] tracking-[1.2px] uppercase text-muted mb-2">
           <div></div>
           <div className="text-right">Annual</div>
           <div className="text-right">5YR</div>
@@ -52,6 +69,15 @@ export function ReturnsCalculator({ listing }: { listing: Listing }) {
         <Row label="Conservative" data={r.conservative} />
         <Row label="Base" data={r.base} highlight />
         <Row label="Aggressive" data={r.aggressive} />
+      </div>
+
+      <div className="mt-3 pt-3 border-t border-border text-[10px] text-muted leading-relaxed">
+        Projections derived from the engine&rsquo;s P10 / P50 / P90 forecast.
+        10-year extension assumes{" "}
+        <span className="text-fg/80">
+          {listing.decay_model === "power_law" ? "long-tail catalog" : "exponential decay"}
+        </span>{" "}
+        based on the fitted {listing.decay_model.replace(/_/g, " ")} model.
       </div>
     </div>
   );
@@ -69,7 +95,7 @@ function Row({
   return (
     <div
       className={
-        "grid grid-cols-[1fr_56px_56px_56px] gap-3 py-1.5 text-xs " +
+        "grid grid-cols-[1fr_60px_60px_60px] gap-3 py-1.5 text-xs " +
         (highlight ? "text-accent-bright font-semibold" : "text-fg/85")
       }
     >
