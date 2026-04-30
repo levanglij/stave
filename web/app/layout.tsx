@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { NavHeader } from "@/components/nav-header";
 import { Footer } from "@/components/footer";
+import { WalletProviders } from "@/components/wallet-providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,9 +39,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${mono.variable}`}>
       <body className="antialiased min-h-screen flex flex-col">
-        <NavHeader />
-        <div className="flex-1">{children}</div>
-        <Footer />
+        <WalletProviders>
+          <NavHeader />
+          <div className="flex-1">{children}</div>
+          <Footer />
+        </WalletProviders>
       </body>
     </html>
   );

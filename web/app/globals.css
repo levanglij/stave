@@ -74,6 +74,48 @@ main, header, footer {
   transform: translateY(1px);
 }
 
+/* Wallet adapter modal — dark theme overrides.
+   The package ships a light theme; we patch its CSS variables so the
+   modal blends into Stave's institutional-dark UI instead of looking
+   bolted-on. */
+.wallet-adapter-modal-wrapper {
+  background: var(--color-panel) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 16px !important;
+  font-family: var(--font-inter), -apple-system, system-ui, sans-serif !important;
+}
+.wallet-adapter-modal-title {
+  color: var(--color-fg) !important;
+}
+.wallet-adapter-modal-list {
+  margin: 0 !important;
+}
+.wallet-adapter-modal-list li {
+  background: var(--color-panel-2) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 8px !important;
+  margin-bottom: 8px !important;
+  transition: border-color 120ms ease;
+}
+.wallet-adapter-modal-list li:hover {
+  border-color: var(--color-border-strong) !important;
+}
+.wallet-adapter-modal-list .wallet-adapter-button {
+  background: transparent !important;
+  color: var(--color-fg) !important;
+  font-weight: 500 !important;
+}
+.wallet-adapter-modal-button-close {
+  background: var(--color-panel-2) !important;
+}
+.wallet-adapter-modal-button-close svg {
+  fill: var(--color-fg) !important;
+}
+.wallet-adapter-modal-overlay {
+  background: rgba(5, 8, 22, 0.7) !important;
+  backdrop-filter: blur(8px);
+}
+
 /* Waveform hero bar pulse — animated when the play button is on.
    Each bar gets a staggered animation-delay inline so they ripple. */
 .wave-bar {

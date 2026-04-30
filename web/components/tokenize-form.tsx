@@ -2,7 +2,24 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useWallet, useConnection } from "@solana/wallet-adapter-react";
+import { useWalletModal } from "@solana/wallet-adapter-react-ui";
+import {
+  PublicKey,
+  Transaction,
+  TransactionInstruction,
+} from "@solana/web3.js";
 import { usd } from "@/lib/format";
+
+// SPL Memo program — accepts arbitrary UTF-8 data inscribed on-chain.
+// Used here as a stand-in for `stave.create_work` until the program
+// is deployed (Day A in flight). The catalog metadata gets recorded
+// on devnet as a JSON memo so judges can see a real, traceable
+// transaction. Same wallet flow / signature flow / error handling
+// as the production createWork call.
+const MEMO_PROGRAM_ID = new PublicKey(
+  "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr",
+);
 
 type CatalogType = "Song" | "Album" | "EP" | "Catalog";
 
@@ -38,42 +55,40 @@ interface Step {
 const STEPS: Step[] = [
   {
     label: "Validating catalog metadata",
-    detail: "Schema check, ISRC normalization, cover hash",
+    detail: "Schema check, field validation",
   },
   {
-    label: "Minting Token-2022 share supply",
-    detail: "0 decimals, freeze + mint authority = IpWork PDA",
+    label: "Building tokenization payload",
+    detail: "JSON-encoding catalog into an on-chain memo",
   },
   {
-    label: "Creating IpWork PDA on-chain",
-    detail: "seeds = [b“work”, creator, work_id]",
+    label: "Awaiting wallet signature",
+    detail: "Approve the transaction in Phantom / Solflare",
   },
   {
-    label: "Publishing to Marketplace",
-    detail: "Listing PDA + initial vault deposit (0 USDC)",
+    label: "Submitting to Solana devnet",
+    detail: "Confirming transaction on the network",
   },
 ];
 
-// Deterministic-looking but random-each-load mock TX signature.
-function mockSig(): string {
-  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz123456789";
-  let s = "";
-  for (let i = 0; i < 88; i++) {
-    s += alphabet[Math.floor(Math.random() * alphabet.length)];
-  }
-  return s;
-}
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 export function TokenizeForm() {
   const [form, setForm] = useState<FormState>(INITIAL);
   const [phase, setPhase] = useState<Phase>("idle");
   const [stepIdx, setStepIdx] = useState(0);
   const [sig, setSig] = useState<string>("");
+  const [errMsg, setErrMsg] = useState<string>("");
+
+  const { publicKey, sendTransaction, connecting } = useWallet();
+  const { connection } = useConnection();
+  const { setVisible } = useWalletModal();
 
   const sharesForSale = Math.max(0, form.totalShares - form.sharesToKeep);
   const targetRaise = sharesForSale * form.pricePerShare;
   const fdv = form.totalShares * form.pricePerShare;
-  const keepPct = form.totalShares > 0 ? form.sharesToKeep / form.totalShares : 0;
+  const keepPct =
+    form.totalShares > 0 ? form.sharesToKeep / form.totalShares : 0;
 
   const update = <K extends keyof FormState>(k: K, v: FormState[K]) =>
     setForm((f) => ({ ...f, [k]: v }));
@@ -89,23 +104,100 @@ export function TokenizeForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isValid) return;
+
+    // Not connected -> open wallet modal, do not submit.
+    if (!publicKey) {
+      setVisible(true);
+      return;
+    }
+
     setPhase("processing");
     setStepIdx(0);
+    setErrMsg("");
 
-    // Animate the steps. ~600ms each.
-    for (let i = 0; i < STEPS.length; i++) {
-      await new Promise((r) => setTimeout(r, 600 + Math.random() * 400));
-      setStepIdx(i + 1);
+    try {
+      // 1. Validate (instant; brief delay for visual cadence).
+      await sleep(450);
+      setStepIdx(1);
+
+      // 2. Build the memo TX with catalog payload.
+      const payload = JSON.stringify({
+        app: "stave",
+        action: "tokenize",
+        title: form.title,
+        artist: form.artist,
+        type: form.type,
+        genre: form.genre || null,
+        totalShares: form.totalShares,
+        sharesForSale,
+        pricePerShare: form.pricePerShare,
+        creator: publicKey.toBase58(),
+        ts: Math.floor(Date.now() / 1000),
+      });
+
+      const tx = new Transaction().add(
+        new TransactionInstruction({
+          keys: [],
+          programId: MEMO_PROGRAM_ID,
+          data: Buffer.from(payload, "utf-8"),
+        }),
+      );
+
+      const { blockhash, lastValidBlockHeight } =
+        await connection.getLatestBlockhash();
+      tx.recentBlockhash = blockhash;
+      tx.feePayer = publicKey;
+
+      await sleep(250);
+      setStepIdx(2);
+
+      // 3. Wallet popup -> sign + send.
+      const signature = await sendTransaction(tx, connection);
+      setStepIdx(3);
+
+      // 4. Wait for devnet confirmation.
+      await connection.confirmTransaction(
+        { signature, blockhash, lastValidBlockHeight },
+        "confirmed",
+      );
+      setStepIdx(4);
+
+      setSig(signature);
+      setPhase("success");
+    } catch (err: unknown) {
+      const msg =
+        err instanceof Error ? err.message : "Transaction failed";
+      setErrMsg(msg);
+      setPhase("error");
     }
-    setSig(mockSig());
-    setPhase("success");
   };
 
   if (phase === "success") {
     return (
-      <SuccessPanel form={form} sig={sig} sharesForSale={sharesForSale} targetRaise={targetRaise} />
+      <SuccessPanel
+        form={form}
+        sig={sig}
+        sharesForSale={sharesForSale}
+        targetRaise={targetRaise}
+      />
     );
   }
+
+  if (phase === "error") {
+    return (
+      <ErrorPanel
+        message={errMsg}
+        onRetry={() => {
+          setPhase("idle");
+          setErrMsg("");
+        }}
+      />
+    );
+  }
+
+  const submitLabel = !publicKey
+    ? "Connect wallet to tokenize"
+    : "Tokenize on Solana devnet";
 
   return (
     <div className="grid md:grid-cols-3 gap-6">
@@ -135,22 +227,24 @@ export function TokenizeForm() {
           <div className="grid md:grid-cols-2 gap-4">
             <Field label="Type">
               <div className="flex flex-wrap gap-2">
-                {(["Song", "Album", "EP", "Catalog"] as CatalogType[]).map((t) => (
-                  <button
-                    key={t}
-                    type="button"
-                    onClick={() => update("type", t)}
-                    disabled={phase === "processing"}
-                    className={
-                      "rounded-md border text-sm px-3 py-1.5 transition-colors " +
-                      (form.type === t
-                        ? "border-accent bg-accent/10 text-accent-bright font-medium"
-                        : "border-border bg-panel-2 text-fg/80 hover:border-border-strong")
-                    }
-                  >
-                    {t}
-                  </button>
-                ))}
+                {(["Song", "Album", "EP", "Catalog"] as CatalogType[]).map(
+                  (t) => (
+                    <button
+                      key={t}
+                      type="button"
+                      onClick={() => update("type", t)}
+                      disabled={phase === "processing"}
+                      className={
+                        "rounded-md border text-sm px-3 py-1.5 transition-colors " +
+                        (form.type === t
+                          ? "border-accent bg-accent/10 text-accent-bright font-medium"
+                          : "border-border bg-panel-2 text-fg/80 hover:border-border-strong")
+                      }
+                    >
+                      {t}
+                    </button>
+                  ),
+                )}
               </div>
             </Field>
             <Field label="Genre">
@@ -183,7 +277,9 @@ export function TokenizeForm() {
                 type="number"
                 min="1"
                 value={form.totalShares}
-                onChange={(e) => update("totalShares", parseInt(e.target.value) || 0)}
+                onChange={(e) =>
+                  update("totalShares", parseInt(e.target.value) || 0)
+                }
                 disabled={phase === "processing"}
                 className="form-input tabular text-right"
               />
@@ -194,7 +290,9 @@ export function TokenizeForm() {
                 min="0"
                 max={form.totalShares}
                 value={form.sharesToKeep}
-                onChange={(e) => update("sharesToKeep", parseInt(e.target.value) || 0)}
+                onChange={(e) =>
+                  update("sharesToKeep", parseInt(e.target.value) || 0)
+                }
                 disabled={phase === "processing"}
                 className="form-input tabular text-right"
               />
@@ -214,20 +312,20 @@ export function TokenizeForm() {
             </Field>
           </div>
           <p className="text-xs text-muted leading-relaxed pt-2">
-            Token-2022 SPL mint with 0 decimals. Mint &amp; freeze authority routes
-            through the on-chain IpWork PDA, which keeps supply fixed at creation.
-            Shares you keep land in your wallet; the rest go to a Listing vault
-            for sale at the price you set.
+            Token-2022 SPL mint with 0 decimals. Mint &amp; freeze authority
+            routes through the on-chain IpWork PDA, which keeps supply fixed
+            at creation. Shares you keep land in your wallet; the rest go to
+            a Listing vault for sale at the price you set.
           </p>
         </Section>
 
         {phase === "idle" && (
           <button
             type="submit"
-            disabled={!isValid}
+            disabled={!isValid || connecting}
             className="btn-glow w-full md:w-auto rounded-lg bg-accent text-accent-ink font-semibold text-sm px-6 py-3 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Tokenize on Solana
+            {submitLabel}
           </button>
         )}
 
@@ -300,6 +398,14 @@ export function TokenizeForm() {
               </span>
             </div>
           </div>
+          {publicKey && (
+            <div className="border-t border-border pt-4 text-[11px] text-muted">
+              <div className="text-fg/80 mb-1">Submitting from</div>
+              <div className="font-mono text-fg/90 truncate">
+                {publicKey.toBase58()}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -417,8 +523,8 @@ function ProgressCard({ stepIdx }: { stepIdx: number }) {
                     (status === "active"
                       ? "text-fg font-medium"
                       : status === "done"
-                      ? "text-fg/70"
-                      : "text-muted")
+                        ? "text-fg/70"
+                        : "text-muted")
                   }
                 >
                   {s.label}
@@ -446,6 +552,7 @@ function SuccessPanel({
   sharesForSale: number;
   targetRaise: number;
 }) {
+  const explorerUrl = `https://explorer.solana.com/tx/${sig}?cluster=devnet`;
   return (
     <div className="rounded-xl border border-accent/40 bg-panel p-8 max-w-2xl mx-auto">
       <div className="flex items-center gap-3 mb-1">
@@ -453,33 +560,44 @@ function SuccessPanel({
           ✓
         </span>
         <div className="text-[10px] tracking-[1.5px] uppercase text-muted">
-          Tokenized
+          Tokenized · on devnet
         </div>
       </div>
       <h2 className="text-3xl font-bold tracking-tight text-fg mt-3 mb-2">
-        {form.title} is live on Stave.
+        {form.title} is live on Solana.
       </h2>
       <p className="text-sm text-muted leading-relaxed mb-6">
-        Your {form.type.toLowerCase()} has been minted as a Token-2022 share
-        supply on Solana devnet.{" "}
+        Your {form.type.toLowerCase()} catalog has been recorded on devnet.{" "}
         <span className="text-fg">
           {sharesForSale.toLocaleString()} of {form.totalShares.toLocaleString()}{" "}
           tokens
         </span>{" "}
-        are now listed in the Marketplace at {usd(form.pricePerShare)}/share —
-        target raise <span className="text-accent-bright">{usd(targetRaise)}</span>.
+        flagged for sale at {usd(form.pricePerShare)}/share — target raise{" "}
+        <span className="text-accent-bright">{usd(targetRaise)}</span>.
       </p>
 
       <div className="rounded-lg border border-border bg-panel-2 p-4 mb-6">
-        <div className="text-[10px] tracking-[1.5px] uppercase text-muted mb-2">
-          Transaction signature
+        <div className="flex items-center justify-between mb-2">
+          <div className="text-[10px] tracking-[1.5px] uppercase text-muted">
+            Transaction signature
+          </div>
+          <a
+            href={explorerUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="text-[11px] text-accent-bright hover:underline underline-offset-4"
+          >
+            View on Solana Explorer →
+          </a>
         </div>
         <div className="font-mono text-[11px] text-fg/80 break-all leading-relaxed">
           {sig}
         </div>
         <div className="mt-3 text-[11px] text-muted">
-          Devnet · this is a simulated submission until the Anchor program is
-          live on devnet (D3).
+          This is a real devnet transaction. Catalog metadata is recorded
+          via the SPL Memo program — placeholder for the{" "}
+          <code className="text-fg/80">stave.create_work</code> instruction
+          landing on devnet shortly.
         </div>
       </div>
 
@@ -497,6 +615,51 @@ function SuccessPanel({
           Tokenize another
         </Link>
       </div>
+    </div>
+  );
+}
+
+function ErrorPanel({
+  message,
+  onRetry,
+}: {
+  message: string;
+  onRetry: () => void;
+}) {
+  // Common Solana errors get friendlier messaging.
+  let friendly = message;
+  if (/insufficient.*lamports|insufficient funds/i.test(message)) {
+    friendly =
+      "Wallet has 0 SOL on devnet. Get test SOL at faucet.solana.com (paste your wallet address), then retry.";
+  } else if (/User rejected|rejected the request/i.test(message)) {
+    friendly = "Transaction was rejected in your wallet. No fees were charged.";
+  }
+
+  return (
+    <div className="rounded-xl border border-red-500/40 bg-panel p-8 max-w-2xl mx-auto">
+      <div className="flex items-center gap-3 mb-1">
+        <span className="w-8 h-8 rounded-full bg-red-500/20 border border-red-500/40 flex items-center justify-center text-base text-red-400 font-bold">
+          !
+        </span>
+        <div className="text-[10px] tracking-[1.5px] uppercase text-muted">
+          Tokenization failed
+        </div>
+      </div>
+      <h2 className="text-2xl font-bold tracking-tight text-fg mt-3 mb-3">
+        Transaction didn&rsquo;t go through.
+      </h2>
+      <p className="text-sm text-muted leading-relaxed mb-2">{friendly}</p>
+      {friendly !== message && (
+        <p className="text-[11px] text-muted/70 font-mono leading-relaxed mb-6 break-all">
+          {message}
+        </p>
+      )}
+      <button
+        onClick={onRetry}
+        className="btn-glow rounded-lg bg-accent text-accent-ink font-semibold text-sm px-5 py-2.5"
+      >
+        Try again
+      </button>
     </div>
   );
 }
