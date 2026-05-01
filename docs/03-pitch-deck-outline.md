@@ -43,9 +43,9 @@
 - Token-2022 shares are standard fungibles — DEX, lending, and fund composability from day one.
 - Mature wallet UX for the non-crypto artist.
 
-## Slide 9 — The moat: GERA partnership
-- Partnership with the Georgian Rightsholders' Association (GERA) — Georgia's primary rights collection society — formalizing in the post-hackathon roadmap.
-- GERA's ground-truth royalty ledger cross-validates every catalog submission during minting.
+## Slide 9 — The moat: IPOA partnership
+- Partnership with the Intellectual Property Owners Association (IPOA) — Georgia's official music rights organization — formalizing in the post-hackathon roadmap.
+- IPOA's ground-truth royalty ledger cross-validates every catalog submission during minting.
 - Architecture extends to additional rights societies as Stave scales beyond Georgia — can't be matched by pure tech competitors.
 
 ## Slide 10 — Market & GTM

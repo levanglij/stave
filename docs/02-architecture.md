@@ -20,7 +20,7 @@ This document proposes the creation of the Royalty Risk Engine (RRE) combined wi
 
 The platform does not operate as a deal marketplace. It is the pricing and risk infrastructure for the music royalty asset class — analogous to the role Moody's plays in credit markets, Bloomberg in financial data, and MSCI in index construction. This infrastructure position creates a defensible, data-compounding competitive moat that deepens with every catalog analyzed.
 
-The platform is built on a foundational structural advantage: a partnership with the Georgian Rightsholders' Association (GERA) — Georgia's primary rights collection society — formalizing in the post-hackathon roadmap. GERA provides direct, verified access to royalty income data at the source for the Georgian catalog universe — an access layer that no competitor can replicate through technology alone, and a model that extends to additional rights societies as the platform scales.
+The platform is built on a foundational structural advantage: a partnership with the Intellectual Property Owners Association (IPOA) — Georgia's official music rights organization — formalizing in the post-hackathon roadmap. IPOA provides direct, verified access to royalty income data at the source for the Georgian catalog universe — an access layer that no competitor can replicate through technology alone, and a model that extends to additional rights societies as the platform scales.
 
 ### Platform Capabilities at a Glance
 
@@ -61,15 +61,15 @@ This is the gap the RRE/SRFP platform is designed to fill.
 
 ---
 
-## 3. Foundational Structural Advantage: GERA Partnership
+## 3. Foundational Structural Advantage: IPOA Partnership
 
-The platform's most significant competitive advantage is not technical — it is structural. Stave's partnership with the Georgian Rightsholders' Association (GERA) — Georgia's primary rights collection society — provides a ground-truth data layer that cannot be replicated by any competitor beginning from a pure technology position. The partnership is being formalized in the post-hackathon roadmap; the architecture and data contracts described below assume that integration as the foundation.
+The platform's most significant competitive advantage is not technical — it is structural. Stave's partnership with the Intellectual Property Owners Association (IPOA) — Georgia's official music rights organization — provides a ground-truth data layer that cannot be replicated by any competitor beginning from a pure technology position. The partnership is being formalized in the post-hackathon roadmap; the architecture and data contracts described below assume that integration as the foundation.
 
-### What the GERA Partnership Provides
+### What the IPOA Partnership Provides
 
-GERA collects and distributes performance royalties on behalf of Georgian songwriters, publishers, and rightsholders. The partnership gives Stave direct access to: verified income data at the rights-holder level, granular performance history across broadcast and digital channels, periodic collections data on standard distribution cycles, and the ability to cross-validate all other data sources against a ground-truth ledger. This transforms the platform's data quality from "aggregated and estimated" to "verified and primary" — at least for the Georgian catalog universe at launch.
+IPOA collects and distributes performance royalties on behalf of Georgian songwriters, publishers, and rightsholders. The partnership gives Stave direct access to: verified income data at the rights-holder level, granular performance history across broadcast and digital channels, periodic collections data on standard distribution cycles, and the ability to cross-validate all other data sources against a ground-truth ledger. This transforms the platform's data quality from "aggregated and estimated" to "verified and primary" — at least for the Georgian catalog universe at launch.
 
-This structural advantage manifests in three ways that compound over time. First, it solves the data acquisition problem at the outset for the Georgian market: rather than negotiating API access or relying on artist self-reporting as the only source, Stave has direct institutional access to a primary income stream. Second, it provides cross-validation capability — when artists or labels submit streaming data during the minting process, GERA's data serves as an independent verification check, significantly reducing the risk of data manipulation or misrepresentation. Third, the GERA partnership establishes the model and data contract for additional rights-society partnerships beyond Georgia; the architecture is designed to extend to PROs in adjacent markets as the platform scales.
+This structural advantage manifests in three ways that compound over time. First, it solves the data acquisition problem at the outset for the Georgian market: rather than negotiating API access or relying on artist self-reporting as the only source, Stave has direct institutional access to a primary income stream. Second, it provides cross-validation capability — when artists or labels submit streaming data during the minting process, IPOA's data serves as an independent verification check, significantly reducing the risk of data manipulation or misrepresentation. Third, the IPOA partnership establishes the model and data contract for additional rights-society partnerships beyond Georgia; the architecture is designed to extend to PROs in adjacent markets as the platform scales.
 
 ---
 
@@ -79,7 +79,7 @@ The platform employs three complementary data acquisition channels that collecti
 
 ### 4.1 Channel One: PRO Direct Data Feed
 
-As discussed in Section 3, the platform's GERA partnership provides a direct, institutional-grade feed of performance royalty collections data. This is updated on standard PRO collection cycles and provides verified income at the rights-holder and work level. For Georgian catalog this channel requires no artist consent or technical integration — it is an institutional data right that flows from the partnership. Equivalent feeds from additional rights societies will follow the same pattern as Stave expands beyond Georgia.
+As discussed in Section 3, the platform's IPOA partnership provides a direct, institutional-grade feed of performance royalty collections data. This is updated on standard PRO collection cycles and provides verified income at the rights-holder and work level. For Georgian catalog this channel requires no artist consent or technical integration — it is an institutional data right that flows from the partnership. Equivalent feeds from additional rights societies will follow the same pattern as Stave expands beyond Georgia.
 
 ### 4.2 Channel Two: Distributor API Partnerships
 
@@ -197,7 +197,7 @@ Social media sentiment is frequently cited as a key tool for music analytics but
 
 The classification model is a gradient boosted tree (XGBoost or LightGBM), chosen because the feature relationships are non-linear and the input is a structured tabular feature set. Key features fed to the classifier include: anomaly magnitude in standard deviations, event duration in weeks, PELT shift confirmation flag, net playlist adds in the 7 days preceding the spike, Shazam volume percentage change, TikTok sound usage count, sync event confirmation flag, platform concentration of the spike (one platform versus all), prior spike count in catalog history, and catalog age in months.
 
-Training the classifier requires labeled historical examples of "this spike was durable" and "this spike was ephemeral." The GERA partnership provides the ground truth: known historical events in the GERA catalog history can be labeled against realized subsequent income, generating the training dataset. A minimum of 500 to 1,000 labeled examples is required before launch; the model improves continuously as the platform accumulates realized outcome data from rated catalogs.
+Training the classifier requires labeled historical examples of "this spike was durable" and "this spike was ephemeral." The IPOA partnership provides the ground truth: known historical events in the IPOA catalog history can be labeled against realized subsequent income, generating the training dataset. A minimum of 500 to 1,000 labeled examples is required before launch; the model improves continuously as the platform accumulates realized outcome data from rated catalogs.
 
 ### 5.4 Layer 4 — Concentration and Portfolio Risk
 
@@ -366,7 +366,7 @@ The platform's competitive advantage is layered — each layer is independently 
 
 | Advantage Layer | What It Is | Why It Compounds |
 |---|---|---|
-| GERA partnership | Direct access to verified royalty income data at the institutional level for Georgian catalog | Additional rights-society partnerships expand the data footprint as the platform scales beyond Georgia |
+| IPOA partnership | Direct access to verified royalty income data at the institutional level for Georgian catalog | Additional rights-society partnerships expand the data footprint as the platform scales beyond Georgia |
 | Proprietary training data | Every rated and financed catalog adds a labeled outcome to model training datasets | Model accuracy improves continuously; early data generates permanent performance lead |
 | Pricing infrastructure position | The platform sets the reference price for the asset class rather than participating in transactions at market price | Infrastructure providers become standards; once a rating methodology is adopted by the market, switching costs are extremely high |
 | Network effects | More catalogs rated improves index and benchmark construction; more investors improves price discovery | Platform value increases non-linearly with volume on both the supply (catalog) and demand (investor) sides |

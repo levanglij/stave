@@ -22,7 +22,7 @@ T-shirt estimates assume one experienced engineer working full-time. Concurrency
 
 | Architecture section | % built | Notes |
 |---|---|---|
-| § 3 GERA partnership | 0% | Partnership formalizing post-hackathon; no GERA API integration yet; structural/business item |
+| § 3 IPOA partnership | 0% | Partnership formalizing post-hackathon; no IPOA API integration yet; structural/business item |
 | § 4.1 PRO direct data feed | 0% | No adapter, no schedule, no schema mapping |
 | § 4.2 Distributor API partnerships | 0% | No commercial deals; no integrations |
 | § 4.3 Minting model (OAuth + statements + analytics) | 0% | All three sub-channels missing |
@@ -34,7 +34,7 @@ T-shirt estimates assume one experienced engineer working full-time. Concurrency
 | § 6 SRFP marketplace + tranches | 30% | Single-class on-chain MVP shipped: 5 Anchor instructions (`create_work`, `list_shares`, `buy_shares`, `deposit_royalty`, `claim_royalty`), 15/15 passing local tests, devnet deploy queued. Investor UI live at stave-five.vercel.app with 8 listings + 4 thematic indices + per-catalog returns calculator + real Phantom/Solflare wallet flow. Tranche structuring (senior/mezz/growth) and monthly distribution reporting still missing. |
 | § 7 Institutional products | 0% | Funds, ABS, index, derivatives — explicit Phase 3–4 scope |
 | § 8 Revenue model | 0% | No fees collected (no marketplace) |
-| § 9 GTM Phase 1 targets | ~8% | Demo engine on synthetic data, 8 rated catalogs visible on the live frontend, on-chain MVP locally tested. Still missing: GERA integration, 50–100 catalog backtest, event classifier, ±15% MAE validation. |
+| § 9 GTM Phase 1 targets | ~8% | Demo engine on synthetic data, 8 rated catalogs visible on the live frontend, on-chain MVP locally tested. Still missing: IPOA integration, 50–100 catalog backtest, event classifier, ±15% MAE validation. |
 
 ## Missing engines by category (prioritized)
 
@@ -137,7 +137,7 @@ To avoid overclaim risk in pitch and deck:
 - **Demo-grade RRE prototype** is honest. We have something real.
 - **"Risk engine prototype"** is honest framing. **"RRE production engine"** is not.
 - The five-layer architecture is described in `docs/02-architecture.md`. The pitch deck references it as the platform direction.
-- The GERA partnership is the moat narrative. It is correctly framed as the moat — the data integration itself is Phase 1 work, not built.
+- The IPOA partnership is the moat narrative. It is correctly framed as the moat — the data integration itself is Phase 1 work, not built.
 - The Solana MVP demonstrates the on-chain fractionalization and royalty distribution layer that the SRFP marketplace will sit on top of.
 
 ## Critical-path summary

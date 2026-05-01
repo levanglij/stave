@@ -53,7 +53,7 @@ Final pass before submitting to **Solana Frontier Hackathon 2026** (deadline **M
 ## README and docs
 
 - [x] `README.md` has: elevator pitch, demo link, setup instructions, architecture link — program ID added on deploy
-- [x] `docs/02-architecture.md` accurate vs. shipped code — GERA partnership reframed; on-chain claim still reads as forward-looking (matches reality)
+- [x] `docs/02-architecture.md` accurate vs. shipped code — IPOA partnership documented; on-chain claim reads as forward-looking (matches reality)
 - [x] `docs/08-engine-roadmap.md` reflects actual RRE build state
 - [x] Known limitations documented (transfer-before-claim forfeiture, demo-grade engine) — see README "Known MVP behaviors" + program/README "Architectural notes"
 - [ ] Team section in `README.md` filled in

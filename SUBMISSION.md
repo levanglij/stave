@@ -2,7 +2,7 @@
 
 ## What this is
 
-**Stave is the rating-and-financing infrastructure for music royalty assets built on Solana, partnered with the Georgian Rightsholders' Association (GERA) for verified ground-truth royalty data.**
+**Stave is the rating-and-financing infrastructure for music royalty assets built on Solana, partnered with the Intellectual Property Owners Association (IPOA) — Georgia's official music rights organization — for verified ownership and royalty data.**
 
 ## The problem
 
@@ -24,7 +24,9 @@ Settlement economics. A royalty distribution to a fractional cap table of 1,000 
 
 ## The moat
 
-Stave's data moat is being secured through a partnership with the Georgian Rightsholders' Association (GERA) — Georgia's primary rights collection society. The partnership, formalizing in the post-hackathon roadmap, gives Stave direct, institutional-grade access to verified royalty income data at the source — not aggregated from third-party APIs, not self-reported by artists, not modeled from streaming counts. Once integrated, every rating Stave issues on a Georgian catalog can be cross-validated against GERA's primary ledger before it goes live. No competitor starting from a pure technology position can replicate this access, and the architecture extends naturally to additional rights societies as Stave scales beyond Georgia.
+Stave's data partner is the **Intellectual Property Owners Association (IPOA)** — Georgia's official music rights organization, with exclusive country-wide operation since January 2024. IPOA gives Stave direct access to verified royalty income data at the source — not aggregated from third-party APIs, not self-reported by artists, not modelled from streaming counts. Every rating Stave issues on a Georgian catalogue can be cross-validated against IPOA's ledger before it goes live. No competitor starting from a pure technology position can replicate this access, and the model extends to other countries' rights organizations as Stave scales.
+
+Next-phase regulatory work — **VASP registration with the National Bank of Georgia** and a **brokerage license under the Law on Securities Market** — is planned post-submission. See [docs/10-legal-roadmap.md](./docs/10-legal-roadmap.md) for the full picture.
 
 ## What's next (90 days post-submission)
 

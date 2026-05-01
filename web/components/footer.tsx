@@ -18,7 +18,7 @@ export function Footer() {
           <span aria-hidden>·</span>
           <span>
             Data via{" "}
-            <span className="text-fg/80">Georgian Rightsholders&rsquo; Association (GERA)</span>
+            <span className="text-fg/80">Intellectual Property Owners Association (IPOA)</span>
           </span>
         </div>
         <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">

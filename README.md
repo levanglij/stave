@@ -7,7 +7,7 @@
 
 <br><br>
 
-**Stave is the rating-and-financing infrastructure for music royalty assets built on Solana, partnered with the Georgian Rightsholders' Association (GERA) for verified ground-truth royalty data.**
+**Stave is the rating-and-financing infrastructure for music royalty assets built on Solana, partnered with the Intellectual Property Owners Association (IPOA) — Georgia's official music rights organization — for verified ownership and royalty data.**
 
 <sub>Solana Frontier Hackathon 2026
 
@@ -21,7 +21,7 @@ Music royalties are a **$30B/yr asset class**. They're recurring, contractually 
 
 **Stave fills the gap.** A standardized rating engine (RRE five-layer quantitative pipeline) produces transparent, comparable ratings. A fractional-share marketplace on Solana lets institutional and retail capital take exposure with sub-cent settlement on quarterly distributions. The platform doesn't compete with marketplaces and it's the infrastructure they sit on top of.
 
-**The moat is data, not algorithms.** Stave's partnership with the Georgian Rightsholders' Association (GERA) — being formalized in the post-hackathon roadmap — gives the platform direct access to verified, ground-truth royalty income data at the source. GERA is Georgia's primary rights collection society; once integrated, every Stave rating on a Georgian catalog can be cross-validated against GERA's ledger before going live. No competitor starting from a pure technology position can replicate this access, and the model extends to additional rights societies as the platform scales beyond Georgia.
+**The moat is data, not algorithms.** Stave's partner IPOA is Georgia's official music rights organization — the only entity with the country-wide mandate to collect and distribute music royalties since January 2024. Every Stave rating uses IPOA's verified ownership and royalty data, which a pure-tech competitor cannot replicate. The same model extends to other countries' rights organizations as Stave scales.
 
 ## What's real vs. what's simulated
 
@@ -51,6 +51,7 @@ Judges respect honesty. Here's the line:
 - 🧮 **RRE methodology:** [engine/FORMULAS.md](./engine/FORMULAS.md)
 - 🏛 **Platform vision:** [docs/02-architecture.md](./docs/02-architecture.md) (RRE/SRFP v2.0)
 - 🗺 **Engine roadmap:** [docs/08-engine-roadmap.md](./docs/08-engine-roadmap.md)
+- ⚖️ **Legal roadmap:** [docs/10-legal-roadmap.md](./docs/10-legal-roadmap.md) — three-pillar regulatory + corporate-legal roadmap (CMO partnership, brokerage / VASP licensing path, custody architecture). Primary-source cited.
 - 📨 **Submission narrative:** [SUBMISSION.md](./SUBMISSION.md)
 
 ## Run it yourself
@@ -127,6 +128,18 @@ Five-layer engine, transparent rating, on-chain settlement. See [docs/02-archite
 ## Team
 
 _To be filled before submission. Required: founder names, roles, one-line credentials each._
+
+## Regulatory roadmap
+
+**Data partner.** Stave is partnered with the **Intellectual Property Owners Association (IPOA)** — Georgia's official music rights organization since January 2024. IPOA is our source of verified ownership and royalty data for every catalogue we list.
+
+**Planned next steps:**
+
+- **VASP registration with the National Bank of Georgia** — required for a Solana-based marketplace operating in Georgia.
+- **Brokerage license under the Law on Securities Market** — required because a fractional royalty token counts as a security under Georgian law.
+- **AML / KYC programme** under the Financial Monitoring Service of Georgia.
+
+Background, fees, timelines, and primary-source citations in [docs/10-legal-roadmap.md](./docs/10-legal-roadmap.md).
 
 ## Known MVP behaviors
 
