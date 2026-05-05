@@ -17,7 +17,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Indices", href: "/indices", soon: true },
   { label: "How it works", href: "/how-it-works" },
   { label: "Partners", href: "/partners" },
-  { label: "For artists", href: "/for-artists" },
+  { label: "For artists", href: "/for-artists", soon: true },
 ];
 
 function isActive(pathname: string | null, href: string): boolean {
