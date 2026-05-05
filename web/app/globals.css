@@ -179,6 +179,23 @@ main, header, footer {
     0 4px 12px rgba(16, 185, 129, 0.5);
 }
 
+/* Subtle staggered reveal for step / list rows. Apply with
+   `.fade-up` and an inline `--delay` style if you want stagger. */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: var(--delay, 0s);
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

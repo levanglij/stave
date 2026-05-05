@@ -13,12 +13,18 @@ export interface IndexComponent {
   weight: number; // 0-100, percentage points
 }
 
+export type IndexStatus = "example" | "draft";
+
 export interface Index {
   ticker: string;
   name: string;
   tagline: string;
   description: string;
   accent: string; // hex color used for the ticker badge + composition stripes
+  // Lifecycle gate. `example` = shown on the public /indices page as a
+  // worked illustration. `draft` = kept in the data file so we have it
+  // ready for launch, but not rendered to users yet.
+  status: IndexStatus;
   components: IndexComponent[];
 }
 
@@ -30,6 +36,7 @@ export const INDICES: Record<string, Index> = {
     description:
       "Pre-1980s Georgian canon — evergreen folk and retro orchestral jazz. The lowest-risk, longest-cashflow basket on Stave.",
     accent: "#b45309",
+    status: "example",
     components: [
       { catalogId: "evergreen-001", weight: 45 },
       { catalogId: "balanced-001", weight: 35 },
@@ -43,6 +50,7 @@ export const INDICES: Record<string, Index> = {
     description:
       "Post-2000 Georgian artists with shorter but livelier revenue curves. Higher growth potential, higher volatility.",
     accent: "#db2777",
+    status: "draft",
     components: [
       { catalogId: "active-pop-001", weight: 60 },
       { catalogId: "new-release-001", weight: 40 },
@@ -55,6 +63,7 @@ export const INDICES: Record<string, Index> = {
     description:
       "Only RRE-BBB-or-better listings. Drops the speculative tranches so senior LTV stays high. Built for conservative capital.",
     accent: "#10b981",
+    status: "draft",
     components: [
       { catalogId: "evergreen-001", weight: 40 },
       { catalogId: "balanced-001", weight: 35 },
@@ -68,6 +77,7 @@ export const INDICES: Record<string, Index> = {
     description:
       "Every Stave listing, equal-weighted. The closest thing to a market benchmark for Georgian IP and the natural index to track against.",
     accent: "#3b82f6",
+    status: "draft",
     components: [
       { catalogId: "evergreen-001", weight: 12.5 },
       { catalogId: "evergreen-002", weight: 12.5 },
@@ -148,4 +158,10 @@ export function getAllIndices(): { index: Index; metrics: IndexMetrics }[] {
     index,
     metrics: getIndexMetrics(index.ticker),
   }));
+}
+
+// Only the indices we publish on the public /indices page (i.e. status
+// === "example"). Everything else stays in the data file as drafts.
+export function getExampleIndices(): { index: Index; metrics: IndexMetrics }[] {
+  return getAllIndices().filter(({ index }) => index.status === "example");
 }

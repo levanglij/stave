@@ -67,7 +67,7 @@ export default function CatalogDetail({ params }: PageProps) {
   const isTrending = listing.composite_score >= 70;
 
   return (
-    <main className="min-h-[calc(100vh-3.5rem)]">
+    <main className="min-h-[calc(100vh-4rem)]">
       <div className="max-w-6xl mx-auto px-6 py-8">
         {/* Back */}
         <Link

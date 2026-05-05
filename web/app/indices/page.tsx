@@ -13,7 +13,7 @@ export default function IndicesPage() {
   const items = getAllIndices();
 
   return (
-    <main className="min-h-[calc(100vh-3.5rem)]">
+    <main className="min-h-[calc(100vh-4rem)]">
       <div className="max-w-6xl mx-auto px-6 py-12">
         {/* Hero */}
         <div className="flex items-end justify-between gap-6 flex-wrap mb-10">

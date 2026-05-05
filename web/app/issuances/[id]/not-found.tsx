@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="min-h-[calc(100vh-3.5rem)] flex flex-col items-center justify-center p-8 text-center">
+    <main className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center p-8 text-center">
       <h1 className="text-3xl font-semibold tracking-tight mb-4 text-fg">
         Catalog not found
       </h1>
