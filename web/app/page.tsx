@@ -25,15 +25,15 @@ export default function Home() {
             {/* Left: copy */}
             <div>
               <h1 className="text-6xl sm:text-7xl md:text-7xl lg:text-8xl font-bold text-fg text-balance tracking-[-0.03em] leading-[0.95]">
-                Rated music royalties.{" "}
+                Music royalties,{" "}
                 <span className="bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">
-                  On-chain.
+                  made investable.
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-muted leading-relaxed mt-7 max-w-[580px]">
-                Stave is the rating layer for music royalty assets. Every
-                catalog is scored, fractionalized, and settled on Solana —
-                with the methodology open-sourced.
+                Stave transforms verified music catalogs into investable
+                royalty assets through transparent scoring, fractional
+                ownership, and Solana-based settlement.
               </p>
               <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <Link
@@ -81,7 +81,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 md:divide-x md:divide-zinc-800/80">
             <StatTile
               value={String(stats.catalogCount)}
-              label="catalogs rated"
+              label="catalogs scored"
               footnote={`across ${stats.tierCount} risk tiers`}
               spark={[1, 2, 2, 3, 3, 4, 5]}
             />
@@ -93,7 +93,7 @@ export default function Home() {
             />
             <StatTile
               value={stats.averageRating}
-              label="average composite rating"
+              label="average composite grade"
               footnote="weighted by FMV"
               valueColor={tierColor}
               spark={[3, 3.2, 3, 3.4, 3.8, 4, 4.2]}
@@ -132,8 +132,8 @@ export default function Home() {
         <div className="grid md:grid-cols-3 gap-6">
           <ValueCard
             icon={<BadgeCheck className="w-5 h-5" strokeWidth={1.75} />}
-            title="Rated"
-            body="Every catalog carries an RRE credit-style rating from RRE-AA to RRE-B, derived from streaming hazard, HHI concentration, and 60-month CVaR. Same scale as a corporate bond — applied to royalties."
+            title="Scored"
+            body="Every catalog gets graded from AA to B. The grade reflects streaming-decline risk, revenue concentration (HHI), and 24-month tail-risk (CVaR) — all three open-source so anyone can audit the math."
             href="/how-it-works"
           />
           <ValueCard
@@ -188,10 +188,10 @@ export default function Home() {
           </div>
           <blockquote className="border-l-2 border-emerald-900/70 pl-8">
             <p className="text-xl md:text-2xl font-light text-zinc-200 leading-relaxed text-balance">
-              Stave&rsquo;s rating model is open. RRE ratings combine streaming
-              hazard rates, catalog concentration (HHI), and 60-month
-              conditional value-at-risk into a single letter grade. The full
-              formulae, code, and architecture are public.
+              Stave&rsquo;s scoring model is open. Stave grades combine
+              streaming hazard rates, catalog concentration (HHI), and
+              24-month conditional value-at-risk into a single letter grade.
+              The full formulae, code, and architecture are public.
             </p>
           </blockquote>
           <div className="mt-9 flex flex-wrap gap-2 pl-8">
@@ -223,7 +223,7 @@ export default function Home() {
       >
         <div className="max-w-4xl mx-auto px-6 py-32 md:py-40 text-center">
           <h2 className="text-5xl md:text-6xl font-light tracking-[-0.02em] text-fg mb-10 text-balance leading-[1.05]">
-            See the rating layer{" "}
+            See transparent scoring{" "}
             <span className="bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">
               in action.
             </span>

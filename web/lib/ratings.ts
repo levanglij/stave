@@ -1,9 +1,14 @@
-import type { Rating, Listing } from "./types";
+import type { Rating, RatingTier, Listing } from "./types";
 import { CATALOG_META } from "./catalog-meta";
 
-// Pre-computed RRE ratings produced by the Python engine
+// Pre-computed grades produced by the Python engine
 // (engine/outputs/*.rating.json). Imported statically so they're
 // bundled at build time — no network call, no API route.
+//
+// The engine still emits legacy "RRE-XX" tier strings on the rating
+// field. We normalize that prefix off at load time so all UI sees the
+// bare letter form ("AA", "BBB", etc.). One canonical place to strip;
+// nothing downstream needs to know about the legacy format.
 import activePop from "@engine/outputs/active-pop-001.rating.json";
 import activePop2 from "@engine/outputs/active-pop-002.rating.json";
 import balanced from "@engine/outputs/balanced-001.rating.json";
@@ -13,15 +18,23 @@ import evergreen2 from "@engine/outputs/evergreen-002.rating.json";
 import highHhi from "@engine/outputs/high-hhi-001.rating.json";
 import newRelease from "@engine/outputs/new-release-001.rating.json";
 
+function normalizeRating(raw: unknown): Rating {
+  const r = raw as Rating & { rating: string };
+  return {
+    ...r,
+    rating: r.rating.replace(/^RRE-/, "") as RatingTier,
+  };
+}
+
 export const RATINGS: Record<string, Rating> = {
-  "active-pop-001": activePop as Rating,
-  "active-pop-002": activePop2 as Rating,
-  "balanced-001": balanced as Rating,
-  "catalog-001": catalog as Rating,
-  "evergreen-001": evergreen as Rating,
-  "evergreen-002": evergreen2 as Rating,
-  "high-hhi-001": highHhi as Rating,
-  "new-release-001": newRelease as Rating,
+  "active-pop-001": normalizeRating(activePop),
+  "active-pop-002": normalizeRating(activePop2),
+  "balanced-001": normalizeRating(balanced),
+  "catalog-001": normalizeRating(catalog),
+  "evergreen-001": normalizeRating(evergreen),
+  "evergreen-002": normalizeRating(evergreen2),
+  "high-hhi-001": normalizeRating(highHhi),
+  "new-release-001": normalizeRating(newRelease),
 };
 
 export function getListing(catalogId: string): Listing | undefined {

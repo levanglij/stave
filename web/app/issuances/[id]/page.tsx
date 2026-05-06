@@ -179,17 +179,17 @@ export default function CatalogDetail({ params }: PageProps) {
         {/* DIVIDER */}
         <div className="border-t border-border my-12"></div>
 
-        {/* RRE Engine details */}
+        {/* Engine details */}
         <div className="mb-6">
           <div className="text-[11px] font-semibold tracking-[2px] uppercase text-muted mb-2">
-            RRE Rating Breakdown
+            Stave grade breakdown
           </div>
           <h2 className="text-2xl font-semibold tracking-tight text-fg mb-1">
             How this catalog scored
           </h2>
           <p className="text-sm text-muted">
             Five-layer pipeline: data normalization, decay modeling, anomaly
-            detection, concentration risk, rating aggregation. Source:{" "}
+            detection, concentration risk, grade aggregation. Source:{" "}
             <code className="text-fg bg-panel px-1.5 py-0.5 rounded text-xs font-mono">
               engine/FORMULAS.md
             </code>
@@ -214,9 +214,9 @@ export default function CatalogDetail({ params }: PageProps) {
             <FactorBreakdown factors={listing.factors} />
           </div>
 
-          {/* Sidebar: rating summary, HHI, MC */}
+          {/* Sidebar: grade summary, HHI, MC */}
           <div className="space-y-4">
-            <Panel label="Rating Summary">
+            <Panel label="Grade Summary">
               <Kv
                 label="Composite score"
                 value={`${listing.composite_score.toFixed(1)} / 100`}

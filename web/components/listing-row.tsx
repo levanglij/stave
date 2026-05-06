@@ -19,7 +19,7 @@ export function ListingRowHeader() {
     >
       <div></div>
       <div>Catalog</div>
-      <div className="text-right">Rating</div>
+      <div className="text-right">Grade</div>
       <div className="text-right">Price</div>
       <div className="text-right">FMV</div>
       <div className="text-right">Annual</div>
@@ -63,7 +63,7 @@ export function ListingRow({ listing }: { listing: Listing }) {
         </div>
       </div>
 
-      {/* Rating */}
+      {/* Grade */}
       <div className="text-right">
         <span
           className="font-semibold text-[10px] tracking-wider rounded-full border px-2 py-0.5 tabular inline-block"

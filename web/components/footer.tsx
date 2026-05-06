@@ -91,8 +91,8 @@ export function Footer() {
               />
             </Link>
             <p className="text-xs text-zinc-500 leading-relaxed max-w-xs">
-              The rating layer for music royalty assets. Open methodology,
-              fractional shares, settlement on Solana.
+              Music royalties, made investable. Transparent grading, fractional
+              shares, settlement on Solana.
             </p>
           </div>
 

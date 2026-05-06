@@ -23,12 +23,12 @@ export interface Forecast {
 export type Regime = "evergreen" | "catalog" | "active_pop" | "new_release";
 export type DecayModel = "exponential" | "power_law";
 export type RatingTier =
-  | "RRE-AAA"
-  | "RRE-AA"
-  | "RRE-A"
-  | "RRE-BBB"
-  | "RRE-BB"
-  | "RRE-B";
+  | "AAA"
+  | "AA"
+  | "A"
+  | "BBB"
+  | "BB"
+  | "B";
 
 export interface Rating {
   catalog_id: string;

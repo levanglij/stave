@@ -7,10 +7,10 @@ import { ListingRow, ListingRowHeader } from "@/components/listing-row";
 export const metadata: Metadata = {
   title: "Marketplace · Stave",
   description:
-    "Eight rated, fractional music royalty catalogs. Each carries an open RRE rating and settles on Solana.",
+    "Eight graded, fractional music royalty catalogs. Each carries an open Stave grade and settles on Solana.",
 };
 
-const FILTERS = ["Rating", "Genre", "5yr ROI"];
+const FILTERS = ["Grade", "Genre", "5yr ROI"];
 
 export default function MarketplacePage() {
   const listings = getAllListings();
@@ -25,7 +25,7 @@ export default function MarketplacePage() {
               Marketplace
             </div>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-fg text-balance">
-              {listings.length} rated catalogs.{" "}
+              {listings.length} graded catalogs.{" "}
               <span className="text-accent-bright">Synthetic.</span>
             </h1>
           </div>

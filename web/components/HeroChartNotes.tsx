@@ -9,7 +9,7 @@
 //   2. Five staff lines with varied opacities (5/8/12/8/5%) for aerial perspective
 //   3. Treble clef at the left edge, larger + softly glowing — desktop only
 //   4. Faint secondary trend line in the background ("historical" decoration)
-//   5. Floating numerical annotations (RRE-AA, +12.4%, $971K) — tiny mono,
+//   5. Floating numerical annotations (Grade AA, +12.4%, $971K) — tiny mono,
 //      very dim. Easter eggs that signal data density.
 //   6. Candle wicks
 //   7. Candle bodies
@@ -158,7 +158,7 @@ function stemTop(c: ComputedCandle): number {
 const ANNOTATIONS = [
   { x: 312, y: 250, text: "+12.4%" },
   { x: 540, y: 165, text: "$971K" },
-  { x: 645, y: 155, text: "RRE-AA" },
+  { x: 645, y: 155, text: "Grade AA" },
 ];
 
 export function HeroChartNotes() {

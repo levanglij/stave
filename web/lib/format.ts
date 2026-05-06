@@ -45,10 +45,10 @@ export function hhiTag(h: number): "high" | "moderate" | "diversified" {
 // Tier color tokens — bright variants chosen for dark backgrounds.
 // Reference: CLAUDE.md "Tier colors (rebalanced for dark bg)".
 export const TIER_COLOR: Record<string, string> = {
-  "RRE-AAA": "#34D399", // emerald-400
-  "RRE-AA": "#22C55E", // green-500
-  "RRE-A": "#38BDF8", // sky-400
-  "RRE-BBB": "#FBBF24", // amber-400
-  "RRE-BB": "#FB923C", // orange-400
-  "RRE-B": "#F87171", // red-400
+  AAA: "#34D399", // emerald-400
+  AA: "#22C55E", // green-500
+  A: "#38BDF8", // sky-400
+  BBB: "#FBBF24", // amber-400
+  BB: "#FB923C", // orange-400
+  B: "#F87171", // red-400
 };

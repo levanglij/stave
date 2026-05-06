@@ -4,7 +4,7 @@ import { Building2, Network, Globe } from "lucide-react";
 export const metadata: Metadata = {
   title: "Partners · Stave",
   description:
-    "Stave's data partner is IPOA — Georgia's official music rights organization. Plus our distribution thesis: bringing rated tokenized royalties to regulated brokerage channels.",
+    "Stave's data partner is IPOA — Georgia's official music rights organization. Plus our distribution thesis: bringing graded tokenized royalties to regulated brokerage channels.",
 };
 
 export default function PartnersPage() {
@@ -62,7 +62,7 @@ export default function PartnersPage() {
               Distribution · In planning
             </div>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-fg text-balance mb-5">
-              Bringing rated royalties to regulated channels.
+              Bringing graded royalties to regulated channels.
             </h2>
             <p className="text-muted text-base md:text-lg leading-relaxed max-w-[720px]">
               Stave&rsquo;s long-term distribution thesis is simple: tokenized
@@ -93,7 +93,7 @@ export default function PartnersPage() {
               <PlanCard
                 icon={<Globe className="w-5 h-5" strokeWidth={1.75} />}
                 title="Regional expansion follows."
-                body="Once the Georgian distribution layer is operational, the same model extends naturally — Caucasus brokerages, EU-licensed wealth platforms, and any regulated venue interested in offering rated royalty exposure to its client base."
+                body="Once the Georgian distribution layer is operational, the same model extends naturally — Caucasus brokerages, EU-licensed wealth platforms, and any regulated venue interested in offering graded royalty exposure to its client base."
               />
             </div>
           </div>
@@ -107,12 +107,12 @@ export default function PartnersPage() {
               <PartnershipPoint
                 n={1}
                 title="Listing access."
-                body="The brokerage's clients can buy and sell tokenized catalog shares from within their existing brokerage UI, with Stave handling tokenization, ratings, and on-chain settlement in the background."
+                body="The brokerage's clients can buy and sell tokenized catalog shares from within their existing brokerage UI, with Stave handling tokenization, grading, and on-chain settlement in the background."
               />
               <PartnershipPoint
                 n={2}
                 title="Methodology transparency."
-                body="Every catalog comes with the full RRE rating breakdown — the same methodology that's open-sourced on GitHub. Brokerages can show clients exactly how each rating was derived."
+                body="Every catalog comes with the full Stave grade breakdown — the same methodology that's open-sourced on GitHub. Brokerages can show clients exactly how each grade was derived."
               />
               <PartnershipPoint
                 n={3}

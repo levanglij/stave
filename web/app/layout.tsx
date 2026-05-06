@@ -18,14 +18,14 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Stave — Rating infrastructure for music royalty assets",
+  title: "Stave — Music royalties, made investable",
   description:
-    "Stave is the rating-and-financing infrastructure for music royalty assets, built on Solana, partnered with the Intellectual Property Owners Association (IPOA) \u2014 Georgia\u2019s official music rights organization \u2014 for verified royalty data.",
+    "Stave transforms verified music catalogs into investable royalty assets, built on Solana, partnered with the Intellectual Property Owners Association (IPOA) — Georgia’s official music rights organization — for verified royalty data.",
   metadataBase: new URL("https://stave.app"),
   openGraph: {
-    title: "Stave — Rating infrastructure for music royalty assets",
+    title: "Stave — Music royalties, made investable",
     description:
-      "Standardized RRE ratings, fractional shares, sub-cent royalty distribution. Built on Solana.",
+      "Transparent grading, fractional shares, sub-cent royalty distribution. Built on Solana.",
     type: "website",
     siteName: "Stave",
   },

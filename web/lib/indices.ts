@@ -59,9 +59,9 @@ export const INDICES: Record<string, Index> = {
   GBC: {
     ticker: "GBC",
     name: "Georgian Blue Chip Index",
-    tagline: "Investment-grade only — RRE-BBB and above",
+    tagline: "Investment-grade only — BBB and above",
     description:
-      "Only RRE-BBB-or-better listings. Drops the speculative tranches so senior LTV stays high. Built for conservative capital.",
+      "Only BBB-or-better listings. Drops the speculative tranches so senior LTV stays high. Built for conservative capital.",
     accent: "#10b981",
     status: "draft",
     components: [
@@ -94,19 +94,19 @@ export const INDICES: Record<string, Index> = {
 // Score → tier mapping. Mirrors lib/format.ts TIER_COLOR; kept here
 // because indices need to derive a tier from a weighted composite.
 const TIER_THRESHOLDS: { tier: RatingTier; min: number; max: number }[] = [
-  { tier: "RRE-AAA", min: 90, max: 100 },
-  { tier: "RRE-AA", min: 80, max: 90 },
-  { tier: "RRE-A", min: 70, max: 80 },
-  { tier: "RRE-BBB", min: 60, max: 70 },
-  { tier: "RRE-BB", min: 50, max: 60 },
-  { tier: "RRE-B", min: 0, max: 50 },
+  { tier: "AAA", min: 90, max: 100 },
+  { tier: "AA", min: 80, max: 90 },
+  { tier: "A", min: 70, max: 80 },
+  { tier: "BBB", min: 60, max: 70 },
+  { tier: "BB", min: 50, max: 60 },
+  { tier: "B", min: 0, max: 50 },
 ];
 
 function tierForScore(score: number): RatingTier {
   for (const t of TIER_THRESHOLDS) {
     if (score >= t.min && (score < t.max || t.max === 100)) return t.tier;
   }
-  return "RRE-B";
+  return "B";
 }
 
 export interface IndexMetrics {

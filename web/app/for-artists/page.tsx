@@ -38,7 +38,7 @@ export default function ForArtistsPage() {
               href="/how-it-works"
               className="text-base text-accent-bright hover:underline font-medium inline-flex items-center gap-1"
             >
-              See how rating works <span aria-hidden>→</span>
+              See how grading works <span aria-hidden>→</span>
             </Link>
           </div>
           <div className="mt-7 text-xs text-muted font-mono tabular">
@@ -62,7 +62,7 @@ export default function ForArtistsPage() {
             <ValueCard
               icon={<LineChart className="w-5 h-5" strokeWidth={1.75} />}
               title="A real price for your catalog"
-              body="Stave rates every catalog against the same RRE scale used on the marketplace. You get a transparent, methodology-backed valuation — not a label's offer."
+              body="Stave grades every catalog against the same scale used on the marketplace. You get a transparent, methodology-backed valuation — not a label's offer."
             />
           </div>
         </section>
@@ -76,17 +76,17 @@ export default function ForArtistsPage() {
             <Step
               n={1}
               title="Apply."
-              body="Send us a link to your catalog and a sense of what you're looking for. We'll respond within a week with a rating range and a tokenization plan."
+              body="Send us a link to your catalog and a sense of what you're looking for. We'll respond within a week with a grade range and a tokenization plan."
             />
             <Step
               n={2}
-              title="Get rated."
-              body="Stave produces an RRE rating using streaming history, concentration, and forward hazard. The full methodology is open-source — you see exactly how the number is computed."
+              title="Get graded."
+              body="Stave produces a grade using streaming history, concentration, and forward hazard. The full methodology is open-source — you see exactly how the number is computed."
             />
             <Step
               n={3}
               title="List on the marketplace."
-              body="Your catalog gets fractionalized into 1,000 tokens and listed alongside other rated catalogs. Investors buy in. You receive the proceeds in USDC, on-chain."
+              body="Your catalog gets fractionalized into 1,000 tokens and listed alongside other graded catalogs. Investors buy in. You receive the proceeds in USDC, on-chain."
             />
           </ol>
         </section>
@@ -100,7 +100,7 @@ export default function ForArtistsPage() {
             Apply to tokenize
           </ApplyTrigger>
           <p className="text-xs text-muted mt-5 max-w-md mx-auto leading-relaxed">
-            We onboard a small number of catalogs per quarter to keep ratings
+            We onboard a small number of catalogs per quarter to keep grades
             rigorous. No retail self-listing yet.
           </p>
         </section>

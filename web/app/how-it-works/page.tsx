@@ -4,11 +4,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "How it works · Stave",
   description:
-    "Stave in four steps: rate, verify, buy, earn. Plus the five-layer RRE methodology.",
+    "Stave in four steps: grade, verify, buy, earn. Plus the five-layer scoring methodology.",
 };
 
 const STEPS = [
-  { n: "01", title: "We rate the catalog", body: "Quantitative RRE rating, AAA → B." },
+  { n: "01", title: "We grade the catalog", body: "Stave grade, AAA → B." },
   { n: "02", title: "IPOA verifies the data", body: "Ownership and royalties, ground truth." },
   { n: "03", title: "You buy shares on Solana", body: "Phantom or Solflare. Sub-cent fees." },
   { n: "04", title: "Royalties pay out automatically", body: "Pull-based, pro-rata, on-chain." },
@@ -19,16 +19,16 @@ const LAYERS = [
   { n: "L2", title: "Decay modeling", body: "Exponential or power-law fit." },
   { n: "L3", title: "Anomaly detection", body: "Rolling z-score on the time series." },
   { n: "L4", title: "Concentration & VaR", body: "HHI + 1k-iter Monte Carlo." },
-  { n: "L5", title: "Rating aggregation", body: "Five factors → composite → tier." },
+  { n: "L5", title: "Grade aggregation", body: "Five factors → composite → tier." },
 ];
 
 const TIERS = [
-  { tier: "RRE-AAA", range: "90–100", ltv: "80%", color: "#34D399" },
-  { tier: "RRE-AA", range: "80–90", ltv: "70%", color: "#22C55E" },
-  { tier: "RRE-A", range: "70–80", ltv: "60%", color: "#38BDF8" },
-  { tier: "RRE-BBB", range: "60–70", ltv: "50%", color: "#FBBF24" },
-  { tier: "RRE-BB", range: "50–60", ltv: "30%", color: "#FB923C" },
-  { tier: "RRE-B", range: "0–50", ltv: "0%", color: "#F87171" },
+  { tier: "AAA", range: "90–100", ltv: "80%", color: "#34D399" },
+  { tier: "AA", range: "80–90", ltv: "70%", color: "#22C55E" },
+  { tier: "A", range: "70–80", ltv: "60%", color: "#38BDF8" },
+  { tier: "BBB", range: "60–70", ltv: "50%", color: "#FBBF24" },
+  { tier: "BB", range: "50–60", ltv: "30%", color: "#FB923C" },
+  { tier: "B", range: "0–50", ltv: "0%", color: "#F87171" },
 ];
 
 export default function HowItWorksPage() {
@@ -99,10 +99,10 @@ export default function HowItWorksPage() {
           </div>
         </section>
 
-        {/* Rating ladder */}
+        {/* Grade ladder */}
         <section>
           <div className="text-[11px] font-semibold tracking-[2px] uppercase text-muted mb-3">
-            Rating ladder
+            Grade ladder
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-fg mb-5">
             Score → tier → max LTV.

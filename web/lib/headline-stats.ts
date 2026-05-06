@@ -1,15 +1,15 @@
 import type { Listing, RatingTier } from "./types";
 
 // Industry-standard catalog valuation multiples (× annual royalty),
-// scaled by RRE rating. Lower-risk catalogs trade at higher multiples
+// scaled by Stave grade. Lower-risk catalogs trade at higher multiples
 // because their cash flows are more predictable.
 const VALUATION_MULTIPLE: Record<RatingTier, number> = {
-  "RRE-AAA": 30,
-  "RRE-AA": 25,
-  "RRE-A": 20,
-  "RRE-BBB": 15,
-  "RRE-BB": 10,
-  "RRE-B": 8,
+  AAA: 30,
+  AA: 25,
+  A: 20,
+  BBB: 15,
+  BB: 10,
+  B: 8,
 };
 
 export interface HeadlineStats {

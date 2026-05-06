@@ -6,7 +6,7 @@ import { usd, pct, compactUsd, TIER_COLOR } from "@/lib/format";
 export const metadata: Metadata = {
   title: "Indices · Stave",
   description:
-    "Thematic baskets of Stave catalogs — Georgian Heritage, Modern, Blue Chip, and All-Catalog. Each index is a weighted basket; NAV, rating, and senior LTV are derived from the underlying RRE ratings.",
+    "Thematic baskets of Stave catalogs — Georgian Heritage, Modern, Blue Chip, and All-Catalog. Each index is a weighted basket; NAV, grade, and senior LTV are derived from the underlying Stave grades.",
 };
 
 export default function IndicesPage() {
@@ -27,8 +27,8 @@ export default function IndicesPage() {
             </h1>
             <p className="text-muted text-base leading-relaxed">
               Every index is a weighted basket of Stave listings. Its NAV,
-              rating, and senior LTV are derived from the underlying RRE
-              ratings — no separate underwriting, full transparency.
+              grade, and senior LTV are derived from the underlying Stave
+              grades — no separate underwriting, full transparency.
             </p>
           </div>
           <div className="text-right text-xs text-muted space-y-1">
@@ -137,7 +137,7 @@ function IndexCard({ index, metrics }: { index: Index; metrics: IndexMetrics }) 
 
       {/* CVaR floor */}
       <div className="mt-5 pt-4 border-t border-border flex items-baseline justify-between text-xs">
-        <span className="text-muted">CVaR₉₅ (60-mo floor, weighted)</span>
+        <span className="text-muted">CVaR₉₅ (24-mo floor, weighted)</span>
         <span className="font-mono tabular text-fg/90">
           {compactUsd(metrics.cvar95)}
         </span>

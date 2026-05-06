@@ -18,19 +18,19 @@ export interface SiteStats {
 }
 
 const TIER_THRESHOLDS: { tier: RatingTier; min: number }[] = [
-  { tier: "RRE-AAA", min: 90 },
-  { tier: "RRE-AA", min: 80 },
-  { tier: "RRE-A", min: 70 },
-  { tier: "RRE-BBB", min: 60 },
-  { tier: "RRE-BB", min: 50 },
-  { tier: "RRE-B", min: 0 },
+  { tier: "AAA", min: 90 },
+  { tier: "AA", min: 80 },
+  { tier: "A", min: 70 },
+  { tier: "BBB", min: 60 },
+  { tier: "BB", min: 50 },
+  { tier: "B", min: 0 },
 ];
 
 function tierForScore(score: number): RatingTier {
   for (const t of TIER_THRESHOLDS) {
     if (score >= t.min) return t.tier;
   }
-  return "RRE-B";
+  return "B";
 }
 
 function median(arr: number[]): number {
