@@ -4,6 +4,7 @@ import "./globals.css";
 import { NavHeader } from "@/components/nav-header";
 import { Footer } from "@/components/footer";
 import { WalletProviders } from "@/components/wallet-providers";
+import { DisclaimerBanner } from "@/components/disclaimer-banner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -40,6 +41,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${mono.variable}`}>
       <body className="antialiased min-h-screen flex flex-col">
         <WalletProviders>
+          <DisclaimerBanner />
           <NavHeader />
           <div className="flex-1">{children}</div>
           <Footer />

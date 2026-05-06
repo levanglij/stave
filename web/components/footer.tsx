@@ -112,8 +112,19 @@ export function Footer() {
           ))}
         </div>
 
+        {/* Hackathon disclaimer — long form */}
+        <div className="mt-12 pt-6 border-t border-zinc-900 max-w-3xl mx-auto text-center">
+          <p className="text-[11px] italic text-zinc-500 leading-relaxed">
+            Stave is a hackathon prototype built for demonstration purposes.
+            The platform, scores, and any displayed return profiles are
+            illustrative only. This is not an offer to sell securities, an
+            investment recommendation, or financial advice. No real funds
+            are managed or deployed through this interface.
+          </p>
+        </div>
+
         {/* Bottom strip */}
-        <div className="mt-12 pt-6 border-t border-zinc-900 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] text-zinc-500 text-center">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] text-zinc-500 text-center">
           <span className="font-mono tabular">© 2026 Stave</span>
           <span aria-hidden>·</span>
           <span>Devnet preview</span>
