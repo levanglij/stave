@@ -1,9 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { BadgeCheck, PieChart, Cpu } from "lucide-react";
 import { getListing } from "@/lib/ratings";
 import { getSiteStats } from "@/lib/site-stats";
 import { compactUsd, pct, TIER_COLOR } from "@/lib/format";
 import { HeroChartNotes } from "@/components/HeroChartNotes";
+import { MethodologyWaveform } from "@/components/methodology-waveform";
 import type { Listing } from "@/lib/types";
 import { getHeadlineStats } from "@/lib/headline-stats";
 
@@ -154,6 +156,30 @@ export default function Home() {
       {/* Value-cards → featured transition */}
       <div className="bg-gradient-to-b from-black via-zinc-950/40 to-black h-[1px]" />
 
+      {/* WARMTH BAND — vinyl macro humanizes the underlying asset */}
+      <section className="relative overflow-hidden">
+        <div className="relative w-full h-[280px] md:h-[360px]">
+          <Image
+            src="/images/vinyl-macro.jpg"
+            alt="Close-up of a vinyl record with blue and magenta light streaks across the grooves"
+            fill
+            sizes="(max-width: 768px) 100vw, 1200px"
+            className="object-cover"
+            quality={85}
+          />
+          {/* Soft left-to-right dark scrim so the photo lives inside the
+              dark+emerald palette and any overlaid text stays legible. */}
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(5,8,22,0.85) 0%, rgba(5,8,22,0.45) 45%, rgba(5,8,22,0.6) 100%)",
+            }}
+          />
+        </div>
+      </section>
+
       {/* FEATURED LISTINGS — three card grid, premium hover */}
       <section className="max-w-6xl mx-auto px-6 py-24 md:py-28">
         <div className="flex items-baseline justify-between mb-10">
@@ -185,6 +211,10 @@ export default function Home() {
         <div className="max-w-3xl mx-auto px-6 py-32 md:py-36">
           <div className="text-center text-[10px] font-semibold tracking-[2px] uppercase text-muted mb-8">
             Methodology
+          </div>
+          {/* Decorative emerald waveform band — bridges music + data */}
+          <div className="mb-10">
+            <MethodologyWaveform />
           </div>
           <blockquote className="border-l-2 border-emerald-900/70 pl-8">
             <p className="text-xl md:text-2xl font-light text-zinc-200 leading-relaxed text-balance">
