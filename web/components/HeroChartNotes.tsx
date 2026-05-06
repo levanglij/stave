@@ -5,16 +5,19 @@
 // it for attention.
 //
 // Layers, back to front:
-//   1. Soft emerald glow (background warmth)
-//   2. Five staff lines (faint green-tint) — also serve as gridlines
-//   3. Treble clef at the left edge — desktop only
-//   4. Candle wicks
-//   5. Candle bodies
-//   6. Note stems rising from each body top, joined by horizontal beams
+//   1. Radial emerald glow backdrop (deep wash, gives the chart a center)
+//   2. Five staff lines with varied opacities (5/8/12/8/5%) for aerial perspective
+//   3. Treble clef at the left edge, larger + softly glowing — desktop only
+//   4. Faint secondary trend line in the background ("historical" decoration)
+//   5. Floating numerical annotations (RRE-AA, +12.4%, $971K) — tiny mono,
+//      very dim. Easter eggs that signal data density.
+//   6. Candle wicks
+//   7. Candle bodies
+//   8. Note stems rising from each body top, joined by horizontal beams
 //      (groups of 2 or 3) or capped with a quarter-note flag (standalone)
-//   7. Trend line connecting the body centers, with a subtle drop-shadow
+//   9. Trend line connecting the body centers, with a stronger drop-shadow
 //      glow — reads as both chart trendline and melodic contour
-//   8. Two-line end barline at the right — desktop only
+//  10. Two-line end barline at the right — desktop only
 
 const VIEW_W = 720;
 const VIEW_H = 480;
@@ -24,11 +27,16 @@ const VIEW_H = 480;
 const CHART_TOP = 100;
 const CHART_BOT = 430;
 
-// Five staff lines, equally spaced, centered on y=240 (chart middle).
-// Tight 30px spacing so the lines read as a music staff first and a
-// gridline reference second. Candles can extend above / below the staff
-// — the same way notes use ledger lines outside the staff.
-const STAFF_LINES = [180, 210, 240, 270, 300];
+// Five staff lines with hand-tuned opacities. Outer lines are dimmer, inner
+// lines brighter — gives the staff aerial perspective so it stops reading
+// as a uniform grid.
+const STAFF_LINES: { y: number; opacity: number }[] = [
+  { y: 180, opacity: 0.05 },
+  { y: 210, opacity: 0.08 },
+  { y: 240, opacity: 0.12 },
+  { y: 270, opacity: 0.08 },
+  { y: 300, opacity: 0.05 },
+];
 
 const STAFF_X1 = 20;
 const STAFF_X2 = 690;
@@ -36,10 +44,12 @@ const STAFF_X2 = 690;
 const COLOR = {
   green: { body: "#10b981", wick: "#34d399" },
   amber: { body: "#f59e0b", wick: "#fbbf24" },
-  staff: "rgba(110, 231, 183, 0.12)",
-  clef: "rgba(110, 231, 183, 0.32)",
+  staffStroke: "rgba(110, 231, 183, 1)", // multiplied by per-line opacity
+  clef: "rgba(110, 231, 183, 0.36)",
   endbar: "rgba(110, 231, 183, 0.22)",
-  trend: "rgba(52, 211, 153, 0.75)",
+  trend: "rgba(52, 211, 153, 0.78)",
+  trendSecondary: "rgba(52, 211, 153, 0.22)",
+  annotation: "rgba(110, 231, 183, 0.42)",
 };
 
 interface CandleSpec {
@@ -141,6 +151,16 @@ function stemTop(c: ComputedCandle): number {
   return c.beam == null ? c.bodyTop - 42 : BEAM_Y[c.beam];
 }
 
+// Floating annotations — anchored to specific candles, offset to sit in
+// negative space so they decorate without colliding with the chart shapes.
+// Numbers are illustrative; chosen to feel like real instrument-level data
+// the way a Bloomberg overlay would label trades on a chart.
+const ANNOTATIONS = [
+  { x: 312, y: 250, text: "+12.4%" },
+  { x: 540, y: 165, text: "$971K" },
+  { x: 645, y: 155, text: "RRE-AA" },
+];
+
 export function HeroChartNotes() {
   return (
     <svg
@@ -151,28 +171,81 @@ export function HeroChartNotes() {
       aria-label="Stylized candlestick chart drawn as music notes on a five-line staff. The candles trend upward."
     >
       <defs>
-        <radialGradient id="hcnGlow" cx="0.65" cy="0.5" r="0.6">
-          <stop offset="0" stopColor="#10b981" stopOpacity="0.18" />
+        {/* Deeper, more focused emerald glow — gives the chart a clear
+            visual center rather than ambient haze. */}
+        <radialGradient id="hcnGlow" cx="0.7" cy="0.5" r="0.55">
+          <stop offset="0" stopColor="#10b981" stopOpacity="0.22" />
+          <stop offset="0.55" stopColor="#10b981" stopOpacity="0.06" />
           <stop offset="1" stopColor="#10b981" stopOpacity="0" />
         </radialGradient>
+        {/* Subtle filter for the trend line — strong glow without blowing
+            out the silhouette of the candles behind it. */}
+        <filter id="hcnTrendGlow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="3" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <filter id="hcnClefGlow" x="-30%" y="-10%" width="160%" height="120%">
+          <feGaussianBlur stdDeviation="2.5" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
       </defs>
 
-      {/* Layer 1 — emerald wash to lift the chart off the page bg */}
+      {/* Layer 1 — radial emerald wash */}
       <rect width={VIEW_W} height={VIEW_H} fill="url(#hcnGlow)" />
 
-      {/* Layer 2 — staff lines (also chart gridlines) */}
-      <g stroke={COLOR.staff} strokeWidth="1">
-        {STAFF_LINES.map((y) => (
-          <line key={y} x1={STAFF_X1} y1={y} x2={STAFF_X2} y2={y} />
+      {/* Layer 2 — staff lines with varied opacities (aerial perspective) */}
+      <g stroke={COLOR.staffStroke} strokeWidth="1">
+        {STAFF_LINES.map(({ y, opacity }) => (
+          <line
+            key={y}
+            x1={STAFF_X1}
+            y1={y}
+            x2={STAFF_X2}
+            y2={y}
+            opacity={opacity}
+          />
         ))}
       </g>
 
-      {/* Layer 3 — treble clef (desktop only) */}
-      <g className="hidden md:inline">
+      {/* Layer 3 — treble clef (desktop only), now with a soft glow */}
+      <g className="hidden md:inline" filter="url(#hcnClefGlow)">
         <TrebleClef />
       </g>
 
-      {/* Layer 4 — wicks */}
+      {/* Layer 4 — secondary trend line, dimmer and offset down. Reads as
+          "historical" trace; pure decoration. */}
+      <polyline
+        points={CANDLES.map((c) => `${c.x},${c.cy + 22}`).join(" ")}
+        fill="none"
+        stroke={COLOR.trendSecondary}
+        strokeWidth="1.3"
+        strokeDasharray="3 4"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
+
+      {/* Layer 5 — floating numerical annotations (very dim, tiny mono) */}
+      <g
+        className="hidden md:inline"
+        fill={COLOR.annotation}
+        fontFamily='ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace'
+        fontSize="9"
+        fontWeight="500"
+      >
+        {ANNOTATIONS.map((a) => (
+          <text key={a.text} x={a.x} y={a.y} letterSpacing="0.5">
+            {a.text}
+          </text>
+        ))}
+      </g>
+
+      {/* Layer 6 — wicks */}
       <g>
         {CANDLES.map((c) => (
           <line
@@ -189,7 +262,7 @@ export function HeroChartNotes() {
         ))}
       </g>
 
-      {/* Layer 5 — bodies */}
+      {/* Layer 7 — bodies */}
       <g>
         {CANDLES.map((c) => (
           <rect
@@ -206,7 +279,7 @@ export function HeroChartNotes() {
         ))}
       </g>
 
-      {/* Layer 6a — stems (rise from body top up to beam line / flag pivot) */}
+      {/* Layer 8a — stems */}
       <g>
         {CANDLES.map((c) => (
           <line
@@ -222,7 +295,7 @@ export function HeroChartNotes() {
         ))}
       </g>
 
-      {/* Layer 6b — beams (one rect per group, joining stem tops) */}
+      {/* Layer 8b — beams */}
       <g>
         {BEAMS.map((b) => (
           <rect
@@ -237,12 +310,10 @@ export function HeroChartNotes() {
         ))}
       </g>
 
-      {/* Layer 6c — flags (curved swoop on standalone quarter-note candles) */}
+      {/* Layer 8c — flags (standalone quarter-note candles) */}
       <g>
         {CANDLES.filter((c) => c.beam == null).map((c) => {
           const sTop = stemTop(c);
-          // Cubic-bezier flag: starts at stem top, swoops out to the right
-          // and curls down — reads as a single eighth-note flag.
           return (
             <path
               key={`flag-${c.x}`}
@@ -256,26 +327,37 @@ export function HeroChartNotes() {
         })}
       </g>
 
-      {/* Layer 7 — trend line through body centers, with glow */}
+      {/* Layer 9 — trend line through body centers, stronger glow */}
       <polyline
         points={CANDLES.map((c) => `${c.x},${c.cy}`).join(" ")}
         fill="none"
         stroke={COLOR.trend}
-        strokeWidth="2"
+        strokeWidth="2.2"
         strokeLinejoin="round"
         strokeLinecap="round"
-        style={{ filter: "drop-shadow(0 0 8px rgba(16, 185, 129, 0.45))" }}
+        filter="url(#hcnTrendGlow)"
+        style={{ filter: "drop-shadow(0 0 16px rgba(16, 185, 129, 0.5))" }}
       />
 
-      {/* Layer 8 — end barline (desktop only) */}
+      {/* Layer 10 — end barline (desktop only) */}
       <g
         className="hidden md:inline"
         stroke={COLOR.endbar}
         strokeWidth="1.5"
         strokeLinecap="square"
       >
-        <line x1={STAFF_X2 - 4} y1={STAFF_LINES[0]} x2={STAFF_X2 - 4} y2={STAFF_LINES[STAFF_LINES.length - 1]} />
-        <line x1={STAFF_X2 - 1} y1={STAFF_LINES[0]} x2={STAFF_X2 - 1} y2={STAFF_LINES[STAFF_LINES.length - 1]} />
+        <line
+          x1={STAFF_X2 - 4}
+          y1={STAFF_LINES[0].y}
+          x2={STAFF_X2 - 4}
+          y2={STAFF_LINES[STAFF_LINES.length - 1].y}
+        />
+        <line
+          x1={STAFF_X2 - 1}
+          y1={STAFF_LINES[0].y}
+          x2={STAFF_X2 - 1}
+          y2={STAFF_LINES[STAFF_LINES.length - 1].y}
+        />
       </g>
     </svg>
   );
@@ -284,15 +366,15 @@ export function HeroChartNotes() {
 /**
  * Stylized treble clef. Hand-authored vector — not musicologically exact,
  * but the silhouette (top loop, descending spine, bottom curl, terminal
- * dot) reads as a G clef in context. Sized so the glyph just clears the
- * top and bottom staff lines.
+ * dot) reads as a G clef in context. Slightly bolder strokes than the v1
+ * so it holds its own beside the candle-notes.
  */
 function TrebleClef() {
   return (
     <g
       transform="translate(20, 156)"
       stroke={COLOR.clef}
-      strokeWidth="2.6"
+      strokeWidth="3"
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -316,7 +398,7 @@ function TrebleClef() {
            C 40 168 26 174 26 184"
       />
       {/* Terminal dot */}
-      <circle cx="50" cy="208" r="3.4" fill={COLOR.clef} stroke="none" />
+      <circle cx="50" cy="208" r="3.6" fill={COLOR.clef} stroke="none" />
     </g>
   );
 }

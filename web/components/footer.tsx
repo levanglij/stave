@@ -72,9 +72,9 @@ const COLS: { heading: string; items: LinkItem[] }[] = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border mt-24">
-      <div className="max-w-6xl mx-auto px-6 py-12 md:py-14">
-        <div className="grid gap-10 md:gap-8 grid-cols-2 md:grid-cols-[1.4fr_repeat(4,1fr)]">
+    <footer className="border-t border-zinc-900 mt-24 pt-20">
+      <div className="max-w-6xl mx-auto px-6 pb-14">
+        <div className="grid gap-10 md:gap-10 grid-cols-2 md:grid-cols-[1.4fr_repeat(4,1fr)]">
           {/* Brand block */}
           <div className="col-span-2 md:col-span-1">
             <Link
@@ -90,7 +90,7 @@ export function Footer() {
                 className="h-9 w-auto"
               />
             </Link>
-            <p className="text-xs text-muted leading-relaxed max-w-xs">
+            <p className="text-xs text-zinc-500 leading-relaxed max-w-xs">
               The rating layer for music royalty assets. Open methodology,
               fractional shares, settlement on Solana.
             </p>
@@ -98,10 +98,10 @@ export function Footer() {
 
           {COLS.map((col) => (
             <div key={col.heading}>
-              <div className="text-[10px] font-semibold tracking-[1.5px] uppercase text-muted mb-3">
+              <div className="text-xs font-medium uppercase tracking-widest text-zinc-500 mb-4">
                 {col.heading}
               </div>
-              <ul className="space-y-2">
+              <ul className="space-y-2.5">
                 {col.items.map((item) => (
                   <li key={item.label}>
                     <FooterLink item={item} />
@@ -113,18 +113,17 @@ export function Footer() {
         </div>
 
         {/* Bottom strip */}
-        <div className="mt-12 pt-6 border-t border-border flex flex-wrap items-center justify-between gap-3 text-[11px] text-muted">
+        <div className="mt-12 pt-6 border-t border-zinc-900 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] text-zinc-500 text-center">
           <span className="font-mono tabular">© 2026 Stave</span>
-          <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
-            <span>Devnet preview</span>
-            <span aria-hidden>·</span>
-            <span>
-              Data via{" "}
-              <span className="text-fg/80">
-                Intellectual Property Owners Association (IPOA)
-              </span>
+          <span aria-hidden>·</span>
+          <span>Devnet preview</span>
+          <span aria-hidden>·</span>
+          <span>
+            Data via{" "}
+            <span className="text-zinc-300">
+              Intellectual Property Owners Association (IPOA)
             </span>
-          </div>
+          </span>
         </div>
       </div>
     </footer>
@@ -132,7 +131,7 @@ export function Footer() {
 }
 
 function FooterLink({ item }: { item: LinkItem }) {
-  const cls = "text-sm text-muted hover:text-fg transition-colors";
+  const cls = "text-sm text-zinc-400 hover:text-zinc-100 transition-colors";
   if (item.external) {
     return (
       <a
