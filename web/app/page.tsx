@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { BadgeCheck, PieChart, Cpu } from "lucide-react";
+import { BadgeCheck, PieChart, Cpu, CheckCircle2, BookOpen } from "lucide-react";
 import { getListing } from "@/lib/ratings";
 import { getSiteStats } from "@/lib/site-stats";
 import { compactUsd, pct, TIER_COLOR } from "@/lib/format";
@@ -10,6 +10,17 @@ import type { Listing } from "@/lib/types";
 import { getHeadlineStats } from "@/lib/headline-stats";
 
 const FEATURED_IDS = ["evergreen-001", "balanced-001", "new-release-001"];
+
+// Grade ladder for the methodology section. Single accent color
+// (emerald-400), opacity descending AAA → B. No traffic-light palette.
+const GRADE_LADDER: { tier: string; opacity: number }[] = [
+  { tier: "AAA", opacity: 1.0 },
+  { tier: "AA", opacity: 0.86 },
+  { tier: "A", opacity: 0.72 },
+  { tier: "BBB", opacity: 0.58 },
+  { tier: "BB", opacity: 0.46 },
+  { tier: "B", opacity: 0.36 },
+];
 
 export default function Home() {
   const stats = getSiteStats();
@@ -57,9 +68,59 @@ export default function Home() {
                   </span>
                 </Link>
               </div>
-              <div className="mt-8 text-xs text-muted font-mono tabular tracking-wide">
-                Devnet preview · Data via Intellectual Property Owners
-                Association (IPOA)
+
+              {/* Credibility row — IPOA partner + open-methodology pill.
+                  Sit side-by-side on desktop so the hero stack feels
+                  tight; stack on mobile. Same outlined-pill family. */}
+              <div className="mt-7 flex flex-col md:flex-row md:flex-wrap items-stretch md:items-center gap-3">
+                <a
+                  href="https://ipoa.ge"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-3 rounded-lg border border-zinc-800 hover:border-zinc-700 transition-colors px-3.5 py-2.5 max-w-fit"
+                >
+                  {/* TODO(stave): replace with IPOA logo asset when received */}
+                  <span className="inline-flex items-center justify-center text-[10px] font-bold tracking-[1px] tabular border border-zinc-700 rounded px-2 py-1 text-zinc-300">
+                    IPOA
+                  </span>
+                  <span className="flex flex-col leading-tight">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-200">
+                      Catalog data partner
+                      <CheckCircle2
+                        className="w-3 h-3 text-accent-bright"
+                        strokeWidth={2.5}
+                      />
+                    </span>
+                    <span className="text-[11px] text-zinc-500 mt-0.5">
+                      Intellectual Property Owners Association — Georgia&rsquo;s
+                      official music rights organization
+                    </span>
+                  </span>
+                </a>
+
+                <a
+                  href="https://github.com/levanglij/stave/blob/main/engine/FORMULAS.md"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2.5 rounded-lg border border-zinc-800 hover:border-zinc-700 transition-colors px-3.5 py-2 max-w-fit"
+                >
+                  <BookOpen
+                    className="w-3.5 h-3.5 text-zinc-300 shrink-0"
+                    strokeWidth={1.75}
+                  />
+                  <span className="text-xs">
+                    <span className="font-semibold text-zinc-200">
+                      100% open methodology
+                    </span>
+                    <span className="text-zinc-500">
+                      {" · "}formulas, code, and architecture public
+                    </span>
+                  </span>
+                </a>
+              </div>
+
+              <div className="mt-5 text-xs text-muted font-mono tabular tracking-wide">
+                Devnet preview
               </div>
             </div>
 
@@ -84,27 +145,19 @@ export default function Home() {
             <StatTile
               value={String(stats.catalogCount)}
               label="catalogs scored"
-              footnote={`across ${stats.tierCount} risk tiers`}
-              spark={[1, 2, 2, 3, 3, 4, 5]}
             />
             <StatTile
               value={compactUsd(stats.totalFmv)}
               label="total tokenized FMV"
-              footnote="sum of listing FMVs"
-              spark={[1, 1.4, 2.1, 2.6, 3.4, 4.5, 5]}
             />
             <StatTile
               value={stats.averageRating}
               label="average composite grade"
-              footnote="weighted by FMV"
               valueColor={tierColor}
-              spark={[3, 3.2, 3, 3.4, 3.8, 4, 4.2]}
             />
             <StatTile
               value={pct(stats.medianRoi5yr, 1)}
-              label="median 5yr ROI base case"
-              footnote={`range ${pct(stats.minRoi5yr, 1)} – ${pct(stats.maxRoi5yr, 1)}`}
-              spark={[2, 3, 2.4, 4, 3.2, 4.8, 4]}
+              label="median 5yr ROI"
             />
           </div>
           <p className="mt-10 text-[11px] italic text-muted/80 text-center">
@@ -113,7 +166,69 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats → value-cards transition */}
+      {/* Stats → how-it-works transition */}
+      <div className="bg-gradient-to-b from-black via-zinc-950/40 to-black h-[1px]" />
+
+      {/* WARMTH BAND #1 — studio console. Sets a "music as craft"
+          mood before the explanatory how-it-works section. */}
+      <section className="relative overflow-hidden">
+        <div className="relative w-full h-[260px] md:h-[340px]">
+          <Image
+            src="/images/studio-console.jpg"
+            alt="Music studio mixing console with electric guitars on the wall, lit by warm tungsten light"
+            fill
+            sizes="(max-width: 768px) 100vw, 1200px"
+            className="object-cover"
+            quality={85}
+          />
+          {/* Dark scrim — neutralizes the image's warm tones so it sits
+              inside the dark+emerald palette without competing. */}
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(5,8,22,0.78) 0%, rgba(5,8,22,0.45) 50%, rgba(5,8,22,0.65) 100%)",
+            }}
+          />
+        </div>
+      </section>
+
+      {/* HOW IT WORKS — 3-step linear flow, the IA gap before the value props */}
+      <section className="max-w-6xl mx-auto px-6 py-28 md:py-32">
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <div
+            className="text-[11px] font-semibold tracking-[2px] uppercase mb-4"
+            style={{ color: "#fbbf24" }}
+          >
+            How it works
+          </div>
+          <h2 className="text-4xl md:text-5xl font-light text-fg tracking-[-0.02em] text-balance">
+            From catalog to{" "}
+            <span className="text-accent-bright">on-chain payouts.</span>
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          <Step
+            n="01"
+            title="We grade the catalog"
+            body="Each music catalog is scored by our open-source rating engine using streaming history, revenue concentration, and tail-risk metrics. The output is a single grade from AA to B."
+          />
+          <Step
+            n="02"
+            title="You buy a fractional share"
+            body="Every catalog is split into 1,000 fungible SPL tokens on Solana. Buy a 0.1% slice or the whole thing — no minimum check size beyond one token."
+          />
+          <Step
+            n="03"
+            title="Royalties settle on-chain"
+            body="As the catalog earns from streaming, radio, and sync, distributions are paid programmatically to token holders. Every payout is traceable on-chain."
+          />
+        </div>
+      </section>
+
+      {/* How-it-works → value-cards transition */}
       <div className="bg-gradient-to-b from-black via-zinc-950/40 to-black h-[1px]" />
 
       {/* VALUE PROPS — three properties, one thesis */}
@@ -134,20 +249,20 @@ export default function Home() {
         <div className="grid md:grid-cols-3 gap-6">
           <ValueCard
             icon={<BadgeCheck className="w-5 h-5" strokeWidth={1.75} />}
-            title="Scored"
-            body="Every catalog gets graded from AA to B. The grade reflects streaming-decline risk, revenue concentration (HHI), and 24-month tail-risk (CVaR) — all three open-source so anyone can audit the math."
+            title="Risk-graded catalogs"
+            body="Every catalog gets a transparent grade from AA to B, derived from streaming hazard, revenue concentration (HHI), and 24-month tail-risk (CVaR). The full methodology is open-source on GitHub."
             href="/how-it-works"
           />
           <ValueCard
             icon={<PieChart className="w-5 h-5" strokeWidth={1.75} />}
-            title="Fractional"
-            body="Listings are split into 1,000 fungible SPL tokens. Buy a 0.1% slice or the whole catalog. No minimum check size beyond one token."
+            title="Own as little as 0.1%"
+            body="Each listing is split into 1,000 fungible SPL tokens. Buy one token or the whole catalog — there's no minimum check size beyond a single share."
             href="/marketplace"
           />
           <ValueCard
             icon={<Cpu className="w-5 h-5" strokeWidth={1.75} />}
-            title="On Solana"
-            body="Settlement is on Solana mainnet (devnet today). Royalty distributions are programmatic, on-chain, and traceable per token."
+            title="Programmatic royalty payouts"
+            body="Settlement runs on Solana. As the catalog earns, distributions are paid on-chain to every token holder, with full traceability per token."
             href="/how-it-works"
           />
         </div>
@@ -155,6 +270,52 @@ export default function Home() {
 
       {/* Value-cards → featured transition */}
       <div className="bg-gradient-to-b from-black via-zinc-950/40 to-black h-[1px]" />
+
+      {/* HACKATHON-HONEST CALLOUT — what's real, what's simulated. Sits
+          above the featured-listings section so users see the line before
+          they browse the synthetic catalogs. Same outlined-card pattern
+          as the IPOA + open-methodology pills in the hero. */}
+      <section className="max-w-3xl mx-auto px-6 pt-16 pb-4">
+        <div className="rounded-xl border border-zinc-800 bg-gradient-to-b from-zinc-900/50 to-zinc-950/50 p-7">
+          <div className="mb-5">
+            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-muted mb-2">
+              Hackathon-honest
+            </div>
+            <h3 className="text-lg font-semibold text-fg tracking-tight">
+              What&rsquo;s real, what&rsquo;s simulated
+            </h3>
+          </div>
+          <p className="text-sm text-zinc-400 leading-relaxed mb-6">
+            Risk engine, on-chain program, royalty math:{" "}
+            <span className="text-emerald-400 font-medium">real</span>.
+            Catalog data:{" "}
+            <span className="text-zinc-300">synthetic</span> for the
+            prototype. We don&rsquo;t hide the line.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_2fr] gap-x-5 gap-y-2.5 text-xs">
+            <RealRow
+              label="Risk engine"
+              state="real"
+              detail="Python, 31 passing tests, deterministic"
+            />
+            <RealRow
+              label="On-chain Anchor program"
+              state="real"
+              detail="15/15 tests pass, deployed to Solana devnet"
+            />
+            <RealRow
+              label="Royalty distribution math"
+              state="real"
+              detail="Pull-based USDC, multi-deposit verified"
+            />
+            <RealRow
+              label="Catalog data"
+              state="synthetic"
+              detail="8 Georgian catalogs, schema documented"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* WARMTH BAND — vinyl macro humanizes the underlying asset */}
       <section className="relative overflow-hidden">
@@ -206,34 +367,116 @@ export default function Home() {
         </div>
       </section>
 
-      {/* METHODOLOGY TEASER — editorial blockquote */}
+      {/* METHODOLOGY TEASER — editorial blockquote with sheet-music side image */}
       <section className="bg-gradient-to-b from-black via-zinc-950/30 to-black">
-        <div className="max-w-3xl mx-auto px-6 py-32 md:py-36">
-          <div className="text-center text-[10px] font-semibold tracking-[2px] uppercase text-muted mb-8">
-            Methodology
+        <div className="max-w-5xl mx-auto px-6 py-32 md:py-36">
+          {/* Section anchor — larger version of the hero open-methodology
+              badge. Sets the tone for the methodology block before the
+              eyebrow. Same outlined pill family as the IPOA element. */}
+          <div className="text-center mb-12">
+            <a
+              href="https://github.com/levanglij/stave/blob/main/engine/FORMULAS.md"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-3 rounded-lg border border-zinc-800 hover:border-zinc-700 transition-colors px-5 py-3"
+            >
+              <BookOpen
+                className="w-4 h-4 text-zinc-300 shrink-0"
+                strokeWidth={1.75}
+              />
+              <span className="text-sm">
+                <span className="font-semibold text-zinc-200">
+                  100% open methodology
+                </span>
+                <span className="text-zinc-500">
+                  {" · "}formulas, code, and architecture public
+                </span>
+              </span>
+            </a>
           </div>
-          {/* Decorative emerald waveform band — bridges music + data */}
-          <div className="mb-10">
-            <MethodologyWaveform />
-          </div>
-          <blockquote className="border-l-2 border-emerald-900/70 pl-8">
-            <p className="text-xl md:text-2xl font-light text-zinc-200 leading-relaxed text-balance">
-              Stave&rsquo;s scoring model is open. Stave grades combine
-              streaming hazard rates, catalog concentration (HHI), and
-              24-month conditional value-at-risk into a single letter grade.
-              The full formulae, code, and architecture are public.
-            </p>
-          </blockquote>
-          <div className="mt-9 flex flex-wrap gap-2 pl-8">
-            <ChipLink href="https://github.com/levanglij/stave/blob/main/engine/FORMULAS.md">
-              Formulae →
-            </ChipLink>
-            <ChipLink href="https://github.com/levanglij/stave/blob/main/docs/02-architecture.md">
-              Architecture →
-            </ChipLink>
-            <ChipLink href="https://github.com/levanglij/stave/blob/main/SUBMISSION.md">
-              Submission →
-            </ChipLink>
+
+          {/* Two-column on desktop: copy block on left, sheet-music side
+              image on right. Stacks on mobile. */}
+          <div className="grid md:grid-cols-[1fr_300px] gap-10 md:gap-14 items-center">
+            <div>
+              <div className="text-[10px] font-semibold tracking-[2px] uppercase text-muted mb-8">
+                Methodology
+              </div>
+              {/* Decorative emerald waveform band — bridges music + data */}
+              <div className="mb-10">
+                <MethodologyWaveform />
+              </div>
+              <blockquote className="border-l-2 border-emerald-900/70 pl-8">
+                <p className="text-xl md:text-2xl font-light text-zinc-200 leading-relaxed text-balance">
+                  Stave&rsquo;s scoring model is open. Stave grades combine
+                  streaming hazard rates, catalog concentration (HHI), and
+                  24-month conditional value-at-risk into a single letter
+                  grade. The full formulae, code, and architecture are
+                  public.
+                </p>
+              </blockquote>
+              <div className="mt-9 flex flex-wrap gap-2 pl-8">
+                <ChipLink href="https://github.com/levanglij/stave/blob/main/engine/FORMULAS.md">
+                  Formulae →
+                </ChipLink>
+                <ChipLink href="https://github.com/levanglij/stave/blob/main/docs/02-architecture.md">
+                  Architecture →
+                </ChipLink>
+                <ChipLink href="https://github.com/levanglij/stave/blob/main/SUBMISSION.md">
+                  Submission →
+                </ChipLink>
+              </div>
+
+              {/* Grade ladder — single accent (emerald), opacity descending
+                  AAA → B. Reads as a credibility ladder, not a heat map. */}
+              <div className="mt-10 pl-8">
+                <div className="text-[10px] font-semibold tracking-[2px] uppercase text-muted mb-3">
+                  Grade ladder
+                </div>
+                <div className="flex flex-wrap items-center gap-1.5">
+                  {GRADE_LADDER.map(({ tier, opacity }) => (
+                    <span
+                      key={tier}
+                      className="text-[11px] font-semibold tracking-wider rounded-full border px-2.5 py-1 tabular"
+                      style={{
+                        color: `rgba(52, 211, 153, ${opacity})`,
+                        borderColor: `rgba(52, 211, 153, ${opacity * 0.55})`,
+                      }}
+                    >
+                      {tier}
+                    </span>
+                  ))}
+                  <span className="ml-2 text-[10px] text-zinc-500">
+                    ←  best to most volatile  →
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Sheet-music macro — quiet editorial visual that ties the
+                brand name (Stave = staff lines) to the scoring story.
+                Square, bordered, slight desaturation via mix-blend so the
+                paper warmth doesn't fight the dark+emerald palette. */}
+            <div className="aspect-square w-full max-w-[300px] mx-auto md:mx-0 rounded-xl overflow-hidden border border-zinc-800/60 relative">
+              <Image
+                src="/images/sheet-music.jpg"
+                alt="Close-up of a piano music score with handwritten annotations on the staff"
+                fill
+                sizes="(max-width: 768px) 100vw, 300px"
+                className="object-cover"
+                style={{ filter: "saturate(0.4) contrast(0.95)" }}
+                quality={85}
+                loading="lazy"
+              />
+              {/* Subtle inset to bed the image into the card */}
+              <div
+                aria-hidden
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  boxShadow: "inset 0 0 60px rgba(5,8,22,0.55)",
+                }}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -275,20 +518,16 @@ export default function Home() {
 function StatTile({
   value,
   label,
-  footnote,
   valueColor,
-  spark,
 }: {
   value: string;
   label: string;
-  footnote: string;
   valueColor?: string;
-  spark: number[];
 }) {
   return (
     <div className="px-6 py-6 first:pl-0 last:pr-0 md:px-8">
       <div
-        className="text-5xl md:text-6xl font-light tabular tracking-[-0.02em] leading-none"
+        className="text-6xl md:text-7xl font-light tabular tracking-[-0.02em] leading-none"
         style={{
           color: valueColor ?? "var(--color-fg)",
           fontFeatureSettings: '"tnum"',
@@ -296,51 +535,38 @@ function StatTile({
       >
         {value}
       </div>
-      <div className="text-xs text-muted mt-4 font-medium tracking-wide">
+      <div className="text-[11px] text-muted mt-5 font-medium uppercase tracking-[1.5px]">
         {label}
-      </div>
-      <div className="mt-2 flex items-end justify-between gap-3">
-        <div className="text-[11px] text-muted/60 font-mono tabular">
-          {footnote}
-        </div>
-        <MiniSparkline shape={spark} />
       </div>
     </div>
   );
 }
 
-// Tiny inline sparkline — pure SVG, no library. Shape is a normalized
-// y-series that we map to a 40×12 box.
-function MiniSparkline({ shape }: { shape: number[] }) {
-  const W = 44;
-  const H = 14;
-  const max = Math.max(...shape);
-  const min = Math.min(...shape);
-  const span = max - min || 1;
-  const points = shape
-    .map((v, i) => {
-      const x = (i / (shape.length - 1)) * W;
-      const y = H - ((v - min) / span) * H;
-      return `${x.toFixed(1)},${y.toFixed(1)}`;
-    })
-    .join(" ");
+// Single row in the "What's real, what's simulated" callout. 3-column
+// on desktop (label | state chip | detail), single-column on mobile.
+function RealRow({
+  label,
+  state,
+  detail,
+}: {
+  label: string;
+  state: "real" | "synthetic";
+  detail: string;
+}) {
   return (
-    <svg
-      width={W}
-      height={H}
-      viewBox={`0 0 ${W} ${H}`}
-      className="opacity-60 shrink-0"
-      aria-hidden
-    >
-      <polyline
-        points={points}
-        fill="none"
-        stroke="#34d399"
-        strokeWidth="1.2"
-        strokeLinejoin="round"
-        strokeLinecap="round"
-      />
-    </svg>
+    <>
+      <div className="text-zinc-400 sm:text-right pr-1">{label}</div>
+      <div
+        className={
+          state === "real"
+            ? "text-emerald-400 font-semibold"
+            : "text-zinc-400 font-medium"
+        }
+      >
+        {state === "real" ? "Real" : "Synthetic"}
+      </div>
+      <div className="text-zinc-500">{detail}</div>
+    </>
   );
 }
 
@@ -377,6 +603,31 @@ function ValueCard({
         </span>
       </div>
     </Link>
+  );
+}
+
+// Numbered step block for the "How it works" section. Same gradient panel
+// chrome as ValueCard so the page rhythm stays consistent, but no hover
+// state and no link — these are explanatory, not navigational.
+function Step({
+  n,
+  title,
+  body,
+}: {
+  n: string;
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="rounded-xl border border-zinc-800/50 bg-gradient-to-b from-zinc-900/80 to-zinc-950/80 p-10">
+      <div className="w-12 h-12 rounded-full bg-emerald-950/40 border border-emerald-900/30 text-emerald-400 flex items-center justify-center mb-6 text-base font-bold tabular">
+        {n}
+      </div>
+      <div className="text-xl font-medium tracking-tight text-fg mb-3">
+        {title}
+      </div>
+      <p className="text-sm text-zinc-400 leading-relaxed">{body}</p>
+    </div>
   );
 }
 
