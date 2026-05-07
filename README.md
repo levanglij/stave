@@ -11,6 +11,8 @@
 
 <sub>Solana Frontier Hackathon 2026
 
+[![CI](https://github.com/levanglij/stave/actions/workflows/ci.yml/badge.svg)](https://github.com/levanglij/stave/actions/workflows/ci.yml)
+
 </div>
 
 ---
