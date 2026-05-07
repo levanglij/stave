@@ -1,0 +1,28 @@
+{
+  "catalog": "evergreen-001 (Suliko)",
+  "creator": "5YRgcw4XS3ieM2x3TRqwv7D4omDT72wWW7F8g9zb7Loc",
+  "workId": "1",
+  "totalShares": "1000",
+  "sharesListed": "500",
+  "pricePerShare_USDC_micros": "500000",
+  "paymentMint": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+  "addresses": {
+    "ipWork": "32B19bfwgLoxxLDyXnkSZQhsJ9Vhh4ugWFetmkwBmGo6",
+    "shareMint": "DjyHadooHqwVfXVwUaf8KWVmn8DS21LHUqR5bsddC9at",
+    "creatorShareAta": "3jSQ82hh2AAcbsMPQnwQVHBGQWi1ersrYDEyS63TVeik",
+    "listing": "EJTxUg98b4LnSuUCKpWjSFyed4Cm3GPcmjgX4m9jRfHa",
+    "listingVault": "S9krDv4VNJt6CiTtEXz6u5b5eTGd79p8YUW31LwdkP8"
+  },
+  "transactions": {
+    "createWork": "24aATvsPhsuctY5vN22XRL8CpckfnD8fLcQmaCmrJV5PbnWWggrojHdybB7JS71RWLMPmkN3DuoAmPVzBcRG9Xbo",
+    "listShares": "5mGeuaHoUSi35ArqoeEiFb7xqZVQci6yKppUuL9X3yKyVsdrduEesFKYN3efuex38UnHM9PG6ohUaJVjHDf4sK8b"
+  },
+  "explorer": {
+    "ipWork": "https://explorer.solana.com/address/32B19bfwgLoxxLDyXnkSZQhsJ9Vhh4ugWFetmkwBmGo6?cluster=devnet",
+    "shareMint": "https://explorer.solana.com/address/DjyHadooHqwVfXVwUaf8KWVmn8DS21LHUqR5bsddC9at?cluster=devnet",
+    "listing": "https://explorer.solana.com/address/EJTxUg98b4LnSuUCKpWjSFyed4Cm3GPcmjgX4m9jRfHa?cluster=devnet",
+    "createWorkTx": "https://explorer.solana.com/tx/24aATvsPhsuctY5vN22XRL8CpckfnD8fLcQmaCmrJV5PbnWWggrojHdybB7JS71RWLMPmkN3DuoAmPVzBcRG9Xbo?cluster=devnet",
+    "listSharesTx": "https://explorer.solana.com/tx/5mGeuaHoUSi35ArqoeEiFb7xqZVQci6yKppUuL9X3yKyVsdrduEesFKYN3efuex38UnHM9PG6ohUaJVjHDf4sK8b?cluster=devnet"
+  },
+  "bootstrappedAt": "2026-05-07T08:23:39.032Z"
+}

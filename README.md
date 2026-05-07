@@ -44,6 +44,22 @@ Judges respect honesty. Here's the line:
 | Mainnet / audit           | Not in scope   | Devnet prototype; "not production" stated explicitly.                 |
 | KYC / accreditation       | Stubbed        | Privy auth + simulated accreditation checkbox.                        |
 
+## What's running on devnet right now
+
+Don't take our word for it — every claim below resolves on Solana
+Explorer:
+
+| What | Address / TX | Click |
+|---|---|---|
+| **Stave program** | `EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q` | [Open in Explorer](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet) |
+| **First on-chain work** *(Suliko / `evergreen-001`)* | IpWork PDA `32B19bfwgLoxxLDyXnkSZQhsJ9Vhh4ugWFetmkwBmGo6` | [Open](https://explorer.solana.com/address/32B19bfwgLoxxLDyXnkSZQhsJ9Vhh4ugWFetmkwBmGo6?cluster=devnet) |
+| **Share mint** *(Token-2022, 1,000 supply, 0 decimals)* | `DjyHadooHqwVfXVwUaf8KWVmn8DS21LHUqR5bsddC9at` | [Open](https://explorer.solana.com/address/DjyHadooHqwVfXVwUaf8KWVmn8DS21LHUqR5bsddC9at?cluster=devnet) |
+| **First on-chain listing** *(500 shares at 0.5 USDC each)* | Listing PDA `EJTxUg98b4LnSuUCKpWjSFyed4Cm3GPcmjgX4m9jRfHa` | [Open](https://explorer.solana.com/address/EJTxUg98b4LnSuUCKpWjSFyed4Cm3GPcmjgX4m9jRfHa?cluster=devnet) |
+| **`create_work` transaction** | `24aATvsP...G9Xbo` | [Open TX](https://explorer.solana.com/tx/24aATvsPhsuctY5vN22XRL8CpckfnD8fLcQmaCmrJV5PbnWWggrojHdybB7JS71RWLMPmkN3DuoAmPVzBcRG9Xbo?cluster=devnet) |
+| **`list_shares` transaction** | `5mGeuaHo...4sK8b` | [Open TX](https://explorer.solana.com/tx/5mGeuaHoUSi35ArqoeEiFb7xqZVQci6yKppUuL9X3yKyVsdrduEesFKYN3efuex38UnHM9PG6ohUaJVjHDf4sK8b?cluster=devnet) |
+
+The bootstrap script that produced these is at [`program/scripts/bootstrap-suliko.ts`](./program/scripts/bootstrap-suliko.ts); the JSON manifest of all addresses is at [`program/bootstrap-output.json`](./program/bootstrap-output.json).
+
 ## Quick links
 
 - 🔗 **Live demo:** [stave-five.vercel.app](https://stave-five.vercel.app) — Vercel-hosted, auto-deploys on every push to `main`
