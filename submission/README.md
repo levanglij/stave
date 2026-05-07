@@ -33,12 +33,19 @@ through engine, Anchor program, and frontend.
 ## Quick reads
 
 - [README](../README.md) — repo home, "What's real vs. what's simulated"
-  table, Why-Solana economics, code-quality checklist
+  table, Why-Solana economics, code-quality checklist, "What's running
+  on devnet right now" with clickable Explorer links
 - [SUBMISSION.md](../SUBMISSION.md) — submission narrative
 - [engine/FORMULAS.md](../engine/FORMULAS.md) — open methodology
 - [docs/02-architecture.md](../docs/02-architecture.md) — full platform vision
 - [docs/10-legal-roadmap.md](../docs/10-legal-roadmap.md) — three-pillar
   legal/regulatory roadmap, primary-source cited
+- [docs/12-roadmap.md](../docs/12-roadmap.md) — public product roadmap
+  through 2028+
+- [docs/13-case-study-suliko.md](../docs/13-case-study-suliko.md) —
+  end-to-end worked example using the catalog live on devnet
+- [docs/14-vs-competitors.md](../docs/14-vs-competitors.md) — Stave vs.
+  Bolero / SongVest / ANote
 
 ## Honest framing
 

@@ -72,6 +72,9 @@ The bootstrap script that produced these is at [`program/scripts/bootstrap-sulik
 - 🏛 **Platform vision:** [docs/02-architecture.md](./docs/02-architecture.md) (RRE/SRFP v2.0)
 - 🗺 **Engine roadmap:** [docs/08-engine-roadmap.md](./docs/08-engine-roadmap.md)
 - ⚖️ **Legal roadmap:** [docs/10-legal-roadmap.md](./docs/10-legal-roadmap.md) — three-pillar regulatory + corporate-legal roadmap (CMO partnership, brokerage / VASP licensing path, custody architecture). Primary-source cited.
+- 🛣️ **Product roadmap:** [docs/12-roadmap.md](./docs/12-roadmap.md) — what ships in Q3 / Q4 / 2027 / 2028+
+- 🎼 **Suliko case study:** [docs/13-case-study-suliko.md](./docs/13-case-study-suliko.md) — end-to-end walkthrough of the one catalog that's live on devnet right now
+- 🥇 **Vs. competitors:** [docs/14-vs-competitors.md](./docs/14-vs-competitors.md) — Bolero / SongVest / ANote and where Stave's moat sits
 - 📨 **Submission narrative:** [SUBMISSION.md](./SUBMISSION.md)
 
 ## Run it yourself
