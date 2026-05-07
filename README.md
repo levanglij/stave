@@ -15,6 +15,9 @@
 
 ---
 
+> **New here?** Read [QUICKSTART.md](./QUICKSTART.md) for a 5-minute
+> fresh-laptop walk-through of all three layers (engine, program, frontend).
+
 ## The wedge
 
 Music royalties are a **$30B/yr asset class**. They're recurring, contractually defined, and growing at >9% CAGR. They look exactly like the kind of cash flow institutional capital wants except there's no Moody's, no Bloomberg, no MSCI. Catalogs trade at arbitrary 10x–30x multiples. Pension funds and family offices either overpay, underpay, or stay out. Capital is misallocated by billions.
@@ -32,7 +35,7 @@ Judges respect honesty. Here's the line:
 | Risk engine (5 layers)    | **Real**       | Python, 31 passing tests, deterministic math; outputs JSON ratings.   |
 | Catalog data              | **Synthetic**  | 8 Georgian catalogs spanning RRE-AA to RRE-B; schema-documented.      |
 | PRO data integration      | Not built      | Roadmap: first PRO connector inside 90 days post-hackathon.           |
-| On-chain Anchor program   | **Real (locally tested, devnet deploy queued)** | All 5 MVP instructions: `create_work`, `list_shares`, `buy_shares`, `deposit_royalty`, `claim_royalty`. 15/15 tests passing on a local validator; awaiting funded keypair for `anchor deploy`. |
+| On-chain Anchor program   | **Real (deployed to Solana devnet)** | All 5 MVP instructions: `create_work`, `list_shares`, `buy_shares`, `deposit_royalty`, `claim_royalty`. 15/15 tests passing on a local validator. Live on devnet at program ID [`EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q`](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet). |
 | Royalty distribution math | **Real**       | Pull-based USDC claim per shareholder; checkpoint math verified across multi-deposit / multi-claim sequences. |
 | Wallet integration        | **Real (live)** | Phantom + Solflare via `@solana/wallet-adapter` on stave-five.vercel.app. |
 | On-chain TX from frontend | **Real (devnet)** | Tokenize and Buy buttons fire real devnet transactions today (SPL Memo); swap to program calls once deployed. |
@@ -44,8 +47,9 @@ Judges respect honesty. Here's the line:
 ## Quick links
 
 - 🔗 **Live demo:** [stave-five.vercel.app](https://stave-five.vercel.app) — Vercel-hosted, auto-deploys on every push to `main`
-- 🎬 **Pitch video** (≤3 min): _to be recorded_
-- 🛠 **Tech demo video** (~2:30): _to be recorded_
+- 🎬 **Pitch video** (≤3 min): [submission/pitch-script.md](./submission/pitch-script.md) — _recording: pending_
+- 🛠 **Tech demo video** (~2:30): [submission/tech-demo-script.md](./submission/tech-demo-script.md) — _recording: pending_
+- 📦 **Submission package:** [submission/README.md](./submission/README.md) — index of every asset a judge needs
 - 📑 **Pitch deck:** [submission/Stave-pitch-deck.pptx](./submission/Stave-pitch-deck.pptx) (PDF export drops post-finalization)
 - 📊 **Financial model:** [submission/Stave-financial-model.xlsx](./submission/Stave-financial-model.xlsx)
 - 🧮 **RRE methodology:** [engine/FORMULAS.md](./engine/FORMULAS.md)
@@ -116,6 +120,19 @@ Live deploy auto-runs on every push to `main`: https://stave-five.vercel.app
 
 Five-layer engine, transparent rating, on-chain settlement. See [docs/02-architecture.md](./docs/02-architecture.md) for the full platform vision.
 
+## Why Solana for royalty distributions
+
+Settlement economics are why this asset class belongs on Solana, not because chain choice is fashionable. The numbers below turn quarterly distributions to thousands of fractional holders from "theoretically possible" into "actually deployable":
+
+| Property | Solana | Ethereum L1 | Source |
+|---|---|---|---|
+| Per-tx cost (typical) | ≈ $0.00025 (5,000 lamports per signature at SOL ≈ $50) <!-- TODO: verify SOL price assumption at submission --> | $2–15 for an ERC-20 transfer at 30 gwei (≈ 50k gas × 30 gwei × $2,000 ETH) <!-- TODO: verify ETH gas + price at submission --> | [Solana docs — fees](https://docs.solana.com/transaction_fees) · [ERC-20 transfer gas](https://etherscan.io) |
+| Time to finality | ≈ 400 ms optimistic confirmation; ≈ 12.8 s super-majority finalized | ≈ 12.8 minutes (2 epochs × 32 slots × 12 s, post-Merge) | [Solana validator docs](https://docs.solana.com/cluster/overview) · [Ethereum.org — finality](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/) |
+| Sustained throughput | 2,000–3,000 TPS in production workloads (theoretical max ≈ 65,000) | 15–30 TPS | Solana Labs benchmarks · [Ethereum.org](https://ethereum.org) |
+| Native fungible token primitive | SPL Token-2022 — no contract deploy, transfer-hook + extensions built in | ERC-20 — deploy a Solidity contract per token, audit each | [spl.solana.com](https://spl.solana.com/token-2022) · [EIP-20](https://eips.ethereum.org/EIPS/eip-20) |
+
+A pro-rata distribution to 1,000 holders at $0.50 / holder is gas-positive on Solana (≈ $0.25 in fees, ≈ 0.05% overhead) and gas-negative on Ethereum L1 (≈ $2,000+ in fees, exceeding the payment). For an asset class whose unit economics are "many small holders, recurring small payments," this isn't a preference — it's the difference between a real product and a slide.
+
 ## Stack
 
 - **Risk engine:** Python 3.11, NumPy, SciPy, pandas (`engine/`)
@@ -124,6 +141,32 @@ Five-layer engine, transparent rating, on-chain settlement. See [docs/02-archite
 - **Auth:** Privy (env-gated; falls back to mock connect)
 - **Hosting:** Vercel (frontend), Solana devnet (program)
 - **Domain:** `stave.app` planned; `*.vercel.app` until then
+
+## Code quality & safety
+
+Every box below is **verifiable in the repo today**. Anything unchecked is a planned addition with a date.
+
+### On-chain (`program/`)
+
+- [x] **All 5 instructions implemented and locally tested** — `create_work`, `list_shares`, `buy_shares`, `deposit_royalty`, `claim_royalty`. 15/15 Anchor tests passing on a local validator (`cd program && anchor test`).
+- [x] **Pull-based royalty math with checkpoint accounting** — verified across multi-deposit / multi-claim sequences. See `programs/stave/src/instructions/claim_royalty.rs`.
+- [x] **PDA-only authority on funds-holding accounts** — Listing PDA authority on the share vault, RoyaltyVault PDA authority on the royalty token vault. Once locked, only `buy_shares` / `claim_royalty` can move funds out.
+- [x] **BPF stack-frame safety** — heavy `InterfaceAccount<TokenAccount>` fields in `BuyShares`, `DepositRoyalty`, `ClaimRoyalty` boxed to stay under the 4 KB BPF stack limit.
+- [x] **No unbounded supply** — Token-2022 share mint authority is the IpWork PDA; supply is set at `create_work` and cannot inflate.
+- [x] **14 error variants documented** in `programs/stave/src/errors.rs` with explicit `#[msg(...)]` strings.
+- [x] **Devnet deploy** — live on Solana devnet at [`EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q`](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet); program ID pinned in `Anchor.toml` + `lib.rs:declare_id!`. Frontend wire-up to real `program.methods` calls is the next post-deploy task.
+- [ ] **Mainnet audit (Halborn or OtterSec)** — planned post-hackathon.
+
+### Off-chain (`engine/` and `web/`)
+
+- [x] **Engine: 31/31 deterministic tests passing** — `cd engine && pytest`. No randomness in production code paths.
+- [x] **Engine: open methodology** — every formula in [`engine/FORMULAS.md`](./engine/FORMULAS.md), every output JSON reproducible from the same inputs.
+- [x] **Frontend: TypeScript strict mode** — `web/tsconfig.json` sets `"strict": true`.
+- [x] **Frontend: no committed secrets** — `web/.env.example` documents every env var; `.env.local` is gitignored.
+- [x] **Wallet adapter: Phantom + Solflare** via `@solana/wallet-adapter`. Devnet by default.
+- [ ] **Engine: ruff + mypy in CI** — planned post-submission.
+- [ ] **Frontend: explicit `@typescript-eslint/no-explicit-any` lint rule** — strict mode catches most cases today; this rule is a planned tightening.
+- [ ] **GitHub Actions CI** — planned post-submission.
 
 ## Team
 
@@ -149,4 +192,4 @@ Background, fees, timelines, and primary-source citations in [docs/10-legal-road
 
 ## License
 
-TBD before submission (likely MIT).
+MIT — see [LICENSE](./LICENSE).
