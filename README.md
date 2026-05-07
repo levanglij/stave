@@ -15,6 +15,14 @@
 
 ---
 
+## Verify Stave is real *(60 seconds, 3 clicks)*
+
+Not a slide deck. Real code on a real chain.
+
+1. **[Open the Stave program on Solana Explorer (devnet)](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet)** — confirm the program account exists, owned by BPF Loader, ~430KB of Rust deployed.
+2. **[Open the `create_work` transaction](https://explorer.solana.com/tx/24aATvsPhsuctY5vN22XRL8CpckfnD8fLcQmaCmrJV5PbnWWggrojHdybB7JS71RWLMPmkN3DuoAmPVzBcRG9Xbo?cluster=devnet)** — the first Stave catalog (Suliko) was minted on-chain by this real TX, with a Token-2022 share supply created and listed.
+3. **[Open the live URL](https://stave-five.vercel.app)**, connect Phantom on devnet, browse to a catalog, click Buy. Real wallet. Real signature. Real devnet TX.
+
 > **New here?** Read [QUICKSTART.md](./QUICKSTART.md) for a 5-minute
 > fresh-laptop walk-through of all three layers (engine, program, frontend).
 
