@@ -4,7 +4,7 @@ Solana on-chain layer: IP fractionalization + royalty distribution.
 
 ## Status
 
-**All 5 MVP instructions shipped + tested.** Build is clean, every test passes on a local validator, devnet deploy is queued and waits only on a funded keypair.
+**All 5 MVP instructions shipped + tested + deployed.** Build is clean, every test passes on a local validator, and the program is live on Solana devnet at [`EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q`](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet).
 
 | Instruction | What it does | Tests |
 |---|---|---|
@@ -19,8 +19,7 @@ PDAs: `IpWork`, `Listing`, `RoyaltyVault`, `ClaimRecord`.
 
 ## Pending
 
-- `anchor deploy --provider.cluster devnet` — needs ~3 SOL on the deploy keypair (`5YRgcw4XS3ieM2x3TRqwv7D4omDT72wWW7F8g9zb7Loc`); fund via [faucet.solana.com](https://faucet.solana.com).
-- After deploy: copy the IDL into `web/lib/idl/` (already mirrored from the local build), set `NEXT_PUBLIC_PROGRAM_ID` in Vercel env, swap the frontend's Tokenize / Buy memo TXs for `program.methods.{createWork, buyShares}().rpc()` calls.
+- Frontend wiring: swap the placeholder SPL Memo TXs in `web/components/{tokenize-form, purchase-panel}.tsx` for `program.methods.{createWork, buyShares}().rpc()` calls against the IDL at `web/lib/idl/stave.ts`. Tracked as the next post-deploy task — until then the buttons fire real devnet Memo TXs as a wallet-flow placeholder.
 - Post-MVP follow-ups: Metaplex Core NFT CPI inside `create_work`; mainnet audit (Halborn / OtterSec); tranche structuring (senior / mezz / growth).
 
 ## Layout
