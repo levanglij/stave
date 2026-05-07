@@ -43,7 +43,7 @@ Ranked by judge-impact-per-effort, highest first.
 2. **Real-program-call swap-in on the frontend** *(deploy is done; now wire the UI)*. Anchor program is now live on Solana devnet at [`EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q`](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet). Remaining work: in `web/components/{tokenize-form.tsx, purchase-panel.tsx}` swap the `MEMO_PROGRAM_ID` instruction for `program.methods.{createWork, buyShares}().rpc()` against the IDL at `web/lib/idl/stave.ts`. Adds `@coral-xyz/anchor` as a dep + provider wiring + PDA derivation; estimated 1–2 hours and most useful after a bootstrap script seeds an on-chain listing.
 3. **Team section in README + SUBMISSION** *(blocked on founder bios)*. Both files still say "To be filled before submission." Need names + roles + one-line credentials.
 4. **Pitch + tech demo videos** *(recording day)*. Scripts shipped in Bundle C. Need: studio time, screen capture, edit, upload. Cross-link from README + `submission/README.md` once recorded.
-5. **Project email cleanup in 2 source files** *(2 minutes)*. `web/components/footer.tsx:50` (Footer Contact mailto) and `web/app/api/tokenize-application/route.ts:8 + :66` (APPLY_INBOX default + comment) still reference the legacy `lgvarishvili@gmail.com`. Should swap to `stave111115@gmail.com` for consistency with `submission/README.md` and `/partners`. Single-commit follow-up.
+5. ✅ ~~**Project email cleanup**~~ — closed. Footer Contact mailto + apply-API APPLY_INBOX default both swapped to `stave111115@gmail.com`.
 
 ### Verification status *(2026-05-07)*
 

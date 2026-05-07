@@ -47,7 +47,7 @@ const COLS: { heading: string; items: LinkItem[] }[] = [
     heading: "Company",
     items: [
       { label: "About", href: "/how-it-works" },
-      { label: "Contact", href: "mailto:lgvarishvili@gmail.com", external: true },
+      { label: "Contact", href: "mailto:stave111115@gmail.com", external: true },
       {
         label: "GitHub",
         href: "https://github.com/levanglij/stave",

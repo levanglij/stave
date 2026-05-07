@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 // Two delivery modes:
 //   1. With a Resend API key set in env (`RESEND_API_KEY`), the route POSTs
 //      the application to Resend's HTTP API (no npm dependency required) and
-//      sends it to `APPLY_INBOX` (defaults to lgvarishvili@gmail.com).
+//      sends it to `APPLY_INBOX` (defaults to stave111115@gmail.com).
 //      To enable: in Vercel set RESEND_API_KEY, optionally APPLY_INBOX and
 //      APPLY_FROM.
 //   2. Without a key, the route falls through to a server log so the
@@ -63,7 +63,7 @@ export async function POST(req: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const inbox = process.env.APPLY_INBOX || "lgvarishvili@gmail.com";
+  const inbox = process.env.APPLY_INBOX || "stave111115@gmail.com";
   const from = process.env.APPLY_FROM || "Stave <onboarding@resend.dev>";
 
   if (apiKey) {
