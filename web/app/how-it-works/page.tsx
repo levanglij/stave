@@ -46,8 +46,61 @@ export default function HowItWorksPage() {
           </h1>
         </section>
 
+        {/* TOC — sticky on desktop */}
+        <nav
+          className="hidden md:flex sticky top-14 z-10 -mx-6 px-6 py-3 -my-6 bg-bg/85 backdrop-blur-md border-y border-border items-center gap-1"
+          aria-label="Page contents"
+        >
+          <span className="text-[10px] font-semibold tracking-[2px] uppercase text-muted mr-3">
+            On this page
+          </span>
+          <a
+            href="#process"
+            className="text-sm text-fg/80 hover:text-accent-bright transition-colors px-3 py-1 rounded-md hover:bg-panel"
+          >
+            Four steps
+          </a>
+          <a
+            href="#methodology"
+            className="text-sm text-fg/80 hover:text-accent-bright transition-colors px-3 py-1 rounded-md hover:bg-panel"
+          >
+            Five-layer engine
+          </a>
+          <a
+            href="#grade-ladder"
+            className="text-sm text-fg/80 hover:text-accent-bright transition-colors px-3 py-1 rounded-md hover:bg-panel"
+          >
+            Grade ladder
+          </a>
+        </nav>
+
+        {/* TOC — mobile, horizontal scroll, no sticky */}
+        <nav
+          className="md:hidden -mx-6 px-6 py-3 -my-6 border-y border-border overflow-x-auto whitespace-nowrap"
+          aria-label="Page contents"
+        >
+          <a
+            href="#process"
+            className="text-xs text-fg/85 px-3 py-1.5 mr-1.5 rounded-md border border-border inline-block"
+          >
+            Four steps
+          </a>
+          <a
+            href="#methodology"
+            className="text-xs text-fg/85 px-3 py-1.5 mr-1.5 rounded-md border border-border inline-block"
+          >
+            Engine
+          </a>
+          <a
+            href="#grade-ladder"
+            className="text-xs text-fg/85 px-3 py-1.5 rounded-md border border-border inline-block"
+          >
+            Grade ladder
+          </a>
+        </nav>
+
         {/* 4 Steps — staggered fade-up */}
-        <section>
+        <section id="process" className="scroll-mt-24">
           <div className="grid md:grid-cols-4 gap-4">
             {STEPS.map((s, i) => (
               <div
@@ -66,7 +119,7 @@ export default function HowItWorksPage() {
         </section>
 
         {/* Methodology — five layers */}
-        <section>
+        <section id="methodology" className="scroll-mt-24">
           <div className="text-[11px] font-semibold tracking-[2px] uppercase text-muted mb-3">
             Methodology
           </div>
@@ -80,6 +133,11 @@ export default function HowItWorksPage() {
             </code>
             .
           </p>
+          {/* TODO(stave): inline SVG diagram of the 5-layer pipeline data
+              flow — Data normalization → Decay modeling → Anomaly detection
+              → Concentration & VaR → Grade aggregation. Out of scope for
+              the current sprint; left as a sized placeholder if/when
+              commissioned. */}
           <div className="grid md:grid-cols-5 gap-3">
             {LAYERS.map((l, i) => (
               <div
@@ -97,16 +155,45 @@ export default function HowItWorksPage() {
               </div>
             ))}
           </div>
+
+          {/* Want the math? — single link to the open-source formula doc */}
+          <div className="mt-8 rounded-xl border border-zinc-800 bg-panel/40 p-5 flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <div className="text-sm font-semibold text-fg mb-0.5">
+                Want the math?
+              </div>
+              <div className="text-xs text-muted">
+                Every formula behind the engine, open-source on GitHub.
+              </div>
+            </div>
+            <a
+              href="https://github.com/levanglij/stave/blob/main/engine/FORMULAS.md"
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm text-accent-bright hover:text-emerald-300 font-medium inline-flex items-center gap-1 group"
+            >
+              Open FORMULAS.md
+              <span
+                aria-hidden
+                className="transition-transform group-hover:translate-x-0.5"
+              >
+                →
+              </span>
+            </a>
+          </div>
         </section>
 
         {/* Grade ladder */}
-        <section>
+        <section id="grade-ladder" className="scroll-mt-24">
           <div className="text-[11px] font-semibold tracking-[2px] uppercase text-muted mb-3">
             Grade ladder
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-fg mb-5">
             Score → tier → max LTV.
           </h2>
+          {/* TODO(stave): inline SVG diagram of the score-to-tier-to-LTV
+              mapping — score axis 0–100, tier bands AAA → B, LTV ramp
+              80% → 0%. Out of scope for the current sprint. */}
           <div className="rounded-xl border border-border bg-panel overflow-hidden">
             <div className="grid grid-cols-3 gap-4 px-5 py-3 border-b border-border bg-panel-2/60 text-[10px] uppercase tracking-[1.2px] text-muted font-medium">
               <div>Tier</div>

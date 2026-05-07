@@ -138,7 +138,7 @@ export default function PartnersPage() {
               confidential and non-binding.
             </p>
             <a
-              href="mailto:partners@stave.app"
+              href="mailto:stave111115@gmail.com"
               className="btn-glow rounded-lg bg-accent text-accent-ink font-semibold text-base px-7 py-3.5 inline-block"
             >
               Get in touch

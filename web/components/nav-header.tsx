@@ -14,7 +14,7 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   { label: "Marketplace", href: "/marketplace" },
-  { label: "Indices", href: "/indices", soon: true },
+  { label: "Indices", href: "/indices" },
   { label: "How it works", href: "/how-it-works" },
   { label: "Partners", href: "/partners" },
   { label: "For artists", href: "/for-artists", soon: true },
