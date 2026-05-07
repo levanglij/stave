@@ -4,13 +4,13 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "How it works · Stave",
   description:
-    "Stave in four steps: grade, verify, buy, earn. Plus the five-layer scoring methodology.",
+    "Stave in four steps: verify, grade, buy, earn. Plus the five-layer scoring methodology.",
 };
 
 const STEPS = [
-  { n: "01", title: "We grade the catalog", body: "Stave grade, AAA → B." },
-  { n: "02", title: "IPOA verifies the data", body: "Ownership and royalties, ground truth." },
-  { n: "03", title: "You buy shares on Solana", body: "Phantom or Solflare. Sub-cent fees." },
+  { n: "01", title: "IPOA verifies the catalog", body: "Ownership and royalty data, at the source." },
+  { n: "02", title: "We grade the catalog", body: "Stave grade, AAA → B. Transparent." },
+  { n: "03", title: "You buy fractional shares on Solana", body: "Phantom or Solflare. Sub-cent fees." },
   { n: "04", title: "Royalties pay out automatically", body: "Pull-based, pro-rata, on-chain." },
 ];
 

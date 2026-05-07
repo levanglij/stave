@@ -7,7 +7,7 @@
 
 <br><br>
 
-**Stave is the rating-and-financing infrastructure for music royalty assets built on Solana, partnered with the Intellectual Property Owners Association (IPOA) — Georgia's official music rights organization — for verified ownership and royalty data.**
+**Stave is the marketplace for tokenized music royalties on Solana.** Every catalog is verified by the Intellectual Property Owners Association (IPOA) — Georgia's official music rights organization — fractionalized into 1,000 on-chain shares, transparently graded, and settled with sub-cent fees. Investors browse, buy, and earn pro-rata royalty distributions on devnet today.
 
 <sub>Solana Frontier Hackathon 2026
 
@@ -22,7 +22,7 @@
 
 Music royalties are a **$30B/yr asset class**. They're recurring, contractually defined, and growing at >9% CAGR. They look exactly like the kind of cash flow institutional capital wants except there's no Moody's, no Bloomberg, no MSCI. Catalogs trade at arbitrary 10x–30x multiples. Pension funds and family offices either overpay, underpay, or stay out. Capital is misallocated by billions.
 
-**Stave fills the gap.** A standardized rating engine (RRE five-layer quantitative pipeline) produces transparent, comparable ratings. A fractional-share marketplace on Solana lets institutional and retail capital take exposure with sub-cent settlement on quarterly distributions. The platform doesn't compete with marketplaces and it's the infrastructure they sit on top of.
+**Stave fills the gap.** A fractional-share marketplace on Solana where every listing is verified at the source by IPOA, transparently graded by an open-source rating engine, and settled with sub-cent fees on quarterly royalty distributions. Investors get an actually-tradable view of the asset class. The grading engine is a feature that makes the marketplace credible — not the product.
 
 **The moat is data, not algorithms.** Stave's partner IPOA is Georgia's official music rights organization — the only entity with the country-wide mandate to collect and distribute music royalties since January 2024. Every Stave rating uses IPOA's verified ownership and royalty data, which a pure-tech competitor cannot replicate. The same model extends to other countries' rights organizations as Stave scales.
 
@@ -118,7 +118,7 @@ Live deploy auto-runs on every push to `main`: https://stave-five.vercel.app
                                           └────────────────┘
 ```
 
-Five-layer engine, transparent rating, on-chain settlement. See [docs/02-architecture.md](./docs/02-architecture.md) for the full platform vision.
+Marketplace front, transparent grading inside, on-chain settlement underneath. See [docs/02-architecture.md](./docs/02-architecture.md) for the full platform vision.
 
 ## Why Solana for royalty distributions
 
