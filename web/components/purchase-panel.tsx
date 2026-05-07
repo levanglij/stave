@@ -168,6 +168,32 @@ export function PurchasePanel({ listing }: { listing: Listing }) {
           {buttonLabel}
         </button>
 
+        {/* Devnet-funds callout — only shown once a wallet is connected,
+            so first-time visitors aren't distracted by faucet links
+            until they actually need them. */}
+        {publicKey && phase === "idle" && (
+          <div className="text-[10px] text-muted/70 text-center leading-relaxed">
+            Need devnet funds?{" "}
+            <a
+              href="https://faucet.solana.com"
+              target="_blank"
+              rel="noreferrer"
+              className="text-accent-bright/80 hover:text-accent-bright hover:underline"
+            >
+              SOL faucet
+            </a>
+            {" · "}
+            <a
+              href="https://faucet.circle.com"
+              target="_blank"
+              rel="noreferrer"
+              className="text-accent-bright/80 hover:text-accent-bright hover:underline"
+            >
+              USDC devnet
+            </a>
+          </div>
+        )}
+
         {phase === "success" && (
           <a
             href={`https://explorer.solana.com/tx/${sig}?cluster=devnet`}

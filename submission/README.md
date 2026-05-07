@@ -19,14 +19,16 @@ through engine, Anchor program, and frontend.
 
 | Asset | Format | File |
 |---|---|---|
-| Pitch deck | `.pptx` (PDF export pending) | [Stave-pitch-deck.pptx](./Stave-pitch-deck.pptx) |
+| Pitch deck | `.pdf` *(primary, judge-facing)* | [Stave-pitch-deck.pdf](./Stave-pitch-deck.pdf) — _exported from `.pptx` source_ |
+| Pitch deck source | `.pptx` *(editable)* | [Stave-pitch-deck.pptx](./Stave-pitch-deck.pptx) |
 | Pitch script (3 min) | `.md` | [pitch-script.md](./pitch-script.md) |
-| Pitch video | mp4 | _recording: pending_ |
+| Pitch video | mp4 / link | _recording: pending — link drops here when uploaded_ |
 | Tech demo script (2:30) | `.md` | [tech-demo-script.md](./tech-demo-script.md) |
-| Tech demo video | mp4 | _recording: pending_ |
+| Tech demo video | mp4 / link | _recording: pending — link drops here when uploaded_ |
 | Financial model | `.xlsx` | [Stave-financial-model.xlsx](./Stave-financial-model.xlsx) |
 | Submission narrative | `.md` | [SUBMISSION.md](../SUBMISSION.md) |
 | Gap analysis (audit) | `.md` | [gap-analysis.md](./gap-analysis.md) |
+| Hackathon requirements snapshot | `.md` | [requirements-snapshot.md](./requirements-snapshot.md) |
 
 ## Quick reads
 
