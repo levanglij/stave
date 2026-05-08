@@ -31,6 +31,76 @@ const TIERS = [
   { tier: "B", range: "0–50", ltv: "0%", color: "#F87171" },
 ];
 
+// Glossary — every Stave-specific or finance-specific term that
+// appears anywhere in the UI, defined in plain English. Many
+// hackathon judges aren't finance natives, so this section makes the
+// methodology accessible without the reader having to leave the
+// page. Ordered roughly: financial terms first (LTV, NAV, HHI,
+// VaR/CVaR), then engine terms (regime, decay), then on-chain terms
+// (PDA, Token-2022, USDC).
+const GLOSSARY: { term: string; short: string; long: string }[] = [
+  {
+    term: "Composite score",
+    short: "0–100 number that drives every grade.",
+    long:
+      "Weighted blend of five factors — stability, concentration, regime, volatility, and lifecycle. Each factor is itself 0–100. Higher composite = better grade. The mapping from score to letter tier (AAA → B) is a deterministic table; see the grade ladder above.",
+  },
+  {
+    term: "LTV (Loan-to-Value)",
+    short: "How much senior debt the grade implies a catalog can support.",
+    long:
+      "If a Stave-graded catalog were used as collateral, LTV is the share of FMV a senior lender could responsibly advance. AAA = 80%, B = 0%. The number is conservative on purpose — it's a planning ceiling, not a price.",
+  },
+  {
+    term: "FMV / NAV",
+    short: "Fair market value (per catalog) and net asset value (per index).",
+    long:
+      "FMV is what the catalog is worth, given its forecast cash flows discounted at a regime-appropriate rate. NAV per index unit = weighted-average FMV of the underlying catalogs, divided by index unit shares.",
+  },
+  {
+    term: "HHI (Herfindahl-Hirschman Index)",
+    short: "Concentration measure. Lower = more diversified.",
+    long:
+      "Sum of squared revenue shares across platforms (or territories). 0 = perfect diversification, 10,000 = one platform earns everything. Stave reports HHI per catalog; high HHI penalises the concentration factor in the composite.",
+  },
+  {
+    term: "VaR / CVaR (95%, 60-mo)",
+    short: "Tail-risk floors derived from the 1k-iteration Monte Carlo.",
+    long:
+      "VaR₉₅ is the 5th-percentile cumulative cash flow over the next 60 months — i.e., the floor we'd hit in a 1-in-20 bad scenario. CVaR₉₅ is the average of all outcomes worse than VaR₉₅ — a sharper measure of how bad the bad case actually gets. Both are quoted in USD on the catalog detail page.",
+  },
+  {
+    term: "Regime",
+    short: "Cash-flow shape: evergreen, catalog, active pop, or new release.",
+    long:
+      "The engine classifies each catalog into one of four regimes based on age, volatility, and momentum. Each regime has its own decay model and discount rate. Suliko (1899) is evergreen — flat, predictable; a 2024 release would be classified active pop or new release.",
+  },
+  {
+    term: "Decay model",
+    short: "How fast cash flows shrink: exponential or power-law.",
+    long:
+      "Exponential decay assumes a constant percentage drop month-over-month (typical for new releases). Power-law decay slows as the catalog ages (typical for evergreen). The engine fits both and picks the one with the lower residual error, then uses the fit to project the next 60 months.",
+  },
+  {
+    term: "Token-2022 share mint",
+    short: "Solana fungible token standard with extensions.",
+    long:
+      "Each Stave catalog mints exactly N shares (typically 1,000) on the Token-2022 program. Shares are 0-decimal, so 1 token = 1 share. Token-2022 supports built-in transfer hooks and metadata, which we'll use post-hackathon for compliance gates without bolting on a separate contract.",
+  },
+  {
+    term: "PDA (Program Derived Address)",
+    short: "Solana account whose key is deterministically derived, not a private key.",
+    long:
+      "A PDA has no signing private key — only the program that owns it can authorise actions on it. Stave uses three PDAs per catalog: IpWork (the catalog itself), Listing (the listing config + share-vault authority), and RoyaltyVault (the royalty-vault authority). PDAs guarantee the program is the sole intermediary on funds-holding accounts.",
+  },
+  {
+    term: "USDC (devnet)",
+    short: "The stablecoin the marketplace settles in.",
+    long:
+      "Buyers pay in USDC, royalty deposits are in USDC, claims pay out USDC. Devnet uses a faucet-able test mint at 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU; mainnet would use Circle's real USDC mint with no code changes beyond the program's payment_mint argument.",
+  },
+];
+
 export default function HowItWorksPage() {
   return (
     <main className="min-h-[calc(100vh-4rem)]">
@@ -72,6 +142,12 @@ export default function HowItWorksPage() {
           >
             Grade ladder
           </a>
+          <a
+            href="#glossary"
+            className="text-sm text-fg/80 hover:text-accent-bright transition-colors px-3 py-1 rounded-md hover:bg-panel"
+          >
+            Glossary
+          </a>
         </nav>
 
         {/* TOC — mobile, horizontal scroll, no sticky */}
@@ -93,9 +169,15 @@ export default function HowItWorksPage() {
           </a>
           <a
             href="#grade-ladder"
-            className="text-xs text-fg/85 px-3 py-1.5 rounded-md border border-border inline-block"
+            className="text-xs text-fg/85 px-3 py-1.5 mr-1.5 rounded-md border border-border inline-block"
           >
             Grade ladder
+          </a>
+          <a
+            href="#glossary"
+            className="text-xs text-fg/85 px-3 py-1.5 rounded-md border border-border inline-block"
+          >
+            Glossary
           </a>
         </nav>
 
@@ -225,6 +307,63 @@ export default function HowItWorksPage() {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* GLOSSARY — collapsible explainer for non-finance judges.
+            Each entry uses native <details>/<summary> for free
+            keyboard + screen-reader support. Closed by default;
+            open one or all at once. */}
+        <section id="glossary" className="scroll-mt-24">
+          <div className="text-[11px] font-semibold tracking-[2px] uppercase text-muted mb-3">
+            Glossary
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-fg mb-2 text-balance">
+            Every Stave term, in plain English.
+          </h2>
+          <p className="text-sm text-muted mb-6 max-w-xl">
+            Click any row to expand. Built for judges who didn&rsquo;t come
+            up through fixed income and don&rsquo;t want to leave the page
+            to look up CVaR.
+          </p>
+          <div className="rounded-xl border border-border bg-panel overflow-hidden divide-y divide-border">
+            {GLOSSARY.map((g) => (
+              <details
+                key={g.term}
+                className="group [&_summary::-webkit-details-marker]:hidden"
+              >
+                <summary className="cursor-pointer list-none px-5 py-4 flex items-start justify-between gap-4 hover:bg-panel-2/40 transition-colors">
+                  <div className="min-w-0 flex-1">
+                    <div className="font-semibold text-fg text-sm md:text-base">
+                      {g.term}
+                    </div>
+                    <div className="text-xs md:text-sm text-muted mt-0.5">
+                      {g.short}
+                    </div>
+                  </div>
+                  <span
+                    aria-hidden
+                    className="shrink-0 mt-1 text-muted group-open:rotate-180 transition-transform duration-200"
+                  >
+                    ▾
+                  </span>
+                </summary>
+                <div className="px-5 pb-5 pt-1 text-sm text-fg/80 leading-relaxed max-w-3xl">
+                  {g.long}
+                </div>
+              </details>
+            ))}
+          </div>
+          <p className="mt-4 text-[11px] text-muted">
+            Want the actual math?{" "}
+            <a
+              href="https://github.com/levanglij/stave/blob/main/engine/FORMULAS.md"
+              target="_blank"
+              rel="noreferrer"
+              className="text-accent-bright hover:text-emerald-300 transition-colors"
+            >
+              FORMULAS.md →
+            </a>
+          </p>
         </section>
 
         {/* CTAs */}
