@@ -16,6 +16,8 @@ import { ForecastChart } from "@/components/forecast-chart";
 import { WaveformHero } from "@/components/waveform-hero";
 import { PurchasePanel } from "@/components/purchase-panel";
 import { ReturnsCalculator } from "@/components/returns-calculator";
+import { OnchainStatus } from "@/components/onchain-status";
+import { getOnchainListing } from "@/lib/onchain-listings";
 
 // Pre-render all 5 detail pages at build time.
 export function generateStaticParams() {
@@ -65,6 +67,10 @@ export default function CatalogDetail({ params }: PageProps) {
   const stats = getHeadlineStats(listing);
   const pageMeta = getPageMeta(listing.catalog_id);
   const isTrending = listing.composite_score >= 70;
+  // Catalogs that have been bootstrapped on-chain show a live status
+  // strip with their Listing PDA + vault balance pulled from devnet.
+  // Off-chain catalogs render the rest of the page unchanged.
+  const onchain = getOnchainListing(listing.catalog_id);
 
   return (
     <main className="min-h-[calc(100vh-4rem)]">
@@ -124,6 +130,16 @@ export default function CatalogDetail({ params }: PageProps) {
             <PurchasePanel listing={listing} />
           </div>
         </div>
+
+        {/* On-chain status strip — only renders for catalogs whose
+            create_work + list_shares have been bootstrapped on devnet.
+            Reads the listing vault balance live from devnet RPC every
+            30s so the "available" count is real, not synthetic. */}
+        {onchain && (
+          <div className="mt-6">
+            <OnchainStatus listing={onchain} />
+          </div>
+        )}
 
         {/* Tabs */}
         <div className="border-b border-border mt-8 mb-6 flex gap-1 overflow-x-auto">
