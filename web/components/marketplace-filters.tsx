@@ -14,7 +14,7 @@ import { getHeadlineStats } from "@/lib/headline-stats";
 // - genre: empty string = "all genres"
 // - sort: one of fmv (default) / price / roi5
 
-type SortKey = "fmv" | "price" | "roi5";
+type SortKey = "fmv" | "price" | "roi5" | "grade";
 
 const ALL_TIERS: RatingTier[] = ["AAA", "AA", "A", "BBB", "BB", "B"];
 
@@ -41,6 +41,8 @@ export function MarketplaceFilters({ listings }: { listings: Listing[] }) {
       if (sort === "fmv") return sb.fmv - sa.fmv;
       if (sort === "price") return b.price - a.price;
       if (sort === "roi5") return sb.roi5yr - sa.roi5yr;
+      // Grade: highest composite_score first → highest tier first.
+      if (sort === "grade") return b.composite_score - a.composite_score;
       return 0;
     });
   }, [listings, tiers, genre, sort]);
@@ -144,6 +146,7 @@ export function MarketplaceFilters({ listings }: { listings: Listing[] }) {
             onChange={(e) => setSort(e.target.value as SortKey)}
             className="bg-transparent outline-none text-sm pr-1"
           >
+            <option value="grade">Grade</option>
             <option value="fmv">FMV</option>
             <option value="price">Price</option>
             <option value="roi5">5yr ROI</option>
