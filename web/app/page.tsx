@@ -7,6 +7,9 @@ import { compactUsd, pct, TIER_COLOR } from "@/lib/format";
 import { HeroChartNotes } from "@/components/HeroChartNotes";
 import { MethodologyWaveform } from "@/components/methodology-waveform";
 import { CopyableAddress } from "@/components/copyable-address";
+import { Reveal } from "@/components/reveal";
+import { CountUp } from "@/components/count-up";
+import { HeroTicker } from "@/components/hero-ticker";
 import type { Listing } from "@/lib/types";
 import { getHeadlineStats } from "@/lib/headline-stats";
 
@@ -133,39 +136,46 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Hero → stats transition */}
+      {/* Hero → ticker transition: faint emerald cap so the live band
+          reads as a continuation of the hero, not a hard break. */}
       <div
         className="border-t border-zinc-900"
         style={{ boxShadow: "0 -1px 8px rgba(16, 185, 129, 0.05)" }}
       />
 
+      {/* LIVE ON-CHAIN TICKER — pulse band of recent program TXs on
+          devnet. Real signatures, click-through to Solana Explorer. */}
+      <HeroTicker />
+
       {/* STATS BAND — Bloomberg terminal energy */}
-      <section className="bg-gradient-to-b from-zinc-950 to-black border-b border-zinc-900">
-        <div className="max-w-6xl mx-auto px-6 py-14 md:py-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 md:divide-x md:divide-zinc-800/80">
-            <StatTile
-              value={String(stats.catalogCount)}
-              label="catalogs scored"
-            />
-            <StatTile
-              value={compactUsd(stats.totalFmv)}
-              label="total tokenized FMV"
-            />
-            <StatTile
-              value={stats.averageRating}
-              label="average composite grade"
-              valueColor={tierColor}
-            />
-            <StatTile
-              value={pct(stats.medianRoi5yr, 1)}
-              label="median 5yr ROI"
-            />
+      <Reveal>
+        <section className="bg-gradient-to-b from-zinc-950 to-black border-b border-zinc-900">
+          <div className="max-w-6xl mx-auto px-6 py-14 md:py-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 md:divide-x md:divide-zinc-800/80">
+              <StatTile
+                value={<CountUp end={stats.catalogCount} format="int" />}
+                label="catalogs scored"
+              />
+              <StatTile
+                value={<CountUp end={stats.totalFmv} format="compact-usd" />}
+                label="total tokenized FMV"
+              />
+              <StatTile
+                value={stats.averageRating}
+                label="average composite grade"
+                valueColor={tierColor}
+              />
+              <StatTile
+                value={<CountUp end={stats.medianRoi5yr} format="pct1" />}
+                label="median 5yr ROI"
+              />
+            </div>
+            <p className="mt-10 text-[11px] italic text-muted/80 text-center">
+              Devnet figures. Past performance simulated, not actual.
+            </p>
           </div>
-          <p className="mt-10 text-[11px] italic text-muted/80 text-center">
-            Devnet figures. Past performance simulated, not actual.
-          </p>
-        </div>
-      </section>
+        </section>
+      </Reveal>
 
       {/* Stats → how-it-works transition */}
       <div className="bg-gradient-to-b from-black via-zinc-950/40 to-black h-[1px]" />
@@ -196,44 +206,47 @@ export default function Home() {
       </section>
 
       {/* HOW IT WORKS — 3-step linear flow, the IA gap before the value props */}
-      <section className="max-w-6xl mx-auto px-6 py-28 md:py-32">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <div
-            className="text-[11px] font-semibold tracking-[2px] uppercase mb-4"
-            style={{ color: "#fbbf24" }}
-          >
-            How it works
+      <Reveal>
+        <section className="max-w-6xl mx-auto px-6 py-28 md:py-32">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <div
+              className="text-[11px] font-semibold tracking-[2px] uppercase mb-4"
+              style={{ color: "#fbbf24" }}
+            >
+              How it works
+            </div>
+            <h2 className="text-4xl md:text-5xl font-light text-fg tracking-[-0.02em] text-balance">
+              From catalog to{" "}
+              <span className="text-accent-bright">on-chain payouts.</span>
+            </h2>
           </div>
-          <h2 className="text-4xl md:text-5xl font-light text-fg tracking-[-0.02em] text-balance">
-            From catalog to{" "}
-            <span className="text-accent-bright">on-chain payouts.</span>
-          </h2>
-        </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          <Step
-            n="01"
-            title="We grade the catalog"
-            body="Each music catalog is scored by our open-source rating engine using streaming history, revenue concentration, and tail-risk metrics. The output is a single grade from AA to B."
-          />
-          <Step
-            n="02"
-            title="You buy a fractional share"
-            body="Every catalog is split into 1,000 fungible SPL tokens on Solana. Buy a 0.1% slice or the whole thing — no minimum check size beyond one token."
-          />
-          <Step
-            n="03"
-            title="Royalties settle on-chain"
-            body="As the catalog earns from streaming, radio, and sync, distributions are paid programmatically to token holders. Every payout is traceable on-chain."
-          />
-        </div>
-      </section>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Step
+              n="01"
+              title="We grade the catalog"
+              body="Each music catalog is scored by our open-source rating engine using streaming history, revenue concentration, and tail-risk metrics. The output is a single grade from AA to B."
+            />
+            <Step
+              n="02"
+              title="You buy a fractional share"
+              body="Every catalog is split into 1,000 fungible SPL tokens on Solana. Buy a 0.1% slice or the whole thing — no minimum check size beyond one token."
+            />
+            <Step
+              n="03"
+              title="Royalties settle on-chain"
+              body="As the catalog earns from streaming, radio, and sync, distributions are paid programmatically to token holders. Every payout is traceable on-chain."
+            />
+          </div>
+        </section>
+      </Reveal>
 
       {/* How-it-works → value-cards transition */}
       <div className="bg-gradient-to-b from-black via-zinc-950/40 to-black h-[1px]" />
 
       {/* VALUE PROPS — three properties, one thesis */}
-      <section className="max-w-6xl mx-auto px-6 py-28 md:py-32">
+      <Reveal>
+        <section className="max-w-6xl mx-auto px-6 py-28 md:py-32">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div
             className="text-[11px] font-semibold tracking-[2px] uppercase mb-4"
@@ -267,7 +280,8 @@ export default function Home() {
             href="/how-it-works"
           />
         </div>
-      </section>
+        </section>
+      </Reveal>
 
       {/* Value-cards → featured transition */}
       <div className="bg-gradient-to-b from-black via-zinc-950/40 to-black h-[1px]" />
@@ -276,6 +290,7 @@ export default function Home() {
           above the featured-listings section so users see the line before
           they browse the synthetic catalogs. Same outlined-card pattern
           as the IPOA + open-methodology pills in the hero. */}
+      <Reveal>
       <section className="max-w-3xl mx-auto px-6 pt-16 pb-4">
         <div className="rounded-xl border border-zinc-800 bg-gradient-to-b from-zinc-900/50 to-zinc-950/50 p-7">
           <div className="mb-5">
@@ -346,8 +361,12 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
-      {/* WARMTH BAND — vinyl macro humanizes the underlying asset */}
+      {/* WARMTH BAND — vinyl macro humanizes the underlying asset.
+          Intentionally not wrapped in <Reveal>: the warmth bands are
+          mid-scroll transitions and read better as solid full-bleed
+          imagery you scroll INTO, not as content to fade in. */}
       <section className="relative overflow-hidden">
         <div className="relative w-full h-[280px] md:h-[360px]">
           <Image
@@ -372,6 +391,7 @@ export default function Home() {
       </section>
 
       {/* FEATURED LISTINGS — three card grid, premium hover */}
+      <Reveal>
       <section className="max-w-6xl mx-auto px-6 py-24 md:py-28">
         <div className="flex items-baseline justify-between mb-10">
           <h2 className="text-3xl md:text-4xl font-light tracking-[-0.02em] text-fg">
@@ -396,8 +416,10 @@ export default function Home() {
           ))}
         </div>
       </section>
+      </Reveal>
 
       {/* METHODOLOGY TEASER — editorial blockquote with sheet-music side image */}
+      <Reveal>
       <section className="bg-gradient-to-b from-black via-zinc-950/30 to-black">
         <div className="max-w-5xl mx-auto px-6 py-32 md:py-36">
           {/* Section anchor — larger version of the hero open-methodology
@@ -510,6 +532,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
       {/* Methodology → closing transition: emerald accent line */}
       <div
@@ -517,6 +540,7 @@ export default function Home() {
       />
 
       {/* CLOSING CTA BAND — bookend to the hero */}
+      <Reveal>
       <section
         className="relative overflow-hidden border-t border-zinc-900"
         style={{
@@ -539,6 +563,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
+      </Reveal>
     </main>
   );
 }
@@ -550,7 +575,7 @@ function StatTile({
   label,
   valueColor,
 }: {
-  value: string;
+  value: React.ReactNode;
   label: string;
   valueColor?: string;
 }) {

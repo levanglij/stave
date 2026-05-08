@@ -23,10 +23,48 @@ body {
   color: var(--color-fg);
 }
 
+html {
+  /* Smooth scroll on anchor jumps and ScrollIntoView. The browser will
+     still snap instantly when the user has prefers-reduced-motion. */
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   font-family: var(--font-inter), -apple-system, system-ui, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   letter-spacing: -0.005em;
+}
+
+/* Custom scrollbar — thin and on-brand. WebKit (Chrome/Safari/Edge)
+   and Firefox both supported. The default chunky OS scrollbar made the
+   dark+emerald palette feel cheap; this thin emerald-tinted bar matches
+   the institutional finish. Track is the same color as the page bg so
+   it disappears, and only the thumb shows.*/
+* {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(16, 185, 129, 0.35) transparent; /* Firefox: thumb track */
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.28);
+  border-radius: 999px;
+  border: 2px solid var(--color-bg);
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(52, 211, 153, 0.55);
+  background-clip: padding-box;
 }
 
 /* Ambient emerald wash — lifts the dark backdrop without flattening
@@ -177,6 +215,50 @@ main, header, footer {
   box-shadow:
     0 0 0 1px var(--color-accent),
     0 4px 12px rgba(16, 185, 129, 0.5);
+}
+
+/* Hero on-chain ticker — horizontal marquee scroll. The `.ticker-track`
+   container slides 50% to the left (because the items are duplicated in
+   the DOM, so 50% = one full cycle) on a continuous loop. Pause on
+   hover so the user can click an event. The mask fades the leading and
+   trailing edges so items appear to materialize/dissolve at the seams.
+
+   Honors prefers-reduced-motion: track stays static. */
+.ticker-track {
+  animation: tickerScroll 38s linear infinite;
+  will-change: transform;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+@keyframes tickerScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.ticker-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 32px,
+    black calc(100% - 32px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 32px,
+    black calc(100% - 32px),
+    transparent 100%
+  );
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
 }
 
 /* Subtle staggered reveal for step / list rows. Apply with
