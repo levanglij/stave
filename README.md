@@ -105,6 +105,36 @@ Or just inspect the pre-computed ratings:
 cat engine/outputs/evergreen-001.rating.json | python3 -m json.tool
 ```
 
+For example, Suliko (`evergreen-001`) renders on the live UI from this
+exact JSON — every number on its detail page is sourced from these
+fields, no hidden math:
+
+```jsonc
+{
+  "catalog_id": "evergreen-001",
+  "rating": "RRE-AA",            // letter grade — drives the chip
+  "rating_confidence": 0.9,
+  "composite_score": 85.32,      // 0-100, drives the headline
+  "factors": {                   // 5-layer breakdown, all surfaced
+    "stability": 88.77,
+    "concentration": 79.99,
+    "regime": 100.0,
+    "volatility": 51.26,
+    "lifecycle": 100.0
+  },
+  "regime": "evergreen",
+  "decay_model": "power_law",    // best-fit between exponential & power
+  "var_95_60mo_usd": ...,        // 60-month tail risk
+  "cvar_95_60mo_usd": ...,
+  "ltv_recommended": 0.55        // senior-debt cap implied by the grade
+  // ... + 60-month forecast band (p10/p50/p90) for the chart
+}
+```
+
+Reproducible: every JSON in `engine/outputs/` is regenerated from raw
+catalog data by `python -m rre.cli rate <input>.json`. Same input,
+same output, every time — no randomness in production paths.
+
 ### The Anchor program
 
 ```bash
