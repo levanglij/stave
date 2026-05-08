@@ -29,6 +29,22 @@ export const metadata: Metadata = {
       "Transparent grading, fractional shares, sub-cent royalty distribution. Built on Solana.",
     type: "website",
     siteName: "Stave",
+    url: "https://stave.cc",
+    locale: "en_US",
+  },
+  // Twitter cards mirror Open Graph but X uses its own meta keys.
+  // summary_large_image upgrades the preview from a tiny thumbnail
+  // (the default "summary" card) to a full-width banner.
+  twitter: {
+    card: "summary_large_image",
+    title: "Stave — Music royalties, made investable",
+    description:
+      "Transparent grading, fractional shares, sub-cent royalty distribution. Built on Solana.",
+  },
+  // Canonical link prevents duplicate-content penalties when Google
+  // sees both stave.cc and stave-five.vercel.app serving the same HTML.
+  alternates: {
+    canonical: "https://stave.cc",
   },
 };
 
