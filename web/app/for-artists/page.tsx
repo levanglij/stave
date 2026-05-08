@@ -119,7 +119,7 @@ function ValueCard({
   body: string;
 }) {
   return (
-    <div className="rounded-xl border border-border bg-panel p-6 transition-colors hover:border-border-strong">
+    <div className="rounded-xl border border-border bg-panel p-6 transition-all duration-200 hover:border-emerald-900/40 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-950/20">
       <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 text-accent-bright flex items-center justify-center mb-4">
         {icon}
       </div>

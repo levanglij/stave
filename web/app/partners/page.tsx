@@ -210,7 +210,7 @@ function PlanCard({
   body: string;
 }) {
   return (
-    <div className="rounded-xl border border-border/60 bg-panel/50 p-6 transition-colors hover:border-border">
+    <div className="rounded-xl border border-border/60 bg-panel/50 p-6 transition-all duration-200 hover:border-emerald-900/40 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-950/20">
       <div className="w-10 h-10 rounded-lg bg-panel-2/60 border border-border/60 text-fg/85 flex items-center justify-center mb-4">
         {icon}
       </div>

@@ -56,7 +56,7 @@ function IndexCard({ index, metrics }: { index: Index; metrics: IndexMetrics }) 
   const tierColor = TIER_COLOR[metrics.rating];
 
   return (
-    <div className="rounded-xl border border-border bg-panel p-5 transition-colors hover:border-border-strong">
+    <div className="rounded-xl border border-border bg-panel p-5 transition-all duration-200 hover:border-emerald-900/40 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-950/20">
       {/* Header: ticker badge + name + rating */}
       <div className="flex items-start justify-between gap-3 mb-5">
         <div className="flex items-center gap-3 min-w-0">
