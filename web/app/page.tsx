@@ -6,6 +6,7 @@ import { getSiteStats } from "@/lib/site-stats";
 import { compactUsd, pct, TIER_COLOR } from "@/lib/format";
 import { HeroChartNotes } from "@/components/HeroChartNotes";
 import { MethodologyWaveform } from "@/components/methodology-waveform";
+import { CopyableAddress } from "@/components/copyable-address";
 import type { Listing } from "@/lib/types";
 import { getHeadlineStats } from "@/lib/headline-stats";
 
@@ -313,6 +314,35 @@ export default function Home() {
               state="synthetic"
               detail="8 Georgian catalogs, schema documented"
             />
+          </div>
+
+          {/* Click-to-verify on-chain — surfaces the deployed program +
+              first bootstrapped Suliko listing as copyable addresses
+              with Explorer links. The honesty card above SAYS it's real;
+              this row PROVES it. */}
+          <div className="mt-6 pt-5 border-t border-zinc-800/60">
+            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-muted mb-3">
+              Click to verify on-chain
+            </div>
+            <div className="space-y-2">
+              <CopyableAddress
+                label="Program"
+                value="EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q"
+              />
+              <CopyableAddress
+                label="Suliko"
+                value="32B19bfwgLoxxLDyXnkSZQhsJ9Vhh4ugWFetmkwBmGo6"
+              />
+              <CopyableAddress
+                label="Listing"
+                value="EJTxUg98b4LnSuUCKpWjSFyed4Cm3GPcmjgX4m9jRfHa"
+              />
+              <CopyableAddress
+                label="create_work"
+                value="24aATvsPhsuctY5vN22XRL8CpckfnD8fLcQmaCmrJV5PbnWWggrojHdybB7JS71RWLMPmkN3DuoAmPVzBcRG9Xbo"
+                type="tx"
+              />
+            </div>
           </div>
         </div>
       </section>
