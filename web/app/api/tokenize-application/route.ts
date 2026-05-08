@@ -87,7 +87,7 @@ export async function POST(req: Request) {
             `Message:`,
             body.message || "(none)",
             ``,
-            `— sent from stave.app /for-artists`,
+            `— sent from stave.cc /for-artists`,
           ].join("\n"),
         }),
       });

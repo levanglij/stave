@@ -4,7 +4,7 @@
 
 ## Start here *(2 min)*
 
-1. **Live demo:** [stave-five.vercel.app](https://stave-five.vercel.app) —
+1. **Live demo:** [stave.cc](https://stave.cc) —
    no auth, no install
 2. **Repo:** [github.com/levanglij/stave](https://github.com/levanglij/stave) —
    start with the [README](../README.md) "What's real vs. what's

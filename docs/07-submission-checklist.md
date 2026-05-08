@@ -19,7 +19,7 @@ Final pass before submitting to **Solana Frontier Hackathon 2026** (deadline **M
   - [ ] `docs/02-architecture.md`
   - [ ] `README.md`
 - [x] Frontend builds cleanly with `pnpm build`
-- [x] Frontend deployed to Vercel, URL recorded in `README.md` — **https://stave-five.vercel.app**
+- [x] Frontend deployed to Vercel, URL recorded in `README.md` — **https://stave.cc**
 - [x] `engine/` tests pass (`pytest` green) — 31 tests
 - [x] `engine/outputs/*.rating.json` regenerated against current data — 8 catalogs
 - [x] Frontend reads at least one RRE rating from `engine/outputs/` and displays it on the work detail page — full RRE breakdown on every detail page

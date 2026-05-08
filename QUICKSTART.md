@@ -8,7 +8,7 @@
 ## Skip-local path *(0 minutes)*
 
 If you only want to look at the product, the live deploy is at
-[stave-five.vercel.app](https://stave-five.vercel.app). All eight
+[stave.cc](https://stave.cc). All eight
 catalogs and one example index render publicly. No auth, no install.
 
 ## Prerequisites *(60 seconds)*

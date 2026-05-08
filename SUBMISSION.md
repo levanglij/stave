@@ -10,7 +10,7 @@ The global music royalty market generates ~$30B/yr in recurring, contractually-d
 
 ## The product
 
-Stave is a **marketplace for tokenized music royalties on Solana**. The product is a live web app at [stave-five.vercel.app](https://stave-five.vercel.app) where investors browse eight Georgian catalogs, see a transparent grade and a returns calculator on each one, connect Phantom or Solflare, and submit real on-chain transactions on Solana devnet. The catalog data comes from IPOA. The math is open-source. The Anchor program (`stave`) for fractionalization and royalty distribution is deployed and live on devnet at [`EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q`](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet).
+Stave is a **marketplace for tokenized music royalties on Solana**. The product is a live web app at [stave.cc](https://stave.cc) where investors browse eight Georgian catalogs, see a transparent grade and a returns calculator on each one, connect Phantom or Solflare, and submit real on-chain transactions on Solana devnet. The catalog data comes from IPOA. The math is open-source. The Anchor program (`stave`) for fractionalization and royalty distribution is deployed and live on devnet at [`EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q`](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet).
 
 Underneath the marketplace, two layers do the work.
 
@@ -46,7 +46,7 @@ _To be filled before submission. Founder names, roles, one-line credentials each
 
 ## Links
 
-- **Live demo:** https://stave-five.vercel.app
+- **Live demo:** https://stave.cc
 - **Pitch video** (≤3 min): _link inserted on submission day_
 - **Tech demo video** (~2:30): _link inserted on submission day_
 - **Pitch deck (PDF):** [submission/Stave-pitch-deck.pdf](./submission/) — exported from `Stave-pitch-deck.pptx`

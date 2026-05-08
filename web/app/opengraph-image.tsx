@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
-// Open Graph card for stave-five.vercel.app — what shows up when the
-// URL is shared in Twitter / LinkedIn / Slack / iMessage / Discord.
+// Open Graph card for stave.cc — what shows up when the URL is
+// shared in Twitter / LinkedIn / Slack / iMessage / Discord.
 // Generated as a 1200×630 PNG at build time. Pure JSX-to-image, no
 // external assets, no font loading — keeps the build fast and
 // guarantees the image renders identically every time.
@@ -111,7 +111,7 @@ export default async function OpengraphImage() {
               "ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace",
           }}
         >
-          <div>stave-five.vercel.app</div>
+          <div>stave.cc</div>
           <div>Solana Frontier Hackathon 2026</div>
         </div>
       </div>

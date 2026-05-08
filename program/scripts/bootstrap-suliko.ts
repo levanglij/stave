@@ -47,7 +47,7 @@ const SULIKO = {
   // 0.5 USDC per share (USDC has 6 decimals) — illustrative price for
   // the demo listing. Synthetic catalog prices in the UI are unrelated.
   pricePerShare: new BN(500_000),
-  metadataUri: "https://stave-five.vercel.app/issuances/evergreen-001",
+  metadataUri: "https://stave.cc/issuances/evergreen-001",
 };
 
 // USDC devnet mint — well-known address used across the Solana

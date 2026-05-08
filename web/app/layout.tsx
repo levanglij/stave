@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: "Stave — Music royalties, made investable",
   description:
     "Stave transforms verified music catalogs into investable royalty assets, built on Solana, partnered with the Intellectual Property Owners Association (IPOA) — Georgia’s official music rights organization — for verified royalty data.",
-  metadataBase: new URL("https://stave.app"),
+  metadataBase: new URL("https://stave.cc"),
   openGraph: {
     title: "Stave — Music royalties, made investable",
     description:

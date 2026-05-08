@@ -7,7 +7,7 @@
 
 - **Anchor program live on Solana devnet** at [`EcJDYr1y6...`](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet) — 5 instructions (`create_work`, `list_shares`, `buy_shares`, `deposit_royalty`, `claim_royalty`), 15 / 15 tests passing
 - **First on-chain work + listing bootstrapped** — Suliko (catalog `evergreen-001`), 1,000 shares, 500 listed at 0.5 USDC each — verifiable on Explorer
-- **Live frontend at [stave-five.vercel.app](https://stave-five.vercel.app)** — 8 graded Georgian catalogs, 4 thematic indices, working wallet adapter, real on-chain TXs
+- **Live frontend at [stave.cc](https://stave.cc)** — 8 graded Georgian catalogs, 4 thematic indices, working wallet adapter, real on-chain TXs
 - **Risk engine** — Python, deterministic, 31 / 31 tests, every formula in [`engine/FORMULAS.md`](../engine/FORMULAS.md)
 - **IPOA partnership** — verified data partner; agreement covers ownership + royalty data for the Georgian repertoire
 - **MIT licensed** — every layer open-source

@@ -60,7 +60,7 @@
 
 ## 1:40–2:10 — Frontend on devnet
 
-> *(Browser: stave-five.vercel.app.)* Eight rated catalogs. Hero
+> *(Browser: stave.cc.)* Eight rated catalogs. Hero
 > with candles-as-notes chart. IPOA partnership card.
 > Open-methodology badge — every credibility signal in the README is
 > also visible on the live URL. *(Click Tokenize.)* Phantom popup.

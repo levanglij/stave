@@ -88,8 +88,8 @@
 | 1 | 0:00–0:05 | Cold open: title card "Stave — Music royalties, made investable." Dark background, emerald accent. | Brand-locked. |
 | 2 | 0:05–0:12 | Quick cut: $30B / 9% CAGR overlay text + vinyl macro b-roll. | Re-use `web/public/images/vinyl-macro.jpg`. |
 | 3 | 0:12–0:20 | **IPOA logo placeholder + text "Georgia · Jan 2024 · exclusive national mandate."** | The hook lands here. Uses `[IPOA logo placeholder]` until real asset is dropped in. |
-| 4 | 0:20–0:50 | Marketplace UI b-roll while the wedge voiceover plays. Highlight: 8 catalogs visible, IPOA partnership card on hero. | Re-use stave-five.vercel.app footage. |
-| 5 | 0:50–1:00 | Screen recording: stave-five.vercel.app — landing → marketplace. | 1080p, 60fps preferred. |
+| 4 | 0:20–0:50 | Marketplace UI b-roll while the wedge voiceover plays. Highlight: 8 catalogs visible, IPOA partnership card on hero. | Re-use stave.cc footage. |
+| 5 | 0:50–1:00 | Screen recording: stave.cc — landing → marketplace. | 1080p, 60fps preferred. |
 | 6 | 1:00–1:15 | Screen recording: per-catalog detail page (Suliko). Highlight rating breakdown + returns calculator. | Cursor visible, no hesitation. |
 | 7 | 1:15–1:30 | Screen recording: Phantom popup → confirm tx → Solana Explorer link to the memo TX. | Real screen capture, no fake UI. |
 | 8 | 1:30–2:10 | Title cards: "Article 64 · Jan 1, 2024 · Georgia." Then map of Europe with country-CMO highlights — France (SACEM), Germany (GEMA), USA (ASCAP/BMI), Japan (JASRAC). The "Stave deployment-per-country" idea visualized. | Statutory citation visible. Map can be a simple SVG with dots. |
@@ -98,7 +98,7 @@
 
 ## Pre-flight checklist (run before recording)
 
-- [ ] `pnpm dev` running locally OR open stave-five.vercel.app in the
+- [ ] `pnpm dev` running locally OR open stave.cc in the
       target browser
 - [ ] Phantom installed; ≥0.05 SOL on devnet for the demo TX
 - [ ] Browser zoom set so a judge can read it on a phone screen

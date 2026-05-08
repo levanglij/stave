@@ -24,7 +24,7 @@
 
 ### 0:35 – 1:10 · What's already shipped *(screen recording)*
 
-> "Three weeks of build — over forty commits, all live on GitHub. The site is deployed at **stave-five.vercel.app**: eight Georgian catalogs in the marketplace, four thematic indices, an interactive returns calculator on every catalog, music-player-styled hero. You can connect **Phantom or Solflare** right now and submit a real devnet transaction. Behind the frontend: the rating engine ships with **thirty-one passing tests**, and the on-chain Anchor program ships with **all five MVP instructions and fifteen passing tests**."
+> "Three weeks of build — over forty commits, all live on GitHub. The site is deployed at **stave.cc**: eight Georgian catalogs in the marketplace, four thematic indices, an interactive returns calculator on every catalog, music-player-styled hero. You can connect **Phantom or Solflare** right now and submit a real devnet transaction. Behind the frontend: the rating engine ships with **thirty-one passing tests**, and the on-chain Anchor program ships with **all five MVP instructions and fifteen passing tests**."
 
 *~85 words · 35 sec. B-roll: marketplace list view → click into a catalog → show the waveform hero + purchase panel + returns slider → show Tokenize page → wallet popup → success card with Explorer link.*
 
@@ -55,7 +55,7 @@
 - **Audio:** clean mic (Lavalier or USB condenser). No music underbed — a status update wants to feel direct, not produced.
 - **Captions burned in** for muted autoplay on Twitter/X.
 - **B-roll cuts** during 0:35–1:10 only. Rest of the video is on-camera.
-- **Lower thirds** if used: keep to "Levan Gvarishvili · Financial Director · Stave" and "stave-five.vercel.app" + "github.com/levanglij/stave".
+- **Lower thirds** if used: keep to "Levan Gvarishvili · Financial Director · Stave" and "stave.cc" + "github.com/levanglij/stave".
 
 ## Delivery
 

@@ -90,7 +90,7 @@ A judge with Phantom can do this right now:
 1. **Get devnet test funds.** SOL from [faucet.solana.com](https://faucet.solana.com),
    USDC from [faucet.circle.com](https://faucet.circle.com). The
    marketplace also surfaces these links in the purchase panel.
-2. **Connect the wallet** at [stave-five.vercel.app](https://stave-five.vercel.app/issuances/evergreen-001).
+2. **Connect the wallet** at [stave.cc](https://stave.cc/issuances/evergreen-001).
 3. **Buy 50 shares of Suliko** *(5% of the catalog)*. Cost: 25 USDC at the
    listing's demo price.
 4. **Wait for a deposit.** When IPOA's monthly settlement triggers a

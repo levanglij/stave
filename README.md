@@ -23,7 +23,7 @@ Not a slide deck. Real code on a real chain.
 
 1. **[Open the Stave program on Solana Explorer (devnet)](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet)** — confirm the program account exists, owned by BPF Loader, ~430KB of Rust deployed.
 2. **[Open the `create_work` transaction](https://explorer.solana.com/tx/24aATvsPhsuctY5vN22XRL8CpckfnD8fLcQmaCmrJV5PbnWWggrojHdybB7JS71RWLMPmkN3DuoAmPVzBcRG9Xbo?cluster=devnet)** — the first Stave catalog (Suliko) was minted on-chain by this real TX, with a Token-2022 share supply created and listed.
-3. **[Open the live URL](https://stave-five.vercel.app)**, connect Phantom on devnet, browse to a catalog, click Buy. Real wallet. Real signature. Real devnet TX.
+3. **[Open the live URL](https://stave.cc)**, connect Phantom on devnet, browse to a catalog, click Buy. Real wallet. Real signature. Real devnet TX.
 
 > **New here?** Read [QUICKSTART.md](./QUICKSTART.md) for a 5-minute
 > fresh-laptop walk-through of all three layers (engine, program, frontend).
@@ -47,7 +47,7 @@ Judges respect honesty. Here's the line:
 | PRO data integration      | Not built      | Roadmap: first PRO connector inside 90 days post-hackathon.           |
 | On-chain Anchor program   | **Real (deployed to Solana devnet)** | All 5 MVP instructions: `create_work`, `list_shares`, `buy_shares`, `deposit_royalty`, `claim_royalty`. 15/15 tests passing on a local validator. Live on devnet at program ID [`EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q`](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet). |
 | Royalty distribution math | **Real**       | Pull-based USDC claim per shareholder; checkpoint math verified across multi-deposit / multi-claim sequences. |
-| Wallet integration        | **Real (live)** | Phantom + Solflare via `@solana/wallet-adapter` on stave-five.vercel.app. |
+| Wallet integration        | **Real (live)** | Phantom + Solflare via `@solana/wallet-adapter` on stave.cc. |
 | On-chain TX from frontend | **Real (devnet)** | Tokenize and Buy buttons fire real devnet transactions today (SPL Memo); swap to program calls once deployed. |
 | Marketplace UI            | **Real (live)** | 8 catalogs, 4 thematic indices, per-catalog detail with hero waveform + interactive returns calculator. |
 | Tranches (senior/mezz/growth) | Not in v1   | Single-class shares only. Tranching on the roadmap slide.             |
@@ -72,7 +72,7 @@ The bootstrap script that produced these is at [`program/scripts/bootstrap-sulik
 
 ## Quick links
 
-- 🔗 **Live demo:** [stave-five.vercel.app](https://stave-five.vercel.app) — Vercel-hosted, auto-deploys on every push to `main`
+- 🔗 **Live demo:** [stave.cc](https://stave.cc) — Vercel-hosted, auto-deploys on every push to `main`
 - 🎬 **Pitch video** (≤3 min): [submission/pitch-script.md](./submission/pitch-script.md) — _recording: pending_
 - 🛠 **Tech demo video** (~2:30): [submission/tech-demo-script.md](./submission/tech-demo-script.md) — _recording: pending_
 - 📦 **Submission package:** [submission/README.md](./submission/README.md) — index of every asset a judge needs
@@ -127,7 +127,7 @@ pnpm install
 pnpm dev                                    # http://localhost:3000
 ```
 
-Live deploy auto-runs on every push to `main`: https://stave-five.vercel.app
+Live deploy auto-runs on every push to `main`: https://stave.cc
 
 ## Architecture, in one diagram
 
@@ -169,7 +169,7 @@ A pro-rata distribution to 1,000 holders at $0.50 / holder is gas-positive on So
 - **Frontend:** Next.js 14 App Router, TypeScript strict, Tailwind, shadcn/ui, Recharts (`web/`)
 - **Auth:** Privy (env-gated; falls back to mock connect)
 - **Hosting:** Vercel (frontend), Solana devnet (program)
-- **Domain:** `stave.app` planned; `*.vercel.app` until then
+- **Domain:** [`stave.cc`](https://stave.cc) (live)
 
 ## Code quality & safety
 

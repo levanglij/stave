@@ -90,7 +90,7 @@ Ranked by judge-impact-per-effort, highest first.
 
 | # | Item | Status | Note |
 |---|------|--------|------|
-| B.1 | Working live URL | ✅ | https://stave-five.vercel.app — Vercel auto-deploys on push to `main`. |
+| B.1 | Working live URL | ✅ | https://stave.cc — Vercel auto-deploys on push to `main`. |
 | B.2 | Wallet connection works fresh | ✅ | Phantom + Solflare via `@solana/wallet-adapter`, env-gated Privy fallback to mock. |
 | B.3 | End-to-end flow without auth | ✅ | Marketplace browse + per-catalog detail + indices view all public. |
 | B.4 | On-chain TX visible to judge (Solana Explorer link) | 🟡 | Tokenize + Buy fire **real devnet SPL Memo TXs** — visible on Explorer, but they're memos not program calls. Honestly disclosed in README. The real lift = devnet program deploy. |
@@ -136,7 +136,7 @@ Ranked by judge-impact-per-effort, highest first.
 | F.1 | Single-page submission summary | 🟡 | `SUBMISSION.md` exists, ~55 lines. Decent depth. Currently a narrative; could lean more checklist. |
 | F.2 | Index of submission assets | 🔴 | No `submission/README.md`. The `submission/` directory contains only `.pptx` + `.xlsx`. Bundle C3 fixes this. |
 | F.3 | Time-to-first-success ≤2 min from README | 🟡 | `cat engine/outputs/evergreen-001.rating.json | python3 -m json.tool` is a 5-second success path, but README doesn't frame it that way. Bundle B1's QUICKSTART gives this prominence. |
-| F.4 | Contact email findable in <10s | 🟡 | No "Contact" section in README. Email `lgvarishvili@gmail.com` exists in `web/components/footer.tsx` and the apply API fallback inbox, but isn't on the front page. Mailto on partners page goes to `partners@stave.app` (a domain that doesn't exist yet). |
+| F.4 | Contact email findable in <10s | 🟡 | No "Contact" section in README. Email `lgvarishvili@gmail.com` exists in `web/components/footer.tsx` and the apply API fallback inbox, but isn't on the front page. Mailto on partners page goes to `partners@stave.cc` (a domain that doesn't exist yet). |
 
 ### G. Hackathon-honesty
 
@@ -165,7 +165,7 @@ Ranked by judge-impact-per-effort, highest first.
 |---|------|--------|------|
 | I.1 | Marketplace | 🟡 | 8 catalogs, 3 filter chips at top — **all chips are `disabled` placeholders** (`title="Filtering ships in v2"`). Catalog cards render `Grade` chip but lack a hover-rating hint. No skeleton/loading state. **Bundle D1 target.** |
 | I.2 | How It Works | 🟡 | 4 steps + 5 layers + tier ladder, all on one scroll. **No anchor TOC**, no inline diagrams. Reads as a wall of text on first load. **Bundle D2 target.** |
-| I.3 | Partners | ✅ | Recently rewritten: IPOA hero card + Distribution thesis section. Clean, no fake partners, mailto CTA exists (`partners@stave.app` — but domain not yet live). **Bundle D3 likely a NO-OP** — already structured. |
+| I.3 | Partners | ✅ | Recently rewritten: IPOA hero card + Distribution thesis section. Clean, no fake partners, mailto CTA exists (`partners@stave.cc` — but domain not yet live). **Bundle D3 likely a NO-OP** — already structured. |
 | I.4 | Indices | 🟡 | One example index (GHI) shown publicly, three drafts kept in data file but hidden from page. SoonChip in nav. Per the README claim "8 catalogs, 4 thematic indices" — **all 4 indices are implemented data-wise**, but only GHI is publicly rendered. **Bundle D4 should NOT remove the "soon" label** — the public surface only exposes one of four; "soon" label is honest. |
 | I.5 | For Artists | ✅ | Hero + 3 benefit cards (Banknote / ShieldCheck / LineChart) + 3-step "How it works" + apply modal posting to `/api/tokenize-application`. Already structured per the D5 spec. **Bundle D5 likely a NO-OP** beyond minor verification. |
 
@@ -222,7 +222,7 @@ Closes I.1, I.2. I.3, I.4, I.5 likely no-ops.
 |------|-------------|-------|
 | D5 — For Artists | I.5 | **Verify, may be no-op.** Hero + benefits + apply modal already present. |
 | D4 — Indices | I.4 | **Keep "soon" label** — only 1 of 4 publicly rendered. Polish the coming-soon hero. Do NOT remove the label as the spec contemplates "if 4 indices already implemented." Per README, all 4 are coded but only 1 is exposed; the other 3 are drafts. |
-| D3 — Partners | I.3 | **Likely no-op.** IPOA card structured, distribution thesis section exists, mailto CTA present. Consider replacing dead `partners@stave.app` with `lgvarishvili@gmail.com` until domain stands up. |
+| D3 — Partners | I.3 | **Likely no-op.** IPOA card structured, distribution thesis section exists, mailto CTA present. Consider replacing dead `partners@stave.cc` with `lgvarishvili@gmail.com` until domain stands up. |
 | D2 — How It Works | I.2 | Anchor TOC + "Want the math?" callout to FORMULAS.md. Inline diagrams: spec allows TODO comments if SVG creation is out of scope — recommend that path. |
 | D1 — Marketplace | I.1 | Sticky filter bar (real, not placeholder) + rating chip on cards (already on rows) + summary line + skeleton. **Largest D scope.** |
 
@@ -234,7 +234,7 @@ Items I recommend **dropping or deferring** for this submission sprint:
 
 - **A5 (footer hackathon line).** A long-form disclaimer paragraph already lives in `web/components/footer.tsx` above the © line ("Stave is a hackathon prototype built for demonstration purposes. The platform, scores, and any displayed return profiles are illustrative only..."). Adding another acknowledgment line would be redundant. **Skip unless you specifically want a shorter inline framing.**
 - **D5 (For Artists rebuild).** Already structured per the spec — hero + 3 benefit cards + 3-step list + apply modal. Re-implementing risks regression. **Verify in 5 minutes; skip the rebuild.**
-- **D3 (Partners restructure).** Recently rewritten with IPOA + Distribution thesis + numbered partnership-covers list + mailto. **Verify; skip the rebuild.** Suggest one tiny patch instead: swap `mailto:partners@stave.app` for `mailto:lgvarishvili@gmail.com` until the domain stands up.
+- **D3 (Partners restructure).** Recently rewritten with IPOA + Distribution thesis + numbered partnership-covers list + mailto. **Verify; skip the rebuild.** Suggest one tiny patch instead: swap `mailto:partners@stave.cc` for `mailto:lgvarishvili@gmail.com` until the domain stands up.
 - **CI configuration (gap C.6).** Adding GitHub Actions adds risk (workflow failures look bad, secrets management) for a hackathon prototype that has clean local test commands documented. **Defer to post-submission.**
 - **`docs/04` and `docs/05` rewrite-in-place.** The existing scripts have value as historical artifacts. Bundle C1/C2 should write **new files in `submission/`** and leave the `docs/` originals alone.
 - **Devnet program deploy (gap E.1).** Outside this sprint's code scope — needs wallet funding (~3 SOL) and a CLI run that this agent cannot do remotely. **Highest-impact gap _outside_ this sprint; flag for human action between Phase 4 and submission day.**

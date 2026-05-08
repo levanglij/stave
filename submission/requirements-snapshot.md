@@ -176,7 +176,7 @@ This is the checklist Stave needs to clear by **May 11, 2026**:
 - [ ] GitHub repo public — already public at `github.com/levanglij/stave`
 - [ ] LICENSE file — already MIT, see `LICENSE`
 - [ ] README front-door clean — `README.md` + `QUICKSTART.md` + `submission/README.md` index ✅
-- [ ] Live demo URL — `stave-five.vercel.app` ✅
+- [ ] Live demo URL — `stave.cc` ✅
 - [ ] Pitch deck PDF — **PENDING**, only `.pptx` exists
 - [ ] Team background — **PENDING**, founder bios needed for both `README.md` Team section and `SUBMISSION.md`
 - [ ] Solana integration explanation — covered in README "Why Solana" + SUBMISSION + tech demo script ✅
