@@ -35,10 +35,13 @@ export default function Home() {
 
   return (
     <main>
-      {/* HERO — full institutional dominance */}
+      {/* HERO — full institutional dominance.
+          Grid ratio: 50/50 on md+, 46/54 on lg+ (chart side bigger).
+          The right column also picks up an emerald glow backdrop so the
+          chart reads as a deliberate hero visual, not a small thumbnail. */}
       <section className="relative overflow-hidden min-h-[88vh] flex items-center">
         <div className="relative w-full max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <div className="grid md:grid-cols-[55fr_45fr] gap-10 lg:gap-14 items-center">
+          <div className="grid md:grid-cols-2 lg:grid-cols-[46fr_54fr] gap-10 lg:gap-14 items-center">
             {/* Left: copy */}
             <div>
               <h1 className="text-6xl sm:text-7xl md:text-7xl lg:text-8xl font-bold text-fg text-balance tracking-[-0.03em] leading-[0.95]">
@@ -128,9 +131,24 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: candles-as-notes chart */}
-            <div className="w-full">
-              <HeroChartNotes />
+            {/* Right: candles-as-notes chart, framed by an emerald aura
+                so the visual reads big and "lives in space" instead of
+                hovering thumbnail-style next to the giant H1. The aura
+                is purely decorative (pointer-events none) and sits a
+                z-step behind the SVG. At lg+ we scale the chart up a
+                touch to balance the headline weight on the left. */}
+            <div className="relative w-full">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -inset-6 md:-inset-10 rounded-[2.5rem] blur-3xl opacity-60"
+                style={{
+                  background:
+                    "radial-gradient(50% 60% at 60% 50%, rgba(16,185,129,0.28), transparent 70%)",
+                }}
+              />
+              <div className="relative lg:scale-[1.06] origin-center">
+                <HeroChartNotes />
+              </div>
             </div>
           </div>
         </div>
