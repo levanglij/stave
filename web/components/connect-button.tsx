@@ -1,11 +1,34 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
+import { useToast } from "./toast";
 
 export function ConnectButton() {
-  const { publicKey, connected, disconnect, connecting } = useWallet();
+  const { publicKey, connected, disconnect, connecting, wallet } = useWallet();
   const { setVisible } = useWalletModal();
+  const toast = useToast();
+  // Track previous connected state so we can fire toasts only on
+  // transitions (connect / disconnect), not on every render.
+  const prevConnected = useRef<boolean>(false);
+
+  useEffect(() => {
+    if (connected && !prevConnected.current && publicKey) {
+      const addr = publicKey.toBase58();
+      const short = `${addr.slice(0, 4)}…${addr.slice(-4)}`;
+      toast.success(
+        "Wallet connected",
+        wallet?.adapter.name
+          ? `${wallet.adapter.name} · ${short}`
+          : short,
+      );
+    }
+    if (!connected && prevConnected.current) {
+      toast.info("Wallet disconnected");
+    }
+    prevConnected.current = connected;
+  }, [connected, publicKey, wallet?.adapter.name, toast]);
 
   if (connected && publicKey) {
     const addr = publicKey.toBase58();

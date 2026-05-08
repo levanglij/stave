@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Copy, Check, ExternalLink } from "lucide-react";
+import { useToast } from "./toast";
 
 // Truncates a Solana address (or TX signature) to first-6 + last-4
 // for display, while keeping the full string for copy.
@@ -33,15 +34,22 @@ export function CopyableAddress({
   type = "address",
 }: CopyableAddressProps) {
   const [copied, setCopied] = useState(false);
+  const toast = useToast();
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(value);
       setCopied(true);
+      toast.success(
+        type === "tx" ? "TX signature copied" : "Address copied",
+        truncate(value),
+      );
       setTimeout(() => setCopied(false), 1400);
     } catch {
-      // clipboard.writeText can fail in some sandboxed environments;
-      // we silently swallow — judge can highlight + copy manually.
+      // Sandboxed environments can block writeText. Surface the error
+      // so the judge knows why nothing happened, then offer the
+      // explorer link as a fallback path.
+      toast.error("Couldn't copy", "Right-click the pill to copy manually.");
     }
   };
 

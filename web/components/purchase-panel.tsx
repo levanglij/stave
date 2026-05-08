@@ -11,6 +11,7 @@ import {
 import type { Listing } from "@/lib/types";
 import { usd, pct } from "@/lib/format";
 import { getHeadlineStats } from "@/lib/headline-stats";
+import { useToast } from "./toast";
 
 // SPL Memo program — placeholder for `stave.buy_shares` until the
 // program is deployed to devnet. The buy intent gets recorded
@@ -35,6 +36,7 @@ export function PurchasePanel({ listing }: { listing: Listing }) {
   const { publicKey, sendTransaction, connecting } = useWallet();
   const { connection } = useConnection();
   const { setVisible } = useWalletModal();
+  const toast = useToast();
 
   const total = qty * listing.price;
   const { annualYield } = getHeadlineStats(listing);
@@ -77,6 +79,10 @@ export function PurchasePanel({ listing }: { listing: Listing }) {
       tx.feePayer = publicKey;
 
       const signature = await sendTransaction(tx, connection);
+      toast.info(
+        "Buy intent submitted",
+        `Confirming ${qty} share${qty !== 1 ? "s" : ""} of ${listing.title}…`,
+      );
       await connection.confirmTransaction(
         { signature, blockhash, lastValidBlockHeight },
         "confirmed",
@@ -84,10 +90,27 @@ export function PurchasePanel({ listing }: { listing: Listing }) {
 
       setSig(signature);
       setPhase("success");
+      toast.success(
+        "Buy intent confirmed",
+        `${qty} share${qty !== 1 ? "s" : ""} of ${listing.title} · ${usd(total)}`,
+        {
+          explorerHref: `https://explorer.solana.com/tx/${signature}?cluster=devnet`,
+          durationMs: 6_000,
+        },
+      );
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Transaction failed";
       setErrMsg(msg);
       setPhase("error");
+      // The inline error block already shows the friendly message;
+      // the toast is the at-a-glance signal so users notice without
+      // scrolling.
+      const friendly = /User rejected|rejected the request/i.test(msg)
+        ? "Rejected in wallet — no fees charged"
+        : /insufficient.*lamports|insufficient funds/i.test(msg)
+          ? "Wallet has no devnet SOL"
+          : msg;
+      toast.error("Transaction failed", friendly);
     }
   };
 

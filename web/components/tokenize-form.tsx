@@ -10,6 +10,7 @@ import {
   TransactionInstruction,
 } from "@solana/web3.js";
 import { usd } from "@/lib/format";
+import { useToast } from "./toast";
 
 // SPL Memo program — accepts arbitrary UTF-8 data inscribed on-chain.
 // Used here as a stand-in for `stave.create_work` until the program
@@ -83,6 +84,7 @@ export function TokenizeForm() {
   const { publicKey, sendTransaction, connecting } = useWallet();
   const { connection } = useConnection();
   const { setVisible } = useWalletModal();
+  const toast = useToast();
 
   const sharesForSale = Math.max(0, form.totalShares - form.sharesToKeep);
   const targetRaise = sharesForSale * form.pricePerShare;
@@ -154,6 +156,10 @@ export function TokenizeForm() {
       // 3. Wallet popup -> sign + send.
       const signature = await sendTransaction(tx, connection);
       setStepIdx(3);
+      toast.info(
+        "Tokenize submitted",
+        `Confirming ${form.title} on devnet…`,
+      );
 
       // 4. Wait for devnet confirmation.
       await connection.confirmTransaction(
@@ -164,11 +170,25 @@ export function TokenizeForm() {
 
       setSig(signature);
       setPhase("success");
+      toast.success(
+        "Catalog tokenized",
+        `${form.title} is live on Solana devnet`,
+        {
+          explorerHref: `https://explorer.solana.com/tx/${signature}?cluster=devnet`,
+          durationMs: 6_000,
+        },
+      );
     } catch (err: unknown) {
       const msg =
         err instanceof Error ? err.message : "Transaction failed";
       setErrMsg(msg);
       setPhase("error");
+      const friendly = /User rejected|rejected the request/i.test(msg)
+        ? "Rejected in wallet — no fees charged"
+        : /insufficient.*lamports|insufficient funds/i.test(msg)
+          ? "Wallet has no devnet SOL"
+          : msg;
+      toast.error("Tokenize failed", friendly);
     }
   };
 
