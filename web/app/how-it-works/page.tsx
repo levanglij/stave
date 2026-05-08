@@ -14,12 +14,119 @@ const STEPS = [
   { n: "04", title: "Royalties pay out automatically", body: "Pull-based, pro-rata, on-chain." },
 ];
 
-const LAYERS = [
-  { n: "L1", title: "Data normalization", body: "Monthly USD, currency-aligned." },
-  { n: "L2", title: "Decay modeling", body: "Exponential or power-law fit." },
-  { n: "L3", title: "Anomaly detection", body: "Rolling z-score on the time series." },
-  { n: "L4", title: "Concentration & VaR", body: "HHI + 1k-iter Monte Carlo." },
-  { n: "L5", title: "Grade aggregation", body: "Five factors → composite → tier." },
+// Each layer ships with the actual formula the engine evaluates,
+// rendered inline as italic-variable HTML. This is intentionally
+// dependency-free: KaTeX would add ~70 KB to this route for one
+// page of math, and the formulas here are short enough that hand-
+// authored markup reads cleanly. The formulae link to the same
+// canonical page the rest of the site does — engine/FORMULAS.md.
+const LAYERS: {
+  n: string;
+  title: string;
+  body: string;
+  formula: React.ReactNode;
+}[] = [
+  {
+    n: "L1",
+    title: "Data normalization",
+    body: "Monthly USD, currency-aligned.",
+    formula: (
+      <>
+        <i>x</i>
+        <sub>
+          <i>t</i>
+        </sub>
+        <sup>USD</sup> = <i>x</i>
+        <sub>
+          <i>t</i>
+        </sub>{" "}
+        · <i>r</i>
+        <sub>
+          <i>t</i>
+        </sub>
+      </>
+    ),
+  },
+  {
+    n: "L2",
+    title: "Decay modeling",
+    body: "Exponential or power-law fit, lower-residual wins.",
+    formula: (
+      <>
+        <i>R</i>(<i>t</i>) = <i>R</i>
+        <sub>0</sub> · <i>e</i>
+        <sup>
+          −λ<i>t</i>
+        </sup>
+        <span className="mx-2 text-zinc-600">|</span>
+        <i>R</i>
+        <sub>0</sub> · <i>t</i>
+        <sup>−α</sup>
+      </>
+    ),
+  },
+  {
+    n: "L3",
+    title: "Anomaly detection",
+    body: "Rolling z-score across the time series.",
+    formula: (
+      <>
+        <i>z</i>
+        <sub>
+          <i>t</i>
+        </sub>{" "}
+        = (<i>x</i>
+        <sub>
+          <i>t</i>
+        </sub>{" "}
+        − μ
+        <sub>
+          <i>w</i>
+        </sub>
+        ) / σ
+        <sub>
+          <i>w</i>
+        </sub>
+      </>
+    ),
+  },
+  {
+    n: "L4",
+    title: "Concentration & VaR",
+    body: "HHI + 1k-iter Monte Carlo for 60-mo CVaR.",
+    formula: (
+      <>
+        HHI = Σ <i>s</i>
+        <sub>
+          <i>i</i>
+        </sub>
+        <sup>2</sup>
+        <span className="mx-2 text-zinc-600">|</span>
+        CVaR
+        <sub>95</sub> = E[<i>X</i> | <i>X</i> ≤ VaR
+        <sub>95</sub>]
+      </>
+    ),
+  },
+  {
+    n: "L5",
+    title: "Grade aggregation",
+    body: "Five factors → composite → tier.",
+    formula: (
+      <>
+        composite = Σ <i>w</i>
+        <sub>
+          <i>i</i>
+        </sub>{" "}
+        · factor
+        <sub>
+          <i>i</i>
+        </sub>
+        <span className="mx-2 text-zinc-600">→</span>
+        tier(composite)
+      </>
+    ),
+  },
 ];
 
 const TIERS = [
@@ -224,7 +331,7 @@ export default function HowItWorksPage() {
             {LAYERS.map((l, i) => (
               <div
                 key={l.n}
-                className="rounded-xl border border-border bg-panel p-4 fade-up"
+                className="rounded-xl border border-border bg-panel p-4 fade-up flex flex-col"
                 style={{ ["--delay" as string]: `${i * 0.08}s` }}
               >
                 <div className="text-xl font-bold text-accent-bright tabular mb-2">
@@ -233,7 +340,15 @@ export default function HowItWorksPage() {
                 <div className="font-semibold text-fg text-sm mb-1">
                   {l.title}
                 </div>
-                <p className="text-xs text-muted leading-relaxed">{l.body}</p>
+                <p className="text-xs text-muted leading-relaxed mb-3">
+                  {l.body}
+                </p>
+                {/* Inline formula — italic variables, real Σ / σ / λ /
+                    sub-sup. Spacer pushes formulas to the bottom of
+                    each card so heights align across the row. */}
+                <div className="mt-auto pt-3 border-t border-border/60 text-[12px] text-emerald-300/90 font-mono leading-snug formula">
+                  {l.formula}
+                </div>
               </div>
             ))}
           </div>

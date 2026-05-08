@@ -261,6 +261,34 @@ main, header, footer {
   }
 }
 
+/* Math formulas — `<i>` tags inside .formula get a proper math
+   italic look (Cambria / STIX / serif fallback) and tight vertical
+   metrics for sub/sup. Used on the methodology section of
+   /how-it-works. Pure CSS so we don't ship KaTeX (~70 KB) for five
+   short formulas. */
+.formula {
+  font-feature-settings: "tnum", "ss01";
+}
+.formula i {
+  font-style: italic;
+  font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math",
+    "Times New Roman", serif;
+  letter-spacing: 0.01em;
+}
+.formula sub,
+.formula sup {
+  font-size: 0.72em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.formula sub {
+  top: 0.32em;
+}
+.formula sup {
+  top: -0.5em;
+}
+
 /* Subtle staggered reveal for step / list rows. Apply with
    `.fade-up` and an inline `--delay` style if you want stagger. */
 @keyframes fadeUp {
