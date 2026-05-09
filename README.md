@@ -229,7 +229,7 @@ Every box below is **verifiable in the repo today**. Anything unchecked is a pla
 
 ## Team
 
-_To be filled before submission. Required: founder names, roles, one-line credentials each._
+**Levan Gvarishvili** · Founder. Quant trader. Builds systematic algorithmic trading strategies in crypto markets, the same risk-modeling discipline that informs Stave's open rating engine for music royalties.
 
 ## Regulatory roadmap
 

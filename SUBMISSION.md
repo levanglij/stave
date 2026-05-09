@@ -42,7 +42,7 @@ Year 1 target: $50M in rated catalog value, 10 closed financings, first portfoli
 
 ## Team
 
-_To be filled before submission. Founder names, roles, one-line credentials each - required for the deck and pitch video opener._
+**Levan Gvarishvili** · Founder. Quant trader with hands-on experience building systematic algorithmic crypto trading strategies. The same risk-modeling discipline that powers institutional crypto trading is what underpins Stave's deterministic rating engine for music royalty assets.
 
 ## Links
 
