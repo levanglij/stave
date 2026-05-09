@@ -16,7 +16,7 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   { label: "Marketplace", href: "/marketplace" },
-  { label: "Indices", href: "/indices" },
+  { label: "Indices", href: "/indices", soon: true },
   { label: "How it works", href: "/how-it-works" },
   { label: "Partners", href: "/partners" },
   { label: "For artists", href: "/for-artists", soon: true },
@@ -55,7 +55,7 @@ export function NavHeader() {
   return (
     <header className="border-b border-border bg-bg/80 backdrop-blur-md sticky top-0 z-20">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
-        {/* Logo — bumped ~30% from 180/52 to 234/68 */}
+        {/* Logo - bumped ~30% from 180/52 to 234/68 */}
         <Link
           href="/"
           className="flex items-center gap-2 shrink-0"
@@ -71,7 +71,7 @@ export function NavHeader() {
           />
         </Link>
 
-        {/* Desktop nav — hidden under md */}
+        {/* Desktop nav - hidden under md */}
         <nav className="hidden md:flex items-center gap-1 text-sm">
           {NAV_ITEMS.map((item) => {
             const active = isActive(pathname, item.href);
@@ -102,7 +102,7 @@ export function NavHeader() {
           })}
         </nav>
 
-        {/* Right side — desktop */}
+        {/* Right side - desktop */}
         <div className="hidden md:flex items-center gap-3 text-sm">
           <span className="text-[10px] tracking-widest uppercase border border-border rounded-full px-2 py-0.5 text-muted">
             devnet · mock
@@ -110,7 +110,7 @@ export function NavHeader() {
           <ConnectButton />
         </div>
 
-        {/* Hamburger — visible only under md */}
+        {/* Hamburger - visible only under md */}
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
@@ -127,7 +127,7 @@ export function NavHeader() {
         </button>
       </div>
 
-      {/* Mobile drawer — full-bleed sheet that slides down from the
+      {/* Mobile drawer - full-bleed sheet that slides down from the
           header. Uses absolute (not fixed) so it docks to the sticky
           header rather than overlaying weirdly on iOS Safari. */}
       <div
@@ -179,7 +179,7 @@ export function NavHeader() {
         </div>
       </div>
 
-      {/* Click-catch backdrop — fades in under the drawer so taps
+      {/* Click-catch backdrop - fades in under the drawer so taps
           outside close the menu. Only mounted while open. */}
       {open && (
         <button

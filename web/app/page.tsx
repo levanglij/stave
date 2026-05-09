@@ -35,7 +35,7 @@ export default function Home() {
 
   return (
     <main>
-      {/* HERO — full institutional dominance.
+      {/* HERO - full institutional dominance.
           Grid ratio: 50/50 on md+, 46/54 on lg+ (chart side bigger).
           The right column also picks up an emerald glow backdrop so the
           chart reads as a deliberate hero visual, not a small thumbnail. */}
@@ -44,16 +44,16 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-[46fr_54fr] gap-10 lg:gap-14 items-center">
             {/* Left: copy */}
             <div>
-              <h1 className="text-6xl sm:text-7xl md:text-7xl lg:text-8xl font-bold text-fg text-balance tracking-[-0.03em] leading-[0.95]">
+              <h1 className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-bold text-fg text-balance tracking-[-0.03em] leading-[1.02]">
                 Music royalties,{" "}
                 <span className="bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">
                   made investable.
                 </span>
               </h1>
-              <p className="text-lg md:text-xl text-muted leading-relaxed mt-7 max-w-[580px]">
+              <p className="text-xl md:text-2xl text-muted leading-relaxed mt-7 max-w-[640px]">
                 Stave transforms verified music catalogs into investable
                 royalty assets through transparent scoring, fractional
-                ownership, and Solana-based settlement.
+                ownership and Solana-based settlement.
               </p>
               <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <Link
@@ -76,7 +76,7 @@ export default function Home() {
                 </Link>
               </div>
 
-              {/* Credibility row — IPOA partner + open-methodology pill.
+              {/* Credibility row - IPOA partner + open-methodology pill.
                   Sit side-by-side on desktop so the hero stack feels
                   tight; stack on mobile. Same outlined-pill family. */}
               <div className="mt-7 flex flex-col md:flex-row md:flex-wrap items-stretch md:items-center gap-3">
@@ -99,7 +99,7 @@ export default function Home() {
                       />
                     </span>
                     <span className="text-[11px] text-zinc-500 mt-0.5">
-                      Intellectual Property Owners Association — Georgia&rsquo;s
+                      Intellectual Property Owners Association - Georgia&rsquo;s
                       official music rights organization
                     </span>
                   </span>
@@ -161,11 +161,14 @@ export default function Home() {
         style={{ boxShadow: "0 -1px 8px rgba(16, 185, 129, 0.05)" }}
       />
 
-      {/* LIVE ON-CHAIN TICKER — pulse band of recent program TXs on
+      {/* LIVE ON-CHAIN TICKER - pulse band of recent program TXs on
           devnet. Real signatures, click-through to Solana Explorer. */}
       <HeroTicker />
 
-      {/* STATS BAND — Bloomberg terminal energy */}
+      {/* STATS BAND - Bloomberg terminal energy.
+          TODO(stave): Reconsider whether composite grade and median 5yr
+          ROI belong on the landing page; numerical density may be
+          appropriate for a Solana-native audience but needs review. */}
       <Reveal>
         <section className="bg-gradient-to-b from-zinc-950 to-black border-b border-zinc-900">
           <div className="max-w-6xl mx-auto px-6 py-14 md:py-16">
@@ -198,7 +201,7 @@ export default function Home() {
       {/* Stats → how-it-works transition */}
       <div className="bg-gradient-to-b from-black via-zinc-950/40 to-black h-[1px]" />
 
-      {/* WARMTH BAND #1 — studio console. Sets a "music as craft"
+      {/* WARMTH BAND #1 - studio console. Sets a "music as craft"
           mood before the explanatory how-it-works section. */}
       <section className="relative overflow-hidden">
         <div className="relative w-full h-[260px] md:h-[340px]">
@@ -210,7 +213,7 @@ export default function Home() {
             className="object-cover"
             quality={85}
           />
-          {/* Dark scrim — neutralizes the image's warm tones so it sits
+          {/* Dark scrim - neutralizes the image's warm tones so it sits
               inside the dark+emerald palette without competing. */}
           <div
             aria-hidden
@@ -223,7 +226,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HOW IT WORKS — 3-step linear flow, the IA gap before the value props */}
+      {/* HOW IT WORKS - 3-step linear flow, the IA gap before the value props */}
       <Reveal>
         <section className="max-w-6xl mx-auto px-6 py-28 md:py-32">
           <div className="text-center max-w-2xl mx-auto mb-14">
@@ -243,17 +246,20 @@ export default function Home() {
             <Step
               n="01"
               title="We grade the catalog"
-              body="Each music catalog is scored by our open-source rating engine using streaming history, revenue concentration, and tail-risk metrics. The output is a single grade from AA to B."
+              body="Each music catalog is scored by an open-source rating engine using streaming history, revenue concentration and tail-risk metrics. The output is a single grade from AA to B."
             />
             <Step
               n="02"
               title="You buy a fractional share"
-              body="Every catalog is split into 1,000 fungible SPL tokens on Solana. Buy a 0.1% slice or the whole thing — no minimum check size beyond one token."
+              body="Each song catalog is fractionalized into 1,000 fungible SPL tokens on Solana. This allows investors to purchase a 0.1% share, a larger stake, or the full available ownership interest, with the minimum investment starting from just one token."
             />
+            {/* Revenue-source list verified against IPOA's distribution
+                mix: streaming, mechanical, public performance / radio,
+                neighbouring rights, synchronization, TV broadcast. */}
             <Step
               n="03"
               title="Royalties settle on-chain"
-              body="As the catalog earns from streaming, radio, and sync, distributions are paid programmatically to token holders. Every payout is traceable on-chain."
+              body="As the catalog earns from streaming, mechanical royalties, public performance, neighbouring rights, synchronization and TV broadcast, distributions are paid programmatically to token holders. Every payout is traceable on-chain."
             />
           </div>
         </section>
@@ -262,7 +268,7 @@ export default function Home() {
       {/* How-it-works → value-cards transition */}
       <div className="bg-gradient-to-b from-black via-zinc-950/40 to-black h-[1px]" />
 
-      {/* VALUE PROPS — three properties, one thesis */}
+      {/* VALUE PROPS - three properties, one thesis */}
       <Reveal>
         <section className="max-w-6xl mx-auto px-6 py-28 md:py-32">
         <div className="text-center max-w-2xl mx-auto mb-14">
@@ -288,7 +294,7 @@ export default function Home() {
           <ValueCard
             icon={<PieChart className="w-5 h-5" strokeWidth={1.75} />}
             title="Own as little as 0.1%"
-            body="Each listing is split into 1,000 fungible SPL tokens. Buy one token or the whole catalog — there's no minimum check size beyond a single share."
+            body="Each listing is split into 1,000 fungible SPL tokens. Buy one token or the whole catalog - there's no minimum check size beyond a single share."
             href="/marketplace"
           />
           <ValueCard
@@ -304,7 +310,7 @@ export default function Home() {
       {/* Value-cards → featured transition */}
       <div className="bg-gradient-to-b from-black via-zinc-950/40 to-black h-[1px]" />
 
-      {/* HACKATHON-HONEST CALLOUT — what's real, what's simulated. Sits
+      {/* HACKATHON-HONEST CALLOUT - what's real, what's simulated. Sits
           above the featured-listings section so users see the line before
           they browse the synthetic catalogs. Same outlined-card pattern
           as the IPOA + open-methodology pills in the hero. */}
@@ -349,7 +355,7 @@ export default function Home() {
             />
           </div>
 
-          {/* Click-to-verify on-chain — surfaces the deployed program +
+          {/* Click-to-verify on-chain - surfaces the deployed program +
               first bootstrapped Suliko listing as copyable addresses
               with Explorer links. The honesty card above SAYS it's real;
               this row PROVES it. */}
@@ -381,7 +387,7 @@ export default function Home() {
       </section>
       </Reveal>
 
-      {/* WARMTH BAND — vinyl macro humanizes the underlying asset.
+      {/* WARMTH BAND - vinyl macro humanizes the underlying asset.
           Intentionally not wrapped in <Reveal>: the warmth bands are
           mid-scroll transitions and read better as solid full-bleed
           imagery you scroll INTO, not as content to fade in. */}
@@ -408,7 +414,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURED LISTINGS — three card grid, premium hover */}
+      {/* FEATURED LISTINGS - three card grid, premium hover */}
       <Reveal>
       <section className="max-w-6xl mx-auto px-6 py-24 md:py-28">
         <div className="flex items-baseline justify-between mb-10">
@@ -436,11 +442,11 @@ export default function Home() {
       </section>
       </Reveal>
 
-      {/* METHODOLOGY TEASER — editorial blockquote with sheet-music side image */}
+      {/* METHODOLOGY TEASER - editorial blockquote with sheet-music side image */}
       <Reveal>
       <section className="bg-gradient-to-b from-black via-zinc-950/30 to-black">
         <div className="max-w-5xl mx-auto px-6 py-32 md:py-36">
-          {/* Section anchor — larger version of the hero open-methodology
+          {/* Section anchor - larger version of the hero open-methodology
               badge. Sets the tone for the methodology block before the
               eyebrow. Same outlined pill family as the IPOA element. */}
           <div className="text-center mb-12">
@@ -472,7 +478,7 @@ export default function Home() {
               <div className="text-[10px] font-semibold tracking-[2px] uppercase text-muted mb-8">
                 Methodology
               </div>
-              {/* Decorative emerald waveform band — bridges music + data */}
+              {/* Decorative emerald waveform band - bridges music + data */}
               <div className="mb-10">
                 <MethodologyWaveform />
               </div>
@@ -497,7 +503,7 @@ export default function Home() {
                 </ChipLink>
               </div>
 
-              {/* Grade ladder — single accent (emerald), opacity descending
+              {/* Grade ladder - single accent (emerald), opacity descending
                   AAA → B. Reads as a credibility ladder, not a heat map. */}
               <div className="mt-10 pl-8">
                 <div className="text-[10px] font-semibold tracking-[2px] uppercase text-muted mb-3">
@@ -523,7 +529,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Sheet-music macro — quiet editorial visual that ties the
+            {/* Sheet-music macro - quiet editorial visual that ties the
                 brand name (Stave = staff lines) to the scoring story.
                 Square, bordered, slight desaturation via mix-blend so the
                 paper warmth doesn't fight the dark+emerald palette. */}
@@ -557,7 +563,7 @@ export default function Home() {
         className="h-px bg-gradient-to-r from-transparent via-emerald-700/40 to-transparent"
       />
 
-      {/* CLOSING CTA BAND — bookend to the hero */}
+      {/* CLOSING CTA BAND - bookend to the hero */}
       <Reveal>
       <section
         className="relative overflow-hidden border-t border-zinc-900"
@@ -681,7 +687,7 @@ function ValueCard({
 
 // Numbered step block for the "How it works" section. Same gradient panel
 // chrome as ValueCard so the page rhythm stays consistent, but no hover
-// state and no link — these are explanatory, not navigational.
+// state and no link - these are explanatory, not navigational.
 function Step({
   n,
   title,
