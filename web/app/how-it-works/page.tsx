@@ -322,11 +322,7 @@ export default function HowItWorksPage() {
             </code>
             .
           </p>
-          {/* TODO(stave): inline SVG diagram of the 5-layer pipeline data
-              flow - Data normalization → Decay modeling → Anomaly detection
-              → Concentration & VaR → Grade aggregation. Out of scope for
-              the current sprint; left as a sized placeholder if/when
-              commissioned. */}
+          {/* TODO: pipeline diagram */}
           <div className="grid md:grid-cols-5 gap-3">
             {LAYERS.map((l, i) => (
               <div
@@ -388,9 +384,7 @@ export default function HowItWorksPage() {
           <h2 className="text-2xl font-bold tracking-tight text-fg mb-5">
             Score → tier → max LTV.
           </h2>
-          {/* TODO(stave): inline SVG diagram of the score-to-tier-to-LTV
-              mapping - score axis 0–100, tier bands AAA → B, LTV ramp
-              80% → 0%. Out of scope for the current sprint. */}
+          {/* TODO: tier-ladder diagram */}
           <div className="rounded-xl border border-border bg-panel overflow-hidden">
             <div className="grid grid-cols-3 gap-4 px-5 py-3 border-b border-border bg-panel-2/60 text-[10px] uppercase tracking-[1.2px] text-muted font-medium">
               <div>Tier</div>

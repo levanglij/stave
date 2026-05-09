@@ -165,10 +165,7 @@ export default function Home() {
           devnet. Real signatures, click-through to Solana Explorer. */}
       <HeroTicker />
 
-      {/* STATS BAND - Bloomberg terminal energy.
-          TODO(stave): Reconsider whether composite grade and median 5yr
-          ROI belong on the landing page; numerical density may be
-          appropriate for a Solana-native audience but needs review. */}
+      {/* TODO: review composite grade + 5yr ROI tiles */}
       <Reveal>
         <section className="bg-gradient-to-b from-zinc-950 to-black border-b border-zinc-900">
           <div className="max-w-6xl mx-auto px-6 py-14 md:py-16">
@@ -253,9 +250,6 @@ export default function Home() {
               title="You buy a fractional share"
               body="Each song catalog is fractionalized into 1,000 fungible SPL tokens on Solana. This allows investors to purchase a 0.1% share, a larger stake, or the full available ownership interest, with the minimum investment starting from just one token."
             />
-            {/* Revenue-source list verified against IPOA's distribution
-                mix: streaming, mechanical, public performance / radio,
-                neighbouring rights, synchronization, TV broadcast. */}
             <Step
               n="03"
               title="Royalties settle on-chain"
