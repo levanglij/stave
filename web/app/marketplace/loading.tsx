@@ -1,6 +1,6 @@
 // Skeleton shown by Next.js App Router during route transitions into
 // the marketplace. Matches the real page's layout closely so there's
-// no jump when listings hydrate. Pure CSS — animate-pulse from
+// no jump when listings hydrate. Pure CSS - animate-pulse from
 // Tailwind handles the shimmer.
 
 export default function MarketplaceLoading() {
@@ -14,7 +14,7 @@ export default function MarketplaceLoading() {
         </div>
         <Sk className="h-3 w-72 mt-2 mb-8" />
 
-        {/* Filter row — outline-pill placeholders */}
+        {/* Filter row - outline-pill placeholders */}
         <div className="flex flex-wrap gap-2 mb-6">
           <Sk className="h-9 w-24 rounded-full" />
           <Sk className="h-9 w-32 rounded-full" />
@@ -22,7 +22,7 @@ export default function MarketplaceLoading() {
           <Sk className="h-9 w-24 rounded-full" />
         </div>
 
-        {/* Listing grid — 8 skeleton cards (matches actual count). */}
+        {/* Listing grid - 8 skeleton cards (matches actual count). */}
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {Array.from({ length: 8 }).map((_, i) => (
             <ListingCardSkeleton key={i} />
@@ -40,7 +40,7 @@ export default function MarketplaceLoading() {
 function ListingCardSkeleton() {
   return (
     <div className="rounded-xl border border-zinc-800/60 bg-gradient-to-b from-zinc-900/60 to-zinc-950/60 p-4">
-      {/* Cover — square gradient placeholder */}
+      {/* Cover - square gradient placeholder */}
       <Sk className="aspect-square w-full rounded-lg mb-4" />
       {/* Title row */}
       <div className="flex items-start justify-between gap-3 mb-1">
@@ -64,7 +64,7 @@ function ListingCardSkeleton() {
   );
 }
 
-// Small skeleton primitive — same color treatment everywhere so the
+// Small skeleton primitive - same color treatment everywhere so the
 // shimmer reads as a coherent loading state. animate-pulse gives the
 // gentle opacity oscillation; the tone matches the Stave panel
 // background (slightly lighter than bg) so it sits inside the dark

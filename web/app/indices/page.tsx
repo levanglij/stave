@@ -6,7 +6,7 @@ import { usd, pct, compactUsd, TIER_COLOR } from "@/lib/format";
 export const metadata: Metadata = {
   title: "Indices · Stave",
   description:
-    "Thematic baskets of Stave catalogs — Georgian Heritage, Modern, Blue Chip, and All-Catalog. Each index is a weighted basket; NAV, grade, and senior LTV are derived from the underlying Stave grades.",
+    "Thematic baskets of Stave catalogs - Georgian Heritage, Modern, Blue Chip, and All-Catalog. Each index is a weighted basket; NAV, grade, and senior LTV are derived from the underlying Stave grades.",
 };
 
 export default function IndicesPage() {
@@ -28,7 +28,7 @@ export default function IndicesPage() {
             <p className="text-muted text-base leading-relaxed">
               Every index is a weighted basket of Stave listings. Its NAV,
               grade, and senior LTV are derived from the underlying Stave
-              grades — no separate underwriting, full transparency.
+              grades - no separate underwriting, full transparency.
             </p>
           </div>
           <div className="text-right text-xs text-muted space-y-1">

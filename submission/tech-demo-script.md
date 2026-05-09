@@ -1,4 +1,4 @@
-# Tech demo script — Stave (2:30)
+# Tech demo script - Stave (2:30)
 
 > Solana Frontier Hackathon 2026 · target length **2:30** · audience:
 > technical judges. Goal: prove the system works end-to-end on devnet,
@@ -23,30 +23,30 @@
 
 ---
 
-## 0:00–0:30 — Repo tour
+## 0:00–0:30 - Repo tour
 
-> Quick repo tour. README at the root — elevator pitch, the *What's
+> Quick repo tour. README at the root - elevator pitch, the *What's
 > real vs. what's simulated* table, architecture diagram. *(Scroll to
-> the table.)* Eleven rows. Real, synthetic, or planned — explicit on
+> the table.)* Eleven rows. Real, synthetic, or planned - explicit on
 > every layer. *(Click QUICKSTART.md.)* Five-minute fresh-laptop path
 > through engine, program, and frontend. Three commands, three layers,
 > five minutes.
 
-## 0:30–1:00 — Engine
+## 0:30–1:00 - Engine
 
 > *(Terminal: `cd engine && pytest`.)* Thirty-one tests pass in under
 > a second. *(Open `outputs/evergreen-001.rating.json`.)* Output
 > schema: grade tier, composite score, factor breakdown, decay model
-> parameters, sixty-month forecast, CVaR floor. Five layers — data
+> parameters, sixty-month forecast, CVaR floor. Five layers - data
 > normalization, decay modeling with exponential and power-law fits,
 > anomaly detection via rolling z-score, concentration and Monte Carlo
 > VaR, and grade aggregation. Every formula in `FORMULAS.md`. Open
 > source, deterministic, fully traceable.
 
-## 1:00–1:40 — Anchor program
+## 1:00–1:40 - Anchor program
 
 > *(Terminal: `cd ../program && anchor test`.)* Fifteen of fifteen.
-> *(Open `programs/stave/src/lib.rs`.)* Five MVP instructions —
+> *(Open `programs/stave/src/lib.rs`.)* Five MVP instructions -
 > `create_work` mints a Token-2022 share supply with the IpWork PDA
 > as authority. `list_shares` locks supply in a Listing-PDA-authority
 > vault. `buy_shares` atomically swaps payment for shares signed by
@@ -55,21 +55,21 @@
 > checkpoint accounting. *(Open `errors.rs`.)* Fourteen documented
 > error variants. *(Open `instructions/buy_shares.rs`.)* BPF
 > stack-frame safety with Box wrappers on heavy account types.
-> Devnet deploy queued behind faucet funding — keypair pinned, ready
+> Devnet deploy queued behind faucet funding - keypair pinned, ready
 > to ship.
 
-## 1:40–2:10 — Frontend on devnet
+## 1:40–2:10 - Frontend on devnet
 
 > *(Browser: stave.cc.)* Eight rated catalogs. Hero
 > with candles-as-notes chart. IPOA partnership card.
-> Open-methodology badge — every credibility signal in the README is
+> Open-methodology badge - every credibility signal in the README is
 > also visible on the live URL. *(Click Tokenize.)* Phantom popup.
 > Confirm. *(Cut to Solana Explorer.)* Real on-chain transaction.
-> Today that's an SPL Memo TX — placeholder for the program calls
+> Today that's an SPL Memo TX - placeholder for the program calls
 > once devnet deploy lands. Until then, the program is locally
 > tested, end to end, fifteen out of fifteen.
 
-## 2:10–2:30 — Roadmap
+## 2:10–2:30 - Roadmap
 
 > Next ninety days. Devnet deploy this week, real program calls
 > swapped in next. First PRO connector beyond Georgia in thirty days.

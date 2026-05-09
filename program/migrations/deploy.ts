@@ -1,4 +1,4 @@
-// Migrations — run during `anchor deploy`.
+// Migrations - run during `anchor deploy`.
 // Day 1-2: no migration actions needed. Left as a stub so `anchor deploy`
 // has the hook available; later instructions may add seeding here.
 

@@ -2,7 +2,7 @@
 // transitions. Keeps the shell visible (nav + footer survive the
 // route change), only the main content area shows this skeleton.
 //
-// Two pulsing emerald dots on a dark background — minimal, on-brand,
+// Two pulsing emerald dots on a dark background - minimal, on-brand,
 // doesn't draw attention to itself.
 export default function Loading() {
   return (

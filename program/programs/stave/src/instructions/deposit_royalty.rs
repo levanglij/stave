@@ -50,7 +50,7 @@ pub struct DepositRoyalty<'info> {
     )]
     pub royalty_token_vault: Box<InterfaceAccount<'info, TokenAccount>>,
 
-    /// Depositor's payment ATA — debited.
+    /// Depositor's payment ATA - debited.
     #[account(
         mut,
         associated_token::mint = payment_mint,

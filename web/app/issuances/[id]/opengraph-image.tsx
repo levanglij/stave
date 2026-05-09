@@ -5,7 +5,7 @@ import { compactUsd, pct, TIER_COLOR } from "@/lib/format";
 
 // Per-catalog Open Graph card. When `/issuances/[id]` is shared on
 // X / LinkedIn / Slack / iMessage / Discord, this is the preview the
-// recipient sees — the listing's grade chip, title, artist, gradient
+// recipient sees - the listing's grade chip, title, artist, gradient
 // cover, and headline stats. Generated as a 1200×630 PNG at build
 // time (one per ID, since we pre-render all 8 with generateStaticParams
 // on the parent page).
@@ -13,7 +13,7 @@ import { compactUsd, pct, TIER_COLOR } from "@/lib/format";
 export const runtime = "edge";
 
 export const alt =
-  "Stave catalog listing — Open Graph preview with grade, title, and headline stats";
+  "Stave catalog listing - Open Graph preview with grade, title, and headline stats";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -30,7 +30,7 @@ interface PageProps {
 export default async function CatalogOgImage({ params }: PageProps) {
   const listing = getListing(params.id);
 
-  // Defensive fallback — if someone hits an unknown id directly, render
+  // Defensive fallback - if someone hits an unknown id directly, render
   // a generic Stave card rather than 500ing the OG endpoint.
   if (!listing) return GenericFallback();
 
@@ -90,7 +90,7 @@ export default async function CatalogOgImage({ params }: PageProps) {
             STAVE
           </div>
 
-          {/* Grade chip — outlined pill, color-coded to the tier. */}
+          {/* Grade chip - outlined pill, color-coded to the tier. */}
           <div
             style={{
               display: "flex",
@@ -119,7 +119,7 @@ export default async function CatalogOgImage({ params }: PageProps) {
             marginTop: 24,
           }}
         >
-          {/* Gradient cover with initials — same gradient as the
+          {/* Gradient cover with initials - same gradient as the
               marketplace card so the share preview reads as the same
               identity. */}
           <div
@@ -244,7 +244,7 @@ function Stat({
 }
 
 // Same shape as the global OG card. Used when the route is hit with
-// an unknown id — the catalog-shaped layout would 500 without listing
+// an unknown id - the catalog-shaped layout would 500 without listing
 // data, so we degrade to the homepage card design.
 function GenericFallback() {
   return new ImageResponse(

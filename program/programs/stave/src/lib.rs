@@ -1,4 +1,4 @@
-//! Stave — on-chain IP fractionalization and royalty distribution.
+//! Stave - on-chain IP fractionalization and royalty distribution.
 //!
 //! All five MVP instructions implemented:
 //! `create_work`, `list_shares`, `buy_shares`, `deposit_royalty`,

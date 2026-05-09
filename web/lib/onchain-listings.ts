@@ -9,31 +9,31 @@
  * Catalogs listed here are eligible for read-only on-chain status
  * (live vault balance, live share supply, click-through to Explorer).
  * Catalogs NOT in this map render their detail pages without the
- * "Live on devnet" strip — the rest of the UI stays the same.
+ * "Live on devnet" strip - the rest of the UI stays the same.
  */
 
 export interface OnchainListing {
   /** Catalog id used by the engine + UI (e.g. "evergreen-001"). */
   catalogId: string;
-  /** Human-friendly title — short, used in click-through copy. */
+  /** Human-friendly title - short, used in click-through copy. */
   title: string;
   /** Bootstrap creator (the program upgrade-authority keypair). */
   creator: string;
-  /** Anchor IpWork PDA — keyed by (creator, work_id). */
+  /** Anchor IpWork PDA - keyed by (creator, work_id). */
   ipWork: string;
   /** Token-2022 share mint created inside `create_work`. */
   shareMint: string;
-  /** Listing PDA — holds the listing config + acts as vault authority. */
+  /** Listing PDA - holds the listing config + acts as vault authority. */
   listing: string;
-  /** Token-2022 ATA owned by the listing PDA — holds shares for sale. */
+  /** Token-2022 ATA owned by the listing PDA - holds shares for sale. */
   listingVault: string;
   /** Total share supply (== Token-2022 mint supply). 0 decimals. */
   totalShares: number;
   /** Shares listed at bootstrap (initial vault balance). */
   sharesListed: number;
-  /** Price in payment-mint micros — USDC has 6 decimals. */
+  /** Price in payment-mint micros - USDC has 6 decimals. */
   pricePerShareMicros: number;
-  /** Devnet USDC mint — same across all listings. */
+  /** Devnet USDC mint - same across all listings. */
   paymentMint: string;
   /** TX signature for create_work (audit trail). */
   createWorkTx: string;
@@ -73,7 +73,7 @@ const BY_CATALOG: Record<string, OnchainListing> = {
   // bootstrap-bicycles.ts has run successfully on devnet.
   // Until then, the registry is intentionally incomplete and the
   // frontend renders the catalog detail page without the on-chain
-  // strip — which is the right behavior, since there's nothing on
+  // strip - which is the right behavior, since there's nothing on
   // devnet to read yet.
 };
 

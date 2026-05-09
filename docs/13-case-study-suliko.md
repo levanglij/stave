@@ -1,4 +1,4 @@
-# 13 — Case study: Suliko on Stave
+# 13 - Case study: Suliko on Stave
 
 > A worked end-to-end example using the one catalog that's actually live
 > on Solana devnet today. Every number, address, and TX in this doc
@@ -6,7 +6,7 @@
 
 ## The catalog
 
-**Suliko** — a 1949 Georgian art song, widely recorded since the early
+**Suliko** - a 1949 Georgian art song, widely recorded since the early
 1900s. The signature song of Georgian music abroad. The version Stave
 graded uses Hamlet Gonashvili's reference recording.
 
@@ -16,7 +16,7 @@ graded uses Hamlet Gonashvili's reference recording.
 | Streaming history on file | 240 months (20 years) |
 | Platforms | 6 |
 | Territories | 7 |
-| Decay regime | Evergreen — long-tail, power-law |
+| Decay regime | Evergreen - long-tail, power-law |
 
 This is exactly the kind of catalog Stave is built for: a traditional
 work with two decades of verified earnings, geographically diverse
@@ -24,8 +24,8 @@ audience, and predictable long-term cash flows.
 
 ## What IPOA verifies *(the data layer)*
 
-IPOA — Georgia's accredited collective management organization since
-January 2024 — provides Stave with:
+IPOA - Georgia's accredited collective management organization since
+January 2024 - provides Stave with:
 
 - **Ownership records.** Who currently holds the economic rights and
   in what splits. Verified at the source, not aggregated from third
@@ -34,7 +34,7 @@ January 2024 — provides Stave with:
   platforms and seven territories where Suliko has paid revenue.
 - **Forward royalty payouts.** When future royalties accrue, IPOA's
   monthly settlement triggers an on-chain `deposit_royalty` call into
-  Suliko's vault — automatically distributable to whoever holds the
+  Suliko's vault - automatically distributable to whoever holds the
   shares at the time of claim.
 
 For the prototype, this data is synthetic (eight Georgian catalogs,
@@ -43,7 +43,7 @@ top item on [`docs/12-roadmap.md`](./12-roadmap.md).
 
 ## What the engine grades *(the credibility layer)*
 
-`engine/outputs/evergreen-001.rating.json` — produced by 5 deterministic
+`engine/outputs/evergreen-001.rating.json` - produced by 5 deterministic
 Python layers, every formula in [`engine/FORMULAS.md`](../engine/FORMULAS.md):
 
 | Output | Value | Interpretation |
@@ -52,7 +52,7 @@ Python layers, every formula in [`engine/FORMULAS.md`](../engine/FORMULAS.md):
 | Confidence | 0.90 | Engine has high confidence in the grade given data availability |
 | Stability factor | 88.77 | Revenue is highly stable month-over-month |
 | Concentration factor | 79.99 | Diversified across platforms + territories |
-| Regime factor | 100.00 | Evergreen profile — no decay-cliff risk |
+| Regime factor | 100.00 | Evergreen profile - no decay-cliff risk |
 | Volatility factor | 51.26 | Some month-to-month variance, expected for a 20-year-old catalog |
 | Lifecycle factor | 100.00 | Mature catalog past most decay risk |
 | HHI (platform) | 0.21 *(diversified)* | No single platform dominates |
@@ -61,7 +61,7 @@ Python layers, every formula in [`engine/FORMULAS.md`](../engine/FORMULAS.md):
 | 60-mo P50 forecast | $188,084 | Median expected revenue over 5 years |
 | Recommended Max LTV | 70% | Senior debt against a Suliko catalog could lend up to 70% of FMV |
 
-These are not assertions — every one of these numbers is reproducible
+These are not assertions - every one of these numbers is reproducible
 by running `pytest` against the engine. No black box.
 
 ## On-chain state *(the live layer)*
@@ -80,7 +80,7 @@ Stave deployed Suliko's first work + first listing on Solana devnet on
 | `list_shares` TX | [`5mGeuaHo...4sK8b`](https://explorer.solana.com/tx/5mGeuaHoUSi35ArqoeEiFb7xqZVQci6yKppUuL9X3yKyVsdrduEesFKYN3efuex38UnHM9PG6ohUaJVjHDf4sK8b?cluster=devnet) |
 
 Total shares: **1,000.** Creator-retained: **500.** Listed for sale:
-**500.** Price per share: **0.5 USDC** *(devnet illustrative pricing —
+**500.** Price per share: **0.5 USDC** *(devnet illustrative pricing -
 real market cap below)*. Payment mint: USDC devnet.
 
 ## Investor walkthrough *(end-to-end)*
@@ -95,7 +95,7 @@ A judge with Phantom can do this right now:
    listing's demo price.
 4. **Wait for a deposit.** When IPOA's monthly settlement triggers a
    `deposit_royalty` call against Suliko's vault, the deposit accrues.
-5. **Call `claim_royalty()`.** Pull-based — investor initiates. Program
+5. **Call `claim_royalty()`.** Pull-based - investor initiates. Program
    pays them their pro-rata share, transfers USDC into their wallet,
    advances their checkpoint.
 
@@ -104,7 +104,7 @@ Every step is a real Solana transaction signed by the investor's wallet.
 ## Royalty distribution math *(the worked example)*
 
 Say IPOA's April settlement totals **$5,000 of royalties owed against
-Suliko**. Stave's automated `deposit_royalty` runner *(post-hackathon —
+Suliko**. Stave's automated `deposit_royalty` runner *(post-hackathon -
 operating model in [`docs/12-roadmap.md`](./12-roadmap.md))* calls the
 program with $5,000 in USDC. The vault now holds $5,000.
 
@@ -131,7 +131,7 @@ claimable = 50 × (5_000_000_000 - 0) ÷ 1_000 = 250_000_000 micros = $250
 
 The program transfers $250 USDC from the vault to Investor A's wallet,
 updates A's checkpoint to `5_000_000_000`. Next deposit (say May:
-$3,000), A claims again — math reads the *new* total minus the
+$3,000), A claims again - math reads the *new* total minus the
 *previous* checkpoint:
 
 ```
@@ -145,7 +145,7 @@ last claim. Pull-based, on-chain, deterministic, audit-friendly.
 ## What real economics look like *(beyond demo pricing)*
 
 The on-chain bootstrap uses an illustrative listing price of 0.5 USDC
-per share — accessible for a hackathon demo with any wallet that can
+per share - accessible for a hackathon demo with any wallet that can
 get a few USDC from a faucet. The economics for a real Suliko deal,
 based on the engine's actual forecast:
 
@@ -159,7 +159,7 @@ based on the engine's actual forecast:
 | 5% holder's expected annual cash | **~$1,942** | What investor A would actually receive in real-world terms |
 
 Demo pricing on-chain *(0.5 USDC/share)* is **0.05% of the realistic
-share value** — kept that way for hackathon accessibility. Mainnet
+share value** - kept that way for hackathon accessibility. Mainnet
 pricing tracks engine FMV.
 
 ## Why this catalog matters
@@ -173,7 +173,7 @@ on-chain settlement can be:
 - fractionalized into 1,000 on-chain shares,
 - bought and sold in a wallet that fits in a phone,
 - and paid out pro-rata to every holder on the program's pull-based
-  claim math —
+  claim math -
 
 …then every one of the millions of catalogs sitting in PRO ledgers
 worldwide can be next.

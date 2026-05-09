@@ -46,7 +46,7 @@ const TABS = [
   "Activity",
 ];
 
-// Deterministic mock listing meta — views, watching, listed-days-ago.
+// Deterministic mock listing meta - views, watching, listed-days-ago.
 function getPageMeta(catalogId: string) {
   let h = 2166136261;
   for (let i = 0; i < catalogId.length; i++) {
@@ -131,7 +131,7 @@ export default function CatalogDetail({ params }: PageProps) {
           </div>
         </div>
 
-        {/* On-chain status strip — only renders for catalogs whose
+        {/* On-chain status strip - only renders for catalogs whose
             create_work + list_shares have been bootstrapped on devnet.
             Reads the listing vault balance live from devnet RPC every
             30s so the "available" count is real, not synthetic. */}
@@ -280,7 +280,7 @@ export default function CatalogDetail({ params }: PageProps) {
               60-month revenue forecast
             </div>
             <div className="text-sm text-fg/80 mt-1">
-              Monthly USD — P10 / P50 / P90 from the fitted{" "}
+              Monthly USD - P10 / P50 / P90 from the fitted{" "}
               {listing.decay_model.replace(/_/g, " ")} model.
             </div>
           </div>

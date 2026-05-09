@@ -10,7 +10,7 @@ import {
 import { clusterApiUrl } from "@solana/web3.js";
 
 // Adapter UI styles. Overrides for our dark theme live in globals.css
-// under "Wallet adapter modal — dark theme overrides".
+// under "Wallet adapter modal - dark theme overrides".
 import "@solana/wallet-adapter-react-ui/styles.css";
 
 export function WalletProviders({ children }: { children: React.ReactNode }) {

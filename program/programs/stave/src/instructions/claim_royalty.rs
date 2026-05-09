@@ -19,7 +19,7 @@ use crate::state::{ClaimRecord, IpWork, RoyaltyVault};
 ///
 /// `holder_share_balance` is read at claim time, so a holder who
 /// transferred shares between deposit and claim only earns on what
-/// they currently hold (the rest is forfeited — accepted MVP
+/// they currently hold (the rest is forfeited - accepted MVP
 /// behavior; a snapshot/checkpoint per-deposit pattern lands later).
 #[derive(Accounts)]
 pub struct ClaimRoyalty<'info> {
@@ -58,7 +58,7 @@ pub struct ClaimRoyalty<'info> {
     )]
     pub royalty_token_vault: Box<InterfaceAccount<'info, TokenAccount>>,
 
-    /// Holder's payment ATA — credited. Created on first claim.
+    /// Holder's payment ATA - credited. Created on first claim.
     #[account(
         init_if_needed,
         payer = holder,

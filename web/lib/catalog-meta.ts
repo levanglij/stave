@@ -60,7 +60,7 @@ export const CATALOG_META: Record<string, CatalogMeta> = {
     grad: ["#3f3f46", "#a16207"],
     price: 0.22,
     description:
-      "Folk-pop classic by Vakhtang Kikabidze. 5 years of streaming history with revenue concentrated heavily on one platform — significant single-DSP exposure if Spotify changes its recommendation algorithms or licensing terms. High HHI flag.",
+      "Folk-pop classic by Vakhtang Kikabidze. 5 years of streaming history with revenue concentrated heavily on one platform - significant single-DSP exposure if Spotify changes its recommendation algorithms or licensing terms. High HHI flag.",
     catalog_age_months: 60,
     artist_age_years: 8,
     history_months: 60,
@@ -92,7 +92,7 @@ export const CATALOG_META: Record<string, CatalogMeta> = {
     grad: ["#581c87", "#1e3a8a"],
     price: 0.65,
     description:
-      "A 19th-century western Georgian polyphonic war song, performed here by the Rustavi Ensemble — Georgia's most internationally recognized vocal group. Deep evergreen catalog with persistent classical and world-music revenue across institutional and consumer channels.",
+      "A 19th-century western Georgian polyphonic war song, performed here by the Rustavi Ensemble - Georgia's most internationally recognized vocal group. Deep evergreen catalog with persistent classical and world-music revenue across institutional and consumer channels.",
     catalog_age_months: 192,
     artist_age_years: 56,
     history_months: 156,
@@ -108,7 +108,7 @@ export const CATALOG_META: Record<string, CatalogMeta> = {
     grad: ["#365314", "#b45309"],
     price: 0.42,
     description:
-      "Georgian jazz pianist Nino Katamadze's reinterpretation of the traditional Iavnana lullaby. Crossover audience — folk traditionalists plus the international jazz festival circuit. Seven years of digital revenue history, moderate platform diversification.",
+      "Georgian jazz pianist Nino Katamadze's reinterpretation of the traditional Iavnana lullaby. Crossover audience - folk traditionalists plus the international jazz festival circuit. Seven years of digital revenue history, moderate platform diversification.",
     catalog_age_months: 96,
     artist_age_years: 22,
     history_months: 84,

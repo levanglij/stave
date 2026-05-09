@@ -1,4 +1,4 @@
-// Display helpers — keep numeric formatting consistent across cards,
+// Display helpers - keep numeric formatting consistent across cards,
 // detail view, and any future surfaces.
 
 export function usd(n: number, fractionDigits = 2): string {
@@ -42,7 +42,7 @@ export function hhiTag(h: number): "high" | "moderate" | "diversified" {
   return "diversified";
 }
 
-// Tier color tokens — bright variants chosen for dark backgrounds.
+// Tier color tokens - bright variants chosen for dark backgrounds.
 // Reference: CLAUDE.md "Tier colors (rebalanced for dark bg)".
 export const TIER_COLOR: Record<string, string> = {
   AAA: "#34D399", // emerald-400

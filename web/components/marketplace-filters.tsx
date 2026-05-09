@@ -70,7 +70,7 @@ export function MarketplaceFilters({ listings }: { listings: Listing[] }) {
         role="toolbar"
         aria-label="Filter and sort listings"
       >
-        {/* Tier multi-select pills — single accent + descending opacity per
+        {/* Tier multi-select pills - single accent + descending opacity per
             Bundle A's grade-ladder treatment. Active = colored, inactive
             = neutral zinc. */}
         <div className="flex flex-wrap items-center gap-1">
@@ -106,7 +106,7 @@ export function MarketplaceFilters({ listings }: { listings: Listing[] }) {
           })}
         </div>
 
-        {/* Genre dropdown — native <select>, keyboard-accessible */}
+        {/* Genre dropdown - native <select>, keyboard-accessible */}
         <label className="inline-flex items-center gap-2 text-sm rounded-full border border-border bg-panel px-3 py-1.5 text-fg/85">
           <span className="text-[10px] font-semibold tracking-[1.5px] uppercase text-muted">
             Genre
@@ -136,7 +136,7 @@ export function MarketplaceFilters({ listings }: { listings: Listing[] }) {
 
         <div className="flex-1" />
 
-        {/* Sort — native <select> */}
+        {/* Sort - native <select> */}
         <label className="inline-flex items-center gap-2 text-sm rounded-full border border-border bg-panel px-3 py-1.5 text-fg/85">
           <span className="text-[10px] font-semibold tracking-[1.5px] uppercase text-muted">
             Sort

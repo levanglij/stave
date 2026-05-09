@@ -1,4 +1,4 @@
-"""Layer 2 — decay modeling.
+"""Layer 2 - decay modeling.
 
 Fits exponential and power-law models to the revenue series, picks the
 better by AIC, and produces a 60-month forecast with P10/P50/P90 bounds.

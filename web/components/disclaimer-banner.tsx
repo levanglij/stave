@@ -5,7 +5,7 @@ import { X } from "lucide-react";
 
 // Hackathon disclaimer strip mounted above the nav. Sticky-dismissed via
 // localStorage so a returning visitor isn't nagged on every page load.
-// Subtle amber tint — clearly visible but not alarmist; matches the
+// Subtle amber tint - clearly visible but not alarmist; matches the
 // "soon" / "in development" treatment used elsewhere on the site.
 const DISMISS_KEY = "stave.disclaimer.dismissed";
 
@@ -21,7 +21,7 @@ export function DisclaimerBanner() {
         setVisible(true);
       }
     } catch {
-      // localStorage may be unavailable (private mode, etc.) — show banner
+      // localStorage may be unavailable (private mode, etc.) - show banner
       setVisible(true);
     }
   }, []);
@@ -32,7 +32,7 @@ export function DisclaimerBanner() {
     try {
       localStorage.setItem(DISMISS_KEY, "1");
     } catch {
-      // ignore — banner still hides for the rest of this session
+      // ignore - banner still hides for the rest of this session
     }
     setVisible(false);
   };
@@ -47,7 +47,7 @@ export function DisclaimerBanner() {
         <span className="font-semibold tracking-wide text-amber-300">
           Hackathon prototype
         </span>{" "}
-        — Stave is a demo project and not a live financial product. Nothing
+        - Stave is a demo project and not a live financial product. Nothing
         on this site is investment advice.
       </div>
       <button

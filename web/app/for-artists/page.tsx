@@ -6,7 +6,7 @@ import { ApplyTrigger } from "@/components/apply-trigger";
 export const metadata: Metadata = {
   title: "For artists · Stave",
   description:
-    "Turn your catalog into income without selling it. Stave tokenizes a fraction of your future royalties on Solana — you keep your masters, your rights, and your creative control.",
+    "Turn your catalog into income without selling it. Stave tokenizes a fraction of your future royalties on Solana - you keep your masters, your rights, and your creative control.",
 };
 
 export default function ForArtistsPage() {
@@ -27,7 +27,7 @@ export default function ForArtistsPage() {
           <p className="text-lg text-muted leading-relaxed mt-6 max-w-2xl">
             Stave lets you tokenize a share of your future royalties on Solana.
             Investors get fractional exposure to your work. You keep your
-            masters, your rights, and your creative control — and you raise
+            masters, your rights, and your creative control - and you raise
             capital up front against income you&rsquo;d earn anyway.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
@@ -62,12 +62,12 @@ export default function ForArtistsPage() {
             <ValueCard
               icon={<LineChart className="w-5 h-5" strokeWidth={1.75} />}
               title="A real price for your catalog"
-              body="Stave grades every catalog against the same scale used on the marketplace. You get a transparent, methodology-backed valuation — not a label's offer."
+              body="Stave grades every catalog against the same scale used on the marketplace. You get a transparent, methodology-backed valuation - not a label's offer."
             />
           </div>
         </section>
 
-        {/* HOW IT WORKS — three steps */}
+        {/* HOW IT WORKS - three steps */}
         <section>
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-fg mb-8 text-balance">
             How it works
@@ -81,7 +81,7 @@ export default function ForArtistsPage() {
             <Step
               n={2}
               title="Get graded."
-              body="Stave produces a grade using streaming history, concentration, and forward hazard. The full methodology is open-source — you see exactly how the number is computed."
+              body="Stave produces a grade using streaming history, concentration, and forward hazard. The full methodology is open-source - you see exactly how the number is computed."
             />
             <Step
               n={3}

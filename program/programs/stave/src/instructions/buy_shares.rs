@@ -25,7 +25,7 @@ pub struct BuyShares<'info> {
     #[account(mut)]
     pub buyer: Signer<'info>,
 
-    /// The work's creator — payment recipient. Verified by IpWork's
+    /// The work's creator - payment recipient. Verified by IpWork's
     /// has_one constraint below.
     /// CHECK: only used to derive creator_payment_ata; address is
     /// validated by `has_one = creator` on ip_work.
@@ -37,7 +37,7 @@ pub struct BuyShares<'info> {
     )]
     pub ip_work: Box<Account<'info, IpWork>>,
 
-    /// Listing PDA — verified via [b"listing", ip_work] seeds.
+    /// Listing PDA - verified via [b"listing", ip_work] seeds.
     /// has_one ensures the passed payment_mint and vault match.
     #[account(
         mut,

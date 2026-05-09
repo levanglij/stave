@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 // Apple-touch-icon for iOS / macOS Safari home-screen + bookmarks.
-// 180×180 PNG generated at build time from JSX — matches the SVG
+// 180×180 PNG generated at build time from JSX - matches the SVG
 // favicon at app/icon.svg but in the format iOS prefers.
 
 export const runtime = "edge";
@@ -22,7 +22,7 @@ export default async function AppleIcon() {
           borderRadius: 36,
         }}
       >
-        {/* Five staff lines + a single rated note — same brand mark
+        {/* Five staff lines + a single rated note - same brand mark
             as app/icon.svg, scaled up for iOS. */}
         <svg
           width="120"

@@ -1,6 +1,6 @@
-# RRE Engine — demo implementation
+# RRE Engine - demo implementation
 
-A lightweight Python implementation of the Royalty Risk Engine (see `docs/02-architecture.md` § 5 for the full vision). This is a **demo-grade** prototype built for the Solana Frontier Hackathon submission — enough to demonstrate the concept and produce real ratings on real-ish data, not a production forecasting product.
+A lightweight Python implementation of the Royalty Risk Engine (see `docs/02-architecture.md` § 5 for the full vision). This is a **demo-grade** prototype built for the Solana Frontier Hackathon submission - enough to demonstrate the concept and produce real ratings on real-ish data, not a production forecasting product.
 
 ## What's implemented
 
@@ -10,7 +10,7 @@ A lightweight Python implementation of the Royalty Risk Engine (see `docs/02-arc
 | L2 Decay | Exponential, power-law, Bass, Weibull, SARIMA, AIC select | Exponential + power-law fit, AIC select, log-normal P10/P90 bands |
 | L3 Anomaly | PELT, Z-score, LSTM autoencoder + XGBoost classifier | Z-score only (no classification) |
 | L4 Concentration | HHI + 10K Monte Carlo + stress scenarios | HHI + 1K Monte Carlo (param uncertainty only) |
-| L5 Rating | 5-factor composite, tier mapping, confidence | Same — fully implemented per FORMULAS.md |
+| L5 Rating | 5-factor composite, tier mapping, confidence | Same - fully implemented per FORMULAS.md |
 
 See [`FORMULAS.md`](./FORMULAS.md) for the exact formulas used.
 
@@ -66,24 +66,24 @@ PYTHONPATH=src python3 -m pytest tests/ -v
 
 ```
 engine/
-├── README.md               — this file
-├── FORMULAS.md             — deterministic formula spec
+├── README.md               - this file
+├── FORMULAS.md             - deterministic formula spec
 ├── requirements.txt
 ├── src/rre/
-│   ├── schema.py           — pydantic data contracts
-│   ├── normalize.py        — L1
-│   ├── decay.py            — L2
-│   ├── anomaly.py          — L3
-│   ├── concentration.py    — L4a
-│   ├── monte_carlo.py      — L4b
-│   ├── rating.py           — L5
-│   ├── pipeline.py         — end-to-end orchestration
-│   └── cli.py              — python -m rre.cli <catalog.json>
+│   ├── schema.py           - pydantic data contracts
+│   ├── normalize.py        - L1
+│   ├── decay.py            - L2
+│   ├── anomaly.py          - L3
+│   ├── concentration.py    - L4a
+│   ├── monte_carlo.py      - L4b
+│   ├── rating.py           - L5
+│   ├── pipeline.py         - end-to-end orchestration
+│   └── cli.py              - python -m rre.cli <catalog.json>
 ├── scripts/
 │   ├── generate_catalogs.py
 │   └── precompute_outputs.py
-├── data/                   — 5 synthetic catalogs
-├── outputs/                — precomputed ratings JSON
+├── data/                   - 5 synthetic catalogs
+├── outputs/                - precomputed ratings JSON
 └── tests/
 ```
 
@@ -122,11 +122,11 @@ This engine is demo-grade. Known gaps versus the production architecture:
 
 These gaps are intentional and the engine output JSON does not claim any of them.
 
-## What's next — missing sub-engines
+## What's next - missing sub-engines
 
 Full prioritized gap analysis lives in [`docs/08-engine-roadmap.md`](../docs/08-engine-roadmap.md). Summary of the sub-engines still to build, with architecture-doc reference and rough calendar effort for one full-time engineer (S = 1–3 days, M = 1–2 weeks, L = 3–6 weeks, XL = 2–4 months).
 
-**Tier 1 — critical path to rating any real catalog**
+**Tier 1 - critical path to rating any real catalog**
 
 | Engine | Arch ref | Effort |
 |---|---|---|
@@ -139,7 +139,7 @@ Full prioritized gap analysis lives in [`docs/08-engine-roadmap.md`](../docs/08-
 | Tier 1/2/3 territory mapper | § 5.1 | S |
 | FX conversion engine | § 5.1 | S |
 
-**Tier 2 — required for forecasts to be defensible**
+**Tier 2 - required for forecasts to be defensible**
 
 | Engine | Arch ref | Effort |
 |---|---|---|
@@ -153,7 +153,7 @@ Full prioritized gap analysis lives in [`docs/08-engine-roadmap.md`](../docs/08-
 | Full Monte Carlo (10K sims, multi-factor uncertainty) | § 5.4 | M |
 | Stress scenario engine (Spotify exit / algo / reputational) | § 5.4 | S |
 
-**Tier 3 — classifies events, not just detects them**
+**Tier 3 - classifies events, not just detects them**
 
 | Engine | Arch ref | Effort |
 |---|---|---|
@@ -166,15 +166,15 @@ Full prioritized gap analysis lives in [`docs/08-engine-roadmap.md`](../docs/08-
 | Press / media NLP scanner | § 5.3 (52%) | M |
 | Sentiment monitor (downside early-warning) | § 5.3 (34%) | M |
 
-**Tier 4 — SRFP marketplace settlement**
+**Tier 4 - SRFP marketplace settlement**
 Tranche structuring, cash flow waterfall, yield calculator, on-chain settlement program, investor portal, KYC/accreditation, re-rating triggers, investor reporting. See the roadmap doc for the full table.
 
-**Tier 5 — long-horizon institutional products**
+**Tier 5 - long-horizon institutional products**
 Portfolio funds, ABS, index, derivatives, insurance.
 
 ### If I had to pick four engines next
 
-1. **PRO data adapter** — without it, every claim about ground truth is a slide.
-2. **Cross-validation / audit + statement parser + one OAuth pull** — without these, no real catalog onboards.
-3. **Event classifier with labeled training data** — ratings aren't trustworthy long-term until we can classify why a spike happened.
-4. **Tranche structuring + cash flow waterfall** — ratings exist but no SRFP can settle a deal without these.
+1. **PRO data adapter** - without it, every claim about ground truth is a slide.
+2. **Cross-validation / audit + statement parser + one OAuth pull** - without these, no real catalog onboards.
+3. **Event classifier with labeled training data** - ratings aren't trustworthy long-term until we can classify why a spike happened.
+4. **Tranche structuring + cash flow waterfall** - ratings exist but no SRFP can settle a deal without these.

@@ -23,7 +23,7 @@ const config: Config = {
           bright: "var(--color-accent-bright)",
           ink: "var(--color-accent-ink)",
         },
-        // Rating tier colors — bright variants for dark backgrounds.
+        // Rating tier colors - bright variants for dark backgrounds.
         tier: {
           aaa: "#34D399",
           aa: "#22C55E",

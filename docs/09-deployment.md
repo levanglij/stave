@@ -1,4 +1,4 @@
-# 09 — Deployment Guide
+# 09 - Deployment Guide
 
 Stave's hackathon submission requires a live URL judges can click. We
 ship the production URL on **`stave.cc`** (registered at GoDaddy,
@@ -6,9 +6,9 @@ served via Vercel). The legacy Vercel subdomain
 `stave-five.vercel.app` continues to resolve as a fallback while the
 custom domain is the canonical home.
 
-## Path A — Vercel free subdomain (3 min, $0)
+## Path A - Vercel free subdomain (3 min, $0)
 
-Set this up first regardless of the custom domain — it gives you a
+Set this up first regardless of the custom domain - it gives you a
 working URL while DNS propagates.
 
 **Prerequisite:** D1.3 has landed (Next.js scaffold lives in `web/`).
@@ -23,7 +23,7 @@ working URL while DNS propagates.
    - **Build command:** leave default (`next build`)
    - **Output directory:** leave default (`.next`)
    - **Install command:** `pnpm install`
-6. **Environment variables** — click *Environment Variables*, add:
+6. **Environment variables** - click *Environment Variables*, add:
 
    | Name                         | Value                                                |
    |------------------------------|------------------------------------------------------|
@@ -35,12 +35,12 @@ working URL while DNS propagates.
 8. Vercel returns a URL: `https://<auto>.vercel.app`. Copy it. Every
    subsequent push to `main` auto-deploys.
 
-## Path B — Custom domain `stave.cc` (already purchased at GoDaddy)
+## Path B - Custom domain `stave.cc` (already purchased at GoDaddy)
 
 Two-side configuration: set the DNS at GoDaddy so it points at Vercel,
 then add the domain in the Vercel project so Vercel knows to serve it.
 
-### Step 1 — add the domain in Vercel
+### Step 1 - add the domain in Vercel
 
 1. Vercel → **Project (stave-five) → Settings → Domains → Add**.
 2. Enter `stave.cc`. Vercel will tell you which DNS records to add.
@@ -50,7 +50,7 @@ then add the domain in the Vercel project so Vercel knows to serve it.
 3. Repeat: also add `www.stave.cc` so that subdomain validates.
 4. Vercel marks both as "Invalid Configuration" until DNS propagates.
 
-### Step 2 — configure DNS at GoDaddy
+### Step 2 - configure DNS at GoDaddy
 
 GoDaddy domain dashboard → `stave.cc` → **DNS** → **Manage DNS**.
 Replace any GoDaddy parking records with the two below.
@@ -64,24 +64,24 @@ Delete any existing records that conflict (especially GoDaddy's
 default forwarding A records and the CNAME for `_domainconnect`). The
 parking page must go.
 
-> **Tip — propagation:** TTL is the cap, not the floor. In practice
+> **Tip - propagation:** TTL is the cap, not the floor. In practice
 > the first record visible to Vercel lands within 5–15 minutes. If
 > Vercel still says "Invalid Configuration" after 30 minutes, hit
 > *Refresh* on the Domains page and re-check the records at GoDaddy.
 
-### Step 3 — pick the canonical URL
+### Step 3 - pick the canonical URL
 
 Vercel → **Domains** → click `www.stave.cc` → set **Redirect to
 stave.cc**. The apex is now the canonical address shown in the
 browser bar; `www` redirects to it 301.
 
-### Step 4 — confirm
+### Step 4 - confirm
 
 In an incognito window:
 
-- `https://stave.cc` — loads, valid SSL, no redirect loop
-- `https://www.stave.cc` — 301-redirects to `https://stave.cc`
-- `http://stave.cc` — redirects to `https://stave.cc`
+- `https://stave.cc` - loads, valid SSL, no redirect loop
+- `https://www.stave.cc` - 301-redirects to `https://stave.cc`
+- `http://stave.cc` - redirects to `https://stave.cc`
 
 Vercel auto-issues an SSL cert via Let's Encrypt the first time the A
 record resolves; nothing to do on our side.
@@ -104,7 +104,7 @@ affecting production.
 If a push breaks production: Vercel **Deployments** tab → find the
 last green deploy → **⋯ → Promote to Production**. Takes 5 seconds.
 
-## Environment variables — keep updated
+## Environment variables - keep updated
 
 Two sources of truth:
 
@@ -112,7 +112,7 @@ Two sources of truth:
 - Vercel project's *Environment Variables* page (real values)
 
 When you add a new env var to the code, add it to both. Never commit
-real values to `.env` — `.gitignore` excludes `.env*` for this
+real values to `.env` - `.gitignore` excludes `.env*` for this
 reason.
 
 ## Pre-submission domain check

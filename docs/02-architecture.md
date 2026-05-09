@@ -1,12 +1,12 @@
-# 02 — Architecture
+# 02 - Architecture
 
-> **CONFIDENTIAL — INVESTOR DISCUSSION DRAFT**
+> **CONFIDENTIAL - INVESTOR DISCUSSION DRAFT**
 > Royalty Risk Engine & Structured Royalty Financing Platform
-> Full Architecture & Technical Specification — Version 2.0
+> Full Architecture & Technical Specification - Version 2.0
 
-**Classification:** Confidential — For Qualified Institutional Investors Only
+**Classification:** Confidential - For Qualified Institutional Investors Only
 **Document Type:** Platform Architecture & Technical Concept Paper
-**Status:** Pre-Launch — Technical Foundation & Investor Briefing
+**Status:** Pre-Launch - Technical Foundation & Investor Briefing
 
 ---
 
@@ -14,13 +14,13 @@
 
 The global music industry generates approximately $30 billion in recurring royalty cash flows annually. Yet the financing and risk-pricing infrastructure around these assets remains fundamentally immature. Most music financing today relies on bilateral catalog sales at opaque multiples, private royalty financing agreements with limited price discovery, and simplistic valuation approaches that fail to capture the probabilistic nature of royalty income streams.
 
-This document proposes the creation of the Royalty Risk Engine (RRE) combined with a Structured Royalty Financing Platform (SRFP) — an integrated financial technology platform designed to bring institutional-grade infrastructure to the music royalty asset class.
+This document proposes the creation of the Royalty Risk Engine (RRE) combined with a Structured Royalty Financing Platform (SRFP) - an integrated financial technology platform designed to bring institutional-grade infrastructure to the music royalty asset class.
 
 ### Core Strategic Thesis
 
-The platform does not operate as a deal marketplace. It is the pricing and risk infrastructure for the music royalty asset class — analogous to the role Moody's plays in credit markets, Bloomberg in financial data, and MSCI in index construction. This infrastructure position creates a defensible, data-compounding competitive moat that deepens with every catalog analyzed.
+The platform does not operate as a deal marketplace. It is the pricing and risk infrastructure for the music royalty asset class - analogous to the role Moody's plays in credit markets, Bloomberg in financial data, and MSCI in index construction. This infrastructure position creates a defensible, data-compounding competitive moat that deepens with every catalog analyzed.
 
-The platform is built on a foundational structural advantage: a partnership with the Intellectual Property Owners Association (IPOA) — Georgia's official music rights organization — formalizing in the post-hackathon roadmap. IPOA provides direct, verified access to royalty income data at the source for the Georgian catalog universe — an access layer that no competitor can replicate through technology alone, and a model that extends to additional rights societies as the platform scales.
+The platform is built on a foundational structural advantage: a partnership with the Intellectual Property Owners Association (IPOA) - Georgia's official music rights organization - formalizing in the post-hackathon roadmap. IPOA provides direct, verified access to royalty income data at the source for the Georgian catalog universe - an access layer that no competitor can replicate through technology alone, and a model that extends to additional rights societies as the platform scales.
 
 ### Platform Capabilities at a Glance
 
@@ -41,9 +41,9 @@ The platform is built on a foundational structural advantage: a partnership with
 
 Global recorded music revenue has grown at a compound annual growth rate exceeding 9% over the past six years, driven primarily by the continued expansion of paid streaming subscriptions. Streaming now represents approximately 70% of total recorded music revenue, generating highly predictable, recurring, contractually-defined cash flows paid monthly or quarterly to rights holders.
 
-These characteristics — recurring, contractually-defined, monthly cash flows — make music royalties structurally well-suited for financing and securitization. The asset class shares properties with consumer ABS and royalty-backed corporate debt, but lacks the standardized underwriting infrastructure that those markets take for granted.
+These characteristics - recurring, contractually-defined, monthly cash flows - make music royalties structurally well-suited for financing and securitization. The asset class shares properties with consumer ABS and royalty-backed corporate debt, but lacks the standardized underwriting infrastructure that those markets take for granted.
 
-### 2.2 Institutional Capital Has Entered — But Inefficiently
+### 2.2 Institutional Capital Has Entered - But Inefficiently
 
 Over the past decade, major financial institutions have committed significant capital to music assets. Private equity funds, sovereign wealth funds, pension funds, and dedicated music royalty vehicles have collectively deployed billions into catalog acquisitions and royalty-backed financing structures. High-profile transactions have demonstrated the asset class's appeal: predictable cash yields, low correlation with traditional financial markets, and duration characteristics suitable for long-term liability matching.
 
@@ -55,7 +55,7 @@ However, capital allocation remains structurally inefficient for three reasons.
 
 ### 2.3 The Infrastructure Gap
 
-Unlike credit markets — which rely on rating agencies, standardized disclosure, and probability-of-default models developed over decades — music royalty markets lack forward revenue modeling, probabilistic forecasting, and portfolio risk analytics. The result is that capital is misallocated: underpriced for low-risk evergreen catalog, overpriced for high-volatility new releases, and absent entirely for the long tail of independent rights holders who cannot afford the transaction costs of bilateral deals.
+Unlike credit markets - which rely on rating agencies, standardized disclosure, and probability-of-default models developed over decades - music royalty markets lack forward revenue modeling, probabilistic forecasting, and portfolio risk analytics. The result is that capital is misallocated: underpriced for low-risk evergreen catalog, overpriced for high-volatility new releases, and absent entirely for the long tail of independent rights holders who cannot afford the transaction costs of bilateral deals.
 
 This is the gap the RRE/SRFP platform is designed to fill.
 
@@ -63,13 +63,13 @@ This is the gap the RRE/SRFP platform is designed to fill.
 
 ## 3. Foundational Structural Advantage: IPOA Partnership
 
-The platform's most significant competitive advantage is not technical — it is structural. Stave's partnership with the Intellectual Property Owners Association (IPOA) — Georgia's official music rights organization — provides a ground-truth data layer that cannot be replicated by any competitor beginning from a pure technology position. The partnership is being formalized in the post-hackathon roadmap; the architecture and data contracts described below assume that integration as the foundation.
+The platform's most significant competitive advantage is not technical - it is structural. Stave's partnership with the Intellectual Property Owners Association (IPOA) - Georgia's official music rights organization - provides a ground-truth data layer that cannot be replicated by any competitor beginning from a pure technology position. The partnership is being formalized in the post-hackathon roadmap; the architecture and data contracts described below assume that integration as the foundation.
 
 ### What the IPOA Partnership Provides
 
-IPOA collects and distributes performance royalties on behalf of Georgian songwriters, publishers, and rightsholders. The partnership gives Stave direct access to: verified income data at the rights-holder level, granular performance history across broadcast and digital channels, periodic collections data on standard distribution cycles, and the ability to cross-validate all other data sources against a ground-truth ledger. This transforms the platform's data quality from "aggregated and estimated" to "verified and primary" — at least for the Georgian catalog universe at launch.
+IPOA collects and distributes performance royalties on behalf of Georgian songwriters, publishers, and rightsholders. The partnership gives Stave direct access to: verified income data at the rights-holder level, granular performance history across broadcast and digital channels, periodic collections data on standard distribution cycles, and the ability to cross-validate all other data sources against a ground-truth ledger. This transforms the platform's data quality from "aggregated and estimated" to "verified and primary" - at least for the Georgian catalog universe at launch.
 
-This structural advantage manifests in three ways that compound over time. First, it solves the data acquisition problem at the outset for the Georgian market: rather than negotiating API access or relying on artist self-reporting as the only source, Stave has direct institutional access to a primary income stream. Second, it provides cross-validation capability — when artists or labels submit streaming data during the minting process, IPOA's data serves as an independent verification check, significantly reducing the risk of data manipulation or misrepresentation. Third, the IPOA partnership establishes the model and data contract for additional rights-society partnerships beyond Georgia; the architecture is designed to extend to PROs in adjacent markets as the platform scales.
+This structural advantage manifests in three ways that compound over time. First, it solves the data acquisition problem at the outset for the Georgian market: rather than negotiating API access or relying on artist self-reporting as the only source, Stave has direct institutional access to a primary income stream. Second, it provides cross-validation capability - when artists or labels submit streaming data during the minting process, IPOA's data serves as an independent verification check, significantly reducing the risk of data manipulation or misrepresentation. Third, the IPOA partnership establishes the model and data contract for additional rights-society partnerships beyond Georgia; the architecture is designed to extend to PROs in adjacent markets as the platform scales.
 
 ---
 
@@ -79,11 +79,11 @@ The platform employs three complementary data acquisition channels that collecti
 
 ### 4.1 Channel One: PRO Direct Data Feed
 
-As discussed in Section 3, the platform's IPOA partnership provides a direct, institutional-grade feed of performance royalty collections data. This is updated on standard PRO collection cycles and provides verified income at the rights-holder and work level. For Georgian catalog this channel requires no artist consent or technical integration — it is an institutional data right that flows from the partnership. Equivalent feeds from additional rights societies will follow the same pattern as Stave expands beyond Georgia.
+As discussed in Section 3, the platform's IPOA partnership provides a direct, institutional-grade feed of performance royalty collections data. This is updated on standard PRO collection cycles and provides verified income at the rights-holder and work level. For Georgian catalog this channel requires no artist consent or technical integration - it is an institutional data right that flows from the partnership. Equivalent feeds from additional rights societies will follow the same pattern as Stave expands beyond Georgia.
 
 ### 4.2 Channel Two: Distributor API Partnerships
 
-Music distributors — including DistroKid, TuneCore, CD Baby, Amuse, and larger independent distribution groups — aggregate streaming data across all major digital service providers (DSPs) for the catalogs they distribute. Each distributor already has the commercial and technical infrastructure to expose this data via API.
+Music distributors - including DistroKid, TuneCore, CD Baby, Amuse, and larger independent distribution groups - aggregate streaming data across all major digital service providers (DSPs) for the catalogs they distribute. Each distributor already has the commercial and technical infrastructure to expose this data via API.
 
 The platform's commercial proposition to distributors is straightforward: partnership with the RRE/SRFP platform expands the financing options available to their artist clients, improving distributor retention and reducing catalog churn to competing distribution services. In exchange, distributors provide normalized, per-track streaming data including monthly stream counts, revenue per platform, territory distribution, and playlist exposure metrics.
 
@@ -91,7 +91,7 @@ Even partnerships with two or three mid-tier distributors provide coverage of hu
 
 ### 4.3 Channel Three: Artist and Label Minting Model
 
-The minting model is the platform's most strategically important data channel because it aligns the incentives of data providers (artists and labels) with data quality. When a rights holder wishes to list their royalty stream on the SRFP marketplace, they must complete the minting process — which requires submission of verified streaming data before their catalog receives a rating or appears to investors.
+The minting model is the platform's most strategically important data channel because it aligns the incentives of data providers (artists and labels) with data quality. When a rights holder wishes to list their royalty stream on the SRFP marketplace, they must complete the minting process - which requires submission of verified streaming data before their catalog receives a rating or appears to investors.
 
 #### The Minting Data Submission Process
 
@@ -111,9 +111,9 @@ After all three data streams are collected, the RRE ingestion and audit layer cr
 
 ## 5. The Royalty Risk Engine (RRE)
 
-The Royalty Risk Engine is the platform's core intellectual property. It is a five-layer quantitative modeling system that transforms verified royalty data into a standardized, probabilistic risk assessment. Each layer addresses a distinct analytical challenge, and the layers operate in sequence — the output of each layer feeds the next.
+The Royalty Risk Engine is the platform's core intellectual property. It is a five-layer quantitative modeling system that transforms verified royalty data into a standardized, probabilistic risk assessment. Each layer addresses a distinct analytical challenge, and the layers operate in sequence - the output of each layer feeds the next.
 
-### 5.1 Layer 1 — Data Normalization
+### 5.1 Layer 1 - Data Normalization
 
 All royalty data entering the RRE must be converted into a single, consistent format before any modeling can begin. The normalization layer handles the following transformations:
 
@@ -124,7 +124,7 @@ All royalty data entering the RRE must be converted into a single, consistent fo
 
 The output of Layer 1 is a clean, standardized monthly revenue time series per catalog, broken down by platform, territory, and income type, denominated in base currency, covering the full available history.
 
-### 5.2 Layer 2 — Baseline Decay Modeling
+### 5.2 Layer 2 - Baseline Decay Modeling
 
 Music royalty revenue follows predictable mathematical decay patterns that differ by catalog type. The baseline decay model classifies each catalog into a decay regime and fits the appropriate mathematical model to generate a 60-month probabilistic revenue forecast.
 
@@ -148,15 +148,15 @@ Before fitting any model, the engine classifies each catalog into one of four de
 
 The exponential model works adequately for recent pop singles, where the audience adopts quickly and moves on. However, it systematically underestimates the revenue persistence of catalog music. The power law model captures the heavy-tailed nature of catalog royalties far more accurately: decay is steep initially but flattens into a long, persistent income stream.
 
-The Weibull survival model is applied across all catalog types to generate the forecast's confidence bounds — specifically the P10 pessimistic scenario that underpins the senior tranche sizing in the financing structure. Survival analysis, borrowed from actuarial science and reliability engineering, frames the question as: what is the probability that this revenue stream will remain above a given threshold at each future time point? This produces the floor estimate used for conservative underwriting.
+The Weibull survival model is applied across all catalog types to generate the forecast's confidence bounds - specifically the P10 pessimistic scenario that underpins the senior tranche sizing in the financing structure. Survival analysis, borrowed from actuarial science and reliability engineering, frames the question as: what is the probability that this revenue stream will remain above a given threshold at each future time point? This produces the floor estimate used for conservative underwriting.
 
-Seasonality is handled through a SARIMA (Seasonal AutoRegressive Integrated Moving Average) component layered on top of the decay fit. Music royalty revenues exhibit consistent seasonal patterns — Q4 streaming spikes during holiday periods, summer elevations in festival-adjacent genres, and January dips following holiday catalog exhaustion. These are stripped from the trend before fitting and reapplied to forecasts.
+Seasonality is handled through a SARIMA (Seasonal AutoRegressive Integrated Moving Average) component layered on top of the decay fit. Music royalty revenues exhibit consistent seasonal patterns - Q4 streaming spikes during holiday periods, summer elevations in festival-adjacent genres, and January dips following holiday catalog exhaustion. These are stripped from the trend before fitting and reapplied to forecasts.
 
-The technical implementation uses Facebook Prophet and statsmodels in Python. Model selection at the catalog level is automated using AIC/BIC criterion scoring — the model family with the lowest information criterion score is selected, preventing over-fitting to short history catalogs.
+The technical implementation uses Facebook Prophet and statsmodels in Python. Model selection at the catalog level is automated using AIC/BIC criterion scoring - the model family with the lowest information criterion score is selected, preventing over-fitting to short history catalogs.
 
-### 5.3 Layer 3 — Anomaly and Event Detection
+### 5.3 Layer 3 - Anomaly and Event Detection
 
-The baseline decay model assumes that the catalog's revenue follows its fitted curve absent external intervention. In reality, royalty streams are subject to events — viral moments, sync license placements, playlist additions, algorithmic recommendations, artist controversies — that can temporarily or permanently alter the revenue trajectory. Layer 3 is responsible for detecting these events and classifying their likely durability.
+The baseline decay model assumes that the catalog's revenue follows its fitted curve absent external intervention. In reality, royalty streams are subject to events - viral moments, sync license placements, playlist additions, algorithmic recommendations, artist controversies - that can temporarily or permanently alter the revenue trajectory. Layer 3 is responsible for detecting these events and classifying their likely durability.
 
 This is a two-stage process: statistical detection runs on the revenue time series data alone; event classification then brings in external signal data to label each detected anomaly.
 
@@ -164,9 +164,9 @@ This is a two-stage process: statistical detection runs on the revenue time seri
 
 Three algorithms run in parallel on every catalog's time series, each designed to catch a different type of anomaly:
 
-- **PELT (Pruned Exact Linear Time):** a change-point detection algorithm that scans the full revenue history and identifies the statistically optimal set of points where the mean or variance of the series has permanently shifted. PELT detects durable level changes — a catalog that was earning $3,000/month and then permanently shifted to $7,000/month after a TV sync placement. The `ruptures` Python library provides the implementation. When PELT identifies a confirmed change-point, the decay model is refit from the new baseline.
-- **Z-score and IQR outlier detection:** a simpler threshold-based method that flags individual monthly observations that fall more than 2.5 standard deviations from the rolling mean, or outside 1.5 times the interquartile range. This catches short-duration spikes that PELT would smooth over — a single viral month followed by return to trend. Z-score detection operates on a rolling 12-month window to account for the evolving mean of a decaying series.
-- **LSTM Autoencoder:** for catalogs with 24 or more months of history, a Long Short-Term Memory neural network autoencoder is trained on the catalog's own revenue patterns. The model learns to reconstruct normal revenue sequences. Anomalies are then periods where the model's reconstruction error is high — meaning the actual data deviated significantly from what the model predicted based on learned patterns. This catches subtle multi-dimensional anomalies: for example, Spotify revenue declining while YouTube revenue increases simultaneously, which may signal a Spotify playlist removal rather than underlying catalog deterioration.
+- **PELT (Pruned Exact Linear Time):** a change-point detection algorithm that scans the full revenue history and identifies the statistically optimal set of points where the mean or variance of the series has permanently shifted. PELT detects durable level changes - a catalog that was earning $3,000/month and then permanently shifted to $7,000/month after a TV sync placement. The `ruptures` Python library provides the implementation. When PELT identifies a confirmed change-point, the decay model is refit from the new baseline.
+- **Z-score and IQR outlier detection:** a simpler threshold-based method that flags individual monthly observations that fall more than 2.5 standard deviations from the rolling mean, or outside 1.5 times the interquartile range. This catches short-duration spikes that PELT would smooth over - a single viral month followed by return to trend. Z-score detection operates on a rolling 12-month window to account for the evolving mean of a decaying series.
+- **LSTM Autoencoder:** for catalogs with 24 or more months of history, a Long Short-Term Memory neural network autoencoder is trained on the catalog's own revenue patterns. The model learns to reconstruct normal revenue sequences. Anomalies are then periods where the model's reconstruction error is high - meaning the actual data deviated significantly from what the model predicted based on learned patterns. This catches subtle multi-dimensional anomalies: for example, Spotify revenue declining while YouTube revenue increases simultaneously, which may signal a Spotify playlist removal rather than underlying catalog deterioration.
 
 The outputs of all three detectors are combined into an anomaly event log that records, for each detected event: timestamp, magnitude (in standard deviations and absolute revenue terms), direction (positive or negative), duration, and which detector(s) flagged it.
 
@@ -176,7 +176,7 @@ Detection tells you something changed. Classification tells you whether it matte
 
 - **Durable uplift:** the event has raised the catalog's revenue baseline. The decay model is refit upward from the new baseline. The RRE rating may improve. Example: a major editorial playlist placement that generated permanent new audience.
 - **Temporary spike:** the event caused a short-duration revenue elevation but the underlying trend is unchanged. The spike is isolated and excluded from the forward forecast to prevent overestimating future income. Example: a TikTok trend that drove four weeks of elevated streams before fading.
-- **Structural break (downward):** the event has permanently impaired the revenue stream — DSP removal, rights dispute, platform algorithm suppression, or reputational damage. The decay model is refit downward and a rating downgrade trigger is issued. Example: catalog removal from a major platform following a licensing dispute.
+- **Structural break (downward):** the event has permanently impaired the revenue stream - DSP removal, rights dispute, platform algorithm suppression, or reputational damage. The decay model is refit downward and a rating downgrade trigger is issued. Example: catalog removal from a major platform following a licensing dispute.
 
 #### External Signal Sources Used in Classification
 
@@ -191,7 +191,7 @@ Detection tells you something changed. Classification tells you whether it matte
 
 #### The Role of Sentiment Analysis
 
-Social media sentiment is frequently cited as a key tool for music analytics but is one of the weakest signals for revenue forecasting. Its most valuable application in this system is as a downside risk monitor: detecting artist controversies, misconduct allegations, or political incidents that precede streaming impact by 48–72 hours. A calibrated sentiment monitor covering all artists in the portfolio — scanning news, Reddit, and Twitter with entity recognition — provides early warning of reputational structural break events before they appear in the revenue data.
+Social media sentiment is frequently cited as a key tool for music analytics but is one of the weakest signals for revenue forecasting. Its most valuable application in this system is as a downside risk monitor: detecting artist controversies, misconduct allegations, or political incidents that precede streaming impact by 48–72 hours. A calibrated sentiment monitor covering all artists in the portfolio - scanning news, Reddit, and Twitter with entity recognition - provides early warning of reputational structural break events before they appear in the revenue data.
 
 #### The Event Classifier
 
@@ -199,13 +199,13 @@ The classification model is a gradient boosted tree (XGBoost or LightGBM), chose
 
 Training the classifier requires labeled historical examples of "this spike was durable" and "this spike was ephemeral." The IPOA partnership provides the ground truth: known historical events in the IPOA catalog history can be labeled against realized subsequent income, generating the training dataset. A minimum of 500 to 1,000 labeled examples is required before launch; the model improves continuously as the platform accumulates realized outcome data from rated catalogs.
 
-### 5.4 Layer 4 — Concentration and Portfolio Risk
+### 5.4 Layer 4 - Concentration and Portfolio Risk
 
-An individual catalog's decay forecast does not tell investors the full risk story. A catalog earning $10,000/month from a single platform in a single territory is far riskier than one earning the same amount spread across five platforms in twenty countries — even if the decay curves are identical. Layer 4 quantifies these concentration risks using techniques adapted from credit portfolio management.
+An individual catalog's decay forecast does not tell investors the full risk story. A catalog earning $10,000/month from a single platform in a single territory is far riskier than one earning the same amount spread across five platforms in twenty countries - even if the decay curves are identical. Layer 4 quantifies these concentration risks using techniques adapted from credit portfolio management.
 
 #### Platform Concentration Risk (HHI)
 
-The Herfindahl-Hirschman Index (HHI) — the sum of squared revenue shares across platforms — provides a single concentration score. An HHI approaching 1.0 indicates near-total dependence on one platform; below 0.25 indicates well-diversified distribution. The HHI is calculated both at the platform level (Spotify, Apple Music, YouTube, Amazon, Tidal, etc.) and at the territory level, providing two independent concentration risk scores that feed into the Layer 5 rating.
+The Herfindahl-Hirschman Index (HHI) - the sum of squared revenue shares across platforms - provides a single concentration score. An HHI approaching 1.0 indicates near-total dependence on one platform; below 0.25 indicates well-diversified distribution. The HHI is calculated both at the platform level (Spotify, Apple Music, YouTube, Amazon, Tidal, etc.) and at the territory level, providing two independent concentration risk scores that feed into the Layer 5 rating.
 
 - **HHI > 0.50:** high concentration flag. Suggests meaningful exposure to a single DSP's algorithm changes, licensing disputes, or market exit scenarios.
 - **HHI 0.25–0.50:** moderate concentration. Single-platform dependence present but some diversification.
@@ -216,20 +216,20 @@ The Herfindahl-Hirschman Index (HHI) — the sum of squared revenue shares acros
 The engine runs 10,000 Monte Carlo simulations for each catalog. Each simulation draws random values for: streaming platform revenue contribution (based on historical volatility and platform HHI), decay rate uncertainty (drawn from the fitted distribution's confidence interval), viral event probability (based on genre and artist lifecycle stage), and macroeconomic streaming growth scenarios. From this distribution of 10,000 simulated 60-month revenue paths, the engine calculates:
 
 - **Value at Risk (VaR) at the 95th percentile:** the revenue floor that the catalog will remain above in 95% of simulated scenarios.
-- **Conditional Value at Risk (CVaR / Expected Shortfall):** the average revenue in the worst 5% of scenarios. This is the measure used for senior tranche sizing — it represents what investors receive even in severe downside cases.
+- **Conditional Value at Risk (CVaR / Expected Shortfall):** the average revenue in the worst 5% of scenarios. This is the measure used for senior tranche sizing - it represents what investors receive even in severe downside cases.
 - **Stress scenarios:** three named scenarios (Spotify exit, major platform algorithm change, artist reputational event) with hardcoded severity parameters are run in addition to the Monte Carlo to provide interpretable downside cases for investor disclosure.
 
-### 5.5 Layer 5 — Rating Aggregation and Output
+### 5.5 Layer 5 - Rating Aggregation and Output
 
 The final layer aggregates the signals from all preceding layers into a single standardized Royalty Risk Rating. The weighting structure is designed to reflect the empirical importance of each factor for realized royalty performance:
 
 | Rating Factor | Weight | Source Layer |
 |---|---|---|
-| Forecast stability and accuracy (P10/P50 spread) | 30% | Layer 2 — Decay modeling |
-| Platform and territory concentration (HHI) | 20% | Layer 4 — Concentration risk |
-| Decay regime classification | 20% | Layer 2 — Model selection |
-| Historical revenue volatility (coefficient of variation) | 15% | Layer 1 — Normalized history |
-| Artist lifecycle and catalog age | 15% | Layer 3 — Event context |
+| Forecast stability and accuracy (P10/P50 spread) | 30% | Layer 2 - Decay modeling |
+| Platform and territory concentration (HHI) | 20% | Layer 4 - Concentration risk |
+| Decay regime classification | 20% | Layer 2 - Model selection |
+| Historical revenue volatility (coefficient of variation) | 15% | Layer 1 - Normalized history |
+| Artist lifecycle and catalog age | 15% | Layer 3 - Event context |
 
 #### Rating Scale
 
@@ -250,7 +250,7 @@ Each rating is accompanied by: a confidence interval for the rating (which widen
 
 ## 6. Structured Royalty Financing Platform (SRFP)
 
-The Structured Royalty Financing Platform is the marketplace layer that converts RRE ratings into standardized financing transactions. Every listing on the SRFP must have cleared the RRE underwriting process — there is no pathway to list without a valid rating. This constraint is the platform's primary quality control mechanism and the feature that differentiates it from deal marketplaces.
+The Structured Royalty Financing Platform is the marketplace layer that converts RRE ratings into standardized financing transactions. Every listing on the SRFP must have cleared the RRE underwriting process - there is no pathway to list without a valid rating. This constraint is the platform's primary quality control mechanism and the feature that differentiates it from deal marketplaces.
 
 ### 6.1 The Structured Capital Stack
 
@@ -258,7 +258,7 @@ Each financing offering on the SRFP is structured into tranches calibrated direc
 
 #### Senior Tranche
 
-The senior tranche provides priority claim on royalty distributions up to the CVaR floor identified by the Monte Carlo simulation — the revenue level that the catalog will remain above in 95% of simulated scenarios. This tranche offers the lowest yield but has first-priority claim on all royalty cash flows. Investors in this tranche are comparable to secured lenders in traditional credit structures: they are paid first from every royalty distribution until their return hurdle is met. Senior tranche sizing is capped at the LTV ratios specified in the RRE rating scale.
+The senior tranche provides priority claim on royalty distributions up to the CVaR floor identified by the Monte Carlo simulation - the revenue level that the catalog will remain above in 95% of simulated scenarios. This tranche offers the lowest yield but has first-priority claim on all royalty cash flows. Investors in this tranche are comparable to secured lenders in traditional credit structures: they are paid first from every royalty distribution until their return hurdle is met. Senior tranche sizing is capped at the LTV ratios specified in the RRE rating scale.
 
 #### Mezzanine Tranche
 
@@ -266,7 +266,7 @@ The mezzanine tranche sits between the CVaR floor and the P50 base case forecast
 
 #### Growth Tranche
 
-The growth tranche represents the upside participation layer — distributions above the P50 forecast flow first to the growth tranche after senior and mezzanine obligations are met. This tranche offers the highest potential yield with the highest risk exposure. It is suitable for investors seeking equity-like upside from royalty performance combined with the security of a structured senior position below them.
+The growth tranche represents the upside participation layer - distributions above the P50 forecast flow first to the growth tranche after senior and mezzanine obligations are met. This tranche offers the highest potential yield with the highest risk exposure. It is suitable for investors seeking equity-like upside from royalty performance combined with the security of a structured senior position below them.
 
 ### 6.2 Marketplace Mechanics
 
@@ -274,7 +274,7 @@ Rights holders submit their catalog through the minting process (Section 4.3), r
 
 Investors can browse offerings filtered by rating tier, catalog type, artist lifecycle stage, platform diversification profile, and geographic revenue distribution. All investor interactions are logged and used to improve the platform's pricing discovery over time.
 
-Critically, all offerings display the RRE rating methodology transparently, including the key inputs, weighting factors, and confidence interval. This level of disclosure — standard in credit markets but absent in current royalty finance — is a core part of the platform's investor value proposition.
+Critically, all offerings display the RRE rating methodology transparently, including the key inputs, weighting factors, and confidence interval. This level of disclosure - standard in credit markets but absent in current royalty finance - is a core part of the platform's investor value proposition.
 
 ### 6.3 Monitoring and Ongoing Reporting
 
@@ -296,17 +296,17 @@ The RRE infrastructure makes this possible because each constituent catalog has 
 
 Large pools of senior-rated royalty streams can be pooled and securitized into royalty-backed bonds. This structure allows participation from insurance companies, pension funds, and investment-grade credit investors who cannot invest in individual royalty assets but can purchase investment-grade rated securities backed by diversified royalty pools.
 
-The securitization structure would follow established ABS mechanics: a special purpose vehicle (SPV) holds the royalty streams, issues bonds in senior and subordinated tranches, and receives ongoing monitoring and rating surveillance from the RRE. The platform's ongoing monitoring capability is critical here — investors in royalty ABS require continuous credit surveillance, which existing market participants cannot provide at scale.
+The securitization structure would follow established ABS mechanics: a special purpose vehicle (SPV) holds the royalty streams, issues bonds in senior and subordinated tranches, and receives ongoing monitoring and rating surveillance from the RRE. The platform's ongoing monitoring capability is critical here - investors in royalty ABS require continuous credit surveillance, which existing market participants cannot provide at scale.
 
 ### 7.3 Royalty Index Products and ETFs
 
-The platform's growing database of rated, standardized royalty assets creates the foundation for index construction. A Music Royalty Income Index — representing the aggregate performance of a defined universe of RRE-rated catalogs by tier, genre, or lifecycle stage — provides a benchmark for the asset class and opens the door to passive investment vehicles including exchange-traded funds.
+The platform's growing database of rated, standardized royalty assets creates the foundation for index construction. A Music Royalty Income Index - representing the aggregate performance of a defined universe of RRE-rated catalogs by tier, genre, or lifecycle stage - provides a benchmark for the asset class and opens the door to passive investment vehicles including exchange-traded funds.
 
 Index products represent the longest-horizon opportunity but the highest value in terms of brand positioning: operating the index that defines the asset class is the most defensible infrastructure position in any financial market.
 
 ### 7.4 Royalty Derivatives and Insurance Markets
 
-The most advanced expansion opportunity is in royalty derivatives: contracts that allow rights holders to hedge against revenue decline and investors to take or offload exposure to specific royalty risk factors. A "royalty floor" product — similar to an interest rate floor in fixed income — would pay out to the buyer if a catalog's revenue fell below a specified level. A "platform concentration swap" would allow investors to exchange Spotify-concentrated exposure for more diversified exposure.
+The most advanced expansion opportunity is in royalty derivatives: contracts that allow rights holders to hedge against revenue decline and investors to take or offload exposure to specific royalty risk factors. A "royalty floor" product - similar to an interest rate floor in fixed income - would pay out to the buyer if a catalog's revenue fell below a specified level. A "platform concentration swap" would allow investors to exchange Spotify-concentrated exposure for more diversified exposure.
 
 These products require deep market liquidity and regulatory engagement that place them firmly in the long-term roadmap, but the RRE's standardized risk assessment framework is the exact infrastructure required to price and settle them.
 
@@ -323,7 +323,7 @@ The platform generates revenue from four primary sources that collectively align
 | Data analytics subscriptions | SaaS subscription | RRE data and analytics services sold to labels, publishers, and investment funds as a standalone product. Provides revenue independent of deal flow and builds the data network effect. |
 | Secondary trading fees | 0.25%–0.5% per trade | Commission on secondary market transactions once a regulated secondary trading facility is established. Late-stage revenue stream that activates after primary market liquidity is demonstrated. |
 
-The analytics subscription revenue stream is strategically important beyond its direct financial contribution: every label, publisher, or fund that subscribes to the RRE data product becomes a potential pipeline source for catalog financings and a validator of the platform's rating methodology. The analytics product builds market credibility while generating revenue — an unusual alignment that reflects the infrastructure positioning strategy.
+The analytics subscription revenue stream is strategically important beyond its direct financial contribution: every label, publisher, or fund that subscribes to the RRE data product becomes a potential pipeline source for catalog financings and a validator of the platform's rating methodology. The analytics product builds market credibility while generating revenue - an unusual alignment that reflects the infrastructure positioning strategy.
 
 ---
 
@@ -331,28 +331,28 @@ The analytics subscription revenue stream is strategically important beyond its 
 
 The platform's go-to-market strategy is designed to build credibility before scale, and scale before product expansion. Each phase has clear completion criteria that gate progression to the next phase.
 
-### Phase 1 — Risk Engine Development (Months 1–9)
+### Phase 1 - Risk Engine Development (Months 1–9)
 - Build the five-layer RRE pipeline in Python, integrating PRO data as the primary data source.
 - Develop the data normalization and audit layer capable of processing OAuth streaming data, royalty statement PDFs, and third-party analytics.
 - Run the engine in silent mode on 50 to 100 catalogs from the PRO database to generate initial backtested rating outputs.
 - Develop the initial gradient boosted classifier for event classification, trained on PRO historical event data.
 - **Target completion criteria:** demonstrated forecast accuracy of ±15% at 12 months on backtested catalog set.
 
-### Phase 2 — Controlled Financing Launch (Months 10–18)
+### Phase 2 - Controlled Financing Launch (Months 10–18)
 - Launch the minting portal and SRFP marketplace in private beta with 10 to 20 hand-selected independent label and artist clients from the PRO network.
 - Execute first 5 to 10 structured financing transactions with registered accredited investors including family offices and alternative asset allocators.
 - Establish distributor API partnerships with at least two major independent distribution platforms.
 - Launch the RRE analytics subscription product to a pilot group of 5 to 10 institutional clients.
 - **Target completion criteria:** first 10 successful financings closed with zero rating-significant misrepresentation events.
 
-### Phase 3 — Institutional Partnerships (Months 19–30)
+### Phase 3 - Institutional Partnerships (Months 19–30)
 - Expand the RRE to cover 500+ catalogs across rating tiers and catalog types.
 - Develop partnerships with asset managers, credit funds, and banks for larger structured financing transactions above $10 million.
 - Launch the first Royalty Portfolio Fund product targeting institutional allocators.
 - Publish the platform's rating methodology documentation and initiate third-party validation of the RRE model with an independent quantitative finance firm.
 - **Target completion criteria:** $100M+ in total financed royalty value, fund product launched with $20M+ AUM.
 
-### Phase 4 — Structured Products and Market Infrastructure (Months 31+)
+### Phase 4 - Structured Products and Market Infrastructure (Months 31+)
 - Design and launch the first royalty asset-backed security in partnership with a bulge-bracket bank or specialist ABS structurer.
 - Launch the Music Royalty Income Index covering the full rated catalog universe.
 - Establish secondary trading infrastructure and begin market-making in royalty financing positions.
@@ -362,7 +362,7 @@ The platform's go-to-market strategy is designed to build credibility before sca
 
 ## 10. Competitive Advantage and Defensibility
 
-The platform's competitive advantage is layered — each layer is independently valuable, and together they create a moat that compounds with time and volume.
+The platform's competitive advantage is layered - each layer is independently valuable, and together they create a moat that compounds with time and volume.
 
 | Advantage Layer | What It Is | Why It Compounds |
 |---|---|---|
@@ -413,20 +413,20 @@ The platform's KPIs are organized into three categories reflecting the three val
 
 ## 13. Long-Term Vision
 
-The long-term objective is to become the global financial infrastructure layer for music royalties — and, over time, for the broader creative economy asset class including podcasting rights, film and television royalties, gaming soundtracks, and other recurring IP-based cash flows.
+The long-term objective is to become the global financial infrastructure layer for music royalties - and, over time, for the broader creative economy asset class including podcasting rights, film and television royalties, gaming soundtracks, and other recurring IP-based cash flows.
 
 ### The Infrastructure Endgame
 
 The most defensible position in any financial market is not as a participant but as the infrastructure provider that enables all participants to transact. Moody's does not buy bonds. Bloomberg does not trade equities. The CME does not speculate on futures. Each has built an indispensable infrastructure layer that every market participant depends on, generating recurring revenue with minimal capital deployment and near-zero marginal cost at scale. The RRE/SRFP platform is designed from inception to occupy this position in the music royalty asset class.
 
-In the near term — three to five years — success is defined by becoming the reference rating methodology for music royalty financing transactions in the independent sector, achieving material coverage of the global independent catalog market through distributor partnerships, and demonstrating track-record performance that validates the RRE rating framework.
+In the near term - three to five years - success is defined by becoming the reference rating methodology for music royalty financing transactions in the independent sector, achieving material coverage of the global independent catalog market through distributor partnerships, and demonstrating track-record performance that validates the RRE rating framework.
 
-In the medium term — five to ten years — success is defined by launching standardized institutional products (ABS, index, fund) that bring pension, insurance, and sovereign wealth capital into the asset class at scale, establishing the platform as the Bloomberg of music finance through the analytics subscription product, and expanding the RRE methodology to adjacent creative IP asset classes.
+In the medium term - five to ten years - success is defined by launching standardized institutional products (ABS, index, fund) that bring pension, insurance, and sovereign wealth capital into the asset class at scale, establishing the platform as the Bloomberg of music finance through the analytics subscription product, and expanding the RRE methodology to adjacent creative IP asset classes.
 
-In the long term, the platform's most valuable asset will be neither its technology nor its individual transactions — it will be the proprietary dataset accumulated through years of rating, monitoring, and realizing outcomes across thousands of catalogs globally. This dataset, continuously updated and refined, is the foundation for increasingly accurate pricing, the basis for derivative and insurance product underwriting, and the source of the market intelligence that institutional investors will pay recurring subscription fees to access.
+In the long term, the platform's most valuable asset will be neither its technology nor its individual transactions - it will be the proprietary dataset accumulated through years of rating, monitoring, and realizing outcomes across thousands of catalogs globally. This dataset, continuously updated and refined, is the foundation for increasingly accurate pricing, the basis for derivative and insurance product underwriting, and the source of the market intelligence that institutional investors will pay recurring subscription fees to access.
 
 ---
 
-*— End of Document —*
+*- End of Document -*
 
 *This document is confidential and intended solely for the named recipient. Unauthorized distribution is prohibited.*

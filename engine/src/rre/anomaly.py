@@ -1,4 +1,4 @@
-"""Layer 3 (demo scope) — rolling z-score anomaly detection.
+"""Layer 3 (demo scope) - rolling z-score anomaly detection.
 
 No PELT, no LSTM, no classification. Demo outputs just a count + magnitudes.
 """

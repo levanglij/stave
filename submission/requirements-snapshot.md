@@ -15,8 +15,8 @@
 | Frontier landing page | https://colosseum.com/frontier | dates, prize structure, registration link |
 | Announcement post | https://blog.colosseum.com/announcing-the-solana-frontier-hackathon/ | tracks/categories, prize breakdown, accelerator |
 | Submission-guidance blog | https://blog.colosseum.com/perfecting-your-hackathon-submission/ | video specs, common rejection reasons, deliverables |
-| **Frontier 2026 Official Rules PDF** | linked from `colosseum.com/frontier` as `View Official Rules` | **NOT publicly resolvable** — the canonical PDF behind the link is gated or has a non-public URL. Direct fetch attempts returned 404. |
-| Renaissance 2024 Official Rules PDF *(prior-cycle template)* | https://arena.colosseum.org/rules/Renaissance%20Hackathon%20Official%20Rules%202024.pdf | structural template only — Renaissance 2024 wording, Frontier 2026 likely similar in standard sections (eligibility, IP, disputes) but specific terms (timing, prizes, judging criteria) differ |
+| **Frontier 2026 Official Rules PDF** | linked from `colosseum.com/frontier` as `View Official Rules` | **NOT publicly resolvable** - the canonical PDF behind the link is gated or has a non-public URL. Direct fetch attempts returned 404. |
+| Renaissance 2024 Official Rules PDF *(prior-cycle template)* | https://arena.colosseum.org/rules/Renaissance%20Hackathon%20Official%20Rules%202024.pdf | structural template only - Renaissance 2024 wording, Frontier 2026 likely similar in standard sections (eligibility, IP, disputes) but specific terms (timing, prizes, judging criteria) differ |
 
 **Critical caveat: I was unable to read the Frontier 2026 Official Rules PDF.** Specific terms below derived from the announcement + submission-guidance blog are HIGH confidence; structural items inferred from the Renaissance 2024 template are MEDIUM confidence pending a successful read of the actual Frontier rules PDF. Items not covered by any public source are flagged **UNCERTAIN**.
 
@@ -28,11 +28,11 @@
 
 - **Hackathon period:** April 6 – May 11, 2026
 - **Submission deadline:** May 11, 2026
-- **Submission deadline TIME and TIMEZONE: UNCERTAIN.** No public Frontier 2026 source I could reach states a specific time. Renaissance 2024 used `11:59pm PT` — Frontier likely does too, but **verify in your Colosseum account or in the official rules PDF before treating it as authoritative**.
+- **Submission deadline TIME and TIMEZONE: UNCERTAIN.** No public Frontier 2026 source I could reach states a specific time. Renaissance 2024 used `11:59pm PT` - Frontier likely does too, but **verify in your Colosseum account or in the official rules PDF before treating it as authoritative**.
 
 ### Tracks / categories
 
-> *"We have removed all tracks and bounties."* — Frontier announcement post
+> *"We have removed all tracks and bounties."* - Frontier announcement post
 
 No traditional tracks (no DeFi, Infra, Consumer, etc. as in Renaissance 2024). Special-category prizes only:
 - Grand Champion (1 winner)
@@ -57,16 +57,16 @@ No traditional tracks (no DeFi, Infra, Consumer, etc. as in Renaissance 2024). S
 
 ---
 
-## ✅ Confirmed (from Colosseum submission-guidance blog — applies across all Colosseum hackathons)
+## ✅ Confirmed (from Colosseum submission-guidance blog - applies across all Colosseum hackathons)
 
 ### Required deliverables (per submission-guidance blog)
 
 1. **Product name**
 2. **Short product description**
 3. **Team background**
-4. **GitHub repository** — public, OR closed-source with private access granted to Colosseum
+4. **GitHub repository** - public, OR closed-source with private access granted to Colosseum
 5. **Pitch video** (≤ 3 minutes)
-6. **Technical walkthrough video** (≤ 3 minutes — "a new addition to this year's hackathon")
+6. **Technical walkthrough video** (≤ 3 minutes - "a new addition to this year's hackathon")
 7. **Anything else critical to understanding the vision**
 
 ### Pitch video specs
@@ -96,7 +96,7 @@ No traditional tracks (no DeFi, Infra, Consumer, etc. as in Renaissance 2024). S
 
 ---
 
-## 🟡 Likely (inferred from Renaissance 2024 official rules — Frontier 2026 wording may differ)
+## 🟡 Likely (inferred from Renaissance 2024 official rules - Frontier 2026 wording may differ)
 
 The Renaissance 2024 PDF is the closest publicly readable Colosseum rules document. The following items typically carry forward across cycles, but **are not confirmed for Frontier 2026** and should be verified against the Frontier rules PDF before submission day.
 
@@ -112,7 +112,7 @@ The Renaissance 2024 PDF is the closest publicly readable Colosseum rules docume
 - Each Individual may be a Member of **only one Team**.
 - Each Team may submit **only one Project Submission** at a time.
 
-### Judging criteria (Renaissance 2024 — Frontier wording UNCERTAIN, see "Uncertain" section below)
+### Judging criteria (Renaissance 2024 - Frontier wording UNCERTAIN, see "Uncertain" section below)
 
 Renaissance 2024 listed six criteria, no published weights:
 - (a) **Functionality:** how well does it work; code quality
@@ -122,7 +122,7 @@ Renaissance 2024 listed six criteria, no published weights:
 - (e) **Open-source:** is it open-source; how well it composes with other Solana primitives
 - (f) **Business plan:** is there a viable future business
 
-**Frontier 2026 may have adjusted criteria** — the Frontier announcement says "the most impactful product submission" without enumerating sub-criteria.
+**Frontier 2026 may have adjusted criteria** - the Frontier announcement says "the most impactful product submission" without enumerating sub-criteria.
 
 ### Content guidelines (Renaissance 2024)
 
@@ -142,7 +142,7 @@ Renaissance 2024 listed six criteria, no published weights:
 ### IP / ownership (Renaissance 2024)
 
 - Entrant retains all IP in the Project Submission. Administrator does not claim ownership.
-- Administrator retains rights to "Creative Materials" — promotional materials it produces about the contest, which may include the Entrant's name, image, likeness, and Content.
+- Administrator retains rights to "Creative Materials" - promotional materials it produces about the contest, which may include the Entrant's name, image, likeness, and Content.
 - Entrants must inform Administrator of any open-source or third-party code in the submission.
 
 ### Disputes (Renaissance 2024)
@@ -152,12 +152,12 @@ Renaissance 2024 listed six criteria, no published weights:
 
 ---
 
-## 🚨 Uncertain — verify on the Colosseum platform before submission day
+## 🚨 Uncertain - verify on the Colosseum platform before submission day
 
 | Item | Why it's uncertain | What to do |
 |---|---|---|
-| **Submission deadline TIME and TIMEZONE** | No Frontier 2026 source states an exact time. Renaissance 2024 used 11:59pm PT. | Log into `arena.colosseum.org`, check the submission countdown on the Frontier 2026 listing. Do NOT submit on the last available day — leave at least 12-hour buffer. |
-| **Whether the tech demo video is REQUIRED or OPTIONAL** | Submission-guidance blog calls it "a new addition" but doesn't explicitly say "required." Some prior cycles only required the pitch video. | Check the Colosseum submission form — the field will be marked required or not. Treat as required for Stave; we have a script ready (`submission/tech-demo-script.md`). |
+| **Submission deadline TIME and TIMEZONE** | No Frontier 2026 source states an exact time. Renaissance 2024 used 11:59pm PT. | Log into `arena.colosseum.org`, check the submission countdown on the Frontier 2026 listing. Do NOT submit on the last available day - leave at least 12-hour buffer. |
+| **Whether the tech demo video is REQUIRED or OPTIONAL** | Submission-guidance blog calls it "a new addition" but doesn't explicitly say "required." Some prior cycles only required the pitch video. | Check the Colosseum submission form - the field will be marked required or not. Treat as required for Stave; we have a script ready (`submission/tech-demo-script.md`). |
 | **License requirements** | Neither the announcement nor the submission-guidance blog mandates a specific license. Renaissance 2024 doesn't mandate one either. | Stave is MIT-licensed (see `LICENSE`). Should be acceptable. |
 | **Whether closed-source repos are accepted** | Submission-guidance blog says yes, with private access granted to Colosseum. | Stave is public on GitHub. No action needed. |
 | **Devnet vs. mainnet for live demo** | Not stated in any public Frontier 2026 source. Most Solana hackathon submissions ship on devnet. | Stave is devnet (disclosed honestly). Should be acceptable. |
@@ -171,19 +171,19 @@ Renaissance 2024 listed six criteria, no published weights:
 
 This is the checklist Stave needs to clear by **May 11, 2026**:
 
-- [ ] Pitch video recorded, ≤ 3 minutes — script ready at `submission/pitch-script.md`
-- [ ] Tech demo video recorded, ≤ 3 minutes — script ready at `submission/tech-demo-script.md`
-- [ ] GitHub repo public — already public at `github.com/levanglij/stave`
-- [ ] LICENSE file — already MIT, see `LICENSE`
-- [ ] README front-door clean — `README.md` + `QUICKSTART.md` + `submission/README.md` index ✅
-- [ ] Live demo URL — `stave.cc` ✅
-- [ ] Pitch deck PDF — **PENDING**, only `.pptx` exists
-- [ ] Team background — **PENDING**, founder bios needed for both `README.md` Team section and `SUBMISSION.md`
-- [ ] Solana integration explanation — covered in README "Why Solana" + SUBMISSION + tech demo script ✅
-- [ ] All content in English — ✅
-- [ ] Honest devnet / synthetic-data framing — ✅ already disclosed across landing page + README + SUBMISSION
-- [ ] Submission form filled out on `arena.colosseum.org` — **PENDING**
-- [ ] Judges granted access to all assets (deck, scripts, repo, live URL, deployed program) — **PENDING**, do this last on submission day
+- [ ] Pitch video recorded, ≤ 3 minutes - script ready at `submission/pitch-script.md`
+- [ ] Tech demo video recorded, ≤ 3 minutes - script ready at `submission/tech-demo-script.md`
+- [ ] GitHub repo public - already public at `github.com/levanglij/stave`
+- [ ] LICENSE file - already MIT, see `LICENSE`
+- [ ] README front-door clean - `README.md` + `QUICKSTART.md` + `submission/README.md` index ✅
+- [ ] Live demo URL - `stave.cc` ✅
+- [ ] Pitch deck PDF - **PENDING**, only `.pptx` exists
+- [ ] Team background - **PENDING**, founder bios needed for both `README.md` Team section and `SUBMISSION.md`
+- [ ] Solana integration explanation - covered in README "Why Solana" + SUBMISSION + tech demo script ✅
+- [ ] All content in English - ✅
+- [ ] Honest devnet / synthetic-data framing - ✅ already disclosed across landing page + README + SUBMISSION
+- [ ] Submission form filled out on `arena.colosseum.org` - **PENDING**
+- [ ] Judges granted access to all assets (deck, scripts, repo, live URL, deployed program) - **PENDING**, do this last on submission day
 
 ---
 

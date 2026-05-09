@@ -16,7 +16,7 @@ interface CountUpProps {
   end: number;
   /** Animation duration in ms. Defaults to 1.4 seconds. */
   duration?: number;
-  /** Named formatter for the live value — see FORMATTERS for options. */
+  /** Named formatter for the live value - see FORMATTERS for options. */
   format?: FormatKind;
   /** When true (default), counter starts on first viewport entry. */
   triggerOnViewport?: boolean;
@@ -29,10 +29,10 @@ interface CountUpProps {
  * `triggerOnViewport={false}` to start immediately on mount.
  *
  * Server components can't pass function props to client components,
- * so the formatter is named instead of inlined — pick one of "int",
+ * so the formatter is named instead of inlined - pick one of "int",
  * "compact-usd", or "pct1".
  *
- * Respects prefers-reduced-motion — renders the final value with no
+ * Respects prefers-reduced-motion - renders the final value with no
  * animation if the user has it set.
  */
 export function CountUp({
@@ -61,7 +61,7 @@ export function CountUp({
       const start = performance.now();
       const tick = (now: number) => {
         const t = Math.min(1, (now - start) / duration);
-        // Ease-out cubic — fast in, soft to settle.
+        // Ease-out cubic - fast in, soft to settle.
         const eased = 1 - Math.pow(1 - t, 3);
         setValue(end * eased);
         if (t < 1) requestAnimationFrame(tick);

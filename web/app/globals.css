@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Stave palette — dark institutional + emerald accent.
+/* Stave palette - dark institutional + emerald accent.
    Locked in CLAUDE.md and assets/logos/preview.html. */
 :root {
   --color-bg: #050816;
@@ -40,7 +40,7 @@ body {
   letter-spacing: -0.005em;
 }
 
-/* Custom scrollbar — thin and on-brand. WebKit (Chrome/Safari/Edge)
+/* Custom scrollbar - thin and on-brand. WebKit (Chrome/Safari/Edge)
    and Firefox both supported. The default chunky OS scrollbar made the
    dark+emerald palette feel cheap; this thin emerald-tinted bar matches
    the institutional finish. Track is the same color as the page bg so
@@ -67,7 +67,7 @@ body {
   background-clip: padding-box;
 }
 
-/* Ambient emerald wash — lifts the dark backdrop without flattening
+/* Ambient emerald wash - lifts the dark backdrop without flattening
    the brand. Three layers:
    1. Top-left glow: the main "key light" of the page.
    2. Right-edge vertical wash: a subtle brand accent running down
@@ -96,7 +96,7 @@ main, header, footer {
   font-feature-settings: "tnum";
 }
 
-/* CTA button glow — subtle bloom on the emerald primary action. */
+/* CTA button glow - subtle bloom on the emerald primary action. */
 .btn-glow {
   box-shadow:
     0 0 0 1px rgba(16, 185, 129, 0.4),
@@ -112,7 +112,7 @@ main, header, footer {
   transform: translateY(1px);
 }
 
-/* Wallet adapter modal — dark theme overrides.
+/* Wallet adapter modal - dark theme overrides.
    The package ships a light theme; we patch its CSS variables so the
    modal blends into Stave's institutional-dark UI instead of looking
    bolted-on. */
@@ -154,7 +154,7 @@ main, header, footer {
   backdrop-filter: blur(8px);
 }
 
-/* Waveform hero bar pulse — animated when the play button is on.
+/* Waveform hero bar pulse - animated when the play button is on.
    Each bar gets a staggered animation-delay inline so they ripple. */
 .wave-bar {
   transform-box: fill-box;
@@ -172,7 +172,7 @@ main, header, footer {
   }
 }
 
-/* Returns Calculator slider — emerald-themed range input. */
+/* Returns Calculator slider - emerald-themed range input. */
 .stave-slider {
   appearance: none;
   -webkit-appearance: none;
@@ -217,7 +217,7 @@ main, header, footer {
     0 4px 12px rgba(16, 185, 129, 0.5);
 }
 
-/* Hero on-chain ticker — horizontal marquee scroll. The `.ticker-track`
+/* Hero on-chain ticker - horizontal marquee scroll. The `.ticker-track`
    container slides 50% to the left (because the items are duplicated in
    the DOM, so 50% = one full cycle) on a continuous loop. Pause on
    hover so the user can click an event. The mask fades the leading and
@@ -261,7 +261,7 @@ main, header, footer {
   }
 }
 
-/* Math formulas — `<i>` tags inside .formula get a proper math
+/* Math formulas - `<i>` tags inside .formula get a proper math
    italic look (Cambria / STIX / serif fallback) and tight vertical
    metrics for sub/sup. Used on the methodology section of
    /how-it-works. Pure CSS so we don't ship KaTeX (~70 KB) for five

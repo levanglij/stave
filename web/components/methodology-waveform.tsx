@@ -1,10 +1,10 @@
-// Decorative audio-style waveform band — visual signal that the
+// Decorative audio-style waveform band - visual signal that the
 // methodology section bridges "music" and "data". Pure inline SVG, themed
 // to the emerald palette, no external assets, no library. The bar heights
 // are pre-computed (rising-then-fading envelope so it reads as a real
 // signal, not a random noise pattern).
 //
-// Used above the homepage methodology blockquote — sits as a quiet
+// Used above the homepage methodology blockquote - sits as a quiet
 // editorial accent, not a hero element.
 
 const VIEW_W = 1200;

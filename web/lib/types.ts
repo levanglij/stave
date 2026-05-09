@@ -1,4 +1,4 @@
-// Shape of engine/outputs/*.rating.json — produced by the Python RRE
+// Shape of engine/outputs/*.rating.json - produced by the Python RRE
 // pipeline. Treat this as the public contract between engine and web.
 export interface Factors {
   stability: number;
@@ -46,10 +46,10 @@ export interface Rating {
   hhi_territory: number;
   anomaly_count: number;
   ltv_recommended: number;
-  review_due: string; // ISO date — next scheduled re-rating
+  review_due: string; // ISO date - next scheduled re-rating
 }
 
-// Catalog presentation metadata — title, artist, gradient, etc.
+// Catalog presentation metadata - title, artist, gradient, etc.
 // Lives alongside the rating but is curated by hand (not produced by
 // the engine). Mirrors the META object from app/demo.html.
 export interface CatalogMeta {
@@ -68,6 +68,6 @@ export interface CatalogMeta {
   rows: number;
 }
 
-// Combined view for UI consumption — every property the cards / detail
+// Combined view for UI consumption - every property the cards / detail
 // page might want. RRE data merged with curated metadata.
 export type Listing = Rating & CatalogMeta;

@@ -7,7 +7,7 @@
 
 <br><br>
 
-**Stave is the marketplace for tokenized music royalties on Solana.** Every catalog is verified by the Intellectual Property Owners Association (IPOA) — Georgia's official music rights organization — fractionalized into 1,000 on-chain shares, transparently graded, and settled with sub-cent fees. Investors browse, buy, and earn pro-rata royalty distributions on devnet today.
+**Stave is the marketplace for tokenized music royalties on Solana.** Every catalog is verified by the Intellectual Property Owners Association (IPOA) - Georgia's official music rights organization - fractionalized into 1,000 on-chain shares, transparently graded, and settled with sub-cent fees. Investors browse, buy, and earn pro-rata royalty distributions on devnet today.
 
 <sub>Solana Frontier Hackathon 2026
 
@@ -21,8 +21,8 @@
 
 Not a slide deck. Real code on a real chain.
 
-1. **[Open the Stave program on Solana Explorer (devnet)](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet)** — confirm the program account exists, owned by BPF Loader, ~430KB of Rust deployed.
-2. **[Open the `create_work` transaction](https://explorer.solana.com/tx/24aATvsPhsuctY5vN22XRL8CpckfnD8fLcQmaCmrJV5PbnWWggrojHdybB7JS71RWLMPmkN3DuoAmPVzBcRG9Xbo?cluster=devnet)** — the first Stave catalog (Suliko) was minted on-chain by this real TX, with a Token-2022 share supply created and listed.
+1. **[Open the Stave program on Solana Explorer (devnet)](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet)** - confirm the program account exists, owned by BPF Loader, ~430KB of Rust deployed.
+2. **[Open the `create_work` transaction](https://explorer.solana.com/tx/24aATvsPhsuctY5vN22XRL8CpckfnD8fLcQmaCmrJV5PbnWWggrojHdybB7JS71RWLMPmkN3DuoAmPVzBcRG9Xbo?cluster=devnet)** - the first Stave catalog (Suliko) was minted on-chain by this real TX, with a Token-2022 share supply created and listed.
 3. **[Open the live URL](https://stave.cc)**, connect Phantom on devnet, browse to a catalog, click Buy. Real wallet. Real signature. Real devnet TX.
 
 > **New here?** Read [QUICKSTART.md](./QUICKSTART.md) for a 5-minute
@@ -32,9 +32,9 @@ Not a slide deck. Real code on a real chain.
 
 Music royalties are a **$30B/yr asset class**. They're recurring, contractually defined, and growing at >9% CAGR. They look exactly like the kind of cash flow institutional capital wants except there's no Moody's, no Bloomberg, no MSCI. Catalogs trade at arbitrary 10x–30x multiples. Pension funds and family offices either overpay, underpay, or stay out. Capital is misallocated by billions.
 
-**Stave fills the gap.** A fractional-share marketplace on Solana where every listing is verified at the source by IPOA, transparently graded by an open-source rating engine, and settled with sub-cent fees on quarterly royalty distributions. Investors get an actually-tradable view of the asset class. The grading engine is a feature that makes the marketplace credible — not the product.
+**Stave fills the gap.** A fractional-share marketplace on Solana where every listing is verified at the source by IPOA, transparently graded by an open-source rating engine, and settled with sub-cent fees on quarterly royalty distributions. Investors get an actually-tradable view of the asset class. The grading engine is a feature that makes the marketplace credible - not the product.
 
-**The moat is data, not algorithms.** Stave's partner IPOA is Georgia's official music rights organization — the only entity with the country-wide mandate to collect and distribute music royalties since January 2024. Every Stave rating uses IPOA's verified ownership and royalty data, which a pure-tech competitor cannot replicate. The same model extends to other countries' rights organizations as Stave scales.
+**The moat is data, not algorithms.** Stave's partner IPOA is Georgia's official music rights organization - the only entity with the country-wide mandate to collect and distribute music royalties since January 2024. Every Stave rating uses IPOA's verified ownership and royalty data, which a pure-tech competitor cannot replicate. The same model extends to other countries' rights organizations as Stave scales.
 
 ## What's real vs. what's simulated
 
@@ -56,7 +56,7 @@ Judges respect honesty. Here's the line:
 
 ## What's running on devnet right now
 
-Don't take our word for it — every claim below resolves on Solana
+Don't take our word for it - every claim below resolves on Solana
 Explorer:
 
 | What | Address / TX | Click |
@@ -72,19 +72,19 @@ The bootstrap script that produced these is at [`program/scripts/bootstrap-sulik
 
 ## Quick links
 
-- 🔗 **Live demo:** [stave.cc](https://stave.cc) — Vercel-hosted, auto-deploys on every push to `main`
-- 🎬 **Pitch video** (≤3 min): [submission/pitch-script.md](./submission/pitch-script.md) — _recording: pending_
-- 🛠 **Tech demo video** (~2:30): [submission/tech-demo-script.md](./submission/tech-demo-script.md) — _recording: pending_
-- 📦 **Submission package:** [submission/README.md](./submission/README.md) — index of every asset a judge needs
+- 🔗 **Live demo:** [stave.cc](https://stave.cc) - Vercel-hosted, auto-deploys on every push to `main`
+- 🎬 **Pitch video** (≤3 min): [submission/pitch-script.md](./submission/pitch-script.md) - _recording: pending_
+- 🛠 **Tech demo video** (~2:30): [submission/tech-demo-script.md](./submission/tech-demo-script.md) - _recording: pending_
+- 📦 **Submission package:** [submission/README.md](./submission/README.md) - index of every asset a judge needs
 - 📑 **Pitch deck:** [submission/Stave-pitch-deck.pptx](./submission/Stave-pitch-deck.pptx) (PDF export drops post-finalization)
 - 📊 **Financial model:** [submission/Stave-financial-model.xlsx](./submission/Stave-financial-model.xlsx)
 - 🧮 **RRE methodology:** [engine/FORMULAS.md](./engine/FORMULAS.md)
 - 🏛 **Platform vision:** [docs/02-architecture.md](./docs/02-architecture.md) (RRE/SRFP v2.0)
 - 🗺 **Engine roadmap:** [docs/08-engine-roadmap.md](./docs/08-engine-roadmap.md)
-- ⚖️ **Legal roadmap:** [docs/10-legal-roadmap.md](./docs/10-legal-roadmap.md) — three-pillar regulatory + corporate-legal roadmap (CMO partnership, brokerage / VASP licensing path, custody architecture). Primary-source cited.
-- 🛣️ **Product roadmap:** [docs/12-roadmap.md](./docs/12-roadmap.md) — what ships in Q3 / Q4 / 2027 / 2028+
-- 🎼 **Suliko case study:** [docs/13-case-study-suliko.md](./docs/13-case-study-suliko.md) — end-to-end walkthrough of the one catalog that's live on devnet right now
-- 🥇 **Vs. competitors:** [docs/14-vs-competitors.md](./docs/14-vs-competitors.md) — Bolero / SongVest / ANote and where Stave's moat sits
+- ⚖️ **Legal roadmap:** [docs/10-legal-roadmap.md](./docs/10-legal-roadmap.md) - three-pillar regulatory + corporate-legal roadmap (CMO partnership, brokerage / VASP licensing path, custody architecture). Primary-source cited.
+- 🛣️ **Product roadmap:** [docs/12-roadmap.md](./docs/12-roadmap.md) - what ships in Q3 / Q4 / 2027 / 2028+
+- 🎼 **Suliko case study:** [docs/13-case-study-suliko.md](./docs/13-case-study-suliko.md) - end-to-end walkthrough of the one catalog that's live on devnet right now
+- 🥇 **Vs. competitors:** [docs/14-vs-competitors.md](./docs/14-vs-competitors.md) - Bolero / SongVest / ANote and where Stave's moat sits
 - 📨 **Submission narrative:** [SUBMISSION.md](./SUBMISSION.md)
 
 ## Run it yourself
@@ -106,13 +106,13 @@ cat engine/outputs/evergreen-001.rating.json | python3 -m json.tool
 ```
 
 For example, Suliko (`evergreen-001`) renders on the live UI from this
-exact JSON — every number on its detail page is sourced from these
+exact JSON - every number on its detail page is sourced from these
 fields, no hidden math:
 
 ```jsonc
 {
   "catalog_id": "evergreen-001",
-  "rating": "RRE-AA",            // letter grade — drives the chip
+  "rating": "RRE-AA",            // letter grade - drives the chip
   "rating_confidence": 0.9,
   "composite_score": 85.32,      // 0-100, drives the headline
   "factors": {                   // 5-layer breakdown, all surfaced
@@ -133,7 +133,7 @@ fields, no hidden math:
 
 Reproducible: every JSON in `engine/outputs/` is regenerated from raw
 catalog data by `python -m rre.cli rate <input>.json`. Same input,
-same output, every time — no randomness in production paths.
+same output, every time - no randomness in production paths.
 
 ### The Anchor program
 
@@ -185,12 +185,12 @@ Settlement economics are why this asset class belongs on Solana, not because cha
 
 | Property | Solana | Ethereum L1 | Source |
 |---|---|---|---|
-| Per-tx cost (typical) | ≈ $0.00025 (5,000 lamports per signature at SOL ≈ $50) <!-- TODO: verify SOL price assumption at submission --> | $2–15 for an ERC-20 transfer at 30 gwei (≈ 50k gas × 30 gwei × $2,000 ETH) <!-- TODO: verify ETH gas + price at submission --> | [Solana docs — fees](https://docs.solana.com/transaction_fees) · [ERC-20 transfer gas](https://etherscan.io) |
-| Time to finality | ≈ 400 ms optimistic confirmation; ≈ 12.8 s super-majority finalized | ≈ 12.8 minutes (2 epochs × 32 slots × 12 s, post-Merge) | [Solana validator docs](https://docs.solana.com/cluster/overview) · [Ethereum.org — finality](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/) |
+| Per-tx cost (typical) | ≈ $0.00025 (5,000 lamports per signature at SOL ≈ $50) <!-- TODO: verify SOL price assumption at submission --> | $2–15 for an ERC-20 transfer at 30 gwei (≈ 50k gas × 30 gwei × $2,000 ETH) <!-- TODO: verify ETH gas + price at submission --> | [Solana docs - fees](https://docs.solana.com/transaction_fees) · [ERC-20 transfer gas](https://etherscan.io) |
+| Time to finality | ≈ 400 ms optimistic confirmation; ≈ 12.8 s super-majority finalized | ≈ 12.8 minutes (2 epochs × 32 slots × 12 s, post-Merge) | [Solana validator docs](https://docs.solana.com/cluster/overview) · [Ethereum.org - finality](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/) |
 | Sustained throughput | 2,000–3,000 TPS in production workloads (theoretical max ≈ 65,000) | 15–30 TPS | Solana Labs benchmarks · [Ethereum.org](https://ethereum.org) |
-| Native fungible token primitive | SPL Token-2022 — no contract deploy, transfer-hook + extensions built in | ERC-20 — deploy a Solidity contract per token, audit each | [spl.solana.com](https://spl.solana.com/token-2022) · [EIP-20](https://eips.ethereum.org/EIPS/eip-20) |
+| Native fungible token primitive | SPL Token-2022 - no contract deploy, transfer-hook + extensions built in | ERC-20 - deploy a Solidity contract per token, audit each | [spl.solana.com](https://spl.solana.com/token-2022) · [EIP-20](https://eips.ethereum.org/EIPS/eip-20) |
 
-A pro-rata distribution to 1,000 holders at $0.50 / holder is gas-positive on Solana (≈ $0.25 in fees, ≈ 0.05% overhead) and gas-negative on Ethereum L1 (≈ $2,000+ in fees, exceeding the payment). For an asset class whose unit economics are "many small holders, recurring small payments," this isn't a preference — it's the difference between a real product and a slide.
+A pro-rata distribution to 1,000 holders at $0.50 / holder is gas-positive on Solana (≈ $0.25 in fees, ≈ 0.05% overhead) and gas-negative on Ethereum L1 (≈ $2,000+ in fees, exceeding the payment). For an asset class whose unit economics are "many small holders, recurring small payments," this isn't a preference - it's the difference between a real product and a slide.
 
 ## Stack
 
@@ -207,25 +207,25 @@ Every box below is **verifiable in the repo today**. Anything unchecked is a pla
 
 ### On-chain (`program/`)
 
-- [x] **All 5 instructions implemented and locally tested** — `create_work`, `list_shares`, `buy_shares`, `deposit_royalty`, `claim_royalty`. 15/15 Anchor tests passing on a local validator (`cd program && anchor test`).
-- [x] **Pull-based royalty math with checkpoint accounting** — verified across multi-deposit / multi-claim sequences. See `programs/stave/src/instructions/claim_royalty.rs`.
-- [x] **PDA-only authority on funds-holding accounts** — Listing PDA authority on the share vault, RoyaltyVault PDA authority on the royalty token vault. Once locked, only `buy_shares` / `claim_royalty` can move funds out.
-- [x] **BPF stack-frame safety** — heavy `InterfaceAccount<TokenAccount>` fields in `BuyShares`, `DepositRoyalty`, `ClaimRoyalty` boxed to stay under the 4 KB BPF stack limit.
-- [x] **No unbounded supply** — Token-2022 share mint authority is the IpWork PDA; supply is set at `create_work` and cannot inflate.
+- [x] **All 5 instructions implemented and locally tested** - `create_work`, `list_shares`, `buy_shares`, `deposit_royalty`, `claim_royalty`. 15/15 Anchor tests passing on a local validator (`cd program && anchor test`).
+- [x] **Pull-based royalty math with checkpoint accounting** - verified across multi-deposit / multi-claim sequences. See `programs/stave/src/instructions/claim_royalty.rs`.
+- [x] **PDA-only authority on funds-holding accounts** - Listing PDA authority on the share vault, RoyaltyVault PDA authority on the royalty token vault. Once locked, only `buy_shares` / `claim_royalty` can move funds out.
+- [x] **BPF stack-frame safety** - heavy `InterfaceAccount<TokenAccount>` fields in `BuyShares`, `DepositRoyalty`, `ClaimRoyalty` boxed to stay under the 4 KB BPF stack limit.
+- [x] **No unbounded supply** - Token-2022 share mint authority is the IpWork PDA; supply is set at `create_work` and cannot inflate.
 - [x] **14 error variants documented** in `programs/stave/src/errors.rs` with explicit `#[msg(...)]` strings.
-- [x] **Devnet deploy** — live on Solana devnet at [`EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q`](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet); program ID pinned in `Anchor.toml` + `lib.rs:declare_id!`. Frontend wire-up to real `program.methods` calls is the next post-deploy task.
-- [ ] **Mainnet audit (Halborn or OtterSec)** — planned post-hackathon.
+- [x] **Devnet deploy** - live on Solana devnet at [`EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q`](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet); program ID pinned in `Anchor.toml` + `lib.rs:declare_id!`. Frontend wire-up to real `program.methods` calls is the next post-deploy task.
+- [ ] **Mainnet audit (Halborn or OtterSec)** - planned post-hackathon.
 
 ### Off-chain (`engine/` and `web/`)
 
-- [x] **Engine: 31/31 deterministic tests passing** — `cd engine && pytest`. No randomness in production code paths.
-- [x] **Engine: open methodology** — every formula in [`engine/FORMULAS.md`](./engine/FORMULAS.md), every output JSON reproducible from the same inputs.
-- [x] **Frontend: TypeScript strict mode** — `web/tsconfig.json` sets `"strict": true`.
-- [x] **Frontend: no committed secrets** — `web/.env.example` documents every env var; `.env.local` is gitignored.
+- [x] **Engine: 31/31 deterministic tests passing** - `cd engine && pytest`. No randomness in production code paths.
+- [x] **Engine: open methodology** - every formula in [`engine/FORMULAS.md`](./engine/FORMULAS.md), every output JSON reproducible from the same inputs.
+- [x] **Frontend: TypeScript strict mode** - `web/tsconfig.json` sets `"strict": true`.
+- [x] **Frontend: no committed secrets** - `web/.env.example` documents every env var; `.env.local` is gitignored.
 - [x] **Wallet adapter: Phantom + Solflare** via `@solana/wallet-adapter`. Devnet by default.
-- [ ] **Engine: ruff + mypy in CI** — planned post-submission.
-- [ ] **Frontend: explicit `@typescript-eslint/no-explicit-any` lint rule** — strict mode catches most cases today; this rule is a planned tightening.
-- [ ] **GitHub Actions CI** — planned post-submission.
+- [ ] **Engine: ruff + mypy in CI** - planned post-submission.
+- [ ] **Frontend: explicit `@typescript-eslint/no-explicit-any` lint rule** - strict mode catches most cases today; this rule is a planned tightening.
+- [ ] **GitHub Actions CI** - planned post-submission.
 
 ## Team
 
@@ -233,12 +233,12 @@ _To be filled before submission. Required: founder names, roles, one-line creden
 
 ## Regulatory roadmap
 
-**Data partner.** Stave is partnered with the **Intellectual Property Owners Association (IPOA)** — Georgia's official music rights organization since January 2024. IPOA is our source of verified ownership and royalty data for every catalogue we list.
+**Data partner.** Stave is partnered with the **Intellectual Property Owners Association (IPOA)** - Georgia's official music rights organization since January 2024. IPOA is our source of verified ownership and royalty data for every catalogue we list.
 
 **Planned next steps:**
 
-- **VASP registration with the National Bank of Georgia** — required for a Solana-based marketplace operating in Georgia.
-- **Brokerage license under the Law on Securities Market** — required because a fractional royalty token counts as a security under Georgian law.
+- **VASP registration with the National Bank of Georgia** - required for a Solana-based marketplace operating in Georgia.
+- **Brokerage license under the Law on Securities Market** - required because a fractional royalty token counts as a security under Georgian law.
 - **AML / KYC programme** under the Financial Monitoring Service of Georgia.
 
 Background, fees, timelines, and primary-source citations in [docs/10-legal-roadmap.md](./docs/10-legal-roadmap.md).
@@ -251,4 +251,4 @@ Background, fees, timelines, and primary-source citations in [docs/10-legal-road
 
 ## License
 
-MIT — see [LICENSE](./LICENSE).
+MIT - see [LICENSE](./LICENSE).

@@ -1,15 +1,15 @@
 import { ImageResponse } from "next/og";
 
-// Open Graph card for stave.cc — what shows up when the URL is
+// Open Graph card for stave.cc - what shows up when the URL is
 // shared in Twitter / LinkedIn / Slack / iMessage / Discord.
 // Generated as a 1200×630 PNG at build time. Pure JSX-to-image, no
-// external assets, no font loading — keeps the build fast and
+// external assets, no font loading - keeps the build fast and
 // guarantees the image renders identically every time.
 
 export const runtime = "edge";
 
 export const alt =
-  "Stave — Music royalties, made investable. Solana Frontier Hackathon 2026.";
+  "Stave - Music royalties, made investable. Solana Frontier Hackathon 2026.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -31,7 +31,7 @@ export default async function OpengraphImage() {
           letterSpacing: "-0.02em",
         }}
       >
-        {/* Top row — wordmark */}
+        {/* Top row - wordmark */}
         <div
           style={{
             display: "flex",
@@ -61,7 +61,7 @@ export default async function OpengraphImage() {
           STAVE
         </div>
 
-        {/* Center row — main copy */}
+        {/* Center row - main copy */}
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
@@ -99,7 +99,7 @@ export default async function OpengraphImage() {
           </div>
         </div>
 
-        {/* Bottom row — meta */}
+        {/* Bottom row - meta */}
         <div
           style={{
             display: "flex",

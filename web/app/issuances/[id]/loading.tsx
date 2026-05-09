@@ -41,7 +41,7 @@ export default function CatalogLoading() {
         </div>
 
         {/* On-chain strip placeholder (matches OnchainStatus height
-            roughly — only renders for bootstrapped catalogs, but the
+            roughly - only renders for bootstrapped catalogs, but the
             skeleton always shows a strip for consistency. */}
         <div className="mt-6">
           <Sk className="h-44 w-full rounded-xl" />

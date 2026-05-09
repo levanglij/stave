@@ -1,5 +1,5 @@
 /**
- * One-shot bootstrap script — calls `create_work` + `list_shares` against
+ * One-shot bootstrap script - calls `create_work` + `list_shares` against
  * the deployed Stave program on Solana devnet for one real on-chain
  * listing (Suliko / catalog evergreen-001).
  *
@@ -17,7 +17,7 @@
  * ~/.config/solana/id.json. Idempotent: a second run will fail because
  * the IpWork PDA + share mint will already exist.
  *
- * Output: program/bootstrap-output.json — addresses + TX signatures
+ * Output: program/bootstrap-output.json - addresses + TX signatures
  * for embedding in README + frontend client.
  */
 
@@ -44,13 +44,13 @@ const SULIKO = {
   workId: new BN(1),
   totalShares: new BN(1_000),
   sharesToList: new BN(500),
-  // 0.5 USDC per share (USDC has 6 decimals) — illustrative price for
+  // 0.5 USDC per share (USDC has 6 decimals) - illustrative price for
   // the demo listing. Synthetic catalog prices in the UI are unrelated.
   pricePerShare: new BN(500_000),
   metadataUri: "https://stave.cc/issuances/evergreen-001",
 };
 
-// USDC devnet mint — well-known address used across the Solana
+// USDC devnet mint - well-known address used across the Solana
 // ecosystem for testing.
 const USDC_DEVNET = new PublicKey(
   "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
@@ -74,7 +74,7 @@ async function main() {
   });
   anchor.setProvider(provider);
 
-  // Anchor 0.30+ reads the program ID from idl.address — no separate
+  // Anchor 0.30+ reads the program ID from idl.address - no separate
   // PublicKey arg needed.
   const program = new Program<Stave>(idl as Stave, provider);
 
@@ -91,7 +91,7 @@ async function main() {
     program.programId,
   );
 
-  // Fresh keypair for the share mint — created inside the instruction.
+  // Fresh keypair for the share mint - created inside the instruction.
   const shareMint = Keypair.generate();
 
   const creatorShareAta = getAssociatedTokenAddressSync(
@@ -102,7 +102,7 @@ async function main() {
   );
 
   // ----------------------------------------------------------------
-  // 1/2 — create_work
+  // 1/2 - create_work
   // ----------------------------------------------------------------
   console.log("\n[1/2] Calling create_work...");
   const createTx = await program.methods
@@ -133,12 +133,12 @@ async function main() {
   const listingVault = getAssociatedTokenAddressSync(
     shareMint.publicKey,
     listingPda,
-    true, // allowOwnerOffCurve — listing is a PDA
+    true, // allowOwnerOffCurve - listing is a PDA
     TOKEN_2022_PROGRAM_ID,
   );
 
   // ----------------------------------------------------------------
-  // 2/2 — list_shares
+  // 2/2 - list_shares
   // ----------------------------------------------------------------
   console.log("\n[2/2] Calling list_shares...");
   const listTx = await program.methods
@@ -162,7 +162,7 @@ async function main() {
   console.log(`  ✓ Listing vault: ${listingVault.toBase58()}`);
 
   // ----------------------------------------------------------------
-  // Output — written to bootstrap-output.json for embedding in docs
+  // Output - written to bootstrap-output.json for embedding in docs
   // ----------------------------------------------------------------
   const result = {
     catalog: "evergreen-001 (Suliko)",

@@ -33,7 +33,7 @@ export function ApplyModal({ open, onClose }: Props) {
   const [phase, setPhase] = useState<Phase>("idle");
   const [errMsg, setErrMsg] = useState("");
 
-  // Reset form whenever the modal closes — never carry stale state into
+  // Reset form whenever the modal closes - never carry stale state into
   // the next open.
   useEffect(() => {
     if (open) return;

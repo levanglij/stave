@@ -1,18 +1,18 @@
-# RRE Engine — Formulas (demo scope)
+# RRE Engine - Formulas (demo scope)
 
 This is the deterministic spec the demo engine implements. It's a stripped-down version of `docs/02-architecture.md` § 5. Anything marked **demo-only** is a simplified substitute that gets the right shape of answer for demo purposes; production would use the full technique named in the architecture doc.
 
-## Layer 1 — Normalization
+## Layer 1 - Normalization
 
 Input is assumed pre-normalized to monthly USD per (platform, territory). The engine validates the schema and constructs:
 
-- `R(t)` — total monthly revenue, `t = 0 .. T`
-- `R_p(t)` — revenue by platform
-- `R_b(t)` — revenue by territory
+- `R(t)` - total monthly revenue, `t = 0 .. T`
+- `R_p(t)` - revenue by platform
+- `R_b(t)` - revenue by territory
 
 **Demo-only:** no FX conversion (input assumed USD), no PDF parsing.
 
-## Layer 2 — Decay
+## Layer 2 - Decay
 
 ### Regime classification (rule-based on history length T in months)
 
@@ -60,7 +60,7 @@ Let `σ_res` = std of log-residuals from the fit. Then:
 
 (1.2816 = inverse normal at 0.9.) This is a log-normal proxy for the Weibull survival bound the full engine would produce. Acceptable for demo visuals.
 
-## Layer 3 — Anomaly detection (demo-only: z-score only)
+## Layer 3 - Anomaly detection (demo-only: z-score only)
 
 On a rolling 12-month window, for each month t:
 
@@ -68,7 +68,7 @@ On a rolling 12-month window, for each month t:
 
 Flag month t as an anomaly if `|z(t)| > 2.5`. Demo outputs only the count and magnitude; classification (durable vs. ephemeral) is out of scope (no labeled data).
 
-## Layer 4 — Concentration and VaR
+## Layer 4 - Concentration and VaR
 
 ### Herfindahl-Hirschman Index
 
@@ -92,11 +92,11 @@ Then:
 
 **Demo-only:** does not model platform-share uncertainty or viral event probability. Just parameter uncertainty.
 
-## Layer 5 — Rating aggregation
+## Layer 5 - Rating aggregation
 
 ### Factor scores (each 0–100)
 
-**F_stability** — forecast tightness
+**F_stability** - forecast tightness
 
     F_stab = 100 · (1 − min(1, (P90[12] − P10[12]) / (2 · P50[12])))
 
@@ -107,7 +107,7 @@ Then:
     F_conc = 100 · (1 − 0.6 · HHI_platform − 0.4 · HHI_territory)
     (clamped to [0, 100])
 
-**F_regime** — rewards stable regimes
+**F_regime** - rewards stable regimes
 
 | Regime | F_regime |
 |---|---|
@@ -116,12 +116,12 @@ Then:
 | active_pop | 60 |
 | new_release | 40 |
 
-**F_volatility** — coefficient of variation on historical R(t)
+**F_volatility** - coefficient of variation on historical R(t)
 
     CV = σ(R) / μ(R)
     F_vol = 100 · max(0, 1 − min(CV, 1.0))
 
-**F_lifecycle** — rewards long catalog + artist track record
+**F_lifecycle** - rewards long catalog + artist track record
 
     F_life = 100 · min(1, 0.5 · catalog_age_months/120 + 0.5 · artist_age_years/20)
 

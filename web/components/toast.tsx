@@ -59,7 +59,7 @@ const ToastCtx = createContext<ToastApi | null>(null);
 export function useToast(): ToastApi {
   const ctx = useContext(ToastCtx);
   if (!ctx) {
-    // No provider mounted yet (e.g. server component import) — return
+    // No provider mounted yet (e.g. server component import) - return
     // a safe no-op so callers don't have to null-check. Logs to
     // console for debugging.
     return {

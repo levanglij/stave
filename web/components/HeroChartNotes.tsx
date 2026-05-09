@@ -1,5 +1,5 @@
 // Hero illustration: a candlestick chart where each candle is also a music
-// note on a five-line staff. The metaphor — a Bloomberg ticker drawn as a
+// note on a five-line staff. The metaphor - a Bloomberg ticker drawn as a
 // sheet of music. Pure inline SVG, no raster assets, themed to Stave's
 // emerald palette so it lives behind/beside dark hero text without fighting
 // it for attention.
@@ -7,17 +7,17 @@
 // Layers, back to front:
 //   1. Radial emerald glow backdrop (deep wash, gives the chart a center)
 //   2. Five staff lines with varied opacities (5/8/12/8/5%) for aerial perspective
-//   3. Treble clef at the left edge, larger + softly glowing — desktop only
+//   3. Treble clef at the left edge, larger + softly glowing - desktop only
 //   4. Faint secondary trend line in the background ("historical" decoration)
-//   5. Floating numerical annotations (Grade AA, +12.4%, $971K) — tiny mono,
+//   5. Floating numerical annotations (Grade AA, +12.4%, $971K) - tiny mono,
 //      very dim. Easter eggs that signal data density.
 //   6. Candle wicks
 //   7. Candle bodies
 //   8. Note stems rising from each body top, joined by horizontal beams
 //      (groups of 2 or 3) or capped with a quarter-note flag (standalone)
 //   9. Trend line connecting the body centers, with a stronger drop-shadow
-//      glow — reads as both chart trendline and melodic contour
-//  10. Two-line end barline at the right — desktop only
+//      glow - reads as both chart trendline and melodic contour
+//  10. Two-line end barline at the right - desktop only
 
 const VIEW_W = 720;
 const VIEW_H = 480;
@@ -28,7 +28,7 @@ const CHART_TOP = 100;
 const CHART_BOT = 430;
 
 // Five staff lines with hand-tuned opacities. Outer lines are dimmer, inner
-// lines brighter — gives the staff aerial perspective so it stops reading
+// lines brighter - gives the staff aerial perspective so it stops reading
 // as a uniform grid.
 const STAFF_LINES: { y: number; opacity: number }[] = [
   { y: 180, opacity: 0.05 },
@@ -61,7 +61,7 @@ interface CandleSpec {
 }
 
 // Hand-tuned 16-candle series. Trends up-and-to-the-right with two visible
-// pullbacks. Amber candles at indices 2, 6, 9, 12 — feels realistic for a
+// pullbacks. Amber candles at indices 2, 6, 9, 12 - feels realistic for a
 // real chart, and adds beat-by-beat color variety. Beam groups are sized 2
 // or 3 to read as eighth/sixteenth notes; standalone candles render with a
 // quarter-note flag instead.
@@ -151,7 +151,7 @@ function stemTop(c: ComputedCandle): number {
   return c.beam == null ? c.bodyTop - 42 : BEAM_Y[c.beam];
 }
 
-// Floating annotations — anchored to specific candles, offset to sit in
+// Floating annotations - anchored to specific candles, offset to sit in
 // negative space so they decorate without colliding with the chart shapes.
 // Numbers are illustrative; chosen to feel like real instrument-level data
 // the way a Bloomberg overlay would label trades on a chart.
@@ -171,14 +171,14 @@ export function HeroChartNotes() {
       aria-label="Stylized candlestick chart drawn as music notes on a five-line staff. The candles trend upward."
     >
       <defs>
-        {/* Deeper, more focused emerald glow — gives the chart a clear
+        {/* Deeper, more focused emerald glow - gives the chart a clear
             visual center rather than ambient haze. */}
         <radialGradient id="hcnGlow" cx="0.7" cy="0.5" r="0.55">
           <stop offset="0" stopColor="#10b981" stopOpacity="0.22" />
           <stop offset="0.55" stopColor="#10b981" stopOpacity="0.06" />
           <stop offset="1" stopColor="#10b981" stopOpacity="0" />
         </radialGradient>
-        {/* Subtle filter for the trend line — strong glow without blowing
+        {/* Subtle filter for the trend line - strong glow without blowing
             out the silhouette of the candles behind it. */}
         <filter id="hcnTrendGlow" x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur stdDeviation="3" result="blur" />
@@ -196,10 +196,10 @@ export function HeroChartNotes() {
         </filter>
       </defs>
 
-      {/* Layer 1 — radial emerald wash */}
+      {/* Layer 1 - radial emerald wash */}
       <rect width={VIEW_W} height={VIEW_H} fill="url(#hcnGlow)" />
 
-      {/* Layer 2 — staff lines with varied opacities (aerial perspective) */}
+      {/* Layer 2 - staff lines with varied opacities (aerial perspective) */}
       <g stroke={COLOR.staffStroke} strokeWidth="1">
         {STAFF_LINES.map(({ y, opacity }) => (
           <line
@@ -213,12 +213,12 @@ export function HeroChartNotes() {
         ))}
       </g>
 
-      {/* Layer 3 — treble clef (desktop only), now with a soft glow */}
+      {/* Layer 3 - treble clef (desktop only), now with a soft glow */}
       <g className="hidden md:inline" filter="url(#hcnClefGlow)">
         <TrebleClef />
       </g>
 
-      {/* Layer 4 — secondary trend line, dimmer and offset down. Reads as
+      {/* Layer 4 - secondary trend line, dimmer and offset down. Reads as
           "historical" trace; pure decoration. */}
       <polyline
         points={CANDLES.map((c) => `${c.x},${c.cy + 22}`).join(" ")}
@@ -230,7 +230,7 @@ export function HeroChartNotes() {
         strokeLinecap="round"
       />
 
-      {/* Layer 5 — floating numerical annotations (very dim, tiny mono) */}
+      {/* Layer 5 - floating numerical annotations (very dim, tiny mono) */}
       <g
         className="hidden md:inline"
         fill={COLOR.annotation}
@@ -245,7 +245,7 @@ export function HeroChartNotes() {
         ))}
       </g>
 
-      {/* Layer 6 — wicks */}
+      {/* Layer 6 - wicks */}
       <g>
         {CANDLES.map((c) => (
           <line
@@ -262,7 +262,7 @@ export function HeroChartNotes() {
         ))}
       </g>
 
-      {/* Layer 7 — bodies */}
+      {/* Layer 7 - bodies */}
       <g>
         {CANDLES.map((c) => (
           <rect
@@ -279,7 +279,7 @@ export function HeroChartNotes() {
         ))}
       </g>
 
-      {/* Layer 8a — stems */}
+      {/* Layer 8a - stems */}
       <g>
         {CANDLES.map((c) => (
           <line
@@ -295,7 +295,7 @@ export function HeroChartNotes() {
         ))}
       </g>
 
-      {/* Layer 8b — beams */}
+      {/* Layer 8b - beams */}
       <g>
         {BEAMS.map((b) => (
           <rect
@@ -310,7 +310,7 @@ export function HeroChartNotes() {
         ))}
       </g>
 
-      {/* Layer 8c — flags (standalone quarter-note candles) */}
+      {/* Layer 8c - flags (standalone quarter-note candles) */}
       <g>
         {CANDLES.filter((c) => c.beam == null).map((c) => {
           const sTop = stemTop(c);
@@ -327,7 +327,7 @@ export function HeroChartNotes() {
         })}
       </g>
 
-      {/* Layer 9 — trend line through body centers, stronger glow */}
+      {/* Layer 9 - trend line through body centers, stronger glow */}
       <polyline
         points={CANDLES.map((c) => `${c.x},${c.cy}`).join(" ")}
         fill="none"
@@ -339,7 +339,7 @@ export function HeroChartNotes() {
         style={{ filter: "drop-shadow(0 0 16px rgba(16, 185, 129, 0.5))" }}
       />
 
-      {/* Layer 10 — end barline (desktop only) */}
+      {/* Layer 10 - end barline (desktop only) */}
       <g
         className="hidden md:inline"
         stroke={COLOR.endbar}
@@ -364,7 +364,7 @@ export function HeroChartNotes() {
 }
 
 /**
- * Stylized treble clef. Hand-authored vector — not musicologically exact,
+ * Stylized treble clef. Hand-authored vector - not musicologically exact,
  * but the silhouette (top loop, descending spine, bottom curl, terminal
  * dot) reads as a G clef in context. Slightly bolder strokes than the v1
  * so it holds its own beside the candle-notes.

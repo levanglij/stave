@@ -14,7 +14,7 @@ export default function NotFound() {
           </span>
         </h1>
         <p className="text-base text-muted leading-relaxed mb-9 max-w-sm mx-auto">
-          Or it moved. Either way — the marketplace is one click away.
+          Or it moved. Either way - the marketplace is one click away.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3">
           <Link

@@ -1,18 +1,18 @@
-# 12 — Roadmap
+# 12 - Roadmap
 
-> Public roadmap — what ships when. Honest about what's built today vs.
+> Public roadmap - what ships when. Honest about what's built today vs.
 > what's planned. Updated 2026-05-07.
 
 ## Where we are today *(May 2026, hackathon submission)*
 
-- **Anchor program live on Solana devnet** at [`EcJDYr1y6...`](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet) — 5 instructions (`create_work`, `list_shares`, `buy_shares`, `deposit_royalty`, `claim_royalty`), 15 / 15 tests passing
-- **First on-chain work + listing bootstrapped** — Suliko (catalog `evergreen-001`), 1,000 shares, 500 listed at 0.5 USDC each — verifiable on Explorer
-- **Live frontend at [stave.cc](https://stave.cc)** — 8 graded Georgian catalogs, 4 thematic indices, working wallet adapter, real on-chain TXs
-- **Risk engine** — Python, deterministic, 31 / 31 tests, every formula in [`engine/FORMULAS.md`](../engine/FORMULAS.md)
-- **IPOA partnership** — verified data partner; agreement covers ownership + royalty data for the Georgian repertoire
-- **MIT licensed** — every layer open-source
+- **Anchor program live on Solana devnet** at [`EcJDYr1y6...`](https://explorer.solana.com/address/EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q?cluster=devnet) - 5 instructions (`create_work`, `list_shares`, `buy_shares`, `deposit_royalty`, `claim_royalty`), 15 / 15 tests passing
+- **First on-chain work + listing bootstrapped** - Suliko (catalog `evergreen-001`), 1,000 shares, 500 listed at 0.5 USDC each - verifiable on Explorer
+- **Live frontend at [stave.cc](https://stave.cc)** - 8 graded Georgian catalogs, 4 thematic indices, working wallet adapter, real on-chain TXs
+- **Risk engine** - Python, deterministic, 31 / 31 tests, every formula in [`engine/FORMULAS.md`](../engine/FORMULAS.md)
+- **IPOA partnership** - verified data partner; agreement covers ownership + royalty data for the Georgian repertoire
+- **MIT licensed** - every layer open-source
 
-## Q3 2026 *(July – September) — first real data + audit*
+## Q3 2026 *(July – September) - first real data + audit*
 
 | Milestone | What it means |
 |---|---|
@@ -22,16 +22,16 @@
 | **`per-share-accumulator` math** | Refactor `claim_royalty` so holders who transfer between deposits don't forfeit. Synthetix-style index pattern. |
 | **Bootstrap script for all 8 catalogs** | One-shot deploy of the full Georgian repertoire on-chain. |
 
-## Q4 2026 *(October – December) — secondary market + testnet*
+## Q4 2026 *(October – December) - secondary market + testnet*
 
 | Milestone | What it means |
 |---|---|
 | **Secondary market** | Holders re-list their shares to new buyers. New `list_secondary` instruction or DEX integration (Jupiter / Phoenix). |
 | **Devnet → Solana testnet** | Final shake-out before mainnet. Larger batch tests on real RPC infrastructure. |
-| **Royalty-payout cron** | Stave operates an automated `deposit_royalty` runner — IPOA's monthly settlement triggers an on-chain deposit per work. |
+| **Royalty-payout cron** | Stave operates an automated `deposit_royalty` runner - IPOA's monthly settlement triggers an on-chain deposit per work. |
 | **Audit findings remediated** | Implementation of all critical / high audit findings. Re-audit. |
 
-## 2027 H1 *(January – June) — Georgian mainnet launch*
+## 2027 H1 *(January – June) - Georgian mainnet launch*
 
 | Milestone | What it means |
 |---|---|
@@ -41,7 +41,7 @@
 | **AML / KYC programme** | Under the Financial Monitoring Service of Georgia. Privy stub replaced with a real KYC vendor. |
 | **First 10 closed financings** | Family-office and accredited-investor capital deployed against rated Georgian catalogs. |
 
-## 2027 H2 *(July – December) — second country + tranche structure*
+## 2027 H2 *(July – December) - second country + tranche structure*
 
 | Milestone | What it means |
 |---|---|
@@ -50,20 +50,20 @@
 | **Sygnum (or analog) custody integration** | Institutional-grade custody for fund-vehicle holdings. Token-2022 transfer-hook for whitelist enforcement at custody level. |
 | **First portfolio-fund product** | A Stave-managed fund vehicle pooling 20+ catalogs into a single LP-friendly product. |
 
-## 2028+ *(long horizon) — pan-European*
+## 2028+ *(long horizon) - pan-European*
 
 | Milestone | What it means |
 |---|---|
 | **EU-licensed wealth platform partnerships** | Distribution via licensed brokerages in EU jurisdictions where Stave's tokenized-securities classification is workable. |
-| **Distributor partnerships** | DistroKid, TuneCore, CD Baby — for non-PRO catalog coverage (independent artists outside CMO mandate). |
-| **Cross-asset comparison tools** | Stave grade compared against corporate-bond credit ratings, CLO tranches, REIT yields — for institutional capital that allocates across asset classes. |
+| **Distributor partnerships** | DistroKid, TuneCore, CD Baby - for non-PRO catalog coverage (independent artists outside CMO mandate). |
+| **Cross-asset comparison tools** | Stave grade compared against corporate-bond credit ratings, CLO tranches, REIT yields - for institutional capital that allocates across asset classes. |
 
 ## What we will NOT do
 
 - **Issue our own token / governance token.** Stave shares are per-catalog, redeem against royalty cash flows, and don't carry voting rights over the platform. We are not a DAO.
-- **Custody users' SOL or USDC.** Settlement is non-custodial — funds flow wallet-to-wallet via the Anchor program. Stave has no master wallet for user funds.
+- **Custody users' SOL or USDC.** Settlement is non-custodial - funds flow wallet-to-wallet via the Anchor program. Stave has no master wallet for user funds.
 - **Operate as an exchange.** The marketplace is a primary-issuance + claim layer. Secondary trading happens on DEXs / brokerages.
 
 ## Honest framing
 
-This roadmap is what we *plan* to build. Everything before "Q3 2026" is real and verifiable today — every claim has a code commit, a test, or a Solana Explorer link behind it. Everything after Q3 2026 is a plan with dependencies on funding, partnerships, audits, and regulatory work that takes time. Treat the post-hackathon items as "what we'll be working on," not "what's already done."
+This roadmap is what we *plan* to build. Everything before "Q3 2026" is real and verifiable today - every claim has a code commit, a test, or a Solana Explorer link behind it. Everything after Q3 2026 is a plan with dependencies on funding, partnerships, audits, and regulatory work that takes time. Treat the post-hackathon items as "what we'll be working on," not "what's already done."

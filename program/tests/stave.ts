@@ -21,7 +21,7 @@ import {
 } from "@solana/spl-token";
 import { expect } from "chai";
 
-describe("stave — create_work", () => {
+describe("stave - create_work", () => {
   const provider = anchor.AnchorProvider.env();
   anchor.setProvider(provider);
   const program = anchor.workspace.Stave as Program<Stave>;
@@ -172,13 +172,13 @@ describe("stave — create_work", () => {
       expect.fail("expected MetadataUriTooLong");
     } catch (e: any) {
       // The over-length string may be rejected either by the program's
-      // length check or by Anchor's serialization limit — either is acceptable.
+      // length check or by Anchor's serialization limit - either is acceptable.
       expect(String(e)).to.match(/MetadataUriTooLong|exceed|length/i);
     }
   });
 });
 
-describe("stave — list_shares", () => {
+describe("stave - list_shares", () => {
   const provider = anchor.AnchorProvider.env();
   anchor.setProvider(provider);
   const program = anchor.workspace.Stave as Program<Stave>;
@@ -378,7 +378,7 @@ describe("stave — list_shares", () => {
   });
 });
 
-describe("stave — buy_shares", () => {
+describe("stave - buy_shares", () => {
   const provider = anchor.AnchorProvider.env();
   anchor.setProvider(provider);
   const program = anchor.workspace.Stave as Program<Stave>;
@@ -473,7 +473,7 @@ describe("stave — buy_shares", () => {
 
     // 3. Create buyer keypair, fund via direct SOL transfer from
     //    provider wallet (local validator's airdrop RPC is flaky on
-    //    Solana 3.x — transfer is reliable).
+    //    Solana 3.x - transfer is reliable).
     const buyer = Keypair.generate();
     const fundTx = new Transaction().add(
       SystemProgram.transfer({
@@ -653,7 +653,7 @@ describe("stave — buy_shares", () => {
   });
 });
 
-describe("stave — deposit_royalty + claim_royalty", () => {
+describe("stave - deposit_royalty + claim_royalty", () => {
   const provider = anchor.AnchorProvider.env();
   anchor.setProvider(provider);
   const program = anchor.workspace.Stave as Program<Stave>;
@@ -1035,7 +1035,7 @@ describe("stave — deposit_royalty + claim_royalty", () => {
     );
     await provider.sendAndConfirm(fundTx, [payer]);
 
-    // Stranger's share ATA exists but has 0 balance — create it explicitly.
+    // Stranger's share ATA exists but has 0 balance - create it explicitly.
     const strangerShareAcct = await getOrCreateAssociatedTokenAccount(
       provider.connection,
       payer,

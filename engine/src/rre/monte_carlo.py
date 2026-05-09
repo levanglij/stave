@@ -1,4 +1,4 @@
-"""Layer 4b — Mini Monte Carlo VaR (1,000 sims).
+"""Layer 4b - Mini Monte Carlo VaR (1,000 sims).
 
 Draws the primary decay parameter from N(estimate, SE), integrates the
 resulting forecast, and returns VaR and CVaR at the 95% confidence level.

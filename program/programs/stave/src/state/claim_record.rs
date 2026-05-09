@@ -9,7 +9,7 @@ use anchor_lang::prelude::*;
 ///
 /// MVP behavior (per docs/01-mvp-spec.md): if the holder transfers
 /// shares between a deposit and a claim, the unclaimed portion on
-/// the transferred shares is forfeited — the calculation reads
+/// the transferred shares is forfeited - the calculation reads
 /// `holder_share_ata.amount` at claim time, not at deposit time.
 ///
 /// PDA seeds: `[b"claim", ip_work, holder]`

@@ -1,11 +1,11 @@
 /**
- * Second bootstrap script — calls `create_work` + `list_shares` against
+ * Second bootstrap script - calls `create_work` + `list_shares` against
  * the deployed Stave program for a *second* on-chain listing
  * (Nine Million Bicycles / catalog active-pop-001).
  *
  * Why two listings instead of one: showing two distinct works on-chain
  * proves the program isn't a one-trick demo. Different work_id, different
- * IpWork PDA, different share mint, different listing — judges can verify
+ * IpWork PDA, different share mint, different listing - judges can verify
  * the create_work flow generalizes.
  *
  * Run: cd program && pnpm tsx scripts/bootstrap-bicycles.ts
@@ -38,15 +38,15 @@ import * as path from "path";
 import * as os from "os";
 
 const BICYCLES = {
-  // workId=2 — the next sequential id after Suliko (workId=1). The
+  // workId=2 - the next sequential id after Suliko (workId=1). The
   // IpWork PDA is keyed by (creator, workId) so this gives us a
   // distinct PDA without collision.
   workId: new BN(2),
   totalShares: new BN(1_000),
-  // Listing 700/1000 — slightly more aggressive than Suliko's 500/1000,
+  // Listing 700/1000 - slightly more aggressive than Suliko's 500/1000,
   // shows the program supports varied float ratios.
   sharesToList: new BN(700),
-  // 0.75 USDC per share — a different price point than Suliko's 0.5 USDC,
+  // 0.75 USDC per share - a different price point than Suliko's 0.5 USDC,
   // proves price is per-listing not hardcoded.
   pricePerShare: new BN(750_000),
   metadataUri: "https://stave.cc/issuances/active-pop-001",
@@ -98,7 +98,7 @@ async function main() {
   );
 
   // ----------------------------------------------------------------
-  // 1/2 — create_work
+  // 1/2 - create_work
   // ----------------------------------------------------------------
   console.log("\n[1/2] Calling create_work...");
   const createTx = await program.methods
@@ -133,7 +133,7 @@ async function main() {
   );
 
   // ----------------------------------------------------------------
-  // 2/2 — list_shares
+  // 2/2 - list_shares
   // ----------------------------------------------------------------
   console.log("\n[2/2] Calling list_shares...");
   const listTx = await program.methods
@@ -157,7 +157,7 @@ async function main() {
   console.log(`  ✓ Listing vault: ${listingVault.toBase58()}`);
 
   // ----------------------------------------------------------------
-  // Output — written to bootstrap-bicycles.json (separate from Suliko's
+  // Output - written to bootstrap-bicycles.json (separate from Suliko's
   // file so we have a clean per-catalog manifest).
   // ----------------------------------------------------------------
   const result = {

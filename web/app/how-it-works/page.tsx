@@ -19,7 +19,7 @@ const STEPS = [
 // dependency-free: KaTeX would add ~70 KB to this route for one
 // page of math, and the formulas here are short enough that hand-
 // authored markup reads cleanly. The formulae link to the same
-// canonical page the rest of the site does — engine/FORMULAS.md.
+// canonical page the rest of the site does - engine/FORMULAS.md.
 const LAYERS: {
   n: string;
   title: string;
@@ -138,7 +138,7 @@ const TIERS = [
   { tier: "B", range: "0–50", ltv: "0%", color: "#F87171" },
 ];
 
-// Glossary — every Stave-specific or finance-specific term that
+// Glossary - every Stave-specific or finance-specific term that
 // appears anywhere in the UI, defined in plain English. Many
 // hackathon judges aren't finance natives, so this section makes the
 // methodology accessible without the reader having to leave the
@@ -150,13 +150,13 @@ const GLOSSARY: { term: string; short: string; long: string }[] = [
     term: "Composite score",
     short: "0–100 number that drives every grade.",
     long:
-      "Weighted blend of five factors — stability, concentration, regime, volatility, and lifecycle. Each factor is itself 0–100. Higher composite = better grade. The mapping from score to letter tier (AAA → B) is a deterministic table; see the grade ladder above.",
+      "Weighted blend of five factors - stability, concentration, regime, volatility, and lifecycle. Each factor is itself 0–100. Higher composite = better grade. The mapping from score to letter tier (AAA → B) is a deterministic table; see the grade ladder above.",
   },
   {
     term: "LTV (Loan-to-Value)",
     short: "How much senior debt the grade implies a catalog can support.",
     long:
-      "If a Stave-graded catalog were used as collateral, LTV is the share of FMV a senior lender could responsibly advance. AAA = 80%, B = 0%. The number is conservative on purpose — it's a planning ceiling, not a price.",
+      "If a Stave-graded catalog were used as collateral, LTV is the share of FMV a senior lender could responsibly advance. AAA = 80%, B = 0%. The number is conservative on purpose - it's a planning ceiling, not a price.",
   },
   {
     term: "FMV / NAV",
@@ -174,13 +174,13 @@ const GLOSSARY: { term: string; short: string; long: string }[] = [
     term: "VaR / CVaR (95%, 60-mo)",
     short: "Tail-risk floors derived from the 1k-iteration Monte Carlo.",
     long:
-      "VaR₉₅ is the 5th-percentile cumulative cash flow over the next 60 months — i.e., the floor we'd hit in a 1-in-20 bad scenario. CVaR₉₅ is the average of all outcomes worse than VaR₉₅ — a sharper measure of how bad the bad case actually gets. Both are quoted in USD on the catalog detail page.",
+      "VaR₉₅ is the 5th-percentile cumulative cash flow over the next 60 months - i.e., the floor we'd hit in a 1-in-20 bad scenario. CVaR₉₅ is the average of all outcomes worse than VaR₉₅ - a sharper measure of how bad the bad case actually gets. Both are quoted in USD on the catalog detail page.",
   },
   {
     term: "Regime",
     short: "Cash-flow shape: evergreen, catalog, active pop, or new release.",
     long:
-      "The engine classifies each catalog into one of four regimes based on age, volatility, and momentum. Each regime has its own decay model and discount rate. Suliko (1899) is evergreen — flat, predictable; a 2024 release would be classified active pop or new release.",
+      "The engine classifies each catalog into one of four regimes based on age, volatility, and momentum. Each regime has its own decay model and discount rate. Suliko (1899) is evergreen - flat, predictable; a 2024 release would be classified active pop or new release.",
   },
   {
     term: "Decay model",
@@ -198,7 +198,7 @@ const GLOSSARY: { term: string; short: string; long: string }[] = [
     term: "PDA (Program Derived Address)",
     short: "Solana account whose key is deterministically derived, not a private key.",
     long:
-      "A PDA has no signing private key — only the program that owns it can authorise actions on it. Stave uses three PDAs per catalog: IpWork (the catalog itself), Listing (the listing config + share-vault authority), and RoyaltyVault (the royalty-vault authority). PDAs guarantee the program is the sole intermediary on funds-holding accounts.",
+      "A PDA has no signing private key - only the program that owns it can authorise actions on it. Stave uses three PDAs per catalog: IpWork (the catalog itself), Listing (the listing config + share-vault authority), and RoyaltyVault (the royalty-vault authority). PDAs guarantee the program is the sole intermediary on funds-holding accounts.",
   },
   {
     term: "USDC (devnet)",
@@ -223,7 +223,7 @@ export default function HowItWorksPage() {
           </h1>
         </section>
 
-        {/* TOC — sticky on desktop */}
+        {/* TOC - sticky on desktop */}
         <nav
           className="hidden md:flex sticky top-14 z-10 -mx-6 px-6 py-3 -my-6 bg-bg/85 backdrop-blur-md border-y border-border items-center gap-1"
           aria-label="Page contents"
@@ -257,7 +257,7 @@ export default function HowItWorksPage() {
           </a>
         </nav>
 
-        {/* TOC — mobile, horizontal scroll, no sticky */}
+        {/* TOC - mobile, horizontal scroll, no sticky */}
         <nav
           className="md:hidden -mx-6 px-6 py-3 -my-6 border-y border-border overflow-x-auto whitespace-nowrap"
           aria-label="Page contents"
@@ -288,7 +288,7 @@ export default function HowItWorksPage() {
           </a>
         </nav>
 
-        {/* 4 Steps — staggered fade-up */}
+        {/* 4 Steps - staggered fade-up */}
         <section id="process" className="scroll-mt-24">
           <div className="grid md:grid-cols-4 gap-4">
             {STEPS.map((s, i) => (
@@ -307,7 +307,7 @@ export default function HowItWorksPage() {
           </div>
         </section>
 
-        {/* Methodology — five layers */}
+        {/* Methodology - five layers */}
         <section id="methodology" className="scroll-mt-24">
           <div className="text-[11px] font-semibold tracking-[2px] uppercase text-muted mb-3">
             Methodology
@@ -323,7 +323,7 @@ export default function HowItWorksPage() {
             .
           </p>
           {/* TODO(stave): inline SVG diagram of the 5-layer pipeline data
-              flow — Data normalization → Decay modeling → Anomaly detection
+              flow - Data normalization → Decay modeling → Anomaly detection
               → Concentration & VaR → Grade aggregation. Out of scope for
               the current sprint; left as a sized placeholder if/when
               commissioned. */}
@@ -343,7 +343,7 @@ export default function HowItWorksPage() {
                 <p className="text-xs text-muted leading-relaxed mb-3">
                   {l.body}
                 </p>
-                {/* Inline formula — italic variables, real Σ / σ / λ /
+                {/* Inline formula - italic variables, real Σ / σ / λ /
                     sub-sup. Spacer pushes formulas to the bottom of
                     each card so heights align across the row. */}
                 <div className="mt-auto pt-3 border-t border-border/60 text-[12px] text-emerald-300/90 font-mono leading-snug formula">
@@ -353,7 +353,7 @@ export default function HowItWorksPage() {
             ))}
           </div>
 
-          {/* Want the math? — single link to the open-source formula doc */}
+          {/* Want the math? - single link to the open-source formula doc */}
           <div className="mt-8 rounded-xl border border-zinc-800 bg-panel/40 p-5 flex flex-wrap items-center justify-between gap-4">
             <div>
               <div className="text-sm font-semibold text-fg mb-0.5">
@@ -389,7 +389,7 @@ export default function HowItWorksPage() {
             Score → tier → max LTV.
           </h2>
           {/* TODO(stave): inline SVG diagram of the score-to-tier-to-LTV
-              mapping — score axis 0–100, tier bands AAA → B, LTV ramp
+              mapping - score axis 0–100, tier bands AAA → B, LTV ramp
               80% → 0%. Out of scope for the current sprint. */}
           <div className="rounded-xl border border-border bg-panel overflow-hidden">
             <div className="grid grid-cols-3 gap-4 px-5 py-3 border-b border-border bg-panel-2/60 text-[10px] uppercase tracking-[1.2px] text-muted font-medium">
@@ -424,7 +424,7 @@ export default function HowItWorksPage() {
           </div>
         </section>
 
-        {/* GLOSSARY — collapsible explainer for non-finance judges.
+        {/* GLOSSARY - collapsible explainer for non-finance judges.
             Each entry uses native <details>/<summary> for free
             keyboard + screen-reader support. Closed by default;
             open one or all at once. */}

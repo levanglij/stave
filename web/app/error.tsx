@@ -29,7 +29,7 @@ export default function ErrorBoundary({
           Hit a snag rendering this page.
         </h1>
         <p className="text-sm text-muted leading-relaxed mb-3 max-w-sm mx-auto">
-          Probably transient. Retry — or head back to the marketplace.
+          Probably transient. Retry - or head back to the marketplace.
         </p>
         {error.digest && (
           <p className="text-[11px] text-muted/60 font-mono mb-6">

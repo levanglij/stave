@@ -4,7 +4,7 @@ import { RATINGS } from "@/lib/ratings";
 // Stave's canonical URL list. Generated automatically from the
 // rating catalog at build time, so adding an 9th catalog (or pulling
 // one) updates sitemap.xml without manual edits. Output: serves at
-// /sitemap.xml — see Next.js File-Based Metadata.
+// /sitemap.xml - see Next.js File-Based Metadata.
 
 const BASE_URL = "https://stave.cc";
 
@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority,
   }));
 
-  // Per-catalog detail pages. One sitemap entry per catalog id —
+  // Per-catalog detail pages. One sitemap entry per catalog id -
   // judges or anyone crawling the sitemap can find all 8 listings
   // without going through the marketplace UI first.
   const catalogEntries = Object.keys(RATINGS).map((id) => ({

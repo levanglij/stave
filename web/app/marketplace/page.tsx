@@ -51,7 +51,7 @@ export default function MarketplacePage() {
           <span className="text-fg/90">{stats.averageRating}</span>
         </div>
 
-        {/* Filter + sort + listings — interactive */}
+        {/* Filter + sort + listings - interactive */}
         <MarketplaceFilters listings={listings} />
 
         <div className="mt-4 text-[11px] text-muted font-mono tabular">

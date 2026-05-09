@@ -46,7 +46,7 @@ export async function POST(req: Request) {
     }
   }
 
-  // Light validation — full client-side validation in the modal already.
+  // Light validation - full client-side validation in the modal already.
   if (!EMAIL_RE.test(body.email!)) {
     return NextResponse.json(
       { ok: false, error: "invalid_email" },
@@ -68,7 +68,7 @@ export async function POST(req: Request) {
 
   if (apiKey) {
     try {
-      // Resend HTTP API — no SDK install needed.
+      // Resend HTTP API - no SDK install needed.
       const r = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
@@ -87,7 +87,7 @@ export async function POST(req: Request) {
             `Message:`,
             body.message || "(none)",
             ``,
-            `— sent from stave.cc /for-artists`,
+            `- sent from stave.cc /for-artists`,
           ].join("\n"),
         }),
       });

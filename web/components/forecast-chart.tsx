@@ -84,7 +84,7 @@ export function ForecastChart({ forecast }: Props) {
             fill="transparent"
             isAnimationActive={false}
           />
-          {/* The band itself — emerald, low opacity */}
+          {/* The band itself - emerald, low opacity */}
           <Area
             type="monotone"
             dataKey="bandHeight"
@@ -104,7 +104,7 @@ export function ForecastChart({ forecast }: Props) {
             dot={false}
             isAnimationActive={false}
           />
-          {/* P50 — the headline forecast */}
+          {/* P50 - the headline forecast */}
           <Line
             type="monotone"
             dataKey="p50"

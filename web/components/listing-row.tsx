@@ -98,7 +98,7 @@ export function ListingRow({ listing }: { listing: Listing }) {
         </div>
       </div>
 
-      {/* 5YR ROI — emerald */}
+      {/* 5YR ROI - emerald */}
       <div className="text-right">
         <div className="font-semibold tabular text-accent-bright text-sm">
           {pct(stats.roi5yr, 1)}

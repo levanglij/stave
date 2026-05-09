@@ -1,4 +1,4 @@
-"""Layer 1 — data normalization.
+"""Layer 1 - data normalization.
 
 Input is assumed pre-normalized to monthly USD per (platform, territory).
 This module validates the schema and constructs numpy-friendly views.

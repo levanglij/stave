@@ -33,7 +33,7 @@ pub struct ListShares<'info> {
 
     pub share_mint: InterfaceAccount<'info, Mint>,
 
-    /// Creator's existing share ATA — debited by `shares_to_list`.
+    /// Creator's existing share ATA - debited by `shares_to_list`.
     #[account(
         mut,
         associated_token::mint = share_mint,

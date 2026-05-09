@@ -16,7 +16,7 @@ interface CopyableAddressProps {
   value: string;
   /** Optional label rendered to the left, e.g. "Program" or "Suliko". */
   label?: string;
-  /** Solana Explorer cluster — defaults to devnet. */
+  /** Solana Explorer cluster - defaults to devnet. */
   cluster?: "devnet" | "testnet" | "mainnet-beta";
   /** Whether `value` is a TX signature (vs. a program / account address). */
   type?: "address" | "tx";

@@ -28,7 +28,7 @@ PDAs: `IpWork`, `Listing`, `RoyaltyVault`, `ClaimRecord`.
 | **`create_work` TX** | [`24aATvsP…G9Xbo`](https://explorer.solana.com/tx/24aATvsPhsuctY5vN22XRL8CpckfnD8fLcQmaCmrJV5PbnWWggrojHdybB7JS71RWLMPmkN3DuoAmPVzBcRG9Xbo?cluster=devnet) |
 | **`list_shares` TX** | [`5mGeuaHo…4sK8b`](https://explorer.solana.com/tx/5mGeuaHoUSi35ArqoeEiFb7xqZVQci6yKppUuL9X3yKyVsdrduEesFKYN3efuex38UnHM9PG6ohUaJVjHDf4sK8b?cluster=devnet) |
 
-Bootstrap manifest: [`bootstrap-output.json`](./bootstrap-output.json). A second catalog (Nine Million Bicycles, work_id=2) lands via [`scripts/bootstrap-bicycles.ts`](./scripts/bootstrap-bicycles.ts) — output at `bootstrap-bicycles.json` after the script runs.
+Bootstrap manifest: [`bootstrap-output.json`](./bootstrap-output.json). A second catalog (Nine Million Bicycles, work_id=2) lands via [`scripts/bootstrap-bicycles.ts`](./scripts/bootstrap-bicycles.ts) - output at `bootstrap-bicycles.json` after the script runs.
 
 ## Security & safety checklist
 
@@ -40,12 +40,12 @@ Every box below is verifiable in the source. Anything unchecked is a planned add
 - [x] **Checkpoint accounting per ClaimRecord.** Holders can claim multiple times across multiple deposits; double-claims are rejected by checkpoint comparison.
 - [x] **BPF stack-frame safety.** The `BuyShares`, `DepositRoyalty`, `ClaimRoyalty` Accounts structs have 12-15 entries with several `InterfaceAccount<TokenAccount>` fields. Heavy fields are wrapped in `Box<>` to stay under the 4 KB BPF stack limit.
 - [x] **14 named error variants** in `programs/stave/src/errors.rs`, each with an explicit `#[msg(...)]` string for clean Explorer traces.
-- [x] **`#[derive(Accounts)]` constraints** enforce mint, owner, and authority relationships at deserialization — invalid account combos fail before any logic runs.
+- [x] **`#[derive(Accounts)]` constraints** enforce mint, owner, and authority relationships at deserialization - invalid account combos fail before any logic runs.
 - [x] **Token-2022 throughout share mints** with 0 decimals; classic SPL or Token-2022 supported on the payment side.
 - [x] **15/15 tests passing on a local validator** including: zero-balance reverts, ownership reverts, double-claim reverts, multi-deposit claim sequences, partial purchases.
-- [x] **Devnet deploy live + first work bootstrapped** — judges can click into any of the addresses above and see real on-chain state.
-- [ ] **Mainnet audit (Halborn / OtterSec)** — planned post-hackathon.
-- [ ] **Formal verification of claim math** — out of scope; deferred to post-audit.
+- [x] **Devnet deploy live + first work bootstrapped** - judges can click into any of the addresses above and see real on-chain state.
+- [ ] **Mainnet audit (Halborn / OtterSec)** - planned post-hackathon.
+- [ ] **Formal verification of claim math** - out of scope; deferred to post-audit.
 
 ## PDA hierarchy
 
@@ -94,28 +94,28 @@ Every box below is verifiable in the source. Anything unchecked is a planned add
 
 ## Pending
 
-- **Frontend wiring:** swap the placeholder SPL Memo TXs in `web/components/{tokenize-form, purchase-panel}.tsx` for `program.methods.{createWork, buyShares}().rpc()` calls against the IDL at `web/lib/idl/stave.ts`. Tracked as the next post-deploy task — until then the buttons fire real devnet Memo TXs as a wallet-flow placeholder.
+- **Frontend wiring:** swap the placeholder SPL Memo TXs in `web/components/{tokenize-form, purchase-panel}.tsx` for `program.methods.{createWork, buyShares}().rpc()` calls against the IDL at `web/lib/idl/stave.ts`. Tracked as the next post-deploy task - until then the buttons fire real devnet Memo TXs as a wallet-flow placeholder.
 - **Post-MVP follow-ups:** Metaplex Core NFT CPI inside `create_work`; mainnet audit (Halborn / OtterSec); tranche structuring (senior / mezz / growth).
 
 ## Layout
 
 ```
 program/
-├── Anchor.toml                                — declares program ID, scripts, provider
-├── Cargo.toml                                 — workspace
-├── package.json                               — TS test deps (pnpm)
+├── Anchor.toml                                - declares program ID, scripts, provider
+├── Cargo.toml                                 - workspace
+├── package.json                               - TS test deps (pnpm)
 ├── tsconfig.json
 ├── programs/stave/
 │   ├── Cargo.toml
 │   └── src/
-│       ├── lib.rs                             — #[program] entry: 5 public ix
-│       ├── constants.rs                       — PDA seed strings + limits
-│       ├── errors.rs                          — 14 error variants
+│       ├── lib.rs                             - #[program] entry: 5 public ix
+│       ├── constants.rs                       - PDA seed strings + limits
+│       ├── errors.rs                          - 14 error variants
 │       ├── state/
-│       │   ├── ip_work.rs                     — work metadata + share mint pubkey
-│       │   ├── listing.rs                     — price, available count, vault
-│       │   ├── royalty_vault.rs               — total deposited / claimed
-│       │   └── claim_record.rs                — per-holder cumulative + checkpoint
+│       │   ├── ip_work.rs                     - work metadata + share mint pubkey
+│       │   ├── listing.rs                     - price, available count, vault
+│       │   ├── royalty_vault.rs               - total deposited / claimed
+│       │   └── claim_record.rs                - per-holder cumulative + checkpoint
 │       └── instructions/
 │           ├── create_work.rs
 │           ├── list_shares.rs
@@ -123,9 +123,9 @@ program/
 │           ├── deposit_royalty.rs
 │           └── claim_royalty.rs
 ├── scripts/
-│   ├── bootstrap-suliko.ts                    — devnet: create_work + list_shares for evergreen-001
-│   └── bootstrap-bicycles.ts                  — devnet: same flow for active-pop-001
-├── tests/stave.ts                             — 15 tests across 4 describe blocks
+│   ├── bootstrap-suliko.ts                    - devnet: create_work + list_shares for evergreen-001
+│   └── bootstrap-bicycles.ts                  - devnet: same flow for active-pop-001
+├── tests/stave.ts                             - 15 tests across 4 describe blocks
 └── migrations/deploy.ts
 ```
 
@@ -169,7 +169,7 @@ pnpm tsx scripts/bootstrap-bicycles.ts      # work_id=2, Bicycles
 
 ### Stable PDAs without per-work keypairs
 
-The `IP_WORK_SEED + creator + work_id_le` pattern lets a creator mint multiple works without juggling per-work keypairs. A monotonic `u64` id is enough — the PDA address falls out deterministically and the program can re-derive it from any caller.
+The `IP_WORK_SEED + creator + work_id_le` pattern lets a creator mint multiple works without juggling per-work keypairs. A monotonic `u64` id is enough - the PDA address falls out deterministically and the program can re-derive it from any caller.
 
 ### Mint authority lock-in
 
@@ -177,7 +177,7 @@ The IpWork PDA is the share mint's mint authority **and** freeze authority. Supp
 
 ### Listing escrow guarantees
 
-Once the creator calls `list_shares`, the Listing PDA becomes the vault's authority. The creator can no longer pull listed shares back without going through `buy_shares` — buyers get the shares, creators get the payment mint, atomically inside the same instruction. Until shares are listed they remain in the creator's ATA and are theirs to do anything with.
+Once the creator calls `list_shares`, the Listing PDA becomes the vault's authority. The creator can no longer pull listed shares back without going through `buy_shares` - buyers get the shares, creators get the payment mint, atomically inside the same instruction. Until shares are listed they remain in the creator's ATA and are theirs to do anything with.
 
 ### Pull-based claim math
 
@@ -187,7 +187,7 @@ The `holder_balance` is read at claim time, so a holder who transferred shares b
 
 ### BPF stack-frame discipline
 
-The `BuyShares` Accounts struct has 14 entries, several of them `InterfaceAccount<TokenAccount>`. Without `Box<>` wrappers around the heavy ones, the program overflows the 4 KB BPF stack frame. All large account types in `BuyShares`, `DepositRoyalty`, `ClaimRoyalty` are boxed — verified by `cargo build-bpf`'s stack-size warning being silent.
+The `BuyShares` Accounts struct has 14 entries, several of them `InterfaceAccount<TokenAccount>`. Without `Box<>` wrappers around the heavy ones, the program overflows the 4 KB BPF stack frame. All large account types in `BuyShares`, `DepositRoyalty`, `ClaimRoyalty` are boxed - verified by `cargo build-bpf`'s stack-size warning being silent.
 
 ### Reserved fields
 

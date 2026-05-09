@@ -82,7 +82,7 @@ Then open [http://localhost:3000](http://localhost:3000).
 **Expected:** the marketplace lists all eight catalogs, the hero shows the
 candles-as-notes chart, and connecting Phantom or Solflare submits real
 devnet SPL Memo transactions on the Tokenize and Buy buttons (placeholder
-for the program calls until the deploy lands — see [README](./README.md)
+for the program calls until the deploy lands - see [README](./README.md)
 "What's real vs. what's simulated").
 
 ## What success looks like
@@ -93,6 +93,6 @@ for the program calls until the deploy lands — see [README](./README.md)
 
 That's it. Three commands, three layers, five minutes.
 
-For everything else — architecture, methodology, legal roadmap, Why
-Solana, the full _What's real vs. what's simulated_ honesty table —
+For everything else - architecture, methodology, legal roadmap, Why
+Solana, the full _What's real vs. what's simulated_ honesty table -
 read the [README](./README.md).

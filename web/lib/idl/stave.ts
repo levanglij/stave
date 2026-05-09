@@ -39,7 +39,7 @@ export type Stave = {
         {
           "name": "creator",
           "docs": [
-            "The work's creator — payment recipient. Verified by IpWork's",
+            "The work's creator - payment recipient. Verified by IpWork's",
             "has_one constraint below.",
             "validated by `has_one = creator` on ip_work."
           ],
@@ -53,7 +53,7 @@ export type Stave = {
         {
           "name": "listing",
           "docs": [
-            "Listing PDA — verified via [b\"listing\", ip_work] seeds.",
+            "Listing PDA - verified via [b\"listing\", ip_work] seeds.",
             "has_one ensures the passed payment_mint and vault match."
           ],
           "writable": true,
@@ -543,7 +543,7 @@ export type Stave = {
         {
           "name": "holderPaymentAta",
           "docs": [
-            "Holder's payment ATA — credited. Created on first claim."
+            "Holder's payment ATA - credited. Created on first claim."
           ],
           "writable": true,
           "pda": {
@@ -903,7 +903,7 @@ export type Stave = {
         {
           "name": "depositorPaymentAta",
           "docs": [
-            "Depositor's payment ATA — debited."
+            "Depositor's payment ATA - debited."
           ],
           "writable": true,
           "pda": {
@@ -1020,7 +1020,7 @@ export type Stave = {
         {
           "name": "creatorShareAta",
           "docs": [
-            "Creator's existing share ATA — debited by `shares_to_list`."
+            "Creator's existing share ATA - debited by `shares_to_list`."
           ],
           "writable": true,
           "pda": {
@@ -1333,7 +1333,7 @@ export type Stave = {
         "",
         "MVP behavior (per docs/01-mvp-spec.md): if the holder transfers",
         "shares between a deposit and a claim, the unclaimed portion on",
-        "the transferred shares is forfeited — the calculation reads",
+        "the transferred shares is forfeited - the calculation reads",
         "`holder_share_ata.amount` at claim time, not at deposit time.",
         "",
         "PDA seeds: `[b\"claim\", ip_work, holder]`"

@@ -20,12 +20,12 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Stave — Music royalties, made investable",
+  title: "Stave - Music royalties, made investable",
   description:
-    "Stave transforms verified music catalogs into investable royalty assets, built on Solana, partnered with the Intellectual Property Owners Association (IPOA) — Georgia’s official music rights organization — for verified royalty data.",
+    "Stave transforms verified music catalogs into investable royalty assets, built on Solana, partnered with the Intellectual Property Owners Association (IPOA) - Georgia’s official music rights organization - for verified royalty data.",
   metadataBase: new URL("https://stave.cc"),
   openGraph: {
-    title: "Stave — Music royalties, made investable",
+    title: "Stave - Music royalties, made investable",
     description:
       "Transparent grading, fractional shares, sub-cent royalty distribution. Built on Solana.",
     type: "website",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   // (the default "summary" card) to a full-width banner.
   twitter: {
     card: "summary_large_image",
-    title: "Stave — Music royalties, made investable",
+    title: "Stave - Music royalties, made investable",
     description:
       "Transparent grading, fractional shares, sub-cent royalty distribution. Built on Solana.",
   },

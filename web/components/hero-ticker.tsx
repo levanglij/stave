@@ -14,7 +14,7 @@ import { Connection, PublicKey } from "@solana/web3.js";
  *   2. After mount, we async-fetch `getSignaturesForAddress` on the
  *      Stave program from devnet and replace the seed with live data.
  *   3. If the fetch fails (RPC down, throttled, offline) we keep the
- *      seed entries — never blanks the strip during a demo.
+ *      seed entries - never blanks the strip during a demo.
  *
  * Marquee: CSS keyframe scroll; pauses on hover. The list is duplicated
  * in the DOM so the loop is seamless across the gap.
@@ -23,7 +23,7 @@ import { Connection, PublicKey } from "@solana/web3.js";
 const PROGRAM_ID = "EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q";
 const DEVNET_RPC = "https://api.devnet.solana.com";
 
-/** Real bootstrapped TXs — verifiable on Solana Explorer (devnet). */
+/** Real bootstrapped TXs - verifiable on Solana Explorer (devnet). */
 const SEED_EVENTS: TickerEvent[] = [
   {
     sig: "24aATvsPhsuctY5vN22XRL8CpckfnD8fLcQmaCmrJV5PbnWWggrojHdybB7JS71RWLMPmkN3DuoAmPVzBcRG9Xbo",
@@ -88,7 +88,7 @@ export function HeroTicker() {
           setIsLive(true);
         }
       } catch {
-        // Silently keep seed events — strip never goes blank.
+        // Silently keep seed events - strip never goes blank.
       }
     })();
     return () => {
@@ -160,7 +160,7 @@ export function HeroTicker() {
           </div>
         </div>
 
-        {/* Trailing program link — anchor for "see all activity" */}
+        {/* Trailing program link - anchor for "see all activity" */}
         <a
           href={`https://explorer.solana.com/address/${PROGRAM_ID}?cluster=devnet`}
           target="_blank"

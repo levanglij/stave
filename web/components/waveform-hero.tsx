@@ -50,7 +50,7 @@ export function WaveformHero({ catalogId, title, artist }: Props) {
   const [playing, setPlaying] = useState(false);
   const [seconds, setSeconds] = useState(22);
 
-  // Tick the playhead while playing. Mock — no real audio.
+  // Tick the playhead while playing. Mock - no real audio.
   useEffect(() => {
     if (!playing) return;
     const id = setInterval(() => {

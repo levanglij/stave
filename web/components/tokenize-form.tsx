@@ -12,7 +12,7 @@ import {
 import { usd } from "@/lib/format";
 import { useToast } from "./toast";
 
-// SPL Memo program — accepts arbitrary UTF-8 data inscribed on-chain.
+// SPL Memo program - accepts arbitrary UTF-8 data inscribed on-chain.
 // Used here as a stand-in for `stave.create_work` until the program
 // is deployed (Day A in flight). The catalog metadata gets recorded
 // on devnet as a JSON memo so judges can see a real, traceable
@@ -184,7 +184,7 @@ export function TokenizeForm() {
       setErrMsg(msg);
       setPhase("error");
       const friendly = /User rejected|rejected the request/i.test(msg)
-        ? "Rejected in wallet — no fees charged"
+        ? "Rejected in wallet - no fees charged"
         : /insufficient.*lamports|insufficient funds/i.test(msg)
           ? "Wallet has no devnet SOL"
           : msg;
@@ -361,11 +361,11 @@ export function TokenizeForm() {
           <Summary label="Type" value={form.type} />
           <Summary
             label="Title"
-            value={form.title || <span className="text-muted">—</span>}
+            value={form.title || <span className="text-muted">-</span>}
           />
           <Summary
             label="Artist"
-            value={form.artist || <span className="text-muted">—</span>}
+            value={form.artist || <span className="text-muted">-</span>}
           />
           <div className="border-t border-border pt-4 space-y-3">
             <Summary
@@ -592,7 +592,7 @@ function SuccessPanel({
           {sharesForSale.toLocaleString()} of {form.totalShares.toLocaleString()}{" "}
           tokens
         </span>{" "}
-        flagged for sale at {usd(form.pricePerShare)}/share — target raise{" "}
+        flagged for sale at {usd(form.pricePerShare)}/share - target raise{" "}
         <span className="text-accent-bright">{usd(targetRaise)}</span>.
       </p>
 
@@ -615,7 +615,7 @@ function SuccessPanel({
         </div>
         <div className="mt-3 text-[11px] text-muted">
           This is a real devnet transaction. Catalog metadata is recorded
-          via the SPL Memo program — placeholder for the{" "}
+          via the SPL Memo program - placeholder for the{" "}
           <code className="text-fg/80">stave.create_work</code> instruction
           landing on devnet shortly.
         </div>

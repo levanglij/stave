@@ -3,7 +3,7 @@ import { CATALOG_META } from "./catalog-meta";
 
 // Pre-computed grades produced by the Python engine
 // (engine/outputs/*.rating.json). Imported statically so they're
-// bundled at build time — no network call, no API route.
+// bundled at build time - no network call, no API route.
 //
 // The engine still emits legacy "RRE-XX" tier strings on the rating
 // field. We normalize that prefix off at load time so all UI sees the
@@ -44,7 +44,7 @@ export function getListing(catalogId: string): Listing | undefined {
   return { ...rating, ...meta };
 }
 
-// Sorted by composite score descending — the natural order for
+// Sorted by composite score descending - the natural order for
 // presenting a marketplace of issuances.
 export function getAllListings(): Listing[] {
   return Object.keys(RATINGS)

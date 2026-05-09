@@ -4,7 +4,7 @@ import { Building2, Network, Globe } from "lucide-react";
 export const metadata: Metadata = {
   title: "Partners · Stave",
   description:
-    "Stave's data partner is IPOA — Georgia's official music rights organization. Plus our distribution thesis: bringing graded tokenized royalties to regulated brokerage channels.",
+    "Stave's data partner is IPOA - Georgia's official music rights organization. Plus our distribution thesis: bringing graded tokenized royalties to regulated brokerage channels.",
 };
 
 export default function PartnersPage() {
@@ -22,7 +22,7 @@ export default function PartnersPage() {
           </h1>
         </section>
 
-        {/* SECTION 1 — Data partnerships (IPOA) */}
+        {/* SECTION 1 - Data partnerships (IPOA) */}
         <section>
           <div className="text-[10px] font-semibold tracking-[2px] uppercase text-muted mb-3">
             Data partnerships
@@ -51,7 +51,7 @@ export default function PartnersPage() {
         {/* Divider between sections */}
         <div className="border-t border-border my-16 md:my-20" />
 
-        {/* SECTION 2 — Distribution partnerships (in planning) */}
+        {/* SECTION 2 - Distribution partnerships (in planning) */}
         <section className="space-y-16 md:space-y-20">
           {/* Header */}
           <div className="max-w-3xl">
@@ -74,7 +74,7 @@ export default function PartnersPage() {
             </p>
           </div>
 
-          {/* What we're building toward — three cards */}
+          {/* What we're building toward - three cards */}
           <div>
             <div className="text-[10px] font-semibold tracking-[2px] uppercase text-muted mb-4">
               What we&rsquo;re building toward
@@ -83,7 +83,7 @@ export default function PartnersPage() {
               <PlanCard
                 icon={<Building2 className="w-5 h-5" strokeWidth={1.75} />}
                 title="Licensed Georgian brokerages first."
-                body="Georgia has a small but established capital markets ecosystem regulated by the National Bank of Georgia. Stave is built locally and intends to integrate with the country's licensed brokerage houses as the first distribution layer — letting Georgian investors access tokenized royalties through the platforms they already trust."
+                body="Georgia has a small but established capital markets ecosystem regulated by the National Bank of Georgia. Stave is built locally and intends to integrate with the country's licensed brokerage houses as the first distribution layer - letting Georgian investors access tokenized royalties through the platforms they already trust."
               />
               <PlanCard
                 icon={<Network className="w-5 h-5" strokeWidth={1.75} />}
@@ -93,12 +93,12 @@ export default function PartnersPage() {
               <PlanCard
                 icon={<Globe className="w-5 h-5" strokeWidth={1.75} />}
                 title="Regional expansion follows."
-                body="Once the Georgian distribution layer is operational, the same model extends naturally — Caucasus brokerages, EU-licensed wealth platforms, and any regulated venue interested in offering graded royalty exposure to its client base."
+                body="Once the Georgian distribution layer is operational, the same model extends naturally - Caucasus brokerages, EU-licensed wealth platforms, and any regulated venue interested in offering graded royalty exposure to its client base."
               />
             </div>
           </div>
 
-          {/* What a partnership covers — numbered list */}
+          {/* What a partnership covers - numbered list */}
           <div className="max-w-[720px] mx-auto">
             <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-fg mb-7 text-balance">
               What a Stave brokerage partnership covers
@@ -112,7 +112,7 @@ export default function PartnersPage() {
               <PartnershipPoint
                 n={2}
                 title="Methodology transparency."
-                body="Every catalog comes with the full Stave grade breakdown — the same methodology that's open-sourced on GitHub. Brokerages can show clients exactly how each grade was derived."
+                body="Every catalog comes with the full Stave grade breakdown - the same methodology that's open-sourced on GitHub. Brokerages can show clients exactly how each grade was derived."
               />
               <PartnershipPoint
                 n={3}
@@ -197,7 +197,7 @@ function Kv({
   );
 }
 
-// Lighter variant of the homepage ValueCard — softer border + half-opacity
+// Lighter variant of the homepage ValueCard - softer border + half-opacity
 // panel background, neutral icon chrome (no emerald accent). The amber
 // "IN PLANNING" eyebrow is the only accent in this section per spec.
 function PlanCard({

@@ -1,4 +1,4 @@
-"""Layer 5 — rating aggregation.
+"""Layer 5 - rating aggregation.
 
 Produces five factor scores, a composite, a rating tier, and an LTV.
 Weights and thresholds are locked in FORMULAS.md.

@@ -17,14 +17,14 @@ import {
  * Strategy:
  *   1. First paint = seed values from the bootstrap manifest
  *      (baked into the registry). Means the strip is fully populated
- *      on initial render — no spinner, no layout shift.
+ *      on initial render - no spinner, no layout shift.
  *   2. After mount, fetch `getTokenAccountBalance` on the listing
  *      vault from devnet RPC. The vault holds shares-for-sale; its
  *      balance == sharesRemaining. Subtract from sharesListed for
  *      sharesSold.
  *   3. Refresh every 30s while the page is mounted, so a judge
  *      watching the page sees genuine live updates if anyone buys.
- *   4. On RPC failure, keep showing the seed values silently — the
+ *   4. On RPC failure, keep showing the seed values silently - the
  *      strip never reads "broken" or "loading forever."
  */
 
@@ -66,7 +66,7 @@ export function OnchainStatus({ listing }: OnchainStatusProps) {
           setIsLive(true);
         }
       } catch {
-        // RPC failed — keep showing whatever we already have.
+        // RPC failed - keep showing whatever we already have.
       }
     };
 
@@ -93,7 +93,7 @@ export function OnchainStatus({ listing }: OnchainStatusProps) {
   return (
     <div
       className="rounded-xl border border-emerald-900/40 bg-gradient-to-b from-emerald-950/20 to-zinc-950/40 p-5 md:p-6"
-      // Mark suppressHydrationWarning at the section level — the only
+      // Mark suppressHydrationWarning at the section level - the only
       // dynamic value visible at first paint is "Last refreshed" copy
       // which is intentionally client-only.
     >
@@ -148,7 +148,7 @@ export function OnchainStatus({ listing }: OnchainStatusProps) {
         />
       </div>
 
-      {/* Progress bar — sold / listed ratio. Decorative. */}
+      {/* Progress bar - sold / listed ratio. Decorative. */}
       <div className="mt-5">
         <div className="h-1.5 rounded-full bg-zinc-800 overflow-hidden">
           <div
@@ -158,7 +158,7 @@ export function OnchainStatus({ listing }: OnchainStatusProps) {
         </div>
       </div>
 
-      {/* Address row — copy-friendly mono strings, click-through to
+      {/* Address row - copy-friendly mono strings, click-through to
           Explorer for each PDA. Always present; click-out is the demo
           superpower. */}
       <div className="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[11px]">
@@ -168,7 +168,7 @@ export function OnchainStatus({ listing }: OnchainStatusProps) {
         <Address label="Listing vault" value={listing.listingVault} />
       </div>
 
-      {/* Footer — last-refresh + bootstrap audit links */}
+      {/* Footer - last-refresh + bootstrap audit links */}
       <div className="mt-5 pt-4 border-t border-zinc-800/60 flex flex-wrap items-center justify-between gap-x-5 gap-y-1.5 text-[11px] text-zinc-500">
         <span className="font-mono tabular">
           Last refreshed:{" "}
@@ -204,9 +204,9 @@ export function OnchainStatus({ listing }: OnchainStatusProps) {
   );
 }
 
-/** "X sec ago" — coarse, recomputed every render via the parent
+/** "X sec ago" - coarse, recomputed every render via the parent
  *  component's per-second tick state (which forces this child to
- *  re-render — the function itself doesn't need to read the tick). */
+ *  re-render - the function itself doesn't need to read the tick). */
 function formatAgo(date: Date): string {
   const sec = Math.max(0, Math.round((Date.now() - date.getTime()) / 1000));
   if (sec < 60) return `${sec}s ago`;

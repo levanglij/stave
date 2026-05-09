@@ -134,7 +134,7 @@ def build(spec: CatalogSpec) -> Dict:
 
 
 SPECS: List[CatalogSpec] = [
-    # 1. Evergreen — 20 years, heavy power-law tail, well-diversified
+    # 1. Evergreen - 20 years, heavy power-law tail, well-diversified
     CatalogSpec(
         catalog_id="evergreen-001",
         title="Midnight Theme",
@@ -166,7 +166,7 @@ SPECS: List[CatalogSpec] = [
         noise_pct=0.07,
         seed=1,
     ),
-    # 2. Balanced catalog — 8 years, mild power law, multi-platform
+    # 2. Balanced catalog - 8 years, mild power law, multi-platform
     CatalogSpec(
         catalog_id="balanced-001",
         title="Coastline Drive",
@@ -196,7 +196,7 @@ SPECS: List[CatalogSpec] = [
         noise_pct=0.09,
         seed=2,
     ),
-    # 3. Active pop — 48 months, exponential decay, decent mix
+    # 3. Active pop - 48 months, exponential decay, decent mix
     CatalogSpec(
         catalog_id="active-pop-001",
         title="Brighter Ends",
@@ -224,7 +224,7 @@ SPECS: List[CatalogSpec] = [
         noise_pct=0.12,
         seed=3,
     ),
-    # 4. New release — 18 months, S-curve then gentle decay
+    # 4. New release - 18 months, S-curve then gentle decay
     CatalogSpec(
         catalog_id="new-release-001",
         title="Reverie",
@@ -251,7 +251,7 @@ SPECS: List[CatalogSpec] = [
         noise_pct=0.20,
         seed=4,
     ),
-    # 5. High HHI — 60 months, reasonable decay, but 95% on one platform in one territory
+    # 5. High HHI - 60 months, reasonable decay, but 95% on one platform in one territory
     CatalogSpec(
         catalog_id="high-hhi-001",
         title="South Line",

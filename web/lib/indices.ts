@@ -32,9 +32,9 @@ export const INDICES: Record<string, Index> = {
   GHI: {
     ticker: "GHI",
     name: "Georgian Heritage Index",
-    tagline: "Old & classical Georgian songs — folk, traditional, retro",
+    tagline: "Old & classical Georgian songs - folk, traditional, retro",
     description:
-      "Pre-1980s Georgian canon — evergreen folk and retro orchestral jazz. The lowest-risk, longest-cashflow basket on Stave.",
+      "Pre-1980s Georgian canon - evergreen folk and retro orchestral jazz. The lowest-risk, longest-cashflow basket on Stave.",
     accent: "#b45309",
     status: "example",
     components: [
@@ -46,7 +46,7 @@ export const INDICES: Record<string, Index> = {
   GMI: {
     ticker: "GMI",
     name: "Georgian Modern Index",
-    tagline: "Contemporary Georgian — post-2000 pop & alt rock",
+    tagline: "Contemporary Georgian - post-2000 pop & alt rock",
     description:
       "Post-2000 Georgian artists with shorter but livelier revenue curves. Higher growth potential, higher volatility.",
     accent: "#db2777",
@@ -59,7 +59,7 @@ export const INDICES: Record<string, Index> = {
   GBC: {
     ticker: "GBC",
     name: "Georgian Blue Chip Index",
-    tagline: "Investment-grade only — BBB and above",
+    tagline: "Investment-grade only - BBB and above",
     description:
       "Only BBB-or-better listings. Drops the speculative tranches so senior LTV stays high. Built for conservative capital.",
     accent: "#10b981",
@@ -73,7 +73,7 @@ export const INDICES: Record<string, Index> = {
   GAI: {
     ticker: "GAI",
     name: "Georgian All-Catalog Index",
-    tagline: "Equal-weighted — the Georgian music market benchmark",
+    tagline: "Equal-weighted - the Georgian music market benchmark",
     description:
       "Every Stave listing, equal-weighted. The closest thing to a market benchmark for Georgian IP and the natural index to track against.",
     accent: "#3b82f6",

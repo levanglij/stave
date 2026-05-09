@@ -1,7 +1,7 @@
-# 14 — Stave vs. nearest competitors
+# 14 - Stave vs. nearest competitors
 
 > Honest competitive landscape. Where Stave overlaps, where it differs,
-> and what the structural moat looks like. Public-information based —
+> and what the structural moat looks like. Public-information based -
 > nothing here is fabricated or extrapolated from private signals.
 
 ## The three closest reference points
@@ -10,7 +10,7 @@
 
 Web2 platform for music investment. Lets fans buy royalty rights in
 specific songs. Closed marketplace, off-chain settlement, custodial
-model. Strong creator-marketing playbook — hosts artist drops as
+model. Strong creator-marketing playbook - hosts artist drops as
 events. As of public information: not Solana-native, not on-chain.
 Pricing model is creator-set, no quantitative grading layer. Audience:
 mainstream music fans + smaller-ticket retail.
@@ -45,21 +45,21 @@ The overlap stops there.
 
 | Dimension | Bolero | SongVest | ANote | **Stave** |
 |---|---|---|---|---|
-| **Settlement** | Off-chain, custodial | Off-chain, custodial | Off-chain, custodial | **Solana, non-custodial — funds wallet-to-wallet via the Anchor program** |
+| **Settlement** | Off-chain, custodial | Off-chain, custodial | Off-chain, custodial | **Solana, non-custodial - funds wallet-to-wallet via the Anchor program** |
 | **Per-tx settlement cost** | n/a *(off-chain banking rails)* | n/a | n/a | **≈ $0.00025 on Solana** *(1,000-holder distribution = ~$0.25 in fees)* |
 | **Token primitive** | Database row | Database row | Database row | **Token-2022 SPL** *(transferable, holdable in any Solana wallet, composable with DEXs / lending / fund vehicles)* |
 | **Quantitative grading** | None published | None published | None published | **Open-source 5-layer engine** with formulas in [`engine/FORMULAS.md`](../engine/FORMULAS.md), 31 passing tests |
 | **Methodology transparency** | Closed | Closed | Closed | **Every grade is reproducible from raw data → JSON output. Public.** |
 | **Source-of-truth data** | Self-reported / DSP feeds | Self-reported / aggregator | Self-reported / aggregator | **Verified by a national CMO (IPOA) at the source** |
-| **Geographic origin** | UK / EU | US (Tennessee) | Luxembourg / EU | **Georgia (Caucasus, EU candidate state)** — emerging-market data moat |
-| **Catalog selection** | Hand-curated drops | Hand-curated catalog acquisition | Hand-curated auctions | **Methodology-driven — every grade transparently derived. No editorial curation in the rating.** |
+| **Geographic origin** | UK / EU | US (Tennessee) | Luxembourg / EU | **Georgia (Caucasus, EU candidate state)** - emerging-market data moat |
+| **Catalog selection** | Hand-curated drops | Hand-curated catalog acquisition | Hand-curated auctions | **Methodology-driven - every grade transparently derived. No editorial curation in the rating.** |
 | **Open-source** | Closed | Closed | Closed | **MIT licensed across engine + program + frontend** |
 | **Investor flow** | Browse drop → Bolero ledger entry | Bid in auction → SongShare position | Bid in auction → ANote position | **Buy on-chain → receive Token-2022 shares in your wallet → claim pro-rata royalties via on-chain instruction** |
-| **Custody** | Bolero | SongVest custodian | ANote custodian | **None — buyer's wallet is the custodian** |
+| **Custody** | Bolero | SongVest custodian | ANote custodian | **None - buyer's wallet is the custodian** |
 
 ## The structural moat: data, not algorithms
 
-A pure-tech competitor — including a fork of Stave — could clone the
+A pure-tech competitor - including a fork of Stave - could clone the
 engine, the Anchor program, and the marketplace UI in a few weeks. The
 code is MIT-licensed; that's intentional.
 
@@ -72,9 +72,9 @@ Copyright and Related Rights**. By Georgian statute, no other entity
 can collect or distribute music royalties at national scale. Any
 competitor wanting Georgian catalog data has to either:
 
-1. Get the same data from IPOA — which means a competing partnership,
+1. Get the same data from IPOA - which means a competing partnership,
    or
-2. Buy from third-party aggregators — who themselves got the data from
+2. Buy from third-party aggregators - who themselves got the data from
    IPOA, with a layer of error and lag added.
 
 Stave goes to the source. Every grade is cross-validated against
@@ -84,15 +84,15 @@ can replicate this.
 The same regulatory pattern repeats in **every country with a CMO**:
 SACEM in France, GEMA in Germany, ASCAP/BMI/SESAC in the US, JASRAC in
 Japan, SADAIC in Argentina. Each is a national-scale data monopoly. The
-Stave model — partner with the CMO, ground the grades in their data,
-tokenize on Solana — is replicable to every country with one. **The
+Stave model - partner with the CMO, ground the grades in their data,
+tokenize on Solana - is replicable to every country with one. **The
 moat compounds with each CMO partnership added.**
 
 ## Where Stave is intentionally weaker *(and why it doesn't matter at the seed stage)*
 
 | Where competitors are stronger | Why Stave is okay with that *(today)* |
 |---|---|
-| **Accredited-investor base.** SongVest has years of accredited US retail. ANote has a Luxembourg-licensed investor pool. | Stave's target user is a *digitally-native investor* who already has a Solana wallet — the audience is different. Building from a different starting point. |
+| **Accredited-investor base.** SongVest has years of accredited US retail. ANote has a Luxembourg-licensed investor pool. | Stave's target user is a *digitally-native investor* who already has a Solana wallet - the audience is different. Building from a different starting point. |
 | **Catalog volume.** Bolero has hundreds of artist drops. SongVest has thousands of historical catalogs. | Stave is volume-light by design at MVP. Quality of grades > quantity of listings. Volume scales as more CMOs sign on. |
 | **Regulatory licensure.** SongVest is Reg A+. ANote is EU-MiFID-aligned. | Stave's regulatory roadmap *(VASP + Brokerage + AML/KYC)* is in [`docs/10-legal-roadmap.md`](./10-legal-roadmap.md), with primary-source citations. **It's a roadmap, not a fait accompli.** Honest about that. |
 | **Brand recognition.** Bolero gets press from artist drops. ANote gets coverage in EU fintech press. | Stave is a hackathon submission. It will be Day 1 brand-wise after the deadline. The product has to do the talking. |

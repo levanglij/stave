@@ -13,7 +13,7 @@ import { usd, pct } from "@/lib/format";
 import { getHeadlineStats } from "@/lib/headline-stats";
 import { useToast } from "./toast";
 
-// SPL Memo program — placeholder for `stave.buy_shares` until the
+// SPL Memo program - placeholder for `stave.buy_shares` until the
 // program is deployed to devnet. The buy intent gets recorded
 // on-chain as JSON; same wallet flow as Tokenize.
 const MEMO_PROGRAM_ID = new PublicKey(
@@ -106,7 +106,7 @@ export function PurchasePanel({ listing }: { listing: Listing }) {
       // the toast is the at-a-glance signal so users notice without
       // scrolling.
       const friendly = /User rejected|rejected the request/i.test(msg)
-        ? "Rejected in wallet — no fees charged"
+        ? "Rejected in wallet - no fees charged"
         : /insufficient.*lamports|insufficient funds/i.test(msg)
           ? "Wallet has no devnet SOL"
           : msg;
@@ -191,7 +191,7 @@ export function PurchasePanel({ listing }: { listing: Listing }) {
           {buttonLabel}
         </button>
 
-        {/* Devnet-funds callout — only shown once a wallet is connected,
+        {/* Devnet-funds callout - only shown once a wallet is connected,
             so first-time visitors aren't distracted by faucet links
             until they actually need them. */}
         {publicKey && phase === "idle" && (
