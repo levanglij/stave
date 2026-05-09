@@ -47,7 +47,7 @@ const COLS: { heading: string; items: LinkItem[] }[] = [
     heading: "Company",
     items: [
       { label: "About", href: "/how-it-works" },
-      { label: "Contact", href: "mailto:stave111115@gmail.com", external: true },
+      { label: "Contact", href: "/contact" },
       {
         label: "GitHub",
         href: "https://github.com/levanglij/stave",
@@ -112,7 +112,7 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Hackathon disclaimer — long form */}
+        {/* Hackathon disclaimer - long form */}
         <div className="mt-12 pt-6 border-t border-zinc-900 max-w-3xl mx-auto text-center">
           <p className="text-[11px] italic text-zinc-500 leading-relaxed">
             Stave is a hackathon prototype built for demonstration purposes.
