@@ -49,7 +49,7 @@ Judges respect honesty. Here's the line:
 | Royalty distribution math | **Real**       | Pull-based USDC claim per shareholder; checkpoint math verified across multi-deposit / multi-claim sequences. |
 | Wallet integration        | **Real (live)** | Phantom + Solflare via `@solana/wallet-adapter` on stave.cc. |
 | On-chain TX from frontend | **Real (devnet)** | Tokenize and Buy buttons fire real devnet transactions today (SPL Memo); swap to program calls once deployed. |
-| Marketplace UI            | **Real (live)** | 8 catalogs, 4 thematic indices, per-catalog detail with hero waveform + interactive returns calculator. |
+| Marketplace UI            | **Real (live)** | 8 catalogs, 2 live thematic indices (2 more shown as coming soon), per-catalog detail with hero waveform + interactive returns calculator. |
 | Tranches (senior/mezz/growth) | Not in v1   | Single-class shares only. Tranching on the roadmap slide.             |
 | Mainnet / audit           | Not in scope   | Devnet prototype; "not production" stated explicitly.                 |
 | KYC / accreditation       | Stubbed        | Privy auth + simulated accreditation checkbox.                        |
@@ -180,7 +180,7 @@ Settlement economics are why this asset class belongs on Solana, not because cha
 
 | Property | Solana | Ethereum L1 | Source |
 |---|---|---|---|
-| Per-tx cost (typical) | ≈ $0.00025 (5,000 lamports per signature at SOL ≈ $50) <!-- TODO: verify SOL price assumption at submission --> | $2–15 for an ERC-20 transfer at 30 gwei (≈ 50k gas × 30 gwei × $2,000 ETH) <!-- TODO: verify ETH gas + price at submission --> | [Solana docs - fees](https://docs.solana.com/transaction_fees) · [ERC-20 transfer gas](https://etherscan.io) |
+| Per-tx cost (typical) | well under a cent at typical SOL prices (5,000 lamports per signature) | $2–15 for an ERC-20 transfer at typical gas + ETH prices (≈ 50k gas × ~30 gwei) | [Solana docs - fees](https://docs.solana.com/transaction_fees) · [ERC-20 transfer gas](https://etherscan.io) |
 | Time to finality | ≈ 400 ms optimistic confirmation; ≈ 12.8 s super-majority finalized | ≈ 12.8 minutes (2 epochs × 32 slots × 12 s, post-Merge) | [Solana validator docs](https://docs.solana.com/cluster/overview) · [Ethereum.org - finality](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/) |
 | Sustained throughput | 2,000–3,000 TPS in production workloads (theoretical max ≈ 65,000) | 15–30 TPS | Solana Labs benchmarks · [Ethereum.org](https://ethereum.org) |
 | Native fungible token primitive | SPL Token-2022 - no contract deploy, transfer-hook + extensions built in | ERC-20 - deploy a Solidity contract per token, audit each | [spl.solana.com](https://spl.solana.com/token-2022) · [EIP-20](https://eips.ethereum.org/EIPS/eip-20) |

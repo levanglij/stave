@@ -146,7 +146,7 @@ export function WaveformHero({ catalogId, title, artist }: Props) {
         </div>
         <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] font-mono tabular text-muted shrink-0">
           <span className="text-right">{fmtTime(seconds)}</span>
-          {/* Hide the progress bar entirely on the smallest phones —
+          {/* Hide the progress bar entirely on the smallest phones;
               the time labels alone communicate position. From sm: up
               the bar comes back. */}
           <div className="hidden sm:block w-16 md:w-28 h-1 rounded-full bg-panel-2 relative overflow-hidden">

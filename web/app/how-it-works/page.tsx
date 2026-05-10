@@ -11,7 +11,7 @@ const STEPS = [
   {
     n: "01",
     title: "IPOA verifies the catalog",
-    body: "Georgia's official rights organisation shares verified ownership and royalty data with Stave.",
+    body: "Georgia's official rights organization shares verified ownership and royalty data with Stave.",
   },
   {
     n: "02",

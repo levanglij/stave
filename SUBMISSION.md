@@ -18,7 +18,7 @@ Underneath the marketplace, two layers do the work.
 
 **The on-chain fractionalization + distribution layer** is an Anchor program (`stave`) deployed to Solana devnet. All five MVP instructions are implemented, locally tested, and live on-chain: `create_work` mints a Token-2022 share supply against an IpWork PDA, `list_shares` locks supply in a Listing-PDA-authority vault, `buy_shares` atomically swaps payment for shares, `deposit_royalty` funds a RoyaltyVault PDA, and `claim_royalty` pays holders pro-rata via pull-based math with checkpoint accounting. 15 / 15 Anchor tests pass on a local validator.
 
-The frontend (Next.js 14 + Tailwind + shadcn/ui + Recharts + `@solana/wallet-adapter`) ships eight catalogs across the grade ladder, four thematic indices, an interactive returns calculator per catalog, a music-player-styled waveform hero, and a tokenization flow that submits real devnet transactions via Phantom or Solflare. Every number on every page is traceable back to the open-source engine.
+The frontend (Next.js 14 + Tailwind + shadcn/ui + Recharts + `@solana/wallet-adapter`) ships eight catalogs spanning the full grade range, two live thematic indices with two more in preview, an interactive returns calculator per catalog, a music-player-styled waveform hero, and a tokenization flow that submits real devnet transactions via Phantom or Solflare. Every number on every page is traceable back to the open-source engine.
 
 ## Why Solana
 

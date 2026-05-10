@@ -71,13 +71,13 @@ inside the definition. Stave does not plan to argue otherwise.
 
 That puts the marketplace in scope for two regulatory regimes:
 
-1. **Securities supervision** — the National Bank of Georgia oversees
+1. **Securities supervision.** The National Bank of Georgia oversees
    securities licensing under the Law on the Securities Market. A
    brokerage-style permission is the most natural fit for the
    marketplace activity. There is also a public-offering exemption
    for sophisticated investors under Article 3(6) that we can use to
    stay sub-threshold while licensing is in progress.
-2. **VASP registration** — the NBG also runs the VASP regime under
+2. **VASP registration.** The NBG also runs the VASP regime under
    the AML framework, in force since mid-2023. Marketplace operation
    that touches virtual assets will need this in addition to
    securities licensing.
@@ -140,7 +140,7 @@ In rough priority order, not on a fixed clock:
 
 1. Engage Georgian counsel to refine every claim in this document
    against the consolidated Georgian-language statutory text.
-2. Formalise the IPOA partnership in writing — data licence,
+2. Formalise the IPOA partnership in writing: data licence,
    royalty-direction mechanics, rightsholder onboarding flow.
 3. Stand up a Georgian operating entity in a form compatible with
    future licensing.
@@ -173,10 +173,10 @@ that overcommits on a hackathon timescale.
 
 ## Sources (primary)
 
-- [Law of Georgia on Copyright and Related Rights (matsne 16198)](https://matsne.gov.ge/en/document/view/16198) — Art. 64 (CMO accreditation, scope, distribution window)
-- [Law of Georgia on the Securities Market (matsne 18196)](https://matsne.gov.ge/en/document/view/18196) — security definition, public-offering thresholds and exemptions, dematerialised form, licensing
-- [Law of Georgia on Entrepreneurs (matsne 5230186)](https://matsne.gov.ge/en/document/view/5230186) — LLC formation, public-registry mechanics
-- [Law on Facilitating the Prevention of Money Laundering and the Financing of Terrorism (matsne 4690334)](https://matsne.gov.ge/en/document/view/4690334) — AML/CFT, VASP obligations
+- [Law of Georgia on Copyright and Related Rights (matsne 16198)](https://matsne.gov.ge/en/document/view/16198): Art. 64 covers CMO accreditation, scope, and the 9-month distribution window
+- [Law of Georgia on the Securities Market (matsne 18196)](https://matsne.gov.ge/en/document/view/18196): security definition, public-offering thresholds and exemptions, dematerialised form, licensing
+- [Law of Georgia on Entrepreneurs (matsne 5230186)](https://matsne.gov.ge/en/document/view/5230186): LLC formation and public-registry mechanics
+- [Law on Facilitating the Prevention of Money Laundering and the Financing of Terrorism (matsne 4690334)](https://matsne.gov.ge/en/document/view/4690334): AML/CFT obligations, including for VASPs
 - [National Bank of Georgia · VASP page](https://nbg.gov.ge/en/page/virtual-asset-service-providers-vasps)
 - [Sakpatenti · accredited CMOs list](https://www.sakpatenti.gov.ge/en/page/265/)
 - [IPOA official site](https://ipoa.ge)
