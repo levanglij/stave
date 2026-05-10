@@ -81,12 +81,6 @@ const GLOSSARY: { term: string; short: string; long: string }[] = [
       "FMV is what a catalog is worth, given its forecast cash flows. NAV is the same idea applied to an index, computed as the weighted-average FMV of the underlying catalogs divided by the index unit size.",
   },
   {
-    term: "Regime",
-    short: "Cash-flow shape: evergreen, catalog, active pop, or new release.",
-    long:
-      "The engine classifies each catalog into one of four regimes based on age, volatility, and momentum. Suliko is evergreen (flat, predictable); a 2024 release would be classified active pop or new release.",
-  },
-  {
     term: "USDC",
     short: "The stablecoin the marketplace settles in.",
     long:
@@ -187,14 +181,6 @@ export default function HowItWorksPage() {
             IPOA owns the data.{" "}
             <span className="text-accent-bright">Stave puts it on Solana.</span>
           </h2>
-          <p className="text-sm text-muted mb-8 max-w-2xl leading-relaxed">
-            IPOA is Georgia&apos;s official music rights organisation, a
-            traditional collecting society that has held nationwide
-            collection rights since January 2024. They are not crypto.
-            Stave is the on-chain marketplace that uses IPOA&apos;s
-            verified data to rate, fractionalize and distribute royalty
-            income on Solana.
-          </p>
           <div className="grid md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-6 items-stretch">
             {/* IPOA column - off-chain, traditional */}
             <div className="rounded-xl border border-border bg-panel p-5">
@@ -247,11 +233,11 @@ export default function HowItWorksPage() {
               <ul className="space-y-2 text-sm text-muted leading-relaxed">
                 <li className="flex items-start gap-2">
                   <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
-                  <span>Turns IPOA data into AAA → B grades</span>
+                  <span>Turns IPOA data into a score</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
-                  <span>Splits each catalog into 1,000 Solana shares</span>
+                  <span>Splits each catalog into on-chain shares</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
