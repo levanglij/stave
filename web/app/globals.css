@@ -23,6 +23,14 @@ body {
   color: var(--color-fg);
 }
 
+/* Prevent any one component (a chart, a long signature, an SVG with
+   intrinsic width) from triggering horizontal scroll on the entire
+   page. `overflow-x: clip` is friendlier to sticky positioned children
+   than `overflow-x: hidden` (sticky still works under clip).*/
+body {
+  overflow-x: clip;
+}
+
 html {
   /* Smooth scroll on anchor jumps and ScrollIntoView. The browser will
      still snap instantly when the user has prefers-reduced-motion. */

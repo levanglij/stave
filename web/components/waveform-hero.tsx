@@ -112,15 +112,16 @@ export function WaveformHero({ catalogId, title, artist }: Props) {
         </svg>
       </div>
 
-      {/* Player controls */}
+      {/* Player controls. Tight on mobile: smaller play button, no
+          fixed-width progress bar, tiny gaps. Roomier from sm: up. */}
       <div
-        className="px-5 py-3 flex items-center gap-4 border-t border-border/60"
+        className="px-3 sm:px-5 py-3 flex items-center gap-2 sm:gap-4 border-t border-border/60"
         style={{ background: "rgba(5, 8, 22, 0.65)", backdropFilter: "blur(12px)" }}
       >
         <button
           type="button"
           onClick={() => setPlaying((p) => !p)}
-          className="w-10 h-10 rounded-full flex items-center justify-center bg-fg text-bg hover:scale-105 active:scale-95 transition-transform shrink-0 shadow-lg"
+          className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-fg text-bg hover:scale-105 active:scale-95 transition-transform shrink-0 shadow-lg"
           aria-label={playing ? "Pause preview" : "Play preview"}
         >
           {playing ? (
@@ -143,15 +144,18 @@ export function WaveformHero({ catalogId, title, artist }: Props) {
             <span className="text-muted font-normal"> · {artist}</span>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-[11px] font-mono tabular text-muted shrink-0">
-          <span className="w-8 text-right">{fmtTime(seconds)}</span>
-          <div className="w-20 md:w-28 h-1 rounded-full bg-panel-2 relative overflow-hidden">
+        <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] font-mono tabular text-muted shrink-0">
+          <span className="text-right">{fmtTime(seconds)}</span>
+          {/* Hide the progress bar entirely on the smallest phones —
+              the time labels alone communicate position. From sm: up
+              the bar comes back. */}
+          <div className="hidden sm:block w-16 md:w-28 h-1 rounded-full bg-panel-2 relative overflow-hidden">
             <div
               className="h-full bg-accent-bright transition-[width] duration-1000 ease-linear"
               style={{ width: `${progressPct}%` }}
             />
           </div>
-          <span className="w-8">{fmtTime(TOTAL_SECONDS)}</span>
+          <span>{fmtTime(TOTAL_SECONDS)}</span>
         </div>
       </div>
     </div>
