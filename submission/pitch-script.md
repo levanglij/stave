@@ -49,12 +49,18 @@
 
 ## 1:30–2:10 - The moat, in depth
 
-> Going back to IPOA: Article sixty-four of the Law on Copyright and
-> Related Rights gave them exclusive country-wide operation as of
-> January first, twenty-twenty-four. That's a statutory mandate - not
-> a commercial deal a competitor can outbid. They have ownership and
-> royalty data at the source. Every grade we issue is cross-validated
-> against IPOA's ledger before it goes live. SACEM in France. GEMA in
+> One thing to be clear about: IPOA is a traditional rights
+> organization, not a crypto project. They collect royalties from
+> real-world music revenue - streaming, mechanical, performance, sync,
+> broadcast - and pay artists in standard financial terms. They are
+> not on Solana. We are. The partnership is what bridges the two.
+>
+> Article sixty-four of the Law on Copyright and Related Rights gave
+> them exclusive country-wide operation as of January first,
+> twenty-twenty-four. That's a statutory mandate - not a commercial
+> deal a competitor can outbid. They have ownership and royalty data
+> at the source. Every grade we issue is cross-validated against
+> IPOA's ledger before it goes live. SACEM in France. GEMA in
 > Germany. ASCAP and BMI in the US. JASRAC in Japan. Every country
 > with a national rights organization is a Stave deployment waiting
 > to happen. The moat compounds with each CMO partnership added.
