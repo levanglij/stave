@@ -14,17 +14,6 @@ import { getHeadlineStats } from "@/lib/headline-stats";
 
 const FEATURED_IDS = ["evergreen-001", "balanced-001", "new-release-001"];
 
-// Grade ladder for the methodology section. Single accent color
-// (emerald-400), opacity descending AAA → B. No traffic-light palette.
-const GRADE_LADDER: { tier: string; opacity: number }[] = [
-  { tier: "AAA", opacity: 1.0 },
-  { tier: "AA", opacity: 0.86 },
-  { tier: "A", opacity: 0.72 },
-  { tier: "BBB", opacity: 0.58 },
-  { tier: "BB", opacity: 0.46 },
-  { tier: "B", opacity: 0.36 },
-];
-
 export default function Home() {
   const stats = getSiteStats();
   const featured = FEATURED_IDS.map(getListing).filter(
@@ -412,30 +401,6 @@ export default function Home() {
                 </ChipLink>
               </div>
 
-              {/* Grade ladder - single accent (emerald), opacity descending
-                  AAA → B. Reads as a credibility ladder, not a heat map. */}
-              <div className="mt-10 pl-8">
-                <div className="text-[10px] font-semibold tracking-[2px] uppercase text-muted mb-3">
-                  Grade ladder
-                </div>
-                <div className="flex flex-wrap items-center gap-1.5">
-                  {GRADE_LADDER.map(({ tier, opacity }) => (
-                    <span
-                      key={tier}
-                      className="text-[11px] font-semibold tracking-wider rounded-full border px-2.5 py-1 tabular"
-                      style={{
-                        color: `rgba(52, 211, 153, ${opacity})`,
-                        borderColor: `rgba(52, 211, 153, ${opacity * 0.55})`,
-                      }}
-                    >
-                      {tier}
-                    </span>
-                  ))}
-                  <span className="ml-2 text-[10px] text-zinc-500">
-                    ←  best to most volatile  →
-                  </span>
-                </div>
-              </div>
             </div>
 
             {/* Sheet-music macro - quiet editorial visual that ties the
