@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { getAllIndices, INDEX_UNIT_SHARES, type Index, type IndexMetrics } from "@/lib/indices";
 import { CATALOG_META } from "@/lib/catalog-meta";
-import { usd, pct, compactUsd, TIER_COLOR } from "@/lib/format";
+import { usd, TIER_COLOR } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "Indices · Stave",
   description:
-    "Thematic baskets of Stave catalogs - Georgian Heritage, Modern, Blue Chip, and All-Catalog. Each index is a weighted basket; NAV, grade, and senior LTV are derived from the underlying Stave grades.",
+    "Thematic baskets of Stave catalogs. Two live indices today: Georgian Heritage and Georgian Modern.",
 };
 
 export default function IndicesPage() {
@@ -25,15 +25,10 @@ export default function IndicesPage() {
               Buy a curated basket,{" "}
               <span className="text-accent-bright">not a single song.</span>
             </h1>
-            <p className="text-muted text-base leading-relaxed">
-              Every index is a weighted basket of Stave listings. Its NAV,
-              grade, and senior LTV are derived from the underlying Stave
-              grades - no separate underwriting, full transparency.
-            </p>
           </div>
           <div className="text-right text-xs text-muted space-y-1">
             <div className="font-mono tabular">
-              {items.length} baskets · composed from 5 listings
+              {items.length} baskets
             </div>
             <div className="font-mono tabular">
               1 unit = {INDEX_UNIT_SHARES} notional shares
@@ -85,14 +80,9 @@ function IndexCard({ index, metrics }: { index: Index; metrics: IndexMetrics }) 
       </div>
 
       {/* Stat row */}
-      <div className="grid grid-cols-3 gap-3 mb-5">
+      <div className="grid grid-cols-2 gap-3 mb-5">
         <Stat label="NAV / unit" value={usd(metrics.nav)} />
-        <Stat label="Composite" value={metrics.composite.toFixed(1)} />
-        <Stat
-          label="Max LTV"
-          value={pct(metrics.ltv, 0)}
-          color={tierColor}
-        />
+        <Stat label="Score" value={metrics.composite.toFixed(1)} color={tierColor} />
       </div>
 
       {/* Composition: stacked bar + legend */}
@@ -135,13 +125,6 @@ function IndexCard({ index, metrics }: { index: Index; metrics: IndexMetrics }) 
         </div>
       </div>
 
-      {/* CVaR floor */}
-      <div className="mt-5 pt-4 border-t border-border flex items-baseline justify-between text-xs">
-        <span className="text-muted">CVaR₉₅ (24-mo floor, weighted)</span>
-        <span className="font-mono tabular text-fg/90">
-          {compactUsd(metrics.cvar95)}
-        </span>
-      </div>
     </div>
   );
 }
