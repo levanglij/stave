@@ -8,10 +8,26 @@ export const metadata: Metadata = {
 };
 
 const STEPS = [
-  { n: "01", title: "IPOA verifies the catalog", body: "Ownership and royalty data, at the source." },
-  { n: "02", title: "We grade the catalog", body: "Stave grade, AAA → B. Transparent." },
-  { n: "03", title: "You buy fractional shares on Solana", body: "Phantom or Solflare. Sub-cent fees." },
-  { n: "04", title: "Royalties pay out automatically", body: "Pull-based, pro-rata, on-chain." },
+  {
+    n: "01",
+    title: "IPOA verifies the catalog",
+    body: "IPOA, Georgia's traditional music rights organisation, holds the verified ownership records and the historical royalty cashflow. They share that data with Stave under partnership.",
+  },
+  {
+    n: "02",
+    title: "Stave grades the catalog",
+    body: "An open-source rating engine ingests the IPOA data and produces a grade from AAA to B, plus a recommended max LTV. Every formula is public.",
+  },
+  {
+    n: "03",
+    title: "You buy fractional shares on Solana",
+    body: "Each catalog is split into 1,000 Token-2022 shares. Buy as little as one share with USDC through Phantom or Solflare.",
+  },
+  {
+    n: "04",
+    title: "Royalties pay out on-chain",
+    body: "When IPOA distributes the catalog's royalty income, Stave routes the payment into the on-chain royalty vault. Holders claim pro-rata in USDC.",
+  },
 ];
 
 // Each layer ships with the actual formula the engine evaluates,
@@ -232,6 +248,12 @@ export default function HowItWorksPage() {
             On this page
           </span>
           <a
+            href="#partnership"
+            className="text-sm text-fg/80 hover:text-accent-bright transition-colors px-3 py-1 rounded-md hover:bg-panel"
+          >
+            Partnership
+          </a>
+          <a
             href="#process"
             className="text-sm text-fg/80 hover:text-accent-bright transition-colors px-3 py-1 rounded-md hover:bg-panel"
           >
@@ -263,6 +285,12 @@ export default function HowItWorksPage() {
           aria-label="Page contents"
         >
           <a
+            href="#partnership"
+            className="text-xs text-fg/85 px-3 py-1.5 mr-1.5 rounded-md border border-border inline-block"
+          >
+            Partnership
+          </a>
+          <a
             href="#process"
             className="text-xs text-fg/85 px-3 py-1.5 mr-1.5 rounded-md border border-border inline-block"
           >
@@ -288,8 +316,118 @@ export default function HowItWorksPage() {
           </a>
         </nav>
 
+        {/* IPOA + Stave partnership: who does what.
+            Two-column layout makes the off-chain / on-chain split
+            literally visible. Sits above the 4-step grid so a reader
+            understands the partnership before walking through the
+            investor journey. */}
+        <section id="partnership" className="scroll-mt-24">
+          <div className="text-[11px] font-semibold tracking-[2px] uppercase text-muted mb-3">
+            Partnership
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-fg mb-2 text-balance">
+            IPOA owns the data.{" "}
+            <span className="text-accent-bright">Stave puts it on Solana.</span>
+          </h2>
+          <p className="text-sm text-muted mb-8 max-w-2xl leading-relaxed">
+            IPOA is Georgia&apos;s official music rights organisation, a
+            traditional collecting society that has held nationwide
+            collection rights since January 2024. They are not crypto.
+            Stave is the on-chain marketplace that uses IPOA&apos;s
+            verified data to rate, fractionalize and distribute royalty
+            income on Solana.
+          </p>
+          <div className="grid md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-6 items-stretch">
+            {/* IPOA column - off-chain, traditional */}
+            <div className="rounded-xl border border-border bg-panel p-5">
+              <div className="text-[10px] font-semibold tracking-[1.5px] uppercase text-muted mb-3">
+                Off-chain · IPOA
+              </div>
+              <div className="font-semibold text-fg mb-3 text-base">
+                Traditional rights organisation
+              </div>
+              <ul className="space-y-2 text-sm text-muted leading-relaxed">
+                <li className="flex items-start gap-2">
+                  <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
+                  <span>Government mandate to collect royalties across Georgia</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
+                  <span>Sources: streaming, mechanical, public performance, neighbouring rights, sync, TV broadcast</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
+                  <span>Pays artists and rightsholders in standard financial terms</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
+                  <span>Shares verified ownership + cashflow data with Stave</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Bridge arrow - vertical on mobile, horizontal on desktop */}
+            <div className="flex md:flex-col items-center justify-center text-zinc-600 px-2">
+              <span className="text-[10px] uppercase tracking-[1.5px] mb-2 hidden md:block">
+                Data + payments
+              </span>
+              <span aria-hidden className="text-2xl md:hidden">↓</span>
+              <span aria-hidden className="text-2xl hidden md:block">→</span>
+              <span className="text-[10px] uppercase tracking-[1.5px] mt-2 hidden md:block">
+                bridge
+              </span>
+            </div>
+
+            {/* Stave column - on-chain, Solana */}
+            <div className="rounded-xl border border-emerald-900/40 bg-gradient-to-b from-emerald-950/20 to-zinc-950/40 p-5">
+              <div className="text-[10px] font-semibold tracking-[1.5px] uppercase text-emerald-400 mb-3">
+                On-chain · Stave
+              </div>
+              <div className="font-semibold text-fg mb-3 text-base">
+                Solana-native marketplace
+              </div>
+              <ul className="space-y-2 text-sm text-muted leading-relaxed">
+                <li className="flex items-start gap-2">
+                  <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
+                  <span>Rating engine: 5-layer pipeline turns IPOA data into AAA → B grades</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
+                  <span>Fractionalizes each catalog into 1,000 Token-2022 shares</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
+                  <span>Investors buy + sell shares with USDC through any Solana wallet</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
+                  <span>Distributes IPOA royalty payments on-chain pro-rata to share holders</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p className="text-[11px] text-muted/80 mt-4 italic">
+            The full canonical partnership flow is documented in{" "}
+            <a
+              href="https://github.com/levanglij/stave/blob/main/docs/00-positioning.md"
+              target="_blank"
+              rel="noreferrer"
+              className="text-accent-bright/80 hover:text-accent-bright hover:underline"
+            >
+              docs/00-positioning.md
+            </a>
+            .
+          </p>
+        </section>
+
         {/* 4 Steps - staggered fade-up */}
         <section id="process" className="scroll-mt-24">
+          <div className="text-[11px] font-semibold tracking-[2px] uppercase text-muted mb-3">
+            The investor journey
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-fg mb-6 text-balance">
+            From a song to a share, in four steps.
+          </h2>
           <div className="grid md:grid-cols-4 gap-4">
             {STEPS.map((s, i) => (
               <div
