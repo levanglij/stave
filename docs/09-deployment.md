@@ -114,13 +114,3 @@ Two sources of truth:
 When you add a new env var to the code, add it to both. Never commit
 real values to `.env` - `.gitignore` excludes `.env*` for this
 reason.
-
-## Pre-submission domain check
-
-In the 48 hours before the May 11 deadline, verify in incognito:
-
-- [ ] `https://stave.cc` loads without auth
-- [ ] No console errors on initial page load
-- [ ] Demo flow runs end-to-end
-- [ ] All Solana Explorer links resolve
-- [ ] Pitch + tech demo videos play from their submission URLs
