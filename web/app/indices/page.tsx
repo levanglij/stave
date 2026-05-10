@@ -6,11 +6,13 @@ import { usd, TIER_COLOR } from "@/lib/format";
 export const metadata: Metadata = {
   title: "Indices · Stave",
   description:
-    "Thematic baskets of Stave catalogs. Two live indices today: Georgian Heritage and Georgian Modern.",
+    "Thematic baskets of Stave catalogs. Two live indices today: Georgian Heritage and Georgian Modern. Two more coming.",
 };
 
 export default function IndicesPage() {
-  const items = getAllIndices();
+  const all = getAllIndices();
+  const live = all.filter(({ index }) => index.status === "example");
+  const upcoming = all.filter(({ index }) => index.status !== "example");
 
   return (
     <main className="min-h-[calc(100vh-4rem)]">
@@ -28,7 +30,7 @@ export default function IndicesPage() {
           </div>
           <div className="text-right text-xs text-muted space-y-1">
             <div className="font-mono tabular">
-              {items.length} baskets
+              {live.length} live · {upcoming.length} upcoming
             </div>
             <div className="font-mono tabular">
               1 unit = {INDEX_UNIT_SHARES} notional shares
@@ -36,22 +38,95 @@ export default function IndicesPage() {
           </div>
         </div>
 
-        {/* Grid */}
+        {/* Live indices */}
         <div className="grid md:grid-cols-2 gap-4">
-          {items.map(({ index, metrics }) => (
+          {live.map(({ index, metrics }) => (
             <IndexCard key={index.ticker} index={index} metrics={metrics} />
           ))}
         </div>
+
+        {/* Upcoming indices: blurred under construction effect.
+            Same card layout, just visually muted with a "Coming soon"
+            overlay so visitors can see what's planned without thinking
+            it's live. */}
+        {upcoming.length > 0 && (
+          <>
+            <div className="mt-14 mb-6 flex items-center gap-3">
+              <div className="text-[11px] font-semibold tracking-[2px] uppercase text-muted">
+                Coming soon
+              </div>
+              <div className="flex-1 h-px bg-border" />
+            </div>
+            <div className="grid md:grid-cols-2 gap-4">
+              {upcoming.map(({ index, metrics }) => (
+                <IndexCard
+                  key={index.ticker}
+                  index={index}
+                  metrics={metrics}
+                  comingSoon
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </main>
   );
 }
 
-function IndexCard({ index, metrics }: { index: Index; metrics: IndexMetrics }) {
+function IndexCard({
+  index,
+  metrics,
+  comingSoon = false,
+}: {
+  index: Index;
+  metrics: IndexMetrics;
+  comingSoon?: boolean;
+}) {
   const tierColor = TIER_COLOR[metrics.rating];
+
+  if (comingSoon) {
+    return (
+      <div className="relative rounded-xl border border-border bg-panel overflow-hidden">
+        {/* Blurred + dimmed card body */}
+        <div
+          className="p-5 select-none pointer-events-none"
+          style={{ filter: "blur(3px)", opacity: 0.5 }}
+          aria-hidden
+        >
+          <CardBody index={index} metrics={metrics} tierColor={tierColor} />
+        </div>
+        {/* "Coming soon" overlay badge */}
+        <div className="absolute inset-0 flex items-center justify-center bg-bg/30 backdrop-blur-[2px]">
+          <div className="rounded-full border border-zinc-700 bg-zinc-900/95 px-4 py-1.5 text-[10px] font-semibold tracking-[2px] uppercase text-zinc-300">
+            Coming soon
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="rounded-xl border border-border bg-panel p-5 transition-all duration-200 hover:border-emerald-900/40 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-950/20">
+      <CardBody index={index} metrics={metrics} tierColor={tierColor} />
+    </div>
+  );
+}
+
+// Shared card body: header (ticker badge + name + rating chip), stat
+// row (NAV per unit + Score), and composition (stacked bar + legend).
+// Used by both the live IndexCard and the blurred coming-soon variant.
+function CardBody({
+  index,
+  metrics,
+  tierColor,
+}: {
+  index: Index;
+  metrics: IndexMetrics;
+  tierColor: string;
+}) {
+  return (
+    <>
       {/* Header: ticker badge + name + rating */}
       <div className="flex items-start justify-between gap-3 mb-5">
         <div className="flex items-center gap-3 min-w-0">
@@ -124,8 +199,7 @@ function IndexCard({ index, metrics }: { index: Index; metrics: IndexMetrics }) 
           })}
         </div>
       </div>
-
-    </div>
+    </>
   );
 }
 

@@ -56,6 +56,39 @@ export const INDICES: Record<string, Index> = {
       { catalogId: "new-release-001", weight: 40 },
     ],
   },
+  GBC: {
+    ticker: "GBC",
+    name: "Georgian Blue Chip Index",
+    tagline: "Investment grade only, BBB and above",
+    description:
+      "Only BBB-or-better listings. Built for conservative capital.",
+    accent: "#10b981",
+    status: "draft",
+    components: [
+      { catalogId: "evergreen-001", weight: 40 },
+      { catalogId: "balanced-001", weight: 35 },
+      { catalogId: "active-pop-001", weight: 25 },
+    ],
+  },
+  GAI: {
+    ticker: "GAI",
+    name: "Georgian All-Catalog Index",
+    tagline: "Equal weighted Georgian music market benchmark",
+    description:
+      "Every Stave listing, equal-weighted. The natural index to track against.",
+    accent: "#3b82f6",
+    status: "draft",
+    components: [
+      { catalogId: "evergreen-001", weight: 12.5 },
+      { catalogId: "evergreen-002", weight: 12.5 },
+      { catalogId: "catalog-001", weight: 12.5 },
+      { catalogId: "balanced-001", weight: 12.5 },
+      { catalogId: "active-pop-001", weight: 12.5 },
+      { catalogId: "active-pop-002", weight: 12.5 },
+      { catalogId: "high-hhi-001", weight: 12.5 },
+      { catalogId: "new-release-001", weight: 12.5 },
+    ],
+  },
 };
 
 // Score → tier mapping. Mirrors lib/format.ts TIER_COLOR; kept here
