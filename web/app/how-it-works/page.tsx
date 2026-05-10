@@ -30,128 +30,36 @@ const STEPS = [
   },
 ];
 
-// Each layer ships with the actual formula the engine evaluates,
-// rendered inline as italic-variable HTML. This is intentionally
-// dependency-free: KaTeX would add ~70 KB to this route for one
-// page of math, and the formulas here are short enough that hand-
-// authored markup reads cleanly. The formulae link to the same
-// canonical page the rest of the site does - engine/FORMULAS.md.
 const LAYERS: {
   n: string;
   title: string;
   body: string;
-  formula: React.ReactNode;
 }[] = [
   {
     n: "L1",
     title: "Data normalization",
     body: "Monthly USD, currency-aligned.",
-    formula: (
-      <>
-        <i>x</i>
-        <sub>
-          <i>t</i>
-        </sub>
-        <sup>USD</sup> = <i>x</i>
-        <sub>
-          <i>t</i>
-        </sub>{" "}
-        · <i>r</i>
-        <sub>
-          <i>t</i>
-        </sub>
-      </>
-    ),
   },
   {
     n: "L2",
     title: "Decay modeling",
     body: "Exponential or power-law fit, lower-residual wins.",
-    formula: (
-      <>
-        <i>R</i>(<i>t</i>) = <i>R</i>
-        <sub>0</sub> · <i>e</i>
-        <sup>
-          −λ<i>t</i>
-        </sup>
-        <span className="mx-2 text-zinc-600">|</span>
-        <i>R</i>
-        <sub>0</sub> · <i>t</i>
-        <sup>−α</sup>
-      </>
-    ),
   },
   {
     n: "L3",
     title: "Anomaly detection",
     body: "Rolling z-score across the time series.",
-    formula: (
-      <>
-        <i>z</i>
-        <sub>
-          <i>t</i>
-        </sub>{" "}
-        = (<i>x</i>
-        <sub>
-          <i>t</i>
-        </sub>{" "}
-        − μ
-        <sub>
-          <i>w</i>
-        </sub>
-        ) / σ
-        <sub>
-          <i>w</i>
-        </sub>
-      </>
-    ),
   },
   {
     n: "L4",
     title: "Concentration & VaR",
     body: "HHI + 1k-iter Monte Carlo for 60-mo CVaR.",
-    formula: (
-      <>
-        HHI = Σ <i>s</i>
-        <sub>
-          <i>i</i>
-        </sub>
-        <sup>2</sup>
-        <span className="mx-2 text-zinc-600">|</span>
-        CVaR
-        <sub>95</sub> = E[<i>X</i> | <i>X</i> ≤ VaR
-        <sub>95</sub>]
-      </>
-    ),
   },
   {
     n: "L5",
     title: "Grade aggregation",
     body: "Five factors → composite → tier.",
-    formula: (
-      <>
-        composite = Σ <i>w</i>
-        <sub>
-          <i>i</i>
-        </sub>{" "}
-        · factor
-        <sub>
-          <i>i</i>
-        </sub>
-        <span className="mx-2 text-zinc-600">→</span>
-        tier(composite)
-      </>
-    ),
   },
-];
-
-const TIERS = [
-  { tier: "AAA", range: "90–100", ltv: "80%", color: "#34D399" },
-  { tier: "AA", range: "80–90", ltv: "70%", color: "#22C55E" },
-  { tier: "A", range: "70–80", ltv: "60%", color: "#38BDF8" },
-  { tier: "BBB", range: "60–70", ltv: "50%", color: "#FBBF24" },
-  { tier: "BB", range: "50–60", ltv: "30%", color: "#FB923C" },
-  { tier: "B", range: "0–50", ltv: "0%", color: "#F87171" },
 ];
 
 // Glossary - every Stave-specific or finance-specific term that
@@ -266,12 +174,6 @@ export default function HowItWorksPage() {
             Five-layer engine
           </a>
           <a
-            href="#grade-ladder"
-            className="text-sm text-fg/80 hover:text-accent-bright transition-colors px-3 py-1 rounded-md hover:bg-panel"
-          >
-            Grade ladder
-          </a>
-          <a
             href="#glossary"
             className="text-sm text-fg/80 hover:text-accent-bright transition-colors px-3 py-1 rounded-md hover:bg-panel"
           >
@@ -301,12 +203,6 @@ export default function HowItWorksPage() {
             className="text-xs text-fg/85 px-3 py-1.5 mr-1.5 rounded-md border border-border inline-block"
           >
             Engine
-          </a>
-          <a
-            href="#grade-ladder"
-            className="text-xs text-fg/85 px-3 py-1.5 mr-1.5 rounded-md border border-border inline-block"
-          >
-            Grade ladder
           </a>
           <a
             href="#glossary"
@@ -465,7 +361,7 @@ export default function HowItWorksPage() {
             {LAYERS.map((l, i) => (
               <div
                 key={l.n}
-                className="rounded-xl border border-border bg-panel p-4 fade-up flex flex-col"
+                className="rounded-xl border border-border bg-panel p-4 fade-up"
                 style={{ ["--delay" as string]: `${i * 0.08}s` }}
               >
                 <div className="text-xl font-bold text-accent-bright tabular mb-2">
@@ -474,15 +370,9 @@ export default function HowItWorksPage() {
                 <div className="font-semibold text-fg text-sm mb-1">
                   {l.title}
                 </div>
-                <p className="text-xs text-muted leading-relaxed mb-3">
+                <p className="text-xs text-muted leading-relaxed">
                   {l.body}
                 </p>
-                {/* Inline formula - italic variables, real Σ / σ / λ /
-                    sub-sup. Spacer pushes formulas to the bottom of
-                    each card so heights align across the row. */}
-                <div className="mt-auto pt-3 border-t border-border/60 text-[12px] text-emerald-300/90 font-mono leading-snug formula">
-                  {l.formula}
-                </div>
               </div>
             ))}
           </div>
@@ -511,48 +401,6 @@ export default function HowItWorksPage() {
                 →
               </span>
             </a>
-          </div>
-        </section>
-
-        {/* Grade ladder */}
-        <section id="grade-ladder" className="scroll-mt-24">
-          <div className="text-[11px] font-semibold tracking-[2px] uppercase text-muted mb-3">
-            Grade ladder
-          </div>
-          <h2 className="text-2xl font-bold tracking-tight text-fg mb-5">
-            Score → tier → max LTV.
-          </h2>
-          {/* TODO: tier-ladder diagram */}
-          <div className="rounded-xl border border-border bg-panel overflow-hidden">
-            <div className="grid grid-cols-3 gap-4 px-5 py-3 border-b border-border bg-panel-2/60 text-[10px] uppercase tracking-[1.2px] text-muted font-medium">
-              <div>Tier</div>
-              <div className="text-right">Score range</div>
-              <div className="text-right">Max LTV</div>
-            </div>
-            {TIERS.map((t) => (
-              <div
-                key={t.tier}
-                className="grid grid-cols-3 gap-4 px-5 py-3 border-b border-border last:border-b-0 items-center"
-              >
-                <div>
-                  <span
-                    className="font-semibold text-xs tracking-wider rounded-full border px-2.5 py-0.5 tabular inline-block"
-                    style={{ color: t.color, borderColor: t.color }}
-                  >
-                    {t.tier}
-                  </span>
-                </div>
-                <div className="text-right font-mono tabular text-sm text-fg">
-                  {t.range}
-                </div>
-                <div
-                  className="text-right font-semibold tabular text-sm"
-                  style={{ color: t.color }}
-                >
-                  {t.ltv}
-                </div>
-              </div>
-            ))}
           </div>
         </section>
 

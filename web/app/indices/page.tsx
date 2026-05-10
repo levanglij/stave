@@ -20,8 +20,11 @@ export default function IndicesPage() {
         {/* Hero */}
         <div className="flex items-end justify-between gap-6 flex-wrap mb-10">
           <div className="max-w-2xl">
-            <div className="text-[11px] font-semibold tracking-[2px] uppercase text-muted mb-3">
+            <div className="text-[11px] font-semibold tracking-[2px] uppercase text-muted mb-3 inline-flex items-center gap-2">
               Indices
+              <span className="text-[9px] tracking-[1.5px] rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-400 px-2 py-0.5">
+                Soon
+              </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-fg mb-4 text-balance">
               Buy a curated basket,{" "}
