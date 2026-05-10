@@ -124,7 +124,7 @@ These gaps are intentional and the engine output JSON does not claim any of them
 
 ## What's next - missing sub-engines
 
-Full prioritized gap analysis lives in [`docs/08-engine-roadmap.md`](../docs/08-engine-roadmap.md). Summary of the sub-engines still to build, with architecture-doc reference and rough calendar effort for one full-time engineer (S = 1–3 days, M = 1–2 weeks, L = 3–6 weeks, XL = 2–4 months).
+Summary of the sub-engines still to build, with architecture-doc reference and rough calendar effort for one full-time engineer (S = 1–3 days, M = 1–2 weeks, L = 3–6 weeks, XL = 2–4 months).
 
 **Tier 1 - critical path to rating any real catalog**
 

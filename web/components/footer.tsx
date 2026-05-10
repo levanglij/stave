@@ -32,13 +32,13 @@ const COLS: { heading: string; items: LinkItem[] }[] = [
         external: true,
       },
       {
-        label: "Submission",
-        href: "https://github.com/levanglij/stave/blob/main/SUBMISSION.md",
+        label: "Positioning",
+        href: "https://github.com/levanglij/stave/blob/main/docs/00-positioning.md",
         external: true,
       },
       {
-        label: "Engine roadmap",
-        href: "https://github.com/levanglij/stave/blob/main/docs/08-engine-roadmap.md",
+        label: "Submission",
+        href: "https://github.com/levanglij/stave/blob/main/SUBMISSION.md",
         external: true,
       },
     ],

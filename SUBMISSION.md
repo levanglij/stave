@@ -47,10 +47,9 @@ Year 1 target: $50M in rated catalog value, 10 closed financings, first portfoli
 ## Links
 
 - **Live demo:** https://stave.cc
-- **Pitch video** (≤3 min): _link inserted on submission day_
+- **Pitch video** (≤2 min): _link inserted on submission day_
 - **Tech demo video** (~2:30): _link inserted on submission day_
-- **Pitch deck (PDF):** [submission/Stave-pitch-deck.pdf](./submission/) - exported from `Stave-pitch-deck.pptx`
-- **Financial model:** [submission/Stave-financial-model.xlsx](./submission/Stave-financial-model.xlsx)
 - **Methodology:** [engine/FORMULAS.md](./engine/FORMULAS.md)
+- **Positioning** (Stave + IPOA, single source of truth): [docs/00-positioning.md](./docs/00-positioning.md)
 - **Platform architecture (RRE/SRFP v2.0):** [docs/02-architecture.md](./docs/02-architecture.md)
 - **Repo:** https://github.com/levanglij/stave

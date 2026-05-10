@@ -72,19 +72,14 @@ The bootstrap script that produced these is at [`program/scripts/bootstrap-sulik
 
 ## Quick links
 
-- 🔗 **Live demo:** [stave.cc](https://stave.cc) - Vercel-hosted, auto-deploys on every push to `main`
-- 🎬 **Pitch video** (≤3 min): [submission/pitch-script.md](./submission/pitch-script.md) - _recording: pending_
-- 🛠 **Tech demo video** (~2:30): [submission/tech-demo-script.md](./submission/tech-demo-script.md) - _recording: pending_
-- 📦 **Submission package:** [submission/README.md](./submission/README.md) - index of every asset a judge needs
-- 📑 **Pitch deck:** [submission/Stave-pitch-deck.pptx](./submission/Stave-pitch-deck.pptx) (PDF export drops post-finalization)
-- 📊 **Financial model:** [submission/Stave-financial-model.xlsx](./submission/Stave-financial-model.xlsx)
+- 🔗 **Live demo:** [stave.cc](https://stave.cc) (Vercel hosted, auto deploys on every push to `main`)
+- 🧭 **Positioning:** [docs/00-positioning.md](./docs/00-positioning.md) (canonical reference for the Stave + IPOA relationship)
 - 🧮 **RRE methodology:** [engine/FORMULAS.md](./engine/FORMULAS.md)
 - 🏛 **Platform vision:** [docs/02-architecture.md](./docs/02-architecture.md) (RRE/SRFP v2.0)
-- 🗺 **Engine roadmap:** [docs/08-engine-roadmap.md](./docs/08-engine-roadmap.md)
-- ⚖️ **Legal roadmap:** [docs/10-legal-roadmap.md](./docs/10-legal-roadmap.md) - three-pillar regulatory + corporate-legal roadmap (CMO partnership, brokerage / VASP licensing path, custody architecture). Primary-source cited.
-- 🛣️ **Product roadmap:** [docs/12-roadmap.md](./docs/12-roadmap.md) - what ships in Q3 / Q4 / 2027 / 2028+
-- 🎼 **Suliko case study:** [docs/13-case-study-suliko.md](./docs/13-case-study-suliko.md) - end-to-end walkthrough of the one catalog that's live on devnet right now
-- 🥇 **Vs. competitors:** [docs/14-vs-competitors.md](./docs/14-vs-competitors.md) - Bolero / SongVest / ANote and where Stave's moat sits
+- ⚖️ **Legal roadmap:** [docs/10-legal-roadmap.md](./docs/10-legal-roadmap.md) (three pillar regulatory + corporate roadmap. Primary sources cited.)
+- 🛣️ **Product roadmap:** [docs/12-roadmap.md](./docs/12-roadmap.md) (what ships in Q3 / Q4 / 2027 / 2028+)
+- 🎼 **Suliko case study:** [docs/13-case-study-suliko.md](./docs/13-case-study-suliko.md) (end to end walkthrough of the one catalog that's live on devnet right now)
+- 🥇 **Vs. competitors:** [docs/14-vs-competitors.md](./docs/14-vs-competitors.md)
 - 📨 **Submission narrative:** [SUBMISSION.md](./SUBMISSION.md)
 
 ## Run it yourself
