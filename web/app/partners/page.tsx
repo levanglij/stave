@@ -82,8 +82,8 @@ export default function PartnersPage() {
             <div className="grid md:grid-cols-3 gap-4">
               <PlanCard
                 icon={<Building2 className="w-5 h-5" strokeWidth={1.75} />}
-                title="Licensed Georgian brokerages first."
-                body="Georgia has a small but established capital markets ecosystem regulated by the National Bank of Georgia. Stave is built locally and intends to integrate with the country's licensed brokerage houses as the first distribution layer - letting Georgian investors access tokenized royalties through the platforms they already trust."
+                title="Distribute through Georgian brokerages first."
+                body="Georgia has a small but established capital markets ecosystem regulated by the National Bank of Georgia. Stave is built locally and intends to integrate with the country's licensed brokerage houses as the first distribution layer, so Georgian investors can access tokenized royalties through the platforms they already trust. Stave is the marketplace and rating engine; the brokerage is the customer-facing channel."
               />
               <PlanCard
                 icon={<Network className="w-5 h-5" strokeWidth={1.75} />}

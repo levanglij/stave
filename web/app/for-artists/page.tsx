@@ -15,8 +15,11 @@ export default function ForArtistsPage() {
       <div className="max-w-5xl mx-auto px-6 py-16 md:py-20 space-y-20">
         {/* HERO */}
         <section className="max-w-3xl">
-          <div className="text-[11px] font-semibold tracking-[2px] uppercase text-muted mb-4">
+          <div className="text-[11px] font-semibold tracking-[2px] uppercase text-muted mb-4 inline-flex items-center gap-2">
             For artists
+            <span className="text-[9px] tracking-[1.5px] rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-400 px-2 py-0.5">
+              Soon
+            </span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-fg text-balance leading-[1.05]">
             Turn your catalog into income.{" "}
@@ -26,9 +29,7 @@ export default function ForArtistsPage() {
           </h1>
           <p className="text-lg text-muted leading-relaxed mt-6 max-w-2xl">
             Stave lets you tokenize a share of your future royalties on Solana.
-            Investors get fractional exposure to your work. You keep your
-            masters, your rights, and your creative control - and you raise
-            capital up front against income you&rsquo;d earn anyway.
+            Investors get fractional exposure to your work.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
             <ApplyTrigger className="btn-glow rounded-lg bg-accent text-accent-ink font-semibold text-base px-6 py-3.5">
