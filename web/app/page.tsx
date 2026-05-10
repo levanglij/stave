@@ -6,7 +6,6 @@ import { getSiteStats } from "@/lib/site-stats";
 import { compactUsd, pct, TIER_COLOR } from "@/lib/format";
 import { HeroChartNotes } from "@/components/HeroChartNotes";
 import { MethodologyWaveform } from "@/components/methodology-waveform";
-import { CopyableAddress } from "@/components/copyable-address";
 import { Reveal } from "@/components/reveal";
 import { CountUp } from "@/components/count-up";
 import { HeroTicker } from "@/components/hero-ticker";
@@ -31,7 +30,6 @@ export default function Home() {
   const featured = FEATURED_IDS.map(getListing).filter(
     (l): l is NonNullable<typeof l> => l !== undefined,
   );
-  const tierColor = TIER_COLOR[stats.averageRating];
 
   return (
     <main>
@@ -165,11 +163,10 @@ export default function Home() {
           devnet. Real signatures, click-through to Solana Explorer. */}
       <HeroTicker />
 
-      {/* TODO: review composite grade + 5yr ROI tiles */}
       <Reveal>
         <section className="bg-gradient-to-b from-zinc-950 to-black border-b border-zinc-900">
           <div className="max-w-6xl mx-auto px-6 py-14 md:py-16">
-            <div className="grid grid-cols-2 md:grid-cols-4 md:divide-x md:divide-zinc-800/80">
+            <div className="grid grid-cols-1 sm:grid-cols-3 sm:divide-x sm:divide-zinc-800/80">
               <StatTile
                 value={<CountUp end={stats.catalogCount} format="int" />}
                 label="catalogs scored"
@@ -177,11 +174,6 @@ export default function Home() {
               <StatTile
                 value={<CountUp end={stats.totalFmv} format="compact-usd" />}
                 label="total tokenized FMV"
-              />
-              <StatTile
-                value={stats.averageRating}
-                label="average composite grade"
-                valueColor={tierColor}
               />
               <StatTile
                 value={<CountUp end={stats.medianRoi5yr} format="pct1" />}
@@ -243,17 +235,17 @@ export default function Home() {
             <Step
               n="01"
               title="We grade the catalog"
-              body="Each music catalog is scored by an open-source rating engine using streaming history, revenue concentration and tail-risk metrics. The output is a single grade from AA to B."
+              body="Every catalog gets a transparent grade from AA to B, computed by an open-source rating engine."
             />
             <Step
               n="02"
               title="You buy a fractional share"
-              body="Each song catalog is fractionalized into 1,000 fungible SPL tokens on Solana. This allows investors to purchase a 0.1% share, a larger stake, or the full available ownership interest, with the minimum investment starting from just one token."
+              body="Each catalog is split into 1,000 fungible Solana shares, and you can buy as little as one."
             />
             <Step
               n="03"
               title="Royalties settle on-chain"
-              body="As the catalog earns from streaming, mechanical royalties, public performance, neighbouring rights, synchronization and TV broadcast, distributions are paid programmatically to token holders. Every payout is traceable on-chain."
+              body="When royalties come in from streaming, broadcast and other sources, payouts settle on-chain pro rata to share holders."
             />
           </div>
         </section>
@@ -282,104 +274,27 @@ export default function Home() {
           <ValueCard
             icon={<BadgeCheck className="w-5 h-5" strokeWidth={1.75} />}
             title="Risk-graded catalogs"
-            body="Every catalog gets a transparent grade from AA to B, derived from streaming hazard, revenue concentration (HHI), and 24-month tail-risk (CVaR). The full methodology is open-source on GitHub."
+            body="Every catalog ships with a transparent grade from AA to B, derived by an open-source engine."
             href="/how-it-works"
           />
           <ValueCard
             icon={<PieChart className="w-5 h-5" strokeWidth={1.75} />}
             title="Own as little as 0.1%"
-            body="Each listing is split into 1,000 fungible SPL tokens. Buy one token or the whole catalog - there's no minimum check size beyond a single share."
+            body="Each catalog is split into 1,000 shares, so you can own a tiny slice or the whole thing."
             href="/marketplace"
           />
           <ValueCard
             icon={<Cpu className="w-5 h-5" strokeWidth={1.75} />}
             title="Programmatic royalty payouts"
-            body="Settlement runs on Solana. As the catalog earns, distributions are paid on-chain to every token holder, with full traceability per token."
+            body="When royalties arrive, payouts settle on-chain pro rata to every share holder."
             href="/how-it-works"
           />
         </div>
         </section>
       </Reveal>
 
-      {/* Value-cards → featured transition */}
+      {/* Value-cards → vinyl band transition */}
       <div className="bg-gradient-to-b from-black via-zinc-950/40 to-black h-[1px]" />
-
-      {/* HACKATHON-HONEST CALLOUT - what's real, what's simulated. Sits
-          above the featured-listings section so users see the line before
-          they browse the synthetic catalogs. Same outlined-card pattern
-          as the IPOA + open-methodology pills in the hero. */}
-      <Reveal>
-      <section className="max-w-3xl mx-auto px-6 pt-16 pb-4">
-        <div className="rounded-xl border border-zinc-800 bg-gradient-to-b from-zinc-900/50 to-zinc-950/50 p-7">
-          <div className="mb-5">
-            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-muted mb-2">
-              Hackathon-honest
-            </div>
-            <h3 className="text-lg font-semibold text-fg tracking-tight">
-              What&rsquo;s real, what&rsquo;s simulated
-            </h3>
-          </div>
-          <p className="text-sm text-zinc-400 leading-relaxed mb-6">
-            Risk engine, on-chain program, royalty math:{" "}
-            <span className="text-emerald-400 font-medium">real</span>.
-            Catalog data:{" "}
-            <span className="text-zinc-300">synthetic</span> for the
-            prototype. We don&rsquo;t hide the line.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_2fr] gap-x-5 gap-y-2.5 text-xs">
-            <RealRow
-              label="Risk engine"
-              state="real"
-              detail="Python, 31 passing tests, deterministic"
-            />
-            <RealRow
-              label="On-chain Anchor program"
-              state="real"
-              detail="15/15 tests pass, deployed to Solana devnet"
-            />
-            <RealRow
-              label="Royalty distribution math"
-              state="real"
-              detail="Pull-based USDC, multi-deposit verified"
-            />
-            <RealRow
-              label="Catalog data"
-              state="synthetic"
-              detail="8 Georgian catalogs, schema documented"
-            />
-          </div>
-
-          {/* Click-to-verify on-chain - surfaces the deployed program +
-              first bootstrapped Suliko listing as copyable addresses
-              with Explorer links. The honesty card above SAYS it's real;
-              this row PROVES it. */}
-          <div className="mt-6 pt-5 border-t border-zinc-800/60">
-            <div className="text-[10px] font-semibold tracking-[2px] uppercase text-muted mb-3">
-              Click to verify on-chain
-            </div>
-            <div className="space-y-2">
-              <CopyableAddress
-                label="Program"
-                value="EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q"
-              />
-              <CopyableAddress
-                label="Suliko"
-                value="32B19bfwgLoxxLDyXnkSZQhsJ9Vhh4ugWFetmkwBmGo6"
-              />
-              <CopyableAddress
-                label="Listing"
-                value="EJTxUg98b4LnSuUCKpWjSFyed4Cm3GPcmjgX4m9jRfHa"
-              />
-              <CopyableAddress
-                label="create_work"
-                value="24aATvsPhsuctY5vN22XRL8CpckfnD8fLcQmaCmrJV5PbnWWggrojHdybB7JS71RWLMPmkN3DuoAmPVzBcRG9Xbo"
-                type="tx"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-      </Reveal>
 
       {/* WARMTH BAND - vinyl macro humanizes the underlying asset.
           Intentionally not wrapped in <Reveal>: the warmth bands are
@@ -612,34 +527,6 @@ function StatTile({
         {label}
       </div>
     </div>
-  );
-}
-
-// Single row in the "What's real, what's simulated" callout. 3-column
-// on desktop (label | state chip | detail), single-column on mobile.
-function RealRow({
-  label,
-  state,
-  detail,
-}: {
-  label: string;
-  state: "real" | "synthetic";
-  detail: string;
-}) {
-  return (
-    <>
-      <div className="text-zinc-400 sm:text-right pr-1">{label}</div>
-      <div
-        className={
-          state === "real"
-            ? "text-emerald-400 font-semibold"
-            : "text-zinc-400 font-medium"
-        }
-      >
-        {state === "real" ? "Real" : "Synthetic"}
-      </div>
-      <div className="text-zinc-500">{detail}</div>
-    </>
   );
 }
 
