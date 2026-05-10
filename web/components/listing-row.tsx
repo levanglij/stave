@@ -10,7 +10,7 @@ import {
 import { getHeadlineStats } from "@/lib/headline-stats";
 
 const COLS =
-  "grid grid-cols-[56px_minmax(220px,1fr)_88px_72px_84px_84px_72px_104px] gap-4 px-5 items-center";
+  "grid grid-cols-[56px_minmax(220px,1fr)_88px_88px_88px_88px] gap-4 px-5 items-center";
 
 export function ListingRowHeader() {
   return (
@@ -21,10 +21,8 @@ export function ListingRowHeader() {
       <div>Catalog</div>
       <div className="text-right">Grade</div>
       <div className="text-right">Price</div>
-      <div className="text-right">FMV</div>
       <div className="text-right">Annual</div>
       <div className="text-right">5YR ROI</div>
-      <div className="text-right">Available</div>
     </div>
   );
 }
@@ -78,16 +76,6 @@ export function ListingRow({ listing }: { listing: Listing }) {
         {usd(listing.price)}
       </div>
 
-      {/* FMV */}
-      <div className="text-right">
-        <div className="font-semibold tabular text-fg text-sm">
-          {compactUsd(stats.fmv)}
-        </div>
-        <div className="text-[10px] text-muted mt-0.5 font-mono tabular">
-          fair value
-        </div>
-      </div>
-
       {/* Annual royalty */}
       <div className="text-right">
         <div className="font-semibold tabular text-fg text-sm">
@@ -106,15 +94,6 @@ export function ListingRow({ listing }: { listing: Listing }) {
         <div className="text-[10px] text-muted mt-0.5 font-mono tabular">
           5yr base
         </div>
-      </div>
-
-      {/* Available */}
-      <div className="text-right font-mono tabular text-xs">
-        <div>
-          <span className="text-fg font-semibold">500</span>
-          <span className="text-muted"> / 1,000</span>
-        </div>
-        <div className="text-[10px] text-muted mt-0.5">tokens</div>
       </div>
     </Link>
   );

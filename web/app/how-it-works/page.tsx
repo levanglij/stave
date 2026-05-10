@@ -11,22 +11,22 @@ const STEPS = [
   {
     n: "01",
     title: "IPOA verifies the catalog",
-    body: "IPOA, Georgia's traditional music rights organisation, holds the verified ownership records and the historical royalty cashflow. They share that data with Stave under partnership.",
+    body: "Georgia's official rights organisation shares verified ownership and royalty data with Stave.",
   },
   {
     n: "02",
     title: "Stave grades the catalog",
-    body: "An open-source rating engine ingests the IPOA data and produces a grade from AAA to B, plus a recommended max LTV. Every formula is public.",
+    body: "An open-source engine produces a grade from AAA to B from that data.",
   },
   {
     n: "03",
-    title: "You buy fractional shares on Solana",
-    body: "Each catalog is split into 1,000 Token-2022 shares. Buy as little as one share with USDC through Phantom or Solflare.",
+    title: "You buy fractional shares",
+    body: "Each catalog is split into 1,000 Solana shares; buy as little as one with USDC.",
   },
   {
     n: "04",
     title: "Royalties pay out on-chain",
-    body: "When IPOA distributes the catalog's royalty income, Stave routes the payment into the on-chain royalty vault. Holders claim pro-rata in USDC.",
+    body: "When royalties arrive, holders claim pro-rata in USDC straight from the on-chain vault.",
   },
 ];
 
@@ -245,19 +245,19 @@ export default function HowItWorksPage() {
               <ul className="space-y-2 text-sm text-muted leading-relaxed">
                 <li className="flex items-start gap-2">
                   <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
-                  <span>Government mandate to collect royalties across Georgia</span>
+                  <span>Government mandate across Georgia</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
-                  <span>Sources: streaming, mechanical, public performance, neighbouring rights, sync, TV broadcast</span>
+                  <span>Collects streaming, mechanical, performance and broadcast royalties</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
-                  <span>Pays artists and rightsholders in standard financial terms</span>
+                  <span>Pays artists and rightsholders directly</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
-                  <span>Shares verified ownership + cashflow data with Stave</span>
+                  <span>Shares verified data with Stave</span>
                 </li>
               </ul>
             </div>
@@ -285,19 +285,19 @@ export default function HowItWorksPage() {
               <ul className="space-y-2 text-sm text-muted leading-relaxed">
                 <li className="flex items-start gap-2">
                   <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
-                  <span>Rating engine: 5-layer pipeline turns IPOA data into AAA → B grades</span>
+                  <span>Turns IPOA data into AAA → B grades</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
-                  <span>Fractionalizes each catalog into 1,000 Token-2022 shares</span>
+                  <span>Splits each catalog into 1,000 Solana shares</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
-                  <span>Investors buy + sell shares with USDC through any Solana wallet</span>
+                  <span>Investors buy and sell with USDC, any Solana wallet</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span aria-hidden className="text-accent-bright mt-1 shrink-0">·</span>
-                  <span>Distributes IPOA royalty payments on-chain pro-rata to share holders</span>
+                  <span>Distributes royalty payouts on-chain, pro-rata</span>
                 </li>
               </ul>
             </div>
