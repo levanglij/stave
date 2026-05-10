@@ -1,11 +1,5 @@
 import { ImageResponse } from "next/og";
 
-// Open Graph card for stave.cc - what shows up when the URL is
-// shared in Twitter / LinkedIn / Slack / iMessage / Discord.
-// Generated as a 1200×630 PNG at build time. Pure JSX-to-image, no
-// external assets, no font loading - keeps the build fast and
-// guarantees the image renders identically every time.
-
 export const runtime = "edge";
 
 export const alt =

@@ -10,24 +10,6 @@ import {
   formatUsdcMicros,
 } from "@/lib/onchain-listings";
 
-/**
- * "Live on Solana devnet" status strip for catalogs that have been
- * bootstrapped on-chain.
- *
- * Strategy:
- *   1. First paint = seed values from the bootstrap manifest
- *      (baked into the registry). Means the strip is fully populated
- *      on initial render - no spinner, no layout shift.
- *   2. After mount, fetch `getTokenAccountBalance` on the listing
- *      vault from devnet RPC. The vault holds shares-for-sale; its
- *      balance == sharesRemaining. Subtract from sharesListed for
- *      sharesSold.
- *   3. Refresh every 30s while the page is mounted, so a judge
- *      watching the page sees genuine live updates if anyone buys.
- *   4. On RPC failure, keep showing the seed values silently - the
- *      strip never reads "broken" or "loading forever."
- */
-
 const DEVNET_RPC = "https://api.devnet.solana.com";
 const REFRESH_MS = 30_000;
 
@@ -91,13 +73,7 @@ export function OnchainStatus({ listing }: OnchainStatusProps) {
       : 0;
 
   return (
-    <div
-      className="rounded-xl border border-emerald-900/40 bg-gradient-to-b from-emerald-950/20 to-zinc-950/40 p-5 md:p-6"
-      // Mark suppressHydrationWarning at the section level - the only
-      // dynamic value visible at first paint is "Last refreshed" copy
-      // which is intentionally client-only.
-    >
-      {/* Header row: pulsing live pill + title + explorer link */}
+    <div className="rounded-xl border border-emerald-900/40 bg-gradient-to-b from-emerald-950/20 to-zinc-950/40 p-5 md:p-6">
       <div className="flex items-start justify-between gap-3 mb-5 flex-wrap">
         <div className="flex items-center gap-3">
           <span className="relative inline-flex items-center justify-center w-2.5 h-2.5">

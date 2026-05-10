@@ -10,26 +10,6 @@ import {
 } from "react";
 import { CheckCircle2, AlertCircle, Info, X, ExternalLink } from "lucide-react";
 
-/**
- * Tiny in-house toast system. Built rather than pulling in sonner /
- * react-hot-toast because:
- *  - Bundle is ~3 KB instead of 8-15 KB
- *  - The visual style matches Stave's dark+emerald palette exactly
- *  - We control every behavior (auto-dismiss, hover-pause, manual
- *    close, optional explorer link, etc.)
- *
- * Usage:
- *   const toast = useToast();
- *   toast.success("Copied to clipboard");
- *   toast.success("Wallet connected", "Phantom · 4eXh…JqM7");
- *   toast.error("Transaction failed", err.message);
- *   toast.info("Tx submitted", undefined, { explorerHref: url });
- *
- * The provider lives in app/layout.tsx wrapping the whole tree, so
- * any client component can call useToast(). Render order: a fixed
- * stack in the bottom-right, newest on bottom.
- */
-
 type ToastKind = "success" | "error" | "info";
 
 interface Toast {
@@ -59,9 +39,7 @@ const ToastCtx = createContext<ToastApi | null>(null);
 export function useToast(): ToastApi {
   const ctx = useContext(ToastCtx);
   if (!ctx) {
-    // No provider mounted yet (e.g. server component import) - return
-    // a safe no-op so callers don't have to null-check. Logs to
-    // console for debugging.
+    // Safe no-op when called outside the provider.
     return {
       success: (t) => console.info("[toast/success]", t),
       error: (t) => console.warn("[toast/error]", t),
@@ -210,8 +188,6 @@ function ToastItem({
   );
 }
 
-// Per-kind theming. Kept colocated so a new kind only requires one
-// edit. Borders are subdued tints; icons are bright accent.
 const TONE: Record<
   ToastKind,
   { border: string; icon: string; Icon: typeof CheckCircle2 }

@@ -3,13 +3,6 @@ import { getListing, RATINGS } from "@/lib/ratings";
 import { getHeadlineStats } from "@/lib/headline-stats";
 import { compactUsd, pct, TIER_COLOR } from "@/lib/format";
 
-// Per-catalog Open Graph card. When `/issuances/[id]` is shared on
-// X / LinkedIn / Slack / iMessage / Discord, this is the preview the
-// recipient sees - the listing's grade chip, title, artist, gradient
-// cover, and headline stats. Generated as a 1200×630 PNG at build
-// time (one per ID, since we pre-render all 8 with generateStaticParams
-// on the parent page).
-
 export const runtime = "edge";
 
 export const alt =
@@ -17,8 +10,6 @@ export const alt =
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// Pre-render OG cards for every catalog. Mirrors the parent route's
-// generateStaticParams.
 export function generateStaticParams() {
   return Object.keys(RATINGS).map((id) => ({ id }));
 }

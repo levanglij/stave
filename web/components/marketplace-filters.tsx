@@ -5,15 +5,6 @@ import type { Listing, RatingTier } from "@/lib/types";
 import { ListingRow, ListingRowHeader } from "./listing-row";
 import { getHeadlineStats } from "@/lib/headline-stats";
 
-// Marketplace filter + sort + render. Server component fetches the
-// listings; this client component owns interactive state. ListingRow
-// itself is reused unchanged.
-//
-// Filter state model:
-// - tiers: empty Set = "all tiers"; non-empty = explicit subset
-// - genre: empty string = "all genres"
-// - sort: one of fmv (default) / price / roi5
-
 type SortKey = "fmv" | "price" | "roi5" | "grade";
 
 const ALL_TIERS: RatingTier[] = ["AAA", "AA", "A", "BBB", "BB", "B"];
@@ -64,15 +55,11 @@ export function MarketplaceFilters({ listings }: { listings: Listing[] }) {
 
   return (
     <>
-      {/* Sticky filter / sort bar */}
       <div
         className="sticky top-14 z-10 -mx-6 px-6 py-3 bg-bg/85 backdrop-blur-md border-y border-border flex flex-wrap items-center gap-x-4 gap-y-3 mb-6"
         role="toolbar"
         aria-label="Filter and sort listings"
       >
-        {/* Tier multi-select pills - single accent + descending opacity per
-            Bundle A's grade-ladder treatment. Active = colored, inactive
-            = neutral zinc. */}
         <div className="flex flex-wrap items-center gap-1">
           <span className="text-[10px] font-semibold tracking-[1.5px] uppercase text-muted mr-1.5">
             Grade
@@ -106,7 +93,6 @@ export function MarketplaceFilters({ listings }: { listings: Listing[] }) {
           })}
         </div>
 
-        {/* Genre dropdown - native <select>, keyboard-accessible */}
         <label className="inline-flex items-center gap-2 text-sm rounded-full border border-border bg-panel px-3 py-1.5 text-fg/85">
           <span className="text-[10px] font-semibold tracking-[1.5px] uppercase text-muted">
             Genre
@@ -136,7 +122,6 @@ export function MarketplaceFilters({ listings }: { listings: Listing[] }) {
 
         <div className="flex-1" />
 
-        {/* Sort - native <select> */}
         <label className="inline-flex items-center gap-2 text-sm rounded-full border border-border bg-panel px-3 py-1.5 text-fg/85">
           <span className="text-[10px] font-semibold tracking-[1.5px] uppercase text-muted">
             Sort

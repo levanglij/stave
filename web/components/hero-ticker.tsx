@@ -3,23 +3,6 @@
 import { useEffect, useState } from "react";
 import { Connection, PublicKey } from "@solana/web3.js";
 
-/**
- * Live "on-chain pulse" band shown below the hero. Renders a marquee
- * of recent transactions on the Stave program (devnet) plus a pulsing
- * LIVE indicator.
- *
- * Strategy:
- *   1. First paint = seeded with the two real bootstrap TXs (create_work
- *      + list_shares for Suliko). Real, clickable, verifiable.
- *   2. After mount, we async-fetch `getSignaturesForAddress` on the
- *      Stave program from devnet and replace the seed with live data.
- *   3. If the fetch fails (RPC down, throttled, offline) we keep the
- *      seed entries - never blanks the strip during a demo.
- *
- * Marquee: CSS keyframe scroll; pauses on hover. The list is duplicated
- * in the DOM so the loop is seamless across the gap.
- */
-
 const PROGRAM_ID = "EcJDYr1y6DTwjyGj6q2fskfyWv2733JZjffaW31bKR3Q";
 const DEVNET_RPC = "https://api.devnet.solana.com";
 

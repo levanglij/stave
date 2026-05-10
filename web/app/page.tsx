@@ -22,10 +22,6 @@ export default function Home() {
 
   return (
     <main>
-      {/* HERO - full institutional dominance.
-          Grid ratio: 50/50 on md+, 46/54 on lg+ (chart side bigger).
-          The right column also picks up an emerald glow backdrop so the
-          chart reads as a deliberate hero visual, not a small thumbnail. */}
       <section className="relative overflow-hidden min-h-[88vh] flex items-center">
         <div className="relative w-full max-w-6xl mx-auto px-6 py-20 md:py-28">
           <div className="grid md:grid-cols-2 lg:grid-cols-[46fr_54fr] gap-10 lg:gap-14 items-center">
@@ -63,9 +59,6 @@ export default function Home() {
                 </Link>
               </div>
 
-              {/* Credibility row - IPOA partner + open-methodology pill.
-                  Sit side-by-side on desktop so the hero stack feels
-                  tight; stack on mobile. Same outlined-pill family. */}
               <div className="mt-7 flex flex-col md:flex-row md:flex-wrap items-stretch md:items-center gap-3">
                 <a
                   href="https://ipoa.ge"
@@ -118,12 +111,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: candles-as-notes chart, framed by an emerald aura
-                so the visual reads big and "lives in space" instead of
-                hovering thumbnail-style next to the giant H1. The aura
-                is purely decorative (pointer-events none) and sits a
-                z-step behind the SVG. At lg+ we scale the chart up a
-                touch to balance the headline weight on the left. */}
             <div className="relative w-full">
               <div
                 aria-hidden
@@ -141,15 +128,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Hero → ticker transition: faint emerald cap so the live band
-          reads as a continuation of the hero, not a hard break. */}
       <div
         className="border-t border-zinc-900"
         style={{ boxShadow: "0 -1px 8px rgba(16, 185, 129, 0.05)" }}
       />
 
-      {/* LIVE ON-CHAIN TICKER - pulse band of recent program TXs on
-          devnet. Real signatures, click-through to Solana Explorer. */}
       <HeroTicker />
 
       <Reveal>
@@ -176,11 +159,8 @@ export default function Home() {
         </section>
       </Reveal>
 
-      {/* Stats → how-it-works transition */}
       <div className="bg-gradient-to-b from-black via-zinc-950/40 to-black h-[1px]" />
 
-      {/* WARMTH BAND #1 - studio console. Sets a "music as craft"
-          mood before the explanatory how-it-works section. */}
       <section className="relative overflow-hidden">
         <div className="relative w-full h-[260px] md:h-[340px]">
           <Image
@@ -191,8 +171,6 @@ export default function Home() {
             className="object-cover"
             quality={85}
           />
-          {/* Dark scrim - neutralizes the image's warm tones so it sits
-              inside the dark+emerald palette without competing. */}
           <div
             aria-hidden
             className="absolute inset-0"
@@ -204,7 +182,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HOW IT WORKS - 3-step linear flow, the IA gap before the value props */}
       <Reveal>
         <section className="max-w-6xl mx-auto px-6 py-28 md:py-32">
           <div className="text-center max-w-2xl mx-auto mb-14">
@@ -240,10 +217,8 @@ export default function Home() {
         </section>
       </Reveal>
 
-      {/* How-it-works → value-cards transition */}
       <div className="bg-gradient-to-b from-black via-zinc-950/40 to-black h-[1px]" />
 
-      {/* VALUE PROPS - three properties, one thesis */}
       <Reveal>
         <section className="max-w-6xl mx-auto px-6 py-28 md:py-32">
         <div className="text-center max-w-2xl mx-auto mb-14">
@@ -282,13 +257,8 @@ export default function Home() {
         </section>
       </Reveal>
 
-      {/* Value-cards → vinyl band transition */}
       <div className="bg-gradient-to-b from-black via-zinc-950/40 to-black h-[1px]" />
 
-      {/* WARMTH BAND - vinyl macro humanizes the underlying asset.
-          Intentionally not wrapped in <Reveal>: the warmth bands are
-          mid-scroll transitions and read better as solid full-bleed
-          imagery you scroll INTO, not as content to fade in. */}
       <section className="relative overflow-hidden">
         <div className="relative w-full h-[280px] md:h-[360px]">
           <Image
@@ -299,8 +269,6 @@ export default function Home() {
             className="object-cover"
             quality={85}
           />
-          {/* Soft left-to-right dark scrim so the photo lives inside the
-              dark+emerald palette and any overlaid text stays legible. */}
           <div
             aria-hidden
             className="absolute inset-0"
@@ -312,7 +280,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURED LISTINGS - three card grid, premium hover */}
       <Reveal>
       <section className="max-w-6xl mx-auto px-6 py-24 md:py-28">
         <div className="flex items-baseline justify-between mb-10">
@@ -340,13 +307,9 @@ export default function Home() {
       </section>
       </Reveal>
 
-      {/* METHODOLOGY TEASER - editorial blockquote with sheet-music side image */}
       <Reveal>
       <section className="bg-gradient-to-b from-black via-zinc-950/30 to-black">
         <div className="max-w-5xl mx-auto px-6 py-32 md:py-36">
-          {/* Section anchor - larger version of the hero open-methodology
-              badge. Sets the tone for the methodology block before the
-              eyebrow. Same outlined pill family as the IPOA element. */}
           <div className="text-center mb-12">
             <a
               href="https://github.com/levanglij/stave/blob/main/engine/FORMULAS.md"
@@ -369,14 +332,11 @@ export default function Home() {
             </a>
           </div>
 
-          {/* Two-column on desktop: copy block on left, sheet-music side
-              image on right. Stacks on mobile. */}
           <div className="grid md:grid-cols-[1fr_300px] gap-10 md:gap-14 items-center">
             <div>
               <div className="text-[10px] font-semibold tracking-[2px] uppercase text-muted mb-8">
                 Methodology
               </div>
-              {/* Decorative emerald waveform band - bridges music + data */}
               <div className="mb-10">
                 <MethodologyWaveform />
               </div>
@@ -403,10 +363,6 @@ export default function Home() {
 
             </div>
 
-            {/* Sheet-music macro - quiet editorial visual that ties the
-                brand name (Stave = staff lines) to the scoring story.
-                Square, bordered, slight desaturation via mix-blend so the
-                paper warmth doesn't fight the dark+emerald palette. */}
             <div className="aspect-square w-full max-w-[300px] mx-auto md:mx-0 rounded-xl overflow-hidden border border-zinc-800/60 relative">
               <Image
                 src="/images/sheet-music.jpg"
@@ -418,7 +374,6 @@ export default function Home() {
                 quality={85}
                 loading="lazy"
               />
-              {/* Subtle inset to bed the image into the card */}
               <div
                 aria-hidden
                 className="absolute inset-0 pointer-events-none"
@@ -432,12 +387,10 @@ export default function Home() {
       </section>
       </Reveal>
 
-      {/* Methodology → closing transition: emerald accent line */}
       <div
         className="h-px bg-gradient-to-r from-transparent via-emerald-700/40 to-transparent"
       />
 
-      {/* CLOSING CTA BAND - bookend to the hero */}
       <Reveal>
       <section
         className="relative overflow-hidden border-t border-zinc-900"
